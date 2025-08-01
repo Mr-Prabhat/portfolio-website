@@ -6,22 +6,53 @@
 <title>Prabhat Panthi Official Website</title>
 <style>
   * { box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f0f0f0; color:#333; }
-  .navbar { background-color: #222; overflow: hidden; }
-  .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
-  .navbar li { position: relative; }
-  .navbar > ul > li { float: left; }
-  .navbar a {
-    display: block; padding: 14px 20px; color: white; text-decoration: none; font-weight: 600;
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: #f0f0f0;
+    color: #333;
   }
-  .navbar a:hover { background-color: #0af; }
-  /* Dropdown styles */
+  .navbar {
+    background-color: #222;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+  .navbar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .navbar li {
+    position: relative;
+  }
+  .navbar > ul > li {
+    float: left;
+  }
+  .navbar a {
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+  }
+  .navbar a:hover, .navbar a.active {
+    background-color: #0af;
+  }
+  /* Dropdown for Motivation */
   .dropdown-content {
     display: none;
     position: absolute;
     background-color: #333;
-    min-width: 160px;
+    min-width: 180px;
     z-index: 1000;
+    top: 100%;
+    left: 0;
+    border-radius: 0 0 6px 6px;
   }
   .dropdown-content a {
     padding: 12px 16px;
@@ -29,104 +60,164 @@
     text-decoration: none;
     display: block;
   }
-  .dropdown-content a:hover { background-color: #0af; }
-  .navbar li:hover > .dropdown-content { display: block; }
-  .dropdown-submenu {
-    position: relative;
+  .dropdown-content a:hover {
+    background-color: #0af;
   }
-  .dropdown-submenu:hover > .dropdown-content-sub {
+  .navbar li.motivation:hover > .dropdown-content {
     display: block;
   }
-  .dropdown-content-sub {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    background-color: #444;
-    min-width: 160px;
+
+  /* Section container */
+  .section {
+    max-width: 960px;
+    margin: 20px auto 40px;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: none; /* hide all initially */
+  }
+  /* Show active section */
+  .section.active {
+    display: block;
   }
 
-  /* Section styles */
-  section {
-    max-width: 960px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  }
+  /* Individual section backgrounds */
   #home {
+    display: block; /* Show home by default */
     background: url('assets/buddha.jpg') no-repeat center center;
     background-size: cover;
     color: white;
-    min-height: 400px;
-    padding: 40px 30px;
-    border-radius: 8px;
-    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.45);
-    text-shadow: 0 0 6px rgba(0,0,0,0.9);
+    min-height: 420px;
+    padding: 60px 40px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 3000px rgba(0,0,0,0.55);
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    position: relative;
   }
-  #home h1 { font-size: 2.8em; margin-bottom: 0.3em; }
-  #home p { font-size: 1.2em; margin-bottom: 2em; max-width: 600px; }
-  .quote {
-    font-style: italic;
+  #home h1 {
+    font-size: 3em;
+    margin-bottom: 0.3em;
+  }
+  #home p {
     font-size: 1.3em;
-    margin: 20px 0;
-    padding-left: 20px;
-    border-left: 5px solid #0af;
+    max-width: 700px;
+  }
+  #home .quotes {
+    margin-top: 2em;
+  }
+  #home .quotes blockquote {
+    font-style: italic;
+    font-size: 1.4em;
+    margin-bottom: 1.2em;
+    border-left: 6px solid #0af;
+    padding-left: 15px;
+  }
+  #home img {
+    border-radius: 50%;
+    max-width: 150px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
   }
 
   /* About Me */
+  #about {
+    background-color: #f0f8ff;
+  }
   #about img {
     float: right;
-    border-radius: 50%;
     max-width: 180px;
+    border-radius: 50%;
     margin-left: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
   }
   #about h2 {
     margin-top: 0;
   }
   #about p {
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 1.1em;
   }
-
-  /* Photos, Videos, Stories sections */
-  #photos, #videos, #stories {
-    background-color: #f9f9f9;
-  }
-  #photos h2, #videos h2, #stories h2 {
+  #about a {
     color: #0af;
+    font-weight: 600;
   }
 
-  /* Motivation with sub-tabs */
+  /* Photos */
+  #photos {
+    background-color: #fff7e6;
+  }
+  #photos h2 {
+    color: #d2691e;
+  }
+
+  /* Videos */
+  #videos {
+    background-color: #e6f7ff;
+  }
+  #videos h2 {
+    color: #007acc;
+  }
+
+  /* Stories */
+  #stories {
+    background-color: #ffe6f0;
+  }
+  #stories h2 {
+    color: #cc0066;
+  }
+  #stories article {
+    margin-bottom: 25px;
+  }
+  #stories article h3 {
+    margin-bottom: 8px;
+    color: #b30059;
+  }
+  #stories article p {
+    line-height: 1.5;
+  }
+
+  /* Motivation */
   #motivation {
-    padding: 20px;
+    background-color: #e8ffe6;
+  }
+  #motivation h2 {
+    color: #2f7a2f;
   }
   .mot-tabs {
     display: flex;
-    border-bottom: 3px solid #0af;
     margin-bottom: 15px;
   }
   .mot-tab {
+    background: #cce5cc;
+    color: #2f7a2f;
     padding: 10px 20px;
     margin-right: 10px;
-    background: #ddd;
-    border-radius: 5px 5px 0 0;
+    border-radius: 8px 8px 0 0;
     cursor: pointer;
-    font-weight: 600;
     user-select: none;
+    font-weight: 700;
+    transition: background 0.3s ease;
   }
   .mot-tab.active {
-    background: #0af;
-    color: white;
+    background: #2f7a2f;
+    color: #fff;
   }
   .mot-content {
-    border: 2px solid #0af;
+    border: 2px solid #2f7a2f;
     border-radius: 0 8px 8px 8px;
-    padding: 20px;
-    background: #e0f0ff;
-    min-height: 150px;
+    padding: 25px 30px;
+    min-height: 300px;
+    max-height: 450px;
+    overflow-y: auto;
+    font-size: 1.1em;
+    background: #f6fff6;
+  }
+  .mot-content p {
+    margin-bottom: 12px;
   }
 
   /* Footer */
@@ -135,81 +226,117 @@
     padding: 20px;
     background: #222;
     color: #ccc;
-    margin-top: 40px;
+    font-size: 0.9em;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .navbar ul { flex-direction: column; }
-    #about img { float: none; display: block; margin: 20px auto; max-width: 120px;}
-    .mot-tabs { flex-wrap: wrap; }
+    .navbar ul {
+      flex-direction: column;
+    }
+    #about img {
+      float: none;
+      display: block;
+      margin: 20px auto;
+      max-width: 140px;
+    }
+    .mot-tabs {
+      flex-wrap: wrap;
+    }
+    .mot-tab {
+      margin-bottom: 8px;
+      margin-right: 5px;
+    }
   }
-
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#photos">Photos</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#stories">Stories</a></li>
-    <li><a href="#motivation">Motivation &#x25BE;</a>
-      <div class="dropdown-content" style="left:auto; right:0;">
-        <a href="#" class="mot-tab-link" data-tab="buddha">Buddha</a>
-        <a href="#" class="mot-tab-link" data-tab="geeta">Geeta</a>
-        <a href="#" class="mot-tab-link" data-tab="others">Others</a>
-      </div>
+    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+    <li><a href="#" class="nav-link" data-section="photos">Photos</a></li>
+    <li><a href="#" class="nav-link" data-section="videos">Videos</a></li>
+    <li><a href="#" class="nav-link" data-section="stories">Stories</a></li>
+    <li class="motivation">
+      <a href="#" class="nav-link" data-section="motivation">Motivation &#x25BE;</a>
     </li>
-    <li><a href="#about">About Me</a></li>
+    <li><a href="#" class="nav-link" data-section="about">About Me</a></li>
   </ul>
 </nav>
 
-<section id="home">
+<!-- HOME -->
+<section id="home" class="section active" role="main" aria-label="Home section">
   <h1>Welcome to Prabhat Panthi’s Website</h1>
-  <p>This website shares stories, photos, videos, and motivation!</p>
-  <div class="quote">"Peace comes from within. Do not seek it without." – Buddha</div>
-  <div class="quote">"You have the power to shape your destiny by staying motivated and persistent."</div>
-  <img src="assets/brp.jpg" alt="Prabhat Panthi" style="border-radius: 50%; max-width: 120px; margin-top: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.5);" />
+  <p>This website shares inspiring stories, photos, videos, and daily motivation to keep you going strong.</p>
+  <div class="quotes">
+    <blockquote>“Peace comes from within. Do not seek it without.” – Buddha</blockquote>
+    <blockquote>“You have the power to shape your destiny by staying motivated and persistent.”</blockquote>
+  </div>
+  <img src="assets/brp.jpg" alt="Prabhat Panthi" />
 </section>
 
-<section id="photos">
+<!-- PHOTOS -->
+<section id="photos" class="section" role="region" aria-label="Photos section">
   <h2>Photos</h2>
-  <p>Here you can display your official photos and memorable moments.</p>
-  <!-- Add photo thumbnails or gallery here -->
+  <p>Here you can add your official photos and memorable moments.</p>
+  <!-- Example photo gallery placeholder -->
+  <div>
+    <img src="assets/brp.jpg" alt="Official Photo" style="max-width:200px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.15);" />
+    <!-- Add more photos as you like -->
+  </div>
 </section>
 
-<section id="videos">
+<!-- VIDEOS -->
+<section id="videos" class="section" role="region" aria-label="Videos section">
   <h2>Videos</h2>
-  <p>Check out my latest vlogs and videos.</p>
-  <!-- Add video embeds or links here -->
+  <p>Watch my latest vlogs and videos here.</p>
+  <!-- Example video embed placeholder -->
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLyourplaylistid" title="YouTube videos" frameborder="0" allowfullscreen style="max-width:100%;"></iframe>
 </section>
 
-<section id="stories">
+<!-- STORIES -->
+<section id="stories" class="section" role="region" aria-label="Stories section">
   <h2>Stories</h2>
-  <p>Read stories that inspire and entertain.</p>
-  <!-- Add stories content here -->
+  
+  <article>
+    <h3>Thomas Edison</h3>
+    <p>He failed thousands of times before inventing the light bulb. Edison’s persistence changed the world.</p>
+  </article>
+
+  <article>
+    <h3>J.K. Rowling</h3>
+    <p>Rejected by multiple publishers, Rowling kept writing and created the beloved Harry Potter series.</p>
+  </article>
+
+  <article>
+    <h3>Walt Disney</h3>
+    <p>After being fired for lack of creativity, Disney built a media empire full of imagination and joy.</p>
+  </article>
+  
 </section>
 
-<section id="motivation">
+<!-- MOTIVATION -->
+<section id="motivation" class="section" role="region" aria-label="Motivation section">
   <h2>Motivation</h2>
-  <div class="mot-tabs">
-    <div class="mot-tab active" data-tab="buddha">Buddha</div>
-    <div class="mot-tab" data-tab="geeta">Geeta</div>
-    <div class="mot-tab" data-tab="others">Others</div>
+  <div class="mot-tabs" role="tablist" aria-label="Motivation categories">
+    <div class="mot-tab active" role="tab" tabindex="0" aria-selected="true" data-tab="buddha">Buddha</div>
+    <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="geeta">Geeta</div>
+    <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="others">Others</div>
   </div>
-  <div class="mot-content" id="motivation-content">
-    <p><strong>Buddha:</strong> "The mind is everything. What you think you become."</p>
+  <div class="mot-content" id="motivation-content" role="tabpanel" tabindex="0">
+    <!-- Quotes will appear here -->
   </div>
 </section>
 
-<section id="about">
+<!-- ABOUT ME -->
+<section id="about" class="section" role="region" aria-label="About me section">
   <h2>About Me</h2>
   <img src="assets/brp.jpg" alt="Prabhat Panthi" />
-  <p>Hi! I’m Prabhat Panthi, a passionate storyteller and tech lover. I believe that pain teaches us valuable lessons and that staying motivated is the key to achieving your dreams. Through this website, I share my journey, stories, photos, videos, and motivational insights inspired by Buddha, the Geeta, and other wise teachers. Join me as we explore life’s challenges, celebrate creativity, and grow together.</p>
-  <p>Contact me: +977 9848605969</p>
-  <p>Subscribe to my YouTube channel: <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" style="color:#0af;">Mero Sansaar Official</a></p>
+  <p>Hello! I am <strong>Prabhat Panthi</strong>, a passionate storyteller and technology enthusiast. I believe life’s challenges are opportunities to grow stronger and wiser. Pain teaches valuable lessons, and staying motivated is the key to achieving dreams. This website is my platform to share inspiration, stories, photos, videos, and thoughts from Buddha, the Geeta, and other wise teachers to encourage everyone on their journey.</p>
+  <p>My mission is to help people find joy in everyday moments, push through failures, and live a life full of purpose. Thank you for being here with me.</p>
+  <p><strong>Contact me:</strong> +977 9848605969</p>
+  <p><strong>YouTube channel:</strong> <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" rel="noopener" style="color:#0af;">Mero Sansaar Official</a></p>
 </section>
 
 <footer>
@@ -217,24 +344,124 @@
 </footer>
 
 <script>
-  // Motivation tab switching
-  const tabs = document.querySelectorAll('.mot-tab');
-  const content = document.getElementById('motivation-content');
+  // Tab navigation
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
 
-  const motTexts = {
-    buddha: '"The mind is everything. What you think you become." – Buddha',
-    geeta: '"You have the right to work, but never to the fruit of work." – Bhagavad Geeta',
-    others: '"Failure is simply the opportunity to begin again, this time more intelligently." – Henry Ford'
-  };
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      // Remove active class from all links and sections
+      navLinks.forEach(l => l.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const key = tab.getAttribute('data-tab');
-      content.innerHTML = `<p><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${motTexts[key]}</p>`;
+      // Activate clicked link
+      link.classList.add('active');
+
+      // Show corresponding section
+      const secId = link.getAttribute('data-section');
+      if (secId === 'motivation') {
+        // If motivation, show motivation and set default active tab
+        document.getElementById('motivation').classList.add('active');
+        activateMotivationTab('buddha');
+      } else {
+        document.getElementById(secId).classList.add('active');
+      }
     });
   });
+
+  // Motivation tabs logic
+  const motTabs = document.querySelectorAll('.mot-tab');
+  const motContent = document.getElementById('motivation-content');
+
+  // Prepare quotes arrays
+  const buddhaQuotes = [
+    "The mind is everything. What you think you become.",
+    "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+    "Peace comes from within. Do not seek it without.",
+    "Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
+    "Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
+    "Three things cannot be long hidden: the sun, the moon, and the truth.",
+    "Hatred does not cease by hatred, but only by love; this is the eternal rule.",
+    "Better than a thousand hollow words, is one word that brings peace.",
+    "No one saves us but ourselves. No one can and no one may.",
+    "Just as a candle cannot burn without fire, men cannot live without a spiritual life.",
+    // 40 more (fill similarly for demo; you can replace with your own later)
+  ];
+  // Duplicate buddha quotes to reach 50 for demonstration
+  while (buddhaQuotes.length < 50) {
+    buddhaQuotes.push(buddhaQuotes[buddhaQuotes.length % 10]);
+  }
+
+  const geetaQuotes = [
+    "You have the right to work, but never to the fruit of work.",
+    "Whenever dharma declines and the purpose of life is forgotten, I manifest myself on earth.",
+    "The soul is neither born, and nor does it die.",
+    "Perform your obligatory duty, because action is indeed better than inaction.",
+    "Man is made by his belief. As he believes, so he is.",
+    "A person can rise through the efforts of his own mind.",
+    "You came empty-handed, and you will leave empty-handed.",
+    "Pleasures derived from the senses have a beginning and an end.",
+    "The wise see knowledge and action as one.",
+    "Change is the law of the universe.",
+    // 40 more (fill similarly)
+  ];
+  while (geetaQuotes.length < 50) {
+    geetaQuotes.push(geetaQuotes[geetaQuotes.length % 10]);
+  }
+
+  const otherQuotes = [
+    "Failure is simply the opportunity to begin again, this time more intelligently. – Henry Ford",
+    "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
+    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+    "Keep your eyes on the stars, and your feet on the ground. – Theodore Roosevelt",
+    "The harder the conflict, the more glorious the triumph. – Thomas Paine",
+    "Our greatest glory is not in never falling, but in rising every time we fall. – Confucius",
+    "Believe you can and you’re halfway there. – Theodore Roosevelt",
+    "What lies behind us and what lies before us are tiny matters compared to what lies within us. – Ralph Waldo Emerson",
+    "It always seems impossible until it’s done. – Nelson Mandela",
+    "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
+    // 40 more (fill similarly)
+  ];
+  while (otherQuotes.length < 50) {
+    otherQuotes.push(otherQuotes[otherQuotes.length % 10]);
+  }
+
+  function activateMotivationTab(tabName) {
+    motTabs.forEach(tab => {
+      tab.classList.toggle('active', tab.getAttribute('data-tab') === tabName);
+      tab.setAttribute('aria-selected', tab.getAttribute('data-tab') === tabName ? 'true' : 'false');
+      tab.tabIndex = tab.getAttribute('data-tab') === tabName ? 0 : -1;
+    });
+
+    let quotesArray;
+    switch (tabName) {
+      case 'buddha': quotesArray = buddhaQuotes; break;
+      case 'geeta': quotesArray = geetaQuotes; break;
+      case 'others': quotesArray = otherQuotes; break;
+      default: quotesArray = [];
+    }
+
+    // Display all 50 quotes in paragraphs
+    motContent.innerHTML = quotesArray.map(q => `<p>“${q}”</p>`).join('');
+  }
+
+  motTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      activateMotivationTab(tab.getAttribute('data-tab'));
+    });
+    tab.addEventListener('keydown', e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        activateMotivationTab(tab.getAttribute('data-tab'));
+      }
+    });
+  });
+
+  // Show Home quotes by default on load
+  window.onload = () => {
+    activateMotivationTab('buddha');
+  };
 </script>
 
 </body>
