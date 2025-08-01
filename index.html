@@ -36,43 +36,96 @@
       text-transform: uppercase;
       letter-spacing: 1.5px;
       transition: color 0.3s ease;
+      cursor: pointer;
+      padding: 5px 10px;
     }
-    nav a:hover {
+    nav a:hover, nav a.active {
       color: #50C878;
+      border-bottom: 2px solid #50C878;
     }
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
+    /* Sections base */
+    section {
+      max-width: 1000px;
+      margin: 100px auto 80px auto;
+      padding: 30px 20px;
+      display: none; /* Hide all sections by default */
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      color: #222;
+    }
+    section.active {
+      display: block; /* Show active section */
+    }
+    /* Different bg colors for each section */
+    #home {
       background: linear-gradient(135deg, #50C878 0%, #0b3d91 100%);
+      color: white;
+      text-align: center;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
-      text-align: center;
-      padding: 0 20px;
+      padding: 60px 20px;
+      box-shadow: none;
+      border-radius: 0;
+      margin-top: 70px;
     }
-    .hero h1 {
-      font-size: clamp(4rem, 12vw, 8rem);
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      line-height: 1;
-      margin-bottom: 0.3em;
+    #home h1 {
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      margin-bottom: 10px;
       text-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
-    .hero p {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 500;
+    #home p.subtitle {
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      font-weight: 600;
       text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      margin-bottom: 40px;
+    }
+    /* Home about multi-column */
+    #home .about-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 30px;
+      max-width: 900px;
+      text-align: left;
+      margin-bottom: 40px;
+      color: white;
+    }
+    #home .about-columns img {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    #home .about-text {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+    #home .about-numbers {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #f0f0f0;
+      text-align: center;
+      user-select: none;
+    }
+    #home .quotes {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-top: 30px;
+      line-height: 1.5;
+      color: #d6f5d6;
+    }
+    #home .quotes span {
+      display: block;
+      margin-bottom: 12px;
     }
 
-    /* Section Styling */
-    section {
-      max-width: 900px;
-      margin: 100px auto 80px auto;
-      padding: 0 20px;
-    }
+    /* Section Titles */
     section h2 {
       font-size: 2.8rem;
       font-weight: 700;
@@ -82,7 +135,7 @@
       display: inline-block;
       padding-bottom: 5px;
     }
-    section p {
+    section p, section .story p {
       font-size: 1.2rem;
       margin-bottom: 20px;
       color: #444;
@@ -91,6 +144,15 @@
       font-weight: 600;
       color: #111;
     }
+    /* Section backgrounds */
+    #about { background: #e6f2ff; }
+    #photos { background: #fff3e6; }
+    #videos { background: #e6ffe6; }
+    #stories { background: #fff0f5; }
+    #jokes { background: #ffffe6; }
+    #news { background: #f0f0f5; }
+    #motivation { background: #f5fff0; }
+    #contact { background: #e6f7ff; }
 
     /* Motivation Grid */
     .motivation-grid {
@@ -156,17 +218,17 @@
     }
 
     /* Responsive Adjust */
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       nav {
         flex-wrap: wrap;
         gap: 15px;
         padding: 15px 0;
       }
       section {
-        margin: 80px 15px 50px 15px;
+        margin: 90px 15px 50px 15px;
       }
-      .hero h1 {
-        font-size: 6rem;
+      #home .about-columns {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -174,19 +236,42 @@
 <body>
 
 <nav>
-  <a href="#about">About Me</a>
-  <a href="#photos">Photos</a>
-  <a href="#videos">Videos</a>
-  <a href="#stories">Stories</a>
-  <a href="#jokes">Jokes</a>
-  <a href="#news">News</a>
-  <a href="#motivation">Motivation</a>
-  <a href="#contact">Contact</a>
+  <a data-tab="home" class="active">Home</a>
+  <a data-tab="about">About Me</a>
+  <a data-tab="photos">Photos</a>
+  <a data-tab="videos">Videos</a>
+  <a data-tab="stories">Stories</a>
+  <a data-tab="jokes">Jokes</a>
+  <a data-tab="news">News</a>
+  <a data-tab="motivation">Motivation</a>
+  <a data-tab="contact">Contact</a>
 </nav>
 
-<section class="hero" id="home">
+<!-- Home with image, about, numbers, quotes -->
+<section id="home" class="active">
   <h1>PRABHAT PANTHI</h1>
-  <p>The Official Website</p>
+  <p class="subtitle">The Official Website</p>
+
+  <div class="about-columns">
+    <div>
+      <img src="https://i.imgur.com/xyQpYJL.jpg" alt="Prabhat Panthi" />
+    </div>
+    <div class="about-text">
+      <p><strong>Born:</strong> Gulmi Madane 7 Gaaupalika, Nepal</p>
+      <p><strong>Grew up in:</strong> Bhairahawa</p>
+      <p><strong>Education:</strong> Schooling and +2 in Bhairahawa, Bachelor’s at Oxford University</p>
+      <p><strong>Profession:</strong> Financial Analyst</p>
+    </div>
+    <div class="about-numbers">
+      <p>1<br /><small>Humble beginnings</small></p>
+      <p>2<br /><small>Global dreams</small></p>
+    </div>
+  </div>
+
+  <div class="quotes">
+    <span>"Life is what happens when you’re busy making other plans." – John Lennon</span>
+    <span>"The best way to predict your future is to create it." – Abraham Lincoln</span>
+  </div>
 </section>
 
 <section id="about">
@@ -224,7 +309,6 @@
     <p>In 1999, with a small team, Jack started Alibaba, an online marketplace connecting Chinese manufacturers with international buyers. The journey was far from easy, with fierce competition, skepticism, and financial hardships. However, Jack’s relentless belief in his vision, his innovative thinking, and his charismatic leadership turned Alibaba into one of the world’s largest e-commerce platforms.</p>
     <p>Jack Ma stepped down from Alibaba in 2019, leaving a legacy of entrepreneurship and inspiring millions in China and worldwide to dream big, fail fast, and keep pushing forward.</p>
   </div>
-
 </section>
 
 <section id="jokes">
@@ -302,6 +386,35 @@
 <footer>
   &copy; 2025 Prabhat Panthi. All rights reserved.
 </footer>
+
+<script>
+  // Tab switching logic
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      // Remove active class from all links
+      navLinks.forEach(l => l.classList.remove('active'));
+      // Add active to clicked link
+      link.classList.add('active');
+
+      const tab = link.getAttribute('data-tab');
+
+      // Show only the clicked tab section
+      sections.forEach(section => {
+        if(section.id === tab) {
+          section.classList.add('active');
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        } else {
+          section.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
