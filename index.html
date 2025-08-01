@@ -344,4 +344,20 @@
       link.classList.add('active');
       const tab = link.getAttribute('data-tab');
       sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(tab).
+      document.getElementById(tab).classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.location.hash = tab;
+    });
+  });
+
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if(hash) {
+      const link = document.querySelector(`nav a[data-tab="${hash}"]`);
+      if(link) link.click();
+    }
+  });
+</script>
+
+</body>
+</html>
