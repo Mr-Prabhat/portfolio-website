@@ -6,10 +6,7 @@
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
-    /* Basic Reset and Fonts */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: #fff;
@@ -17,134 +14,87 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    /* Navigation */
     nav {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
+      position: fixed; top: 0; left: 0; width: 100%;
       background: #111;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px 0;
+      display: flex; justify-content: center;
+      gap: 30px; padding: 20px 0;
       z-index: 1000;
     }
     nav a {
-      color: #f0f0f0;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      transition: color 0.3s ease;
-      cursor: pointer;
+      color: #f0f0f0; text-decoration: none;
+      font-weight: 600; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      transition: color 0.3s ease; cursor: pointer;
       padding: 5px 10px;
     }
     nav a:hover, nav a.active {
       color: #50C878;
       border-bottom: 2px solid #50C878;
     }
-
-    /* Sections base */
     section {
-      max-width: 1000px;
-      margin: 100px auto 80px auto;
-      padding: 30px 20px;
-      display: none; /* Hide all sections by default */
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 1000px; margin: 100px auto 80px auto;
+      padding: 30px 20px; display: none;
+      border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       color: #222;
     }
-    section.active {
-      display: block; /* Show active section */
-    }
-    /* Different bg colors for each section */
+    section.active { display: block; }
     #home {
+      display: none; /* Hide by default */
       background: linear-gradient(135deg, #50C878 0%, #0b3d91 100%);
-      color: white;
-      text-align: center;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 20px;
-      box-shadow: none;
-      border-radius: 0;
-      margin-top: 70px;
+      color: white; text-align: center; min-height: 80vh;
+      display: none; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 60px 20px; box-shadow: none;
+      border-radius: 0; margin-top: 70px;
     }
+    #home.active { display: flex; }
     #home h1 {
       font-size: clamp(4rem, 10vw, 7rem);
-      font-weight: 900;
-      letter-spacing: 0.3em;
-      margin-bottom: 10px;
-      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      font-weight: 900; letter-spacing: 0.3em;
+      margin-bottom: 10px; text-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
     #home p.subtitle {
       font-size: clamp(1.8rem, 4vw, 2.2rem);
-      font-weight: 600;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      font-weight: 600; text-shadow: 0 2px 6px rgba(0,0,0,0.3);
       margin-bottom: 40px;
     }
-    /* Home about multi-column */
-    #home .about-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-      gap: 30px;
-      max-width: 900px;
-      text-align: left;
-      margin-bottom: 40px;
-      color: white;
+    .about-columns {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 30px; max-width: 900px;
+      text-align: left; margin-bottom: 40px; color: white;
     }
-    #home .about-columns img {
-      max-width: 100%;
-      border-radius: 15px;
+    .about-columns img {
+      max-width: 100%; border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-    #home .about-text {
-      font-size: 1.2rem;
-      line-height: 1.5;
+    .about-text { font-size: 1.2rem; line-height: 1.5; }
+    .about-numbers {
+      font-size: 3rem; font-weight: 900;
+      color: #f0f0f0; text-align: center; user-select: text;
     }
-    #home .about-numbers {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #f0f0f0;
-      text-align: center;
-      user-select: none;
-    }
-    #home .quotes {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.3rem;
-      font-style: italic;
-      margin-top: 30px;
-      line-height: 1.5;
-      color: #d6f5d6;
-    }
-    #home .quotes span {
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    /* Section Titles */
-    section h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-      color: #0b3d91;
-      border-bottom: 3px solid #50C878;
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-    section p, section .story p {
-      font-size: 1.2rem;
+    .about-numbers div {
       margin-bottom: 20px;
-      color: #444;
     }
-    section p.important {
-      font-weight: 600;
-      color: #111;
+    .about-numbers div p {
+      margin-bottom: 0.2em;
     }
-    /* Section backgrounds */
+    .quotes {
+      max-width: 900px; margin: 0 auto;
+      font-size: 1.3rem; font-style: italic;
+      margin-top: 30px; line-height: 1.5; color: #d6f5d6;
+    }
+    .quotes span { display: block; margin-bottom: 12px; }
+    section h2 {
+      font-size: 2.8rem; font-weight: 700;
+      margin-bottom: 30px; color: #0b3d91;
+      border-bottom: 3px solid #50C878;
+      display: inline-block; padding-bottom: 5px;
+    }
+    section p, .story p {
+      font-size: 1.2rem; margin-bottom: 20px; color: #444;
+    }
+    .important { font-weight: 600; color: #111; }
     #about { background: #e6f2ff; }
     #photos { background: #fff3e6; }
     #videos { background: #e6ffe6; }
@@ -153,83 +103,45 @@
     #news { background: #f0f0f5; }
     #motivation { background: #f5fff0; }
     #contact { background: #e6f7ff; }
-
-    /* Motivation Grid */
     .motivation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px; margin-top: 20px;
     }
     .quote-box {
-      background: #50C878;
-      color: white;
-      padding: 20px 25px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 1.1rem;
+      background: #50C878; color: white;
+      padding: 20px 25px; border-radius: 12px;
+      font-weight: 600; font-size: 1.1rem;
       box-shadow: 0 6px 15px rgba(80, 200, 120, 0.4);
-      transition: background 0.3s ease;
-      cursor: default;
+      transition: background 0.3s ease; cursor: default;
     }
-    .quote-box:hover {
-      background: #3d9e5a;
-    }
+    .quote-box:hover { background: #3d9e5a; }
     .quote-box strong {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 1.3rem;
-      letter-spacing: 1px;
+      display: block; margin-bottom: 12px;
+      font-size: 1.3rem; letter-spacing: 1px;
       text-transform: uppercase;
       border-bottom: 1px solid rgba(255,255,255,0.5);
       padding-bottom: 6px;
     }
-
-    /* Stories Section */
     .story {
-      margin-bottom: 50px;
-      background: #f0f9f4;
-      border-radius: 15px;
-      padding: 30px 25px;
+      margin-bottom: 50px; background: #f0f9f4;
+      border-radius: 15px; padding: 30px 25px;
       box-shadow: 0 4px 15px rgba(80,200,120,0.15);
       color: #222;
     }
     .story h3 {
-      color: #0b3d91;
-      margin-bottom: 15px;
-      font-weight: 700;
-      font-size: 2rem;
+      color: #0b3d91; margin-bottom: 15px;
+      font-weight: 700; font-size: 2rem;
     }
-    .story p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    /* Footer */
     footer {
-      background: #111;
-      color: #eee;
-      text-align: center;
-      padding: 25px 20px;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
+      background: #111; color: #eee;
+      text-align: center; padding: 25px 20px;
+      font-size: 1rem; letter-spacing: 0.05em;
       margin-top: 80px;
     }
-
-    /* Responsive Adjust */
     @media (max-width: 700px) {
-      nav {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 15px 0;
-      }
-      section {
-        margin: 90px 15px 50px 15px;
-      }
-      #home .about-columns {
-        grid-template-columns: 1fr;
-      }
+      nav { flex-wrap: wrap; gap: 15px; padding: 15px 0; }
+      section { margin: 90px 15px 50px 15px; }
+      .about-columns { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -247,15 +159,11 @@
   <a data-tab="contact">Contact</a>
 </nav>
 
-<!-- Home with image, about, numbers, quotes -->
 <section id="home" class="active">
   <h1>PRABHAT PANTHI</h1>
   <p class="subtitle">The Official Website</p>
-
   <div class="about-columns">
-    <div>
-      <img src="https://i.imgur.com/xyQpYJL.jpg" alt="Prabhat Panthi" />
-    </div>
+    <div><img src="https://i.imgur.com/xyQpYJL.jpg" alt="Prabhat Panthi" /></div>
     <div class="about-text">
       <p><strong>Born:</strong> Gulmi Madane 7 Gaaupalika, Nepal</p>
       <p><strong>Grew up in:</strong> Bhairahawa</p>
@@ -263,11 +171,10 @@
       <p><strong>Profession:</strong> Financial Analyst</p>
     </div>
     <div class="about-numbers">
-      <p>1<br /><small>Humble beginnings</small></p>
-      <p>2<br /><small>Global dreams</small></p>
+      <div><p>1</p><small>Humble beginnings</small></div>
+      <div><p>2</p><small>Global dreams</small></div>
     </div>
   </div>
-
   <div class="quotes">
     <span>"Life is what happens when you’re busy making other plans." – John Lennon</span>
     <span>"The best way to predict your future is to create it." – Abraham Lincoln</span>
@@ -285,17 +192,23 @@
 
 <section id="photos">
   <h2>Photos</h2>
-  <p>Coming Soon...</p>
+  <div class="about-columns">
+    <div><img src="https://via.placeholder.com/400x300" alt="Photo 1"></div>
+    <div><img src="https://via.placeholder.com/400x300" alt="Photo 2"></div>
+    <div><img src="https://via.placeholder.com/400x300" alt="Photo 3"></div>
+  </div>
 </section>
 
 <section id="videos">
   <h2>Videos</h2>
-  <p>Coming Soon...</p>
+  <div class="about-columns">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+  </div>
 </section>
 
 <section id="stories">
   <h2>Stories</h2>
-
   <div class="story">
     <h3>Chester Bennington: The Voice That Moved Millions</h3>
     <p>Chester Bennington, the lead singer of Linkin Park, was known for his powerful voice and emotional depth. Born in 1976 in Phoenix, Arizona, Chester faced a turbulent childhood marked by abuse and struggles with depression. Despite these challenges, he channeled his pain into his music, connecting with millions around the world. His lyrics often spoke about personal struggle, loss, and hope, resonating deeply with fans.</p>
@@ -383,36 +296,32 @@
   <p>Email: yourname@example.com</p>
 </section>
 
-<footer>
-  &copy; 2025 Prabhat Panthi. All rights reserved.
-</footer>
+<footer>&copy; 2025 Prabhat Panthi. All rights reserved.</footer>
 
 <script>
-  // Tab switching logic
   const navLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
 
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-
-      // Remove active class from all links
       navLinks.forEach(l => l.classList.remove('active'));
-      // Add active to clicked link
       link.classList.add('active');
-
       const tab = link.getAttribute('data-tab');
-
-      // Show only the clicked tab section
-      sections.forEach(section => {
-        if(section.id === tab) {
-          section.classList.add('active');
-          window.scrollTo({top: 0, behavior: 'smooth'});
-        } else {
-          section.classList.remove('active');
-        }
-      });
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.location.hash = tab;
     });
+  });
+
+  // Load section from hash on page load (optional)
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if(hash) {
+      const link = document.querySelector(`nav a[data-tab="${hash}"]`);
+      if(link) link.click();
+    }
   });
 </script>
 
