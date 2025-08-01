@@ -1,494 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Prabhat Panthi Official Website</title>
-<style>
-  /* Reset & base */
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background-color: #f7fcf9; /* Default bg for all except home */
-    color: #222;
-    transition: background-color 0.4s ease;
-  }
-  /* Navbar */
-  .navbar {
-    background-color: #222;
-    overflow: hidden;
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-  }
-  .navbar ul {
-    list-style: none;
-    margin: 0; padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .navbar li {
-    position: relative;
-  }
-  .navbar > ul > li {
-    float: left;
-  }
-  .navbar a {
-    display: block;
-    padding: 14px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-  }
-  .navbar a:hover, .navbar a.active {
-    background-color: #0af;
-  }
-  /* Sections base */
-  .section {
-    max-width: 960px;
-    margin: 30px auto 60px;
-    background: white;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
-    display: none;
-    color: #222;
-  }
-  .section.active {
-    display: block;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prabhat Panthi | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Basic Reset and Fonts */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #50C878;
+    }
 
-  /* HOME Section */
-  #home {
-    background: linear-gradient(135deg, #d4f2d4 0%, #ffffff 100%);
-    /* subtle fresh green-white gradient */
-    color: #1a3d1a;
-    min-height: 90vh;
-    padding: 50px 60px 80px;
-    box-shadow: 0 0 30px rgba(26,61,26,0.1);
-  }
-  #home h1 {
-    font-size: 3rem;
-    margin-bottom: 0.6em;
-    font-weight: 700;
-  }
-  #home p.intro {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    max-width: 750px;
-    margin-bottom: 2rem;
-  }
-  #home .category {
-    margin-bottom: 40px;
-    max-width: 850px;
-  }
-  #home .category h2 {
-    font-size: 1.8rem;
-    border-left: 6px solid #4caf50;
-    padding-left: 14px;
-    margin-bottom: 16px;
-    font-weight: 600;
-    color: #2f662f;
-  }
-  #home .category ul {
-    list-style: disc inside;
-    margin-left: 0;
-    padding-left: 15px;
-    color: #366936;
-  }
-  #home .category ul li {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    line-height: 1.4;
-  }
-  #home blockquote {
-    font-style: italic;
-    font-size: 1.15rem;
-    border-left: 5px solid #4caf50;
-    padding-left: 18px;
-    margin: 20px 0 40px;
-    max-width: 700px;
-    color: #2e592e;
-  }
-  #home img {
-    border-radius: 50%;
-    max-width: 140px;
-    box-shadow: 0 0 25px rgba(46,89,46,0.7);
-    float: right;
-    margin-left: 40px;
-    margin-bottom: 20px;
-  }
-
-  /* Other Sections: Photos, Videos, Stories, Motivation, About Me */
-  #photos, #videos, #stories, #motivation, #about {
-    background-color: white;
-    color: #222;
-  }
-
-  /* Stories */
-  #stories article {
-    margin-bottom: 40px;
-  }
-  #stories article h3 {
-    margin-bottom: 12px;
-    color: #2f662f;
-  }
-  #stories article p {
-    line-height: 1.6;
-    font-size: 1.1rem;
-  }
-
-  /* Motivation */
-  #motivation {
-    background-color: white;
-  }
-  #motivation h2 {
-    color: #2f662f;
-  }
-  .mot-tabs {
-    display: flex;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-  }
-  .mot-tab {
-    background: #d9f0d9;
-    color: #2f662f;
-    padding: 12px 24px;
-    margin-right: 10px;
-    border-radius: 8px 8px 0 0;
-    cursor: pointer;
-    user-select: none;
-    font-weight: 700;
-    transition: background 0.3s ease;
-    margin-bottom: 8px;
-  }
-  .mot-tab.active {
-    background: #2f662f;
-    color: #fff;
-  }
-  .mot-content {
-    border: 2px solid #2f662f;
-    border-radius: 0 8px 8px 8px;
-    padding: 30px 40px;
-    min-height: 350px;
-    max-height: 480px;
-    overflow-y: auto;
-    font-size: 1.15rem;
-    background: #f6fff6;
-  }
-  .mot-content p {
-    margin-bottom: 14px;
-  }
-
-  /* About Me */
-  #about img {
-    float: right;
-    max-width: 180px;
-    border-radius: 50%;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  }
-  #about h2 {
-    margin-top: 0;
-  }
-  #about p {
-    line-height: 1.7;
-    font-size: 1.1rem;
-  }
-  #about a {
-    color: #2f662f;
-    font-weight: 600;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #222;
-    color: #ccc;
-    font-size: 0.9rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .navbar ul {
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #50C878 0%, #0b3d91 100%);
+      display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
     }
-    #about img {
-      float: none;
+    .hero h1 {
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      line-height: 1;
+      margin-bottom: 0.3em;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+    .hero p {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 500;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Section Styling */
+    section {
+      max-width: 900px;
+      margin: 100px auto 80px auto;
+      padding: 0 20px;
+    }
+    section h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #0b3d91;
+      border-bottom: 3px solid #50C878;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    section p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+    section p.important {
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* Motivation Grid */
+    .motivation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .quote-box {
+      background: #50C878;
+      color: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(80, 200, 120, 0.4);
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .quote-box:hover {
+      background: #3d9e5a;
+    }
+    .quote-box strong {
       display: block;
-      margin: 20px auto;
-      max-width: 140px;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding-bottom: 6px;
     }
-    #home img {
-      float: none;
-      display: block;
-      margin: 30px auto 40px;
-      max-width: 120px;
-      box-shadow: 0 0 20px rgba(46,89,46,0.7);
+
+    /* Stories Section */
+    .story {
+      margin-bottom: 50px;
+      background: #f0f9f4;
+      border-radius: 15px;
+      padding: 30px 25px;
+      box-shadow: 0 4px 15px rgba(80,200,120,0.15);
+      color: #222;
     }
-    .mot-tabs {
-      flex-wrap: wrap;
+    .story h3 {
+      color: #0b3d91;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 2rem;
     }
-    .mot-tab {
-      margin-bottom: 8px;
-      margin-right: 5px;
+    .story p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 15px;
     }
-  }
-</style>
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #eee;
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      margin-top: 80px;
+    }
+
+    /* Responsive Adjust */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px 0;
+      }
+      section {
+        margin: 80px 15px 50px 15px;
+      }
+      .hero h1 {
+        font-size: 6rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="Primary navigation">
-  <ul>
-    <li><a href="#" class="nav-link active" data-section="home" tabindex="0">Home</a></li>
-    <li><a href="#" class="nav-link" data-section="photos" tabindex="-1">Photos</a></li>
-    <li><a href="#" class="nav-link" data-section="videos" tabindex="-1">Videos</a></li>
-    <li><a href="#" class="nav-link" data-section="stories" tabindex="-1">Stories</a></li>
-    <li><a href="#" class="nav-link" data-section="motivation" tabindex="-1">Motivation</a></li>
-    <li><a href="#" class="nav-link" data-section="about" tabindex="-1">About Me</a></li>
-  </ul>
+<nav>
+  <a href="#about">About Me</a>
+  <a href="#photos">Photos</a>
+  <a href="#videos">Videos</a>
+  <a href="#stories">Stories</a>
+  <a href="#jokes">Jokes</a>
+  <a href="#news">News</a>
+  <a href="#motivation">Motivation</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="section active" role="main" aria-label="Home section">
-  <img src="assets/brp.jpg" alt="Prabhat Panthi" />
-  <h1>Welcome to Prabhat Panthi’s World of Inspiration</h1>
-  <p class="intro">Discover daily wisdom and motivation to fuel your journey towards success, happiness, and inner peace.</p>
-
-  <div class="category" aria-label="Motivational Quotes">
-    <h2>Motivational Quotes</h2>
-    <ul>
-      <li>“The only way to do great work is to love what you do.” – Steve Jobs</li>
-      <li>“Our greatest glory is not in never falling, but in rising every time we fall.” – Confucius</li>
-      <li>“Happiness is not something ready made. It comes from your own actions.” – Dalai Lama</li>
-      <li>“Set your life on fire. Seek those who fan your flames.” – Rumi</li>
-      <li>“The pain you feel today will be the strength you feel tomorrow.” – Unknown</li>
-    </ul>
-  </div>
-
-  <div class="category" aria-label="Life Thoughts">
-    <h2>Life Thoughts</h2>
-    <ul>
-      <li>Every great achievement starts with a single step.</li>
-      <li>Hardship teaches valuable lessons no book can.</li>
-      <li>Strength grows through struggle and persistence.</li>
-      <li>Vulnerability can spark hope and connection.</li>
-      <li>Dream big, but take daily action to realize it.</li>
-    </ul>
-  </div>
-
-  <div class="category" aria-label="Wisdom Highlights">
-    <h2>Wisdom Highlights</h2>
-    <blockquote>“Do not wait to strike till the iron is hot; but make it hot by striking.” – William Butler Yeats</blockquote>
-    <blockquote>“Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.” – Buddha</blockquote>
-    <blockquote>“Better than a thousand hollow words, is one word that brings peace.” – Buddha</blockquote>
-  </div>
+<section class="hero" id="home">
+  <h1>PRABHAT PANTHI</h1>
+  <p>The Official Website</p>
 </section>
 
-<!-- PHOTOS -->
-<section id="photos" class="section" role="region" aria-label="Photos section">
-  <h2>Photos</h2>
-  <p>Here you can add your official photos and memorable moments.</p>
-  <div>
-    <img src="assets/brp.jpg" alt="Official Photo" style="max-width:200px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.15);" />
-  </div>
-</section>
-
-<!-- VIDEOS -->
-<section id="videos" class="section" role="region" aria-label="Videos section">
-  <h2>Videos</h2>
-  <p>Watch my latest vlogs and videos here.</p>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLyourplaylistid" title="YouTube videos" frameborder="0" allowfullscreen style="max-width:100%;"></iframe>
-</section>
-
-<!-- STORIES -->
-<section id="stories" class="section" role="region" aria-label="Stories section">
-  <h2>Stories of Triumph</h2>
-  
-  <article>
-    <h3>Chester Bennington: A Voice From The Depths</h3>
-    <p>
-Chester Bennington, lead vocalist of Linkin Park, was an artist who bared his soul through music. Behind his powerful voice and soaring melodies, he fought relentless battles with depression, addiction, and trauma. From a childhood shadowed by abuse and loss to the pressures of fame, Chester’s life was a rollercoaster of pain and creativity.
-    </p>
-    <p>
-Despite his struggles, Chester transformed his inner turmoil into anthems that touched millions around the world. His raw honesty helped destigmatize mental health, encouraging listeners to confront their pain instead of hiding it. His legacy is a testament to the healing power of vulnerability and resilience.
-    </p>
-  </article>
-
-  <article>
-    <h3>Jack Ma: From Rejection to Revolution</h3>
-    <p>
-Jack Ma’s journey from humble beginnings in Hangzhou, China, to the founder of Alibaba, is a story of grit and unwavering determination. Early in life, Jack faced multiple rejections – he failed his university entrance exams twice and was turned down for dozens of jobs. Yet, he never allowed failure to define him.
-    </p>
-    <p>
-Through countless obstacles and near bankruptcy, Jack’s passion and refusal to give up propelled Alibaba to become one of the world’s largest tech giants. His story exemplifies that setbacks are stepping stones, and belief in oneself combined with hard work can rewrite the future.
-    </p>
-  </article>
-
-  <article>
-    <h3>Elon Musk: Dreaming Beyond Limits</h3>
-    <p>
-Elon Musk’s life is a testament to relentless ambition and resilience. Born in South Africa, Elon was a curious child passionate about technology and space. Despite repeated failures, he invested in ventures many deemed impossible – electric cars with Tesla, reusable rockets with SpaceX.
-    </p>
-    <p>
-His journey reminds us that breakthroughs require risk, failure, and unyielding focus on a bold vision. Musk’s story encourages all dreamers to embrace failures as lessons and continue innovating fearlessly.
-    </p>
-  </article>
-  
-</section>
-
-<!-- MOTIVATION -->
-<section id="motivation" class="section" role="region" aria-label="Motivation section">
-  <h2>Motivation</h2>
-  <div class="mot-tabs" role="tablist" aria-label="Motivation categories">
-    <div class="mot-tab active" role="tab" tabindex="0" aria-selected="true" data-tab="buddha">Buddha</div>
-    <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="geeta">Geeta</div>
-    <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="others">Others</div>
-  </div>
-  <div class="mot-content" id="motivation-content" role="tabpanel" tabindex="0" aria-live="polite">
-    <!-- Quotes appear here -->
-  </div>
-</section>
-
-<!-- ABOUT ME -->
-<section id="about" class="section" role="region" aria-label="About me section">
+<section id="about">
   <h2>About Me</h2>
-  <img src="assets/brp.jpg" alt="Prabhat Panthi" />
-  <p>Hello! I am <strong>Prabhat Panthi</strong>, a passionate storyteller and technology enthusiast. I believe life’s challenges are opportunities to grow stronger and wiser. Pain teaches valuable lessons, and staying motivated is the key to achieving dreams. This website is my platform to share inspiration, stories, photos, videos, and thoughts from Buddha, the Geeta, and other wise teachers to encourage everyone on their journey.</p>
-  <p>My mission is to help people find joy in everyday moments, push through failures, and live a life full of purpose. Thank you for being here with me.</p>
-  <p><strong>Contact me:</strong> +977 9848605969</p>
-  <p><strong>YouTube channel:</strong> <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" rel="noopener" style="color:#2f662f;">Mero Sansaar Official</a></p>
+  <p class="important">Born in Gulmi Madane 7 Gaaupalika, Nepal.</p>
+  <p>I grew up in the vibrant city of Bhairahawa, where I completed my schooling and +2 education. I later pursued my bachelor’s degree at Oxford University, where I broadened my horizons academically and personally.</p>
+  <p>Currently, I work as a Financial Analyst, passionately combining my skills in finance with strategic decision-making to drive success.</p>
+  <p>My journey from a small village to the global stage has shaped my perspective, and I aim to inspire others through my work and stories.</p>
+  <p>On this website, you’ll find photos, videos, stories, jokes, news updates, and a special motivation section that combines wisdom from the world’s great holy books and Buddha's teachings.</p>
+</section>
+
+<section id="photos">
+  <h2>Photos</h2>
+  <p>Coming Soon...</p>
+</section>
+
+<section id="videos">
+  <h2>Videos</h2>
+  <p>Coming Soon...</p>
+</section>
+
+<section id="stories">
+  <h2>Stories</h2>
+
+  <div class="story">
+    <h3>Chester Bennington: The Voice That Moved Millions</h3>
+    <p>Chester Bennington, the lead singer of Linkin Park, was known for his powerful voice and emotional depth. Born in 1976 in Phoenix, Arizona, Chester faced a turbulent childhood marked by abuse and struggles with depression. Despite these challenges, he channeled his pain into his music, connecting with millions around the world. His lyrics often spoke about personal struggle, loss, and hope, resonating deeply with fans.</p>
+    <p>Linkin Park's breakthrough album, 'Hybrid Theory,' became a global sensation, blending rock, rap, and electronic music in a way that was fresh and impactful. Chester's passionate performances and heartfelt voice were central to the band's identity. Beyond music, Chester was an advocate for mental health awareness, often speaking openly about his own battles.</p>
+    <p>Tragically, Chester passed away in 2017, but his legacy lives on. His music continues to inspire those facing their own struggles, reminding us all that vulnerability and strength can coexist.</p>
+  </div>
+
+  <div class="story">
+    <h3>Jack Ma: From Rejection to Alibaba’s Empire</h3>
+    <p>Jack Ma, founder of Alibaba Group, is a story of perseverance and vision. Born in 1964 in Hangzhou, China, Jack faced numerous rejections early in life — from colleges to jobs, including being rejected from KFC. Despite setbacks, he remained optimistic and curious about the internet's potential in China.</p>
+    <p>In 1999, with a small team, Jack started Alibaba, an online marketplace connecting Chinese manufacturers with international buyers. The journey was far from easy, with fierce competition, skepticism, and financial hardships. However, Jack’s relentless belief in his vision, his innovative thinking, and his charismatic leadership turned Alibaba into one of the world’s largest e-commerce platforms.</p>
+    <p>Jack Ma stepped down from Alibaba in 2019, leaving a legacy of entrepreneurship and inspiring millions in China and worldwide to dream big, fail fast, and keep pushing forward.</p>
+  </div>
+
+</section>
+
+<section id="jokes">
+  <h2>Jokes</h2>
+  <p>Coming Soon...</p>
+</section>
+
+<section id="news">
+  <h2>News</h2>
+  <p>Coming Soon...</p>
+</section>
+
+<section id="motivation">
+  <h2>Motivation (50-50 Wisdom)</h2>
+  <div class="motivation-grid">
+    <!-- Holy Books (50%) -->
+    <div class="quote-box">
+      <strong>Bible</strong>
+      "I can do all things through Christ who strengthens me." - Philippians 4:13
+    </div>
+    <div class="quote-box">
+      <strong>Quran</strong>
+      "Indeed, with hardship comes ease." - Quran 94:6
+    </div>
+    <div class="quote-box">
+      <strong>Bhagavad Gita</strong>
+      "You have the right to perform your duties, but never to the fruits of your actions." - Bhagavad Gita 2:47
+    </div>
+    <div class="quote-box">
+      <strong>Guru Granth Sahib</strong>
+      "He alone truly lives, who lives by Devotion." - Guru Granth Sahib Ji
+    </div>
+    <div class="quote-box">
+      <strong>Torah</strong>
+      "The Lord is my shepherd; I shall not want." - Psalm 23:1
+    </div>
+    <div class="quote-box">
+      <strong>Zend Avesta</strong>
+      "Good thoughts, good words, good deeds." - Zoroastrian maxim
+    </div>
+    <!-- Buddha (50%) -->
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "Peace comes from within. Do not seek it without."
+    </div>
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "The mind is everything. What you think you become."
+    </div>
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "Three things cannot be long hidden: the sun, the moon, and the truth."
+    </div>
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."
+    </div>
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "Holding onto anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned."
+    </div>
+    <div class="quote-box">
+      <strong>Buddha</strong>
+      "Happiness does not depend on what you have or who you are. It solely relies on what you think."
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Call Me: +977-XXXXXXXXXX</p>
+  <p>Email: yourname@example.com</p>
 </section>
 
 <footer>
   &copy; 2025 Prabhat Panthi. All rights reserved.
 </footer>
-
-<script>
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('.section');
-  const body = document.body;
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      navLinks.forEach(l => {
-        l.classList.remove('active');
-        l.tabIndex = -1;
-      });
-      sections.forEach(s => s.classList.remove('active'));
-
-      link.classList.add('active');
-      link.tabIndex = 0;
-
-      const secId = link.getAttribute('data-section');
-      document.getElementById(secId).classList.add('active');
-
-      // Change body background color based on section
-      if(secId === 'home'){
-        // home bg gradient green-white
-        body.style.backgroundColor = '#d4f2d4'; // lighter green shade for home background
-      } else {
-        // Other sections bg white-greenish soft
-        body.style.backgroundColor = '#f7fcf9';
-      }
-
-      if(secId === 'motivation') activateMotivationTab('buddha');
-    });
-  });
-
-  const motTabs = document.querySelectorAll('.mot-tab');
-  const motContent = document.getElementById('motivation-content');
-
-  const buddhaQuotes = [
-    "1. The mind is everything. What you think you become.",
-    "2. Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
-    "3. Peace comes from within. Do not seek it without.",
-    "4. Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
-    "5. Three things cannot be long hidden: the sun, the moon, and the truth.",
-    "6. Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
-    "7. The only real failure in life is not to be true to the best one knows.",
-    "8. Better than a thousand hollow words, is one word that brings peace.",
-    "9. No one saves us but ourselves. No one can and no one may.",
-    "10. Just as a candle cannot burn without fire, men cannot live without a spiritual life."
-  ];
-
-  const geetaQuotes = [
-    "1. You have the right to work, but never to the fruit of work.",
-    "2. Whenever dharma declines and the purpose of life is forgotten, I manifest myself on earth.",
-    "3. The soul is neither born, and nor does it die.",
-    "4. Perform your obligatory duty, because action is indeed better than inaction.",
-    "5. Man is made by his belief. As he believes, so he is.",
-    "6. A person can rise through the efforts of his own mind.",
-    "7. You came empty-handed, and you will leave empty-handed.",
-    "8. Pleasures derived from the senses have a beginning and an end.",
-    "9. The wise see knowledge and action as one.",
-    "10. Arise, awake, and stop not till the goal is reached."
-  ];
-
-  const otherQuotes = [
-    "1. The best way to get started is to quit talking and begin doing. – Walt Disney",
-    "2. Don’t let yesterday take up too much of today. – Will Rogers",
-    "3. It’s not whether you get knocked down, it’s whether you get up. – Vince Lombardi",
-    "4. If you are working on something exciting, it will keep you motivated. – Elon Musk",
-    "5. Success is not in what you have, but who you are. – Bo Bennett",
-    "6. Your limitation—it’s only your imagination.",
-    "7. Push yourself, because no one else is going to do it for you.",
-    "8. Sometimes later becomes never. Do it now.",
-    "9. Great things never come from comfort zones.",
-    "10. Dream it. Wish it. Do it."
-  ];
-
-  function activateMotivationTab(tabName) {
-    motTabs.forEach(tab => {
-      if(tab.dataset.tab === tabName) {
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        tab.tabIndex = 0;
-      } else {
-        tab.classList.remove('active');
-        tab.setAttribute('aria-selected', 'false');
-        tab.tabIndex = -1;
-      }
-    });
-
-    let quotes = [];
-    if(tabName === 'buddha') quotes = buddhaQuotes;
-    else if(tabName === 'geeta') quotes = geetaQuotes;
-    else if(tabName === 'others') quotes = otherQuotes;
-
-    motContent.innerHTML = quotes.map(q => `<p>${q}</p>`).join('');
-  }
-
-  // Initialize motivation quotes to Buddha by default
-  activateMotivationTab('buddha');
-
-  // Accessibility: keyboard support for nav links
-  navLinks.forEach(link => {
-    link.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        link.click();
-      }
-    });
-  });
-
-  // Keyboard support for motivation tabs
-  motTabs.forEach(tab => {
-    tab.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        activateMotivationTab(tab.dataset.tab);
-        tab.focus();
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
