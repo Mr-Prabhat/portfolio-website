@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tech News - Prabhat Panthi</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f4f4f4; color:#333; }
+  .navbar { background-color: #222; overflow: hidden; }
+  .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; }
+  .navbar li { position: relative; }
+  .navbar > ul > li { float: left; }
+  .navbar a { display: block; padding: 14px 20px; color: white; text-decoration: none; font-weight: 600; }
+  .navbar a:hover { background-color: #0af; }
+  .dropdown-content { display: none; position: absolute; background-color: #333; min-width: 180px; z-index: 1; }
+  .dropdown-content a { padding: 12px 16px; color: white; text-decoration: none; display: block; }
+  .dropdown-content a:hover { background-color: #0af; }
+  .navbar li:hover > .dropdown-content { display: block; }
+  .dropdown-content .dropdown-submenu { position: relative; }
+  .dropdown-content .dropdown-submenu:hover > .dropdown-content-sub { display: block; }
+  .dropdown-content-sub { display: none; position: absolute; left: 100%; top: 0; background-color: #444; min-width: 180px; z-index: 2; }
+  .container { max-width: 960px; margin: 20px auto; background: white; padding: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+  h1, h2 { color: #222; }
+  article { border-bottom: 1px solid #ddd; padding-bottom: 15px; margin-bottom: 20px; }
+  footer { text-align: center; padding: 20px; background: #222; color: #ccc; margin-top: 40px; }
+  @media (max-width: 600px) { .navbar ul { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+
+    <li>
+      <a href="#">News &#x25BE;</a>
+      <div class="dropdown-content">
+        <a href="technews.html">Tech News</a>
+        <a href="localnews.html">Local News</a>
+        <a href="alerts.html">Alerts</a>
+      </div>
+    </li>
+
+    <li>
+      <a href="#">Jokes &#x25BE;</a>
+      <div class="dropdown-content">
+        <a href="programmingjokes.html">Programming Jokes</a>
+        <a href="funnyjokes.html">Funny Jokes</a>
+      </div>
+    </li>
+
+    <li><a href="poems.html">Poems</a></li>
+    <li><a href="vlogs.html">Vlogs</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1>Tech News</h1>
+
+  <article>
+    <h2>Apple Releases New MacBook Pro</h2>
+    <p>Apple announced its new MacBook Pro with the powerful M3 chip, promising better speed and battery life.</p>
+  </article>
+
+  <article>
+    <h2>Google AI Advances</h2>
+    <p>Google unveils new AI tools to help developers build smarter apps easily.</p>
+  </article>
+
+  <!-- Add your news articles here -->
+
+</div>
+
+<footer>
+  &copy; 2025 Prabhat Panthi. All rights reserved.
+</footer>
+
+</body>
+</html>
