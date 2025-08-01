@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Prabhat Panthi Official Website</title>
 <style>
+  /* Reset & base */
   * { box-sizing: border-box; }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0; padding: 0;
-    background: #f0f0f0;
-    color: #333;
+    background-color: #f7fcf9; /* Default bg for all except home */
+    color: #222;
+    transition: background-color 0.4s ease;
   }
+  /* Navbar */
   .navbar {
     background-color: #222;
     overflow: hidden;
@@ -43,126 +46,107 @@
   .navbar a:hover, .navbar a.active {
     background-color: #0af;
   }
+  /* Sections base */
   .section {
     max-width: 960px;
-    margin: 20px auto 40px;
+    margin: 30px auto 60px;
     background: white;
     padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
     display: none;
+    color: #222;
   }
   .section.active {
     display: block;
   }
-  /* Home Section */
+
+  /* HOME Section */
   #home {
-    display: block;
-    background: url('assets/buddhaa.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
+    background: linear-gradient(135deg, #d4f2d4 0%, #ffffff 100%);
+    /* subtle fresh green-white gradient */
+    color: #1a3d1a;
     min-height: 90vh;
-    padding: 60px 60px;
-    border-radius: 10px;
-    box-shadow: inset 0 0 0 3000px rgba(0,0,0,0.6);
-    text-shadow: 0 0 10px rgba(0,0,0,0.9);
-    position: relative;
-    overflow-y: auto;
+    padding: 50px 60px 80px;
+    box-shadow: 0 0 30px rgba(26,61,26,0.1);
   }
   #home h1 {
-    font-size: 3.2em;
-    margin-bottom: 0.5em;
+    font-size: 3rem;
+    margin-bottom: 0.6em;
+    font-weight: 700;
   }
-  #home p {
-    font-size: 1.25em;
-    line-height: 1.8;
+  #home p.intro {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 750px;
+    margin-bottom: 2rem;
+  }
+  #home .category {
+    margin-bottom: 40px;
     max-width: 850px;
-    margin-bottom: 1.8em;
+  }
+  #home .category h2 {
+    font-size: 1.8rem;
+    border-left: 6px solid #4caf50;
+    padding-left: 14px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #2f662f;
+  }
+  #home .category ul {
+    list-style: disc inside;
+    margin-left: 0;
+    padding-left: 15px;
+    color: #366936;
+  }
+  #home .category ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
   }
   #home blockquote {
     font-style: italic;
-    font-size: 1.3em;
-    border-left: 6px solid #0af;
-    padding-left: 20px;
-    margin: 2em 0;
+    font-size: 1.15rem;
+    border-left: 5px solid #4caf50;
+    padding-left: 18px;
+    margin: 20px 0 40px;
     max-width: 700px;
-  }
-  #home .thoughts {
-    margin-top: 40px;
-    max-width: 850px;
-  }
-  #home .thoughts p {
-    margin-bottom: 1.5em;
+    color: #2e592e;
   }
   #home img {
     border-radius: 50%;
-    max-width: 160px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.7);
-    position: absolute;
-    right: 60px;
-    bottom: 60px;
-  }
-  /* About Me */
-  #about {
-    background-color: #f0f8ff;
-  }
-  #about img {
+    max-width: 140px;
+    box-shadow: 0 0 25px rgba(46,89,46,0.7);
     float: right;
-    max-width: 180px;
-    border-radius: 50%;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin-left: 40px;
+    margin-bottom: 20px;
   }
-  #about h2 {
-    margin-top: 0;
+
+  /* Other Sections: Photos, Videos, Stories, Motivation, About Me */
+  #photos, #videos, #stories, #motivation, #about {
+    background-color: white;
+    color: #222;
   }
-  #about p {
-    line-height: 1.7;
-    font-size: 1.1em;
-  }
-  #about a {
-    color: #0af;
-    font-weight: 600;
-  }
-  /* Photos */
-  #photos {
-    background-color: #fff7e6;
-  }
-  #photos h2 {
-    color: #d2691e;
-  }
-  /* Videos */
-  #videos {
-    background-color: #e6f7ff;
-  }
-  #videos h2 {
-    color: #007acc;
-  }
+
   /* Stories */
-  #stories {
-    background-color: #ffe6f0;
-  }
-  #stories h2 {
-    color: #cc0066;
-  }
   #stories article {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
   #stories article h3 {
-    margin-bottom: 15px;
-    color: #b30059;
+    margin-bottom: 12px;
+    color: #2f662f;
   }
   #stories article p {
     line-height: 1.6;
-    white-space: pre-wrap;
+    font-size: 1.1rem;
   }
+
   /* Motivation */
   #motivation {
-    background-color: #e8ffe6;
+    background-color: white;
   }
   #motivation h2 {
-    color: #2f7a2f;
+    color: #2f662f;
   }
   .mot-tabs {
     display: flex;
@@ -170,8 +154,8 @@
     flex-wrap: wrap;
   }
   .mot-tab {
-    background: #cce5cc;
-    color: #2f7a2f;
+    background: #d9f0d9;
+    color: #2f662f;
     padding: 12px 24px;
     margin-right: 10px;
     border-radius: 8px 8px 0 0;
@@ -182,30 +166,53 @@
     margin-bottom: 8px;
   }
   .mot-tab.active {
-    background: #2f7a2f;
+    background: #2f662f;
     color: #fff;
   }
   .mot-content {
-    border: 2px solid #2f7a2f;
+    border: 2px solid #2f662f;
     border-radius: 0 8px 8px 8px;
     padding: 30px 40px;
     min-height: 350px;
     max-height: 480px;
     overflow-y: auto;
-    font-size: 1.15em;
+    font-size: 1.15rem;
     background: #f6fff6;
   }
   .mot-content p {
     margin-bottom: 14px;
   }
+
+  /* About Me */
+  #about img {
+    float: right;
+    max-width: 180px;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  #about h2 {
+    margin-top: 0;
+  }
+  #about p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+  #about a {
+    color: #2f662f;
+    font-weight: 600;
+  }
+
   /* Footer */
   footer {
     text-align: center;
     padding: 20px;
     background: #222;
     color: #ccc;
-    font-size: 0.9em;
+    font-size: 0.9rem;
   }
+
   /* Responsive */
   @media (max-width: 768px) {
     .navbar ul {
@@ -217,16 +224,19 @@
       margin: 20px auto;
       max-width: 140px;
     }
+    #home img {
+      float: none;
+      display: block;
+      margin: 30px auto 40px;
+      max-width: 120px;
+      box-shadow: 0 0 20px rgba(46,89,46,0.7);
+    }
     .mot-tabs {
       flex-wrap: wrap;
     }
     .mot-tab {
       margin-bottom: 8px;
       margin-right: 5px;
-    }
-    #home {
-      padding: 40px 25px;
-      min-height: 75vh;
     }
   }
 </style>
@@ -246,23 +256,38 @@
 
 <!-- HOME -->
 <section id="home" class="section active" role="main" aria-label="Home section">
+  <img src="assets/brp.jpg" alt="Prabhat Panthi" />
   <h1>Welcome to Prabhat Panthi’s World of Inspiration</h1>
-  <p>Life is a beautiful journey, shaped by the thoughts we nurture and the stories we live. Here, you will find a daily dose of motivation, profound wisdom from the ages, and real-life stories of perseverance that prove no dream is too big to achieve.</p>
+  <p class="intro">Discover daily wisdom and motivation to fuel your journey towards success, happiness, and inner peace.</p>
 
-  <p>We all face moments of doubt, pain, and setbacks. But through courage, self-belief, and learning from the masters of life like Buddha and the teachings of the Geeta, we can rise stronger. This website is your companion in that journey — guiding you with stories, thoughts, and reflections that light your inner path.</p>
-
-  <p>Remember: Every great achievement starts with a single step, every hardship carries a lesson, and every dream holds the promise of a brighter tomorrow.</p>
-
-  <div class="thoughts" aria-live="polite">
-    <blockquote>“The only way to do great work is to love what you do.” – Steve Jobs</blockquote>
-    <blockquote>“Our greatest glory is not in never falling, but in rising every time we fall.” – Confucius</blockquote>
-    <blockquote>“Happiness is not something ready made. It comes from your own actions.” – Dalai Lama</blockquote>
-    <blockquote>“Set your life on fire. Seek those who fan your flames.” – Rumi</blockquote>
-    <blockquote>“The pain you feel today will be the strength you feel tomorrow.” – Unknown</blockquote>
-    <blockquote>“Do not wait to strike till the iron is hot; but make it hot by striking.” – William Butler Yeats</blockquote>
+  <div class="category" aria-label="Motivational Quotes">
+    <h2>Motivational Quotes</h2>
+    <ul>
+      <li>“The only way to do great work is to love what you do.” – Steve Jobs</li>
+      <li>“Our greatest glory is not in never falling, but in rising every time we fall.” – Confucius</li>
+      <li>“Happiness is not something ready made. It comes from your own actions.” – Dalai Lama</li>
+      <li>“Set your life on fire. Seek those who fan your flames.” – Rumi</li>
+      <li>“The pain you feel today will be the strength you feel tomorrow.” – Unknown</li>
+    </ul>
   </div>
 
-  <img src="assets/brp.jpg" alt="Prabhat Panthi" />
+  <div class="category" aria-label="Life Thoughts">
+    <h2>Life Thoughts</h2>
+    <ul>
+      <li>Every great achievement starts with a single step.</li>
+      <li>Hardship teaches valuable lessons no book can.</li>
+      <li>Strength grows through struggle and persistence.</li>
+      <li>Vulnerability can spark hope and connection.</li>
+      <li>Dream big, but take daily action to realize it.</li>
+    </ul>
+  </div>
+
+  <div class="category" aria-label="Wisdom Highlights">
+    <h2>Wisdom Highlights</h2>
+    <blockquote>“Do not wait to strike till the iron is hot; but make it hot by striking.” – William Butler Yeats</blockquote>
+    <blockquote>“Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.” – Buddha</blockquote>
+    <blockquote>“Better than a thousand hollow words, is one word that brings peace.” – Buddha</blockquote>
+  </div>
 </section>
 
 <!-- PHOTOS -->
@@ -289,35 +314,29 @@
     <h3>Chester Bennington: A Voice From The Depths</h3>
     <p>
 Chester Bennington, lead vocalist of Linkin Park, was an artist who bared his soul through music. Behind his powerful voice and soaring melodies, he fought relentless battles with depression, addiction, and trauma. From a childhood shadowed by abuse and loss to the pressures of fame, Chester’s life was a rollercoaster of pain and creativity.
-
-Despite his struggles, Chester transformed his inner turmoil into anthems that touched millions around the world. His raw honesty helped destigmatize mental health, encouraging listeners to confront their pain instead of hiding it. His legacy is a testament to the healing power of vulnerability and resilience. Chester’s story reminds us that even when the darkness feels overwhelming, expressing our truth can spark hope and connection.
     </p>
     <p>
-He was not just a musician, but a beacon for those feeling lost. Chester’s journey teaches us that success is not the absence of suffering, but the courage to keep moving forward, day by day, note by note.
+Despite his struggles, Chester transformed his inner turmoil into anthems that touched millions around the world. His raw honesty helped destigmatize mental health, encouraging listeners to confront their pain instead of hiding it. His legacy is a testament to the healing power of vulnerability and resilience.
     </p>
   </article>
 
   <article>
     <h3>Jack Ma: From Rejection to Revolution</h3>
     <p>
-Jack Ma’s journey from humble beginnings in Hangzhou, China, to the founder of Alibaba, is a story of grit and unwavering determination. Early in life, Jack faced multiple rejections – he failed his university entrance exams twice and was turned down for dozens of jobs, including KFC and even Harvard University. Yet, he never allowed failure to define him.
-
-Jack spent years teaching himself English by chatting with tourists, broadening his worldview and sharpening his business acumen. When he first discovered the internet, he saw immense potential for connecting China to the global market. Despite skepticism from everyone around him, Jack founded Alibaba in a small apartment with a vision to revolutionize e-commerce.
+Jack Ma’s journey from humble beginnings in Hangzhou, China, to the founder of Alibaba, is a story of grit and unwavering determination. Early in life, Jack faced multiple rejections – he failed his university entrance exams twice and was turned down for dozens of jobs. Yet, he never allowed failure to define him.
     </p>
     <p>
-Through countless obstacles and near bankruptcy, Jack’s passion and refusal to give up propelled Alibaba to become one of the world’s largest tech giants. His story exemplifies that setbacks are stepping stones, and belief in oneself combined with hard work can rewrite the future. Jack Ma’s legacy inspires entrepreneurs everywhere to persist beyond their fears and doubts.
+Through countless obstacles and near bankruptcy, Jack’s passion and refusal to give up propelled Alibaba to become one of the world’s largest tech giants. His story exemplifies that setbacks are stepping stones, and belief in oneself combined with hard work can rewrite the future.
     </p>
   </article>
 
   <article>
     <h3>Elon Musk: Dreaming Beyond Limits</h3>
     <p>
-Elon Musk’s life is a testament to relentless ambition and resilience in the face of overwhelming odds. Born in South Africa, Elon was a curious child with a passion for technology and space. He moved to North America to chase his dreams but faced repeated failures – early ventures like Zip2 and PayPal were fraught with challenges and near collapse.
-
-Undeterred, Elon invested everything into ventures many deemed impossible – electric cars with Tesla, reusable rockets with SpaceX, and solar power with SolarCity. Each faced technical failures, financial crises, and public skepticism. Yet, his vision of a sustainable future and interplanetary exploration kept him pushing boundaries.
+Elon Musk’s life is a testament to relentless ambition and resilience. Born in South Africa, Elon was a curious child passionate about technology and space. Despite repeated failures, he invested in ventures many deemed impossible – electric cars with Tesla, reusable rockets with SpaceX.
     </p>
     <p>
-Today, Elon Musk’s companies are pioneers changing the face of transportation and energy. His journey reminds us that breakthroughs require risk, failure, and unyielding focus on a bold vision. Musk’s story encourages all dreamers to embrace failures as lessons and continue innovating fearlessly.
+His journey reminds us that breakthroughs require risk, failure, and unyielding focus on a bold vision. Musk’s story encourages all dreamers to embrace failures as lessons and continue innovating fearlessly.
     </p>
   </article>
   
@@ -343,7 +362,7 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
   <p>Hello! I am <strong>Prabhat Panthi</strong>, a passionate storyteller and technology enthusiast. I believe life’s challenges are opportunities to grow stronger and wiser. Pain teaches valuable lessons, and staying motivated is the key to achieving dreams. This website is my platform to share inspiration, stories, photos, videos, and thoughts from Buddha, the Geeta, and other wise teachers to encourage everyone on their journey.</p>
   <p>My mission is to help people find joy in everyday moments, push through failures, and live a life full of purpose. Thank you for being here with me.</p>
   <p><strong>Contact me:</strong> +977 9848605969</p>
-  <p><strong>YouTube channel:</strong> <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" rel="noopener" style="color:#0af;">Mero Sansaar Official</a></p>
+  <p><strong>YouTube channel:</strong> <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" rel="noopener" style="color:#2f662f;">Mero Sansaar Official</a></p>
 </section>
 
 <footer>
@@ -353,6 +372,7 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
 <script>
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('.section');
+  const body = document.body;
 
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
@@ -369,6 +389,15 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
       const secId = link.getAttribute('data-section');
       document.getElementById(secId).classList.add('active');
 
+      // Change body background color based on section
+      if(secId === 'home'){
+        // home bg gradient green-white
+        body.style.backgroundColor = '#d4f2d4'; // lighter green shade for home background
+      } else {
+        // Other sections bg white-greenish soft
+        body.style.backgroundColor = '#f7fcf9';
+      }
+
       if(secId === 'motivation') activateMotivationTab('buddha');
     });
   });
@@ -376,22 +405,18 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
   const motTabs = document.querySelectorAll('.mot-tab');
   const motContent = document.getElementById('motivation-content');
 
-  // Sample Quotes arrays with 50 quotes numbered
   const buddhaQuotes = [
     "1. The mind is everything. What you think you become.",
     "2. Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
     "3. Peace comes from within. Do not seek it without.",
-    "4. Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
-    "5. Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
-    "6. Three things cannot be long hidden: the sun, the moon, and the truth.",
-    "7. Hatred does not cease by hatred, but only by love; this is the eternal rule.",
+    "4. Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
+    "5. Three things cannot be long hidden: the sun, the moon, and the truth.",
+    "6. Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
+    "7. The only real failure in life is not to be true to the best one knows.",
     "8. Better than a thousand hollow words, is one word that brings peace.",
     "9. No one saves us but ourselves. No one can and no one may.",
     "10. Just as a candle cannot burn without fire, men cannot live without a spiritual life."
   ];
-  while(buddhaQuotes.length < 50) {
-    buddhaQuotes.push(`${buddhaQuotes.length + 1}. [Add your quote here]`);
-  }
 
   const geetaQuotes = [
     "1. You have the right to work, but never to the fruit of work.",
@@ -405,9 +430,6 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
     "9. The wise see knowledge and action as one.",
     "10. Arise, awake, and stop not till the goal is reached."
   ];
-  while(geetaQuotes.length < 50) {
-    geetaQuotes.push(`${geetaQuotes.length + 1}. [Add your quote here]`);
-  }
 
   const otherQuotes = [
     "1. The best way to get started is to quit talking and begin doing. – Walt Disney",
@@ -421,9 +443,6 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
     "9. Great things never come from comfort zones.",
     "10. Dream it. Wish it. Do it."
   ];
-  while(otherQuotes.length < 50) {
-    otherQuotes.push(`${otherQuotes.length + 1}. [Add your quote here]`);
-  }
 
   function activateMotivationTab(tabName) {
     motTabs.forEach(tab => {
@@ -446,19 +465,29 @@ Today, Elon Musk’s companies are pioneers changing the face of transportation 
     motContent.innerHTML = quotes.map(q => `<p>${q}</p>`).join('');
   }
 
-  motTabs.forEach(tab => {
-    tab.addEventListener('click', () => activateMotivationTab(tab.dataset.tab));
-    tab.addEventListener('keydown', e => {
+  // Initialize motivation quotes to Buddha by default
+  activateMotivationTab('buddha');
+
+  // Accessibility: keyboard support for nav links
+  navLinks.forEach(link => {
+    link.addEventListener('keydown', e => {
       if(e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        activateMotivationTab(e.target.dataset.tab);
-        e.target.focus();
+        link.click();
       }
     });
   });
 
-  // Initialize motivation quotes to Buddha by default
-  activateMotivationTab('buddha');
+  // Keyboard support for motivation tabs
+  motTabs.forEach(tab => {
+    tab.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activateMotivationTab(tab.dataset.tab);
+        tab.focus();
+      }
+    });
+  });
 </script>
 
 </body>
