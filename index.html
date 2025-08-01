@@ -3,224 +3,86 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Prabhat Panthi - Home</title>
+<title>Prabhat Panthi - Official Website</title>
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background: #f0f4f8; /* light soft background */
-    color: #222;
-  }
-  header {
-    background-color: #004080;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-  nav.navbar {
-    background-color: #0066cc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  }
-  .navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  .navbar li {
-    position: relative;
-  }
-  .navbar > ul > li {
-    flex: none;
-  }
-  .navbar a {
-    display: block;
-    padding: 14px 22px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  .navbar a:hover {
-    background-color: #004080;
-  }
-  /* Dropdown */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #0073e6;
-    min-width: 200px;
-    z-index: 1;
-    top: 100%;
-    left: 0;
-    border-radius: 0 0 6px 6px;
-  }
-  .dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-weight: normal;
-  }
-  .dropdown-content a:hover {
-    background-color: #0059b3;
-  }
-  .navbar li:hover > .dropdown-content {
-    display: block;
-  }
-  /* Sub-dropdown if needed */
-  .dropdown-submenu {
-    position: relative;
-  }
-  .dropdown-submenu:hover > .dropdown-content-sub {
-    display: block;
-  }
-  .dropdown-content-sub {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    background-color: #0059b3;
-    min-width: 180px;
-    border-radius: 0 6px 6px 6px;
-  }
-  .dropdown-content-sub a:hover {
-    background-color: #003d80;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 30px auto;
-    background: white;
-    padding: 25px 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 10px;
-  }
-  h1, h2 {
-    color: #004080;
-    margin-bottom: 12px;
-  }
-  p {
-    line-height: 1.6;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-  }
-  img.profile-pic {
-    max-width: 300px;
-    border-radius: 12px;
-    display: block;
-    margin: 0 auto 25px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  .btn-youtube {
-    display: inline-block;
-    background-color: #ff0000;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  .btn-youtube:hover {
-    background-color: #cc0000;
-  }
-  .contact-info {
-    margin-top: 30px;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #333;
-  }
-  .contact-info strong {
-    color: #004080;
-  }
-  footer {
-    background-color: #004080;
-    color: #cce0ff;
-    text-align: center;
-    padding: 15px 10px;
-    margin-top: 50px;
-    font-size: 0.95rem;
-    border-radius: 0 0 10px 10px;
-  }
-  @media (max-width: 600px) {
-    .navbar ul {
-      flex-direction: column;
-    }
-    .container {
-      margin: 15px 10px;
-      padding: 20px;
-    }
-  }
+  body { margin:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); color:#fff; }
+  .navbar { background-color: rgba(0,0,0,0.8); display:flex; justify-content:center; flex-wrap:wrap; }
+  .navbar a { color:white; padding:14px 20px; text-decoration:none; font-weight:bold; }
+  .navbar a:hover { background:#0af; border-radius:5px; }
+  .hero { text-align:center; padding:60px 20px; }
+  .hero img { width:200px; border-radius:50%; box-shadow:0 0 20px rgba(0,0,0,0.5); }
+  .hero h1 { font-size:2.5rem; margin-top:20px; }
+  .hero h2 { font-size:1.2rem; font-weight:normal; color:#ccc; }
+  .hero p { max-width:700px; margin:auto; line-height:1.6; color:#ddd; padding:20px; }
+  .btn { margin-top:20px; padding:12px 25px; background:#0af; color:#fff; text-decoration:none; border-radius:6px; display:inline-block; }
+  .section { max-width:1000px; margin:40px auto; background:rgba(255,255,255,0.1); padding:30px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); }
+  .section h2 { border-bottom:2px solid #0af; padding-bottom:10px; }
+  .card { background:rgba(255,255,255,0.05); padding:20px; border-radius:8px; margin:15px 0; }
+  footer { text-align:center; padding:20px; background:rgba(0,0,0,0.6); margin-top:60px; font-size:14px; }
 </style>
 </head>
 <body>
 
-<header>
-  Prabhat Panthi
-</header>
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="photos/index.html">Photos</a>
+  <a href="videos/index.html">Videos</a>
+  <a href="technews.html">News</a>
+  <a href="stories/index.html">Stories</a>
+  <a href="jokes/index.html">Jokes</a>
+</div>
 
-<nav class="navbar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
+<div class="hero">
+  <img src="img/brp.jpg" alt="Prabhat Panthi" />
+  <h1>Prabhat Panthi</h1>
+  <h2>Storyteller | Vlogger | Tech Lover</h2>
+  <p>Hello! I’m Prabhat Panthi, and this is my official website where I share my stories, tech news, vlogs, jokes, poems, and life experiences. Dive in and explore my world through photos, videos, and creative articles that inspire and entertain. Let’s connect and grow together!</p>
+  <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" class="btn">Visit My YouTube Channel</a>
+</div>
 
-    <li>
-      <a href="#">News &#x25BE;</a>
-      <div class="dropdown-content">
-        <a href="technews.html">Tech News</a>
-        <a href="localnews.html">Local News</a>
-        <a href="alerts.html">Alerts</a>
-      </div>
-    </li>
-
-    <li>
-      <a href="#">Jokes &#x25BE;</a>
-      <div class="dropdown-content">
-        <a href="programmingjokes.html">Programming Jokes</a>
-        <a href="funnyjokes.html">Funny Jokes</a>
-      </div>
-    </li>
-
-    <li><a href="poems.html">Poems</a></li>
-    <li><a href="vlogs.html">Vlogs</a></li>
-    <li><a href="photos.html">Photos</a></li>
-    <li><a href="videos.html">Videos</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-</nav>
-
-<div class="container">
-
-  <h1>Welcome to Prabhat Panthi’s Website</h1>
- <img src="img/brp.jpg" alt="Prabhat Panthi Photo" style="max-width:300px; border-radius:10px;" />
-
-
-  <img src="assets/brp.jpg" alt="Prabhat Panthi Photo" class="profile-pic" />
-
-  <h2>About Me</h2>
-  <p>Hello! I'm Prabhat Panthi, a passionate storyteller and tech enthusiast. I love sharing my life’s moments, tech insights, and creative content through this website. Dive in to explore daily vlogs, news updates, jokes, poems, photos, and videos — all curated just for you.</p>
-  <p>My goal is to inspire, entertain, and connect with everyone who visits here. Thanks for joining me on this journey!</p>
-
-  <h2>Follow Me on YouTube</h2>
-  <p>
-    For fresh vlogs and videos, visit my channel:  
-    <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" class="btn-youtube">Mero Sansaar Official</a>
-  </p>
-
-  <div class="contact-info">
-    <p><strong>Contact Me:</strong> +977 9848605969</p>
-    <p>Email: <a href="mailto:your-email@example.com" style="color:#004080;">your-email@example.com</a></p>
+<div class="section">
+  <h2>Latest News & Articles</h2>
+  <div class="card">
+    <h3>Breaking Tech News</h3>
+    <p>Stay updated with the latest in technology. <a href="technews.html" style="color:#0af;">Read More →</a></p>
   </div>
+  <div class="card">
+    <h3>Life Stories & Experiences</h3>
+    <p>Sharing personal stories that inspire and reflect. <a href="stories/index.html" style="color:#0af;">Explore Stories →</a></p>
+  </div>
+</div>
 
+<div class="section">
+  <h2>Photos & Memories</h2>
+  <div class="card">
+    <h3>My Photo Gallery</h3>
+    <p>Check out my personal photo collection. <a href="photos/index.html" style="color:#0af;">View Photos →</a></p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Videos & Vlogs</h2>
+  <div class="card">
+    <h3>Latest Vlogs</h3>
+    <p>Watch my daily vlogs and special video content. <a href="videos/index.html" style="color:#0af;">Watch Videos →</a></p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Fun & Creativity</h2>
+  <div class="card">
+    <h3>Jokes to Brighten Your Day</h3>
+    <p>Laugh a little with my favorite jokes. <a href="jokes/index.html" style="color:#0af;">Read Jokes →</a></p>
+  </div>
+  <div class="card">
+    <h3>Poems & Thoughts</h3>
+    <p>Read poems that touch the heart and mind. <a href="poems/index.html" style="color:#0af;">Explore Poems →</a></p>
+  </div>
 </div>
 
 <footer>
-  &copy; 2025 Prabhat Panthi. All rights reserved.
+  Contact Me: +977 9848605969 | &copy; 2025 Prabhat Panthi | Designed with ❤️
 </footer>
 
 </body>
