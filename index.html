@@ -337,24 +337,42 @@
   const navLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
 
+  function activateTab(tab) {
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('data-tab') === tab);
+    });
+    sections.forEach(section => {
+      section.classList.toggle('active', section.id === tab);
+    });
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    if (window.location.hash !== '#' + tab) {
+      history.pushState(null, '', '#' + tab);
+    }
+  }
+
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
       const tab = link.getAttribute('data-tab');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(tab).classList.add('active');
-      window.scrollTo({top: 0, behavior: 'smooth'});
-      window.location.hash = tab;
+      activateTab(tab);
     });
   });
 
-  window.addEventListener('load', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.substring(1);
-    if(hash) {
-      const link = document.querySelector(`nav a[data-tab="${hash}"]`);
-      if(link) link.click();
+    if (hash && document.getElementById(hash)) {
+      activateTab(hash);
+    } else {
+      activateTab('home');
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash)) {
+      activateTab(hash);
+    } else {
+      activateTab('home');
     }
   });
 </script>
