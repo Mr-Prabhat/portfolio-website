@@ -3,184 +3,238 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Prabhat Panthi Website</title>
+<title>Prabhat Panthi Official Website</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; color: #333; }
-  nav.navbar {
-    background: #222; color: white;
-    display: flex; align-items: center; padding: 10px 20px;
+  * { box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f0f0f0; color:#333; }
+  .navbar { background-color: #222; overflow: hidden; }
+  .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+  .navbar li { position: relative; }
+  .navbar > ul > li { float: left; }
+  .navbar a {
+    display: block; padding: 14px 20px; color: white; text-decoration: none; font-weight: 600;
   }
-  nav.navbar div.logo {
-    display: flex; align-items: center; margin-right: 20px;
+  .navbar a:hover { background-color: #0af; }
+  /* Dropdown styles */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1000;
   }
-  nav.navbar div.logo img {
-    width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;
+  .dropdown-content a {
+    padding: 12px 16px;
+    color: white;
+    text-decoration: none;
+    display: block;
   }
-  nav.navbar div.logo span {
-    font-weight: bold; font-size: 1.5em; color: white;
+  .dropdown-content a:hover { background-color: #0af; }
+  .navbar li:hover > .dropdown-content { display: block; }
+  .dropdown-submenu {
+    position: relative;
   }
-  nav.navbar ul {
-    list-style: none; display: flex; gap: 15px;
+  .dropdown-submenu:hover > .dropdown-content-sub {
+    display: block;
   }
-  nav.navbar ul li a {
-    color: white; text-decoration: none; font-weight: 600; padding: 8px 12px;
+  .dropdown-content-sub {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #444;
+    min-width: 160px;
   }
-  nav.navbar ul li a:hover {
-    background: #0af; border-radius: 5px;
-  }
+
+  /* Section styles */
   section {
-    padding: 30px 20px; max-width: 900px; margin: 30px auto;
-    border-radius: 10px;
+    max-width: 960px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
   }
   #home {
     background: url('assets/buddha.jpg') no-repeat center center;
     background-size: cover;
     color: white;
-    position: relative;
-    min-height: 300px;
+    min-height: 400px;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.45);
+    text-shadow: 0 0 6px rgba(0,0,0,0.9);
   }
-  #home::before {
-    content: "";
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 10px;
+  #home h1 { font-size: 2.8em; margin-bottom: 0.3em; }
+  #home p { font-size: 1.2em; margin-bottom: 2em; max-width: 600px; }
+  .quote {
+    font-style: italic;
+    font-size: 1.3em;
+    margin: 20px 0;
+    padding-left: 20px;
+    border-left: 5px solid #0af;
   }
-  #home > * {
-    position: relative;
-    z-index: 1;
-  }
-  #about {
-    background: #e6f2ff;
-    color: #222;
-  }
+
+  /* About Me */
   #about img {
-    float: left; margin-right: 20px; border-radius: 50%; max-width: 180px;
+    float: right;
+    border-radius: 50%;
+    max-width: 180px;
+    margin-left: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
-  #photos {
-    background: #f0f8ff;
+  #about h2 {
+    margin-top: 0;
   }
-  #videos {
-    background: #ffe4e1;
+  #about p {
+    line-height: 1.6;
+    font-size: 1.1em;
   }
-  #stories {
-    background: #f5f5dc;
+
+  /* Photos, Videos, Stories sections */
+  #photos, #videos, #stories {
+    background-color: #f9f9f9;
   }
+  #photos h2, #videos h2, #stories h2 {
+    color: #0af;
+  }
+
+  /* Motivation with sub-tabs */
   #motivation {
-    background: #e6e6fa;
+    padding: 20px;
   }
-  /* Buttons for motivation */
-  #motivation .btn-group button {
+  .mot-tabs {
+    display: flex;
+    border-bottom: 3px solid #0af;
+    margin-bottom: 15px;
+  }
+  .mot-tab {
     padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    margin-right: 10px;
+    background: #ddd;
+    border-radius: 5px 5px 0 0;
     cursor: pointer;
+    font-weight: 600;
+    user-select: none;
+  }
+  .mot-tab.active {
+    background: #0af;
     color: white;
   }
-  #btn-buddha { background: #8fbc8f; }
-  #btn-geeta { background: #dda0dd; }
-  #btn-others { background: #ffb6c1; }
-
-  /* Responsive for navbar */
-  @media(max-width:600px) {
-    nav.navbar {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    nav.navbar ul {
-      flex-direction: column;
-      width: 100%;
-      gap: 5px;
-      margin-top: 10px;
-    }
+  .mot-content {
+    border: 2px solid #0af;
+    border-radius: 0 8px 8px 8px;
+    padding: 20px;
+    background: #e0f0ff;
+    min-height: 150px;
   }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: #ccc;
+    margin-top: 40px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar ul { flex-direction: column; }
+    #about img { float: none; display: block; margin: 20px auto; max-width: 120px;}
+    .mot-tabs { flex-wrap: wrap; }
+  }
+
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-  <div class="logo">
-    <img src="assets/brp.jpg" alt="Prabhat Panthi" />
-    <span>Prabhat Panthi</span>
-  </div>
   <ul>
-    <li><a href="#home" onclick="showSection('home')">Home</a></li>
-    <li><a href="#photos" onclick="showSection('photos')">Photos</a></li>
-    <li><a href="#videos" onclick="showSection('videos')">Videos</a></li>
-    <li><a href="#about" onclick="showSection('about')">About</a></li>
-    <li><a href="#stories" onclick="showSection('stories')">Stories</a></li>
-    <li><a href="#motivation" onclick="showSection('motivation')">Motivation</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#motivation">Motivation &#x25BE;</a>
+      <div class="dropdown-content" style="left:auto; right:0;">
+        <a href="#" class="mot-tab-link" data-tab="buddha">Buddha</a>
+        <a href="#" class="mot-tab-link" data-tab="geeta">Geeta</a>
+        <a href="#" class="mot-tab-link" data-tab="others">Others</a>
+      </div>
+    </li>
+    <li><a href="#about">About Me</a></li>
   </ul>
 </nav>
 
 <section id="home">
   <h1>Welcome to Prabhat Panthi’s Website</h1>
-  <p style="font-size:1.2em; font-style:italic; margin-top:20px;">
-    “Peace comes from within. Do not seek it without.” – Buddha
-  </p>
-  <p style="font-size:1.2em; font-style:italic; margin-top:20px;">
-    “You have power over your mind - not outside events. Realize this, and you will find strength.” – Marcus Aurelius
-  </p>
+  <p>This website shares stories, photos, videos, and motivation!</p>
+  <div class="quote">"Peace comes from within. Do not seek it without." – Buddha</div>
+  <div class="quote">"You have the power to shape your destiny by staying motivated and persistent."</div>
+  <img src="assets/brp.jpg" alt="Prabhat Panthi" style="border-radius: 50%; max-width: 120px; margin-top: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.5);" />
 </section>
 
-<section id="photos" style="display:none;">
+<section id="photos">
   <h2>Photos</h2>
-  <p>Your beautiful photos will appear here.</p>
+  <p>Here you can display your official photos and memorable moments.</p>
+  <!-- Add photo thumbnails or gallery here -->
 </section>
 
-<section id="videos" style="display:none;">
+<section id="videos">
   <h2>Videos</h2>
-  <p>Your daily vlogs and videos will be here.</p>
+  <p>Check out my latest vlogs and videos.</p>
+  <!-- Add video embeds or links here -->
 </section>
 
-<section id="about" style="display:none;">
+<section id="stories">
+  <h2>Stories</h2>
+  <p>Read stories that inspire and entertain.</p>
+  <!-- Add stories content here -->
+</section>
+
+<section id="motivation">
+  <h2>Motivation</h2>
+  <div class="mot-tabs">
+    <div class="mot-tab active" data-tab="buddha">Buddha</div>
+    <div class="mot-tab" data-tab="geeta">Geeta</div>
+    <div class="mot-tab" data-tab="others">Others</div>
+  </div>
+  <div class="mot-content" id="motivation-content">
+    <p><strong>Buddha:</strong> "The mind is everything. What you think you become."</p>
+  </div>
+</section>
+
+<section id="about">
   <h2>About Me</h2>
   <img src="assets/brp.jpg" alt="Prabhat Panthi" />
-  <p>Hi, I’m Prabhat Panthi — a storyteller and a seeker of wisdom and beauty. I share my daily vlogs, photos, stories, and motivational thoughts here.</p>
-  <p>Contact: +9779848605969</p>
+  <p>Hi! I’m Prabhat Panthi, a passionate storyteller and tech lover. I believe that pain teaches us valuable lessons and that staying motivated is the key to achieving your dreams. Through this website, I share my journey, stories, photos, videos, and motivational insights inspired by Buddha, the Geeta, and other wise teachers. Join me as we explore life’s challenges, celebrate creativity, and grow together.</p>
+  <p>Contact me: +977 9848605969</p>
+  <p>Subscribe to my YouTube channel: <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" style="color:#0af;">Mero Sansaar Official</a></p>
 </section>
 
-<section id="stories" style="display:none;">
-  <h2>Stories</h2>
-  <p>Read my stories here.</p>
-</section>
-
-<section id="motivation" style="display:none;">
-  <h2>Motivation</h2>
-  <div class="btn-group">
-    <button id="btn-buddha" onclick="showMotivation('buddha')">Buddha</button>
-    <button id="btn-geeta" onclick="showMotivation('geeta')">Geeta</button>
-    <button id="btn-others" onclick="showMotivation('others')">Others</button>
-  </div>
-  <div id="motivation-content" style="margin-top:20px; font-style:italic; font-size:1.1em;"></div>
-</section>
+<footer>
+  &copy; 2025 Prabhat Panthi. All rights reserved.
+</footer>
 
 <script>
-  function showSection(sectionId) {
-    const sections = ['home', 'photos', 'videos', 'about', 'stories', 'motivation'];
-    sections.forEach(id => {
-      document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+  // Motivation tab switching
+  const tabs = document.querySelectorAll('.mot-tab');
+  const content = document.getElementById('motivation-content');
+
+  const motTexts = {
+    buddha: '"The mind is everything. What you think you become." – Buddha',
+    geeta: '"You have the right to work, but never to the fruit of work." – Bhagavad Geeta',
+    others: '"Failure is simply the opportunity to begin again, this time more intelligently." – Henry Ford'
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const key = tab.getAttribute('data-tab');
+      content.innerHTML = `<p><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${motTexts[key]}</p>`;
     });
-    if(sectionId === 'motivation') {
-      showMotivation('buddha'); // default motivation quote
-    }
-  }
-
-  function showMotivation(type) {
-    const content = document.getElementById('motivation-content');
-    if(type === 'buddha') {
-      content.innerHTML = "“No one saves us but ourselves. No one can and no one may. We ourselves must walk the path.” – Buddha";
-    } else if(type === 'geeta') {
-      content.innerHTML = "“You have the right to work, but never to the fruit of work.” – Bhagavad Gita";
-    } else {
-      content.innerHTML = "“Success is not final, failure is not fatal: It is the courage to continue that counts.” – Winston Churchill";
-    }
-  }
-
-  // Show home section by default on page load
-  showSection('home');
+  });
 </script>
 
 </body>
