@@ -85,10 +85,10 @@
   /* Individual section backgrounds */
   #home {
     display: block; /* Show home by default */
-    background: url('assets/buddha.jpg') no-repeat center center;
+    background: url('assets/buddhaa.jpg') no-repeat center center;
     background-size: cover;
     color: white;
-    min-height: 420px;
+    min-height: 480px;
     padding: 60px 40px;
     border-radius: 10px;
     box-shadow: inset 0 0 0 3000px rgba(0,0,0,0.55);
@@ -101,7 +101,7 @@
   }
   #home p {
     font-size: 1.3em;
-    max-width: 700px;
+    max-width: 720px;
   }
   #home .quotes {
     margin-top: 2em;
@@ -170,14 +170,15 @@
     color: #cc0066;
   }
   #stories article {
-    margin-bottom: 25px;
+    margin-bottom: 40px;
   }
   #stories article h3 {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: #b30059;
   }
   #stories article p {
     line-height: 1.5;
+    white-space: pre-line;
   }
 
   /* Motivation */
@@ -190,6 +191,7 @@
   .mot-tabs {
     display: flex;
     margin-bottom: 15px;
+    flex-wrap: wrap;
   }
   .mot-tab {
     background: #cce5cc;
@@ -201,6 +203,7 @@
     user-select: none;
     font-weight: 700;
     transition: background 0.3s ease;
+    margin-bottom: 6px;
   }
   .mot-tab.active {
     background: #2f7a2f;
@@ -210,7 +213,7 @@
     border: 2px solid #2f7a2f;
     border-radius: 0 8px 8px 8px;
     padding: 25px 30px;
-    min-height: 300px;
+    min-height: 350px;
     max-height: 450px;
     overflow-y: auto;
     font-size: 1.1em;
@@ -252,24 +255,24 @@
 </head>
 <body>
 
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Primary navigation">
   <ul>
-    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
-    <li><a href="#" class="nav-link" data-section="photos">Photos</a></li>
-    <li><a href="#" class="nav-link" data-section="videos">Videos</a></li>
-    <li><a href="#" class="nav-link" data-section="stories">Stories</a></li>
+    <li><a href="#" class="nav-link active" data-section="home" tabindex="0">Home</a></li>
+    <li><a href="#" class="nav-link" data-section="photos" tabindex="-1">Photos</a></li>
+    <li><a href="#" class="nav-link" data-section="videos" tabindex="-1">Videos</a></li>
+    <li><a href="#" class="nav-link" data-section="stories" tabindex="-1">Stories</a></li>
     <li class="motivation">
-      <a href="#" class="nav-link" data-section="motivation">Motivation &#x25BE;</a>
+      <a href="#" class="nav-link" data-section="motivation" tabindex="-1">Motivation &#x25BE;</a>
     </li>
-    <li><a href="#" class="nav-link" data-section="about">About Me</a></li>
+    <li><a href="#" class="nav-link" data-section="about" tabindex="-1">About Me</a></li>
   </ul>
 </nav>
 
 <!-- HOME -->
 <section id="home" class="section active" role="main" aria-label="Home section">
   <h1>Welcome to Prabhat Panthi’s Website</h1>
-  <p>This website shares inspiring stories, photos, videos, and daily motivation to keep you going strong.</p>
-  <div class="quotes">
+  <p>This platform is your daily source of inspiration and knowledge, blending motivating stories, meaningful quotes, and creative content. Explore personal journeys, timeless wisdom from Buddha and Geeta, and discover your inner strength to achieve your dreams.</p>
+  <div class="quotes" aria-live="polite">
     <blockquote>“Peace comes from within. Do not seek it without.” – Buddha</blockquote>
     <blockquote>“You have the power to shape your destiny by staying motivated and persistent.”</blockquote>
   </div>
@@ -300,18 +303,27 @@
   <h2>Stories</h2>
   
   <article>
-    <h3>Thomas Edison</h3>
-    <p>He failed thousands of times before inventing the light bulb. Edison’s persistence changed the world.</p>
+    <h3>Chester Bennington</h3>
+    <p>
+Chester Bennington, the powerful voice behind Linkin Park, faced deep struggles with depression and addiction throughout his life. Despite these hardships, Chester channeled his pain into music, helping millions connect with their own struggles. His journey was a testament to resilience, showing how art and vulnerability can inspire hope even in the darkest times.
+His path was filled with setbacks, but Chester’s unwavering passion for music and his willingness to openly express his emotions created a legacy that lives on, reminding us all that strength often comes from embracing our pain and turning it into something beautiful.
+    </p>
   </article>
 
   <article>
-    <h3>J.K. Rowling</h3>
-    <p>Rejected by multiple publishers, Rowling kept writing and created the beloved Harry Potter series.</p>
+    <h3>Jack Ma</h3>
+    <p>
+Jack Ma, the founder of Alibaba, faced countless failures before his massive success. He was rejected from jobs multiple times, including KFC, and was turned down by Harvard University. Instead of giving up, Jack persevered, learning English by talking to tourists and improving his skills daily. His story is one of grit and relentless determination.
+Starting Alibaba from a small apartment, Jack built it into a global e-commerce powerhouse. His philosophy teaches us that failure is not the end but a stepping stone to greatness. His journey encourages aspiring entrepreneurs to keep pushing forward despite obstacles.
+    </p>
   </article>
 
   <article>
-    <h3>Walt Disney</h3>
-    <p>After being fired for lack of creativity, Disney built a media empire full of imagination and joy.</p>
+    <h3>Elon Musk</h3>
+    <p>
+Elon Musk’s path to success was filled with risk and repeated failures. Early in his career, he faced financial struggles and the failure of ventures like Zip2 and X.com. However, his vision for a better future kept him going. He revolutionized multiple industries with Tesla, SpaceX, and SolarCity.
+Elon's relentless work ethic and ability to learn from failure inspire innovators worldwide. He shows that big dreams require perseverance and a willingness to face setbacks head-on. His story teaches that failure is a crucial part of innovation and success.
+    </p>
   </article>
   
 </section>
@@ -324,8 +336,8 @@
     <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="geeta">Geeta</div>
     <div class="mot-tab" role="tab" tabindex="-1" aria-selected="false" data-tab="others">Others</div>
   </div>
-  <div class="mot-content" id="motivation-content" role="tabpanel" tabindex="0">
-    <!-- Quotes will appear here -->
+  <div class="mot-content" id="motivation-content" role="tabpanel" tabindex="0" aria-live="polite">
+    <!-- Quotes appear here -->
   </div>
 </section>
 
@@ -352,20 +364,23 @@
     link.addEventListener('click', e => {
       e.preventDefault();
       // Remove active class from all links and sections
-      navLinks.forEach(l => l.classList.remove('active'));
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        l.tabIndex = -1;
+      });
       sections.forEach(s => s.classList.remove('active'));
 
       // Activate clicked link
       link.classList.add('active');
+      link.tabIndex = 0;
 
       // Show corresponding section
       const secId = link.getAttribute('data-section');
-      if (secId === 'motivation') {
-        // If motivation, show motivation and set default active tab
-        document.getElementById('motivation').classList.add('active');
+      document.getElementById(secId).classList.add('active');
+
+      // Special handling for Motivation tab - activate first motivation subtab
+      if(secId === 'motivation') {
         activateMotivationTab('buddha');
-      } else {
-        document.getElementById(secId).classList.add('active');
       }
     });
   });
@@ -374,95 +389,32 @@
   const motTabs = document.querySelectorAll('.mot-tab');
   const motContent = document.getElementById('motivation-content');
 
-  // Prepare quotes arrays
+  // Buddha quotes (50 total; sample shown here, extend as needed)
   const buddhaQuotes = [
-    "The mind is everything. What you think you become.",
-    "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
-    "Peace comes from within. Do not seek it without.",
-    "Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
-    "Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
-    "Three things cannot be long hidden: the sun, the moon, and the truth.",
-    "Hatred does not cease by hatred, but only by love; this is the eternal rule.",
-    "Better than a thousand hollow words, is one word that brings peace.",
-    "No one saves us but ourselves. No one can and no one may.",
-    "Just as a candle cannot burn without fire, men cannot live without a spiritual life.",
-    // 40 more (fill similarly for demo; you can replace with your own later)
+    "1. The mind is everything. What you think you become.",
+    "2. Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+    "3. Peace comes from within. Do not seek it without.",
+    "4. Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.",
+    "5. Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.",
+    "6. Three things cannot be long hidden: the sun, the moon, and the truth.",
+    "7. Hatred does not cease by hatred, but only by love; this is the eternal rule.",
+    "8. Better than a thousand hollow words, is one word that brings peace.",
+    "9. No one saves us but ourselves. No one can and no one may.",
+    "10. Just as a candle cannot burn without fire, men cannot live without a spiritual life."
+    // Add quotes up to 50 similarly
   ];
-  // Duplicate buddha quotes to reach 50 for demonstration
-  while (buddhaQuotes.length < 50) {
-    buddhaQuotes.push(buddhaQuotes[buddhaQuotes.length % 10]);
+  while(buddhaQuotes.length < 50) {
+    buddhaQuotes.push(`${buddhaQuotes.length+1}. [Add your quote here]`);
   }
 
+  // Geeta quotes (50 total; sample)
   const geetaQuotes = [
-    "You have the right to work, but never to the fruit of work.",
-    "Whenever dharma declines and the purpose of life is forgotten, I manifest myself on earth.",
-    "The soul is neither born, and nor does it die.",
-    "Perform your obligatory duty, because action is indeed better than inaction.",
-    "Man is made by his belief. As he believes, so he is.",
-    "A person can rise through the efforts of his own mind.",
-    "You came empty-handed, and you will leave empty-handed.",
-    "Pleasures derived from the senses have a beginning and an end.",
-    "The wise see knowledge and action as one.",
-    "Change is the law of the universe.",
-    // 40 more (fill similarly)
-  ];
-  while (geetaQuotes.length < 50) {
-    geetaQuotes.push(geetaQuotes[geetaQuotes.length % 10]);
-  }
-
-  const otherQuotes = [
-    "Failure is simply the opportunity to begin again, this time more intelligently. – Henry Ford",
-    "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
-    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
-    "Keep your eyes on the stars, and your feet on the ground. – Theodore Roosevelt",
-    "The harder the conflict, the more glorious the triumph. – Thomas Paine",
-    "Our greatest glory is not in never falling, but in rising every time we fall. – Confucius",
-    "Believe you can and you’re halfway there. – Theodore Roosevelt",
-    "What lies behind us and what lies before us are tiny matters compared to what lies within us. – Ralph Waldo Emerson",
-    "It always seems impossible until it’s done. – Nelson Mandela",
-    "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
-    // 40 more (fill similarly)
-  ];
-  while (otherQuotes.length < 50) {
-    otherQuotes.push(otherQuotes[otherQuotes.length % 10]);
-  }
-
-  function activateMotivationTab(tabName) {
-    motTabs.forEach(tab => {
-      tab.classList.toggle('active', tab.getAttribute('data-tab') === tabName);
-      tab.setAttribute('aria-selected', tab.getAttribute('data-tab') === tabName ? 'true' : 'false');
-      tab.tabIndex = tab.getAttribute('data-tab') === tabName ? 0 : -1;
-    });
-
-    let quotesArray;
-    switch (tabName) {
-      case 'buddha': quotesArray = buddhaQuotes; break;
-      case 'geeta': quotesArray = geetaQuotes; break;
-      case 'others': quotesArray = otherQuotes; break;
-      default: quotesArray = [];
-    }
-
-    // Display all 50 quotes in paragraphs
-    motContent.innerHTML = quotesArray.map(q => `<p>“${q}”</p>`).join('');
-  }
-
-  motTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      activateMotivationTab(tab.getAttribute('data-tab'));
-    });
-    tab.addEventListener('keydown', e => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        activateMotivationTab(tab.getAttribute('data-tab'));
-      }
-    });
-  });
-
-  // Show Home quotes by default on load
-  window.onload = () => {
-    activateMotivationTab('buddha');
-  };
-</script>
-
-</body>
-</html>
+    "1. You have the right to work, but never to the fruit of work.",
+    "2. Whenever dharma declines and the purpose of life is forgotten, I manifest myself on earth.",
+    "3. The soul is neither born, and nor does it die.",
+    "4. Perform your obligatory duty, because action is indeed better than inaction.",
+    "5. Man is made by his belief. As he believes, so he is.",
+    "6. A person can rise through the efforts of his own mind.",
+    "7. You came empty-handed, and you will leave empty-handed.",
+    "8. Pleasures derived from the senses have a beginning and an end.",
+    "9.
