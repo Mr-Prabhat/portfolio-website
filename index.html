@@ -1,608 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prabhat Panthi | Official Website</title>
-  <meta name="description" content="Prabhat Panthi official site with photos, stories, solutions, motivational quotes, videos, jokes, news, daily explore, and contact info" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif; background: #f5f5f5; color: #333;
-      line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column;
-    }
-    header {
-      position: fixed; top: 0; left: 0; width: 100%; background: #1a1a1a;
-      z-index: 1000; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    nav {
-      display: flex; justify-content: center; gap: 20px; padding: 10px 0;
-      flex-wrap: wrap; align-items: center;
-    }
-    nav a {
-      color: #f0f0f0 !important; text-decoration: none; font-weight: 600; font-size: 1rem;
-      text-transform: uppercase; letter-spacing: 1px; padding: 10px 15px;
-      transition: color 0.3s ease, background 0.3s ease; border-radius: 5px;
-    }
-    nav a.active { color: #ffffff !important; background: #FF6F61; }
-    nav a:not(.active):hover { color: #FF6F61 !important; }
 
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px; cursor: pointer; margin-left: 15px;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prabhat Panthi | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    .hamburger div { width: 25px; height: 3px; background: #f0f0f0; border-radius: 2px; transition: 0.3s ease; }
-    @media (max-width: 768px) {
-      nav { display: none; flex-direction: column; gap: 10px; padding: 15px; background: #1a1a1a; }
-      nav.show { display: flex; }
-      .hamburger { display: flex; }
-      section { margin: 100px 15px 50px 15px; }
+
+    body {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     section {
-      max-width: 1200px; margin: 100px auto 80px auto; padding: 40px 20px;
-      border-radius: 10px; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      display: none !important; position: relative; z-index: 1;
+      padding: 20px;
+      display: none;
     }
-    section.active { display: block !important; z-index: 2; }
+
+    section.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .hero img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ff512f;
+    }
+
+    .content-section {
+      margin: 20px 0;
+    }
+
+    .content-section h2 {
+      margin-bottom: 10px;
+      border-bottom: 3px solid #ff512f;
+      display: inline-block;
+      color: #dd2476;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: #ff512f;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
     #home {
-      background: linear-gradient(135deg, #FF6F61, #6B48FF); color: #fff; text-align: center;
-      min-height: 100vh; display: none !important; flex-direction: column; justify-content: center;
-      align-items: center; padding: 60px 20px; position: relative; animation: fadeIn 1s ease-in;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
     }
-    #home img.hero-img {
-      width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3); object-fit: cover;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    #home::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4); z-index: 1;
-    }
-    #home > * { position: relative; z-index: 2; }
-    #home.active { display: flex !important; }
-    #home h1 {
-      font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; letter-spacing: 2px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.6); margin-bottom: 20px; animation: slideIn 0.5s ease;
-    }
-    #home p.subtitle { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; margin-bottom: 20px; }
-    #home .card { background: rgba(255,255,255,0.9); color: #333; max-width: 800px; margin: 20px auto; }
-    #home .cta-button {
-      background: #FF6F61; color: #fff; padding: 15px 30px; border-radius: 5px;
-      text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: background 0.3s ease, transform 0.3s ease;
-    }
-    #home .cta-button:hover { background: #e65a50; transform: scale(1.05); }
-    #home .newsletter { max-width: 600px; margin: 20px auto; }
-    #home .newsletter input {
-      padding: 12px; border-radius: 5px 0 0 5px; border: none; width: 70%; font-size: 1rem;
-    }
-    #home .newsletter button {
-      padding: 12px; border-radius: 0 5px 5px 0; border: none; background: #FF6F61; color: #fff;
-      font-weight: 600; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;
-    }
-    #home .newsletter button:hover { background: #e65a50; transform: scale(1.05); }
-
-    .social-links {
-      display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin: 20px 0;
-    }
-    .social-links a {
-      color: #FF6F61; font-weight: 600; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease;
-      font-size: 1.2rem; display: flex; align-items: center; gap: 5px;
-    }
-    .social-links a:hover { color: #e65a50; transform: scale(1.1); }
-
-    .card { background: #f9f9f9; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #FF6F61; }
-    .card .emoji { font-size: 1.5rem; margin-right: 10px; }
-
-    #photos .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-    #photos img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: transform 0.3s ease; cursor: pointer; }
-    #photos img:hover { transform: scale(1.05); }
-    .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-    .lightbox .close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 2rem; cursor: pointer; }
-    .lightbox.active { display: flex; }
-
-    #videos .video-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    #videos .video-card { width: 100%; max-width: 600px; position: relative; }
-    #videos img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
-    #videos iframe { width: 100%; height: 340px; border-radius: 8px; }
-
-    .sub-nav {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center;
-    }
-    .sub-nav a {
-      background: #f0f0f0; padding: 10px 15px; border-radius: 5px; text-decoration: none;
-      color: #333; font-weight: 600; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-      position: relative;
-    }
-    .sub-nav a.active { background: #FF6F61; color: #fff; }
-    .sub-nav a:hover {
-      background: #e65a50; color: #fff; transform: scale(1.05);
-    }
-    .sub-nav a:hover::after {
-      content: attr(data-features); position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-      background: rgba(0,0,0,0.9); color: #fff; padding: 15px; border-radius: 5px; width: 220px;
-      font-size: 0.9rem; z-index: 10; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      line-height: 1.4;
-    }
-
-    .accordion { margin-bottom: 20px; }
-    .accordion-header {
-      background: #FF6F61; color: #fff; padding: 15px; border-radius: 5px;
-      cursor: pointer; font-weight: 600; transition: background 0.3s ease; display: flex; align-items: center;
-    }
-    .accordion-header:hover { background: #e65a50; }
-    .accordion-content { display: none; padding: 15px; background: #f9f9f9; border-radius: 5px; }
-    .accordion-content.active { display: block; }
-    .accordion-content p { margin-bottom: 15px; }
-    .accordion-content ul { list-style-type: disc; margin-left: 20px; margin-bottom: 15px; }
-    .accordion-content blockquote { margin: 10px 0; padding-left: 15px; border-left: 3px solid #FF6F61; }
-
-    #daily-explore .post { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; transition: transform 0.3s ease; }
-    #daily-explore .post:hover { transform: scale(1.02); }
-    #daily-explore .post img { width: 100px; height: 100px; border-radius: 8px; }
-    #daily-explore .signal { font-size: 1.2rem; color: #FF6F61; }
-
-    #contact form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-    #contact label { font-weight: 600; }
-    #contact input, #contact textarea {
-      padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; font-family: inherit; resize: vertical;
-    }
-    #contact button {
-      background: #FF6F61; color: #fff; border: none; padding: 12px; border-radius: 5px;
-      font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;
-    }
-    #contact button:hover { background: #e65a50; transform: scale(1.05); }
-    #contact .form-message { color: #FF6F61; font-weight: 600; text-align: center; margin-top: 10px; }
-
-    footer { background: #1a1a1a; color: #eee; text-align: center; padding: 20px; font-size: 0.9rem; margin-top: auto; }
   </style>
 </head>
+
 <body>
+  <header>
+    <h1>Prabhat Panthi | Official Website</h1>
+  </header>
 
-<header>
-  <div class="hamburger" aria-label="Toggle navigation menu" tabindex="0" role="button" aria-expanded="false" aria-controls="nav-menu">
-    <div></div><div></div><div></div>
-  </div>
-  <nav id="nav-menu" role="navigation" aria-label="Primary navigation">
-    <a data-tab="home" class="active" tabindex="0" role="tab" aria-selected="true">Home</a>
-    <a data-tab="about" tabindex="-1" role="tab" aria-selected="false">About</a>
-    <a data-tab="photos" tabindex="-1" role="tab" aria-selected="false">Photos</a>
-    <a data-tab="videos" tabindex="-1" role="tab" aria-selected="false">Videos</a>
-    <a data-tab="stories" tabindex="-1" role="tab" aria-selected="false">Stories</a>
-    <a data-tab="solutions" tabindex="-1" role="tab" aria-selected="false">Solutions</a>
-    <a data-tab="jokes" tabindex="-1" role="tab" aria-selected="false">Jokes</a>
-    <a data-tab="news" tabindex="-1" role="tab" aria-selected="false">News</a>
-    <a data-tab="motivation" tabindex="-1" role="tab" aria-selected="false">Motivation</a>
-    <a data-tab="daily-explore" tabindex="-1" role="tab" aria-selected="false">Daily Explore</a>
-    <a data-tab="contact" tabindex="-1" role="tab" aria-selected="false">Contact</a>
+  <nav>
+    <a href="#" onclick="showTab('home')">Home</a>
+    <a href="#" onclick="showTab('about')">About Me</a>
+    <a href="#" onclick="showTab('photos')">Photos</a>
+    <a href="#" onclick="showTab('videos')">Videos</a>
+    <a href="#" onclick="showTab('stories')">Stories</a>
+    <a href="#" onclick="showTab('jokes')">Jokes</a>
+    <a href="#" onclick="showTab('news')">News</a>
+    <a href="#" onclick="showTab('motivation')">Motivation</a>
+    <a href="#" onclick="showTab('contact')">Contact</a>
   </nav>
-</header>
 
-<section id="home" role="tabpanel" aria-labelledby="home-tab" tabindex="0" class="active">
-  <img src="https://raw.githubusercontent.com/username/repo/main/brp.jpeg" alt="Prabhat Panthi" class="hero-img" loading="lazy" onerror="this.src='https://via.placeholder.com/150'" />
-  <h1>PRABHAT PANTHI</h1>
-  <p class="subtitle">Inspiring Growth from Nepal’s Heart</p>
-  <div class="card">
-    <h2>My Journey 🌟</h2>
-    <p>Born in Bhanbhane Badachaur, Madane Gaupalika, Gulmi, I grew up amidst lush hills and a tight-knit community. My childhood was shaped by financial struggles, with my family relying on farming. Walking miles to school, I dreamed of uplifting others. Those early challenges instilled resilience and a passion for education.</p>
-    <p>Moving to Murgiya, Sainamaina Nagarpalika, Rupandehi, opened new horizons. As a Business and Recovery Officer at NIC Asia Laghubitta, I tackled loan recovery challenges during economic downturns. The vibrant Terai region, with its cultural diversity and proximity to Lumbini, deepened my commitment to blending financial expertise with spiritual growth.</p>
-    <p>This website is my platform to share stories, solutions, and motivation, inspired by my journey. From rural Nepal to empowering communities, I aim to inspire others to overcome obstacles and thrive.</p>
+  <div class="hero">
+    <img src="brp.jpeg" alt="Profile Picture">
   </div>
-  <a href="#solutions" class="cta-button">Discover Solutions</a>
-  <div class="social-links">
-    <a href="https://www.youtube.com/@MeroSansaarOfficial" target="_blank" rel="noopener">📺 YouTube</a>
-    <a href="https://www.facebook.com/prabhat.panthee" target="_blank" rel="noopener">📘 Facebook</a>
-    <a href="https://www.instagram.com/prabhat.panthee" target="_blank" rel="noopener">📸 Instagram</a>
-  </div>
-  <div class="newsletter">
-    <form id="newsletterForm">
-      <input type="email" placeholder="Subscribe for updates" required />
-      <button type="submit">Join Now</button>
-    </form>
-  </div>
-</section>
 
-<section id="about" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/username/repo/main/brp.jpeg" alt="Prabhat Panthi" style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 20px;" loading="lazy" onerror="this.src='https://via.placeholder.com/400'" />
-    <h2>About Me 🌟</h2>
-    <p><strong>Born in:</strong> Bhanbhane Badachaur, Madane Gaupalika, Gulmi, Nepal</p>
-    <p><strong>Resides in:</strong> Murgiya, Sainamaina Nagarpalika, Rupandehi</p>
-    <p>I’m Prabhat Panthi, a financial analyst and storyteller from Nepal, dedicated to inspiring and empowering communities. Raised in Gulmi’s hills, I learned resilience through hardship. Now in Murgiya, I combine rural wisdom with financial expertise to guide others.</p>
-    <p><strong>Education:</strong> Bachelor’s in Business Administration from Tribhuvan University, specializing in financial management, fueling my mission for financial literacy.</p>
-    <p><strong>Work Experience:</strong></p>
-    <ul>
-      <li>Business and Recovery Officer at NIC Asia Laghubitta, empowering rural entrepreneurs.</li>
-      <li>Financial Guide, advising on budgeting and investments.</li>
-    </ul>
-    <p><strong>Hobbies & Interests:</strong> Photography, storytelling on Mero Sansaar Official, reading philosophy, mentoring youth, and organizing financial literacy workshops.</p>
-    <h3>Why I Created This Website 📖</h3>
-    <p>This website is my vision to inspire, educate, and connect. Growing up in rural Nepal, I saw how knowledge and community transform lives. My work in microfinance revealed the need for accessible inspiration and practical advice. This platform shares stories of resilience, solutions to life’s challenges, and motivational quotes, aiming to empower rural communities and beyond.</p>
-    <p>My goal is to foster growth through education, financial literacy, and emotional resilience. Sections like Solutions and Daily Explore provide tools and daily inspiration, reflecting my commitment to making a difference, one story at a time.</p>
-  </div>
-</section>
+  <section id="home" class="active">
+    <div class="content-section">
+      <h2>Welcome to My World</h2>
+      <p>Hello! I'm Prabhat Panthi, a passionate content creator and digital storyteller. This website is a platform where you can explore my journey, from creative content to life experiences, all crafted with dedication and love.</p>
+      <p>Discover photos, videos, stories, jokes, news articles, and daily motivation here. My goal is to build a positive and vibrant community where creativity and inspiration are shared freely.</p>
+      <blockquote>"Dream big, work hard, stay humble."</blockquote>
+      <blockquote>"Every step you take is a step towards success."</blockquote>
+      <blockquote>"Great things never come from comfort zones."</blockquote>
+    </div>
+  </section>
 
-<section id="photos" role="tabpanel" aria-labelledby="photos-tab" tabindex="0">
-  <div class="card">
-    <h2>My Photo Gallery 📸</h2>
-    <div class="gallery">
-      <img src="https://raw.githubusercontent.com/username/repo/main/images/photo.jpg" alt="Photo 1" loading="lazy" onerror="this.src='https://via.placeholder.com/250'" />
-      <img src="https://raw.githubusercontent.com/username/repo/main/images/photop.jpg" alt="Photo 2" loading="lazy" onerror="this.src='https://via.placeholder.com/250'" />
-      <img src="https://raw.githubusercontent.com/username/repo/main/images/photopp.jpg" alt="Photo 3" loading="lazy" onerror="this.src='https://via.placeholder.com/250'" />
-      <img src="https://raw.githubusercontent.com/username/repo/main/images/photoppp.jpg" alt="Photo 4" loading="lazy" onerror="this.src='https://via.placeholder.com/250'" />
-      <img src="https://raw.githubusercontent.com/username/repo/main/brp.jpeg" alt="Prabhat Panthi" loading="lazy" onerror="this.src='https://via.placeholder.com/250'" />
+  <section id="about">
+    <div class="content-section">
+      <h2>About Me</h2>
+      <p>I am Prabhat Panthi, born in the beautiful district of Gulmi, Nepal. My early childhood was spent amidst the hills of Gulmi, where I developed a strong bond with nature and community life.</p>
+      <p>Later, I moved to Bhairahawa, a bustling city that introduced me to urban culture, new friendships, and countless opportunities. My journey continued to Murgiya, where I balanced my studies with my growing passion for digital content creation.</p>
+      <p>After years of dedication, I successfully completed my Bachelor's degree, which further fueled my interest in storytelling through visuals and words. My academic journey provided me with knowledge, but my real learning came from life experiences.</p>
+      <p>Today, I dedicate my time to creating content that entertains, educates, and inspires. Whether it’s capturing a beautiful moment on camera, crafting a compelling story, or sharing a motivational quote, my aim is to spread positivity and spark creativity among my audience.</p>
+      <p>This website is not just a portfolio but a reflection of my journey, ambitions, and dreams. Let’s connect, share, and grow together!</p>
     </div>
-    <div class="lightbox" id="lightbox">
-      <img src="" alt="Enlarged photo" />
-      <span class="close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="videos" role="tabpanel" aria-labelledby="videos-tab" tabindex="0">
-  <div class="card">
-    <h2>Videos 📺</h2>
-    <div class="video-container">
-      <div class="video-card">
-        <img src="https://raw.githubusercontent.com/username/repo/main/images/photo.jpg" alt="Video Thumbnail" loading="lazy" onerror="this.src='https://via.placeholder.com/600x340'" />
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sample Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
+  <section id="motivation">
+    <div class="content-section">
+      <h2>Motivation</h2>
+      <h3><a href="#" onclick="alert('Quran Inspirations')">Quran</a></h3>
+      <h3><a href="#" onclick="alert('Bible Inspirations')">Bible</a></h3>
+      <h3><a href="#" onclick="alert('Gita Inspirations')">Gita</a></h3>
+      <h3><a href="#" onclick="alert('Buddha Teachings')">Buddha</a></h3>
     </div>
-    <p>Explore more on my YouTube channel, Mero Sansaar Official.</p>
-  </div>
-</section>
+  </section>
 
-<section id="stories" role="tabpanel" aria-labelledby="stories-tab" tabindex="0">
-  <div class="card">
-    <h2>Success Stories 🌟</h2>
-    <div class="accordion">
-      <div class="accordion-header">Chester Bennington’s Journey</div>
-      <div class="accordion-content">
-        <p><strong>Childhood:</strong> Born in 1976 in Phoenix, Arizona, Chester Bennington faced a deeply challenging childhood marked by poverty, family dysfunction, and abuse. Bullied relentlessly at school for his small stature and sensitive nature, he found refuge in music, teaching himself to sing and play instruments. His parents’ divorce at age 11 left him emotionally scarred, fostering a sense of isolation. Despite these hardships, his early exposure to bands like Depeche Mode sparked a passion for music. This creative outlet became his lifeline, shaping his emotional depth and resilience. His struggles with trauma fueled his determination to express himself authentically through art.</p>
-        <p><strong>Adulthood:</strong> In his 20s, Chester juggled odd jobs, from fast-food work to graphic design, while performing with local bands in Arizona. Joining Linkin Park in 1999 was a turning point, as his raw, emotive vocals defined their debut album, *Hybrid Theory*, which sold over 30 million copies. Balancing fame with personal struggles, he faced ongoing battles with addiction and mental health. His ability to channel pain into music connected with millions, making him a voice for the struggling. He also explored side projects like Dead by Sunrise, showcasing his versatility. His openness about his challenges endeared him to fans worldwide, cementing his influence.</p>
-        <p><strong>Failure:</strong> Chester’s journey was marred by significant setbacks, including struggles with substance abuse that strained relationships and career stability. Early band rejections and internal conflicts within Linkin Park tested his resolve. His personal life, marked by a difficult first marriage and ongoing mental health challenges, often left him feeling defeated. Public scrutiny of his vulnerabilities added pressure, and he faced moments of self-doubt about his worth as an artist. These failures, however, pushed him to refine his craft and seek help, turning pain into powerful performances. His resilience in facing these challenges defined his legacy.</p>
-        <p><strong>Success:</strong> Linkin Park’s global success, with albums like *Meteora* and *Minutes to Midnight*, made Chester a rock icon, earning Grammy Awards and a massive fanbase. His advocacy for mental health awareness, through interviews and charity work, inspired millions to seek help. Collaborations with artists like Stone Temple Pilots showcased his vocal range and adaptability. His ability to connect emotionally with fans through raw lyrics left a lasting cultural impact. Before his tragic passing in 2017, Chester’s contributions elevated nu-metal and reshaped music. His legacy endures through his music and advocacy.</p>
-        <p><strong>Lesson to Learn:</strong> Pain can be a powerful catalyst for creativity and connection. Chester’s life teaches us that vulnerability is a strength, not a weakness. By embracing struggles and seeking support, we can transform personal challenges into meaningful contributions. His story reminds us to persevere through darkness, using our passions to inspire others. Resilience, authenticity, and empathy are key to leaving a lasting impact. Let your struggles fuel your purpose, and never be afraid to share your truth.</p>
-      </div>
+  <section id="photos">
+    <div class="content-section">
+      <h2>Photos</h2>
+      <img src="photo.jpg" width="300">
+      <img src="photop.jpg" width="300">
+      <img src="photopp.jpg" width="300">
+      <img src="photoppp.jpg" width="300">
     </div>
-    <div class="accordion">
-      <div class="accordion-header">Elon Musk’s Pursuit</div>
-      <div class="accordion-content">
-        <p><strong>Childhood:</strong> Born in 1971 in Pretoria, South Africa, Elon Musk grew up in a turbulent household, facing bullying at school due to his introverted nature. His parents’ divorce left him navigating a fractured family dynamic. Fascinated by science fiction and computers, he taught himself coding at age 10, creating a game called Blastar. His insatiable curiosity led him to read voraciously, from encyclopedias to novels, shaping his visionary mindset. Despite financial struggles, his early experiments with technology set the stage for innovation. This period instilled a relentless drive to solve big problems.</p>
-        <p><strong>Adulthood:</strong> Moving to Canada at 17 with minimal resources, Elon worked manual jobs like shoveling grain before attending university. He founded Zip2, a software company sold for $307 million, and later X.com, which became PayPal, sold for $1.5 billion. Founding SpaceX and Tesla, he faced immense skepticism but pushed boundaries in space and electric vehicles. His leadership style, often demanding, drove innovation but sparked controversy. Balancing multiple ventures, he became a global figure for disruption. His vision for a multi-planetary future defined his adulthood, inspiring millions.</p>
-        <p><strong>Failure:</strong> In 2008, both Tesla and SpaceX teetered on bankruptcy, with three failed rocket launches and Tesla’s production woes. Elon invested his personal fortune, risking everything, and faced intense public criticism. Personal challenges, including a divorce, compounded the stress. Early ventures like Zip2 faced fierce competition, and he was ousted from X.com before its success. These setbacks taught him to refine strategies and focus on execution. His ability to learn from failure fueled his resilience, proving that setbacks are stepping stones.</p>
-        <p><strong>Success:</strong> SpaceX’s reusable rockets revolutionized space travel, landing NASA contracts and launching Starlink. Tesla’s Model S and Model 3 made electric vehicles mainstream, pushing sustainability. Elon’s ventures, including Neuralink and The Boring Company, reflect his ambition to reshape humanity’s future. His net worth soared, making him one of the world’s richest. His influence extends beyond technology, inspiring entrepreneurs to think big. By 2025, his companies continue to push innovation, redefining industries.</p>
-        <p><strong>Lesson to Learn:</strong> Bold risks and relentless persistence can turn failures into groundbreaking success. Elon’s story teaches us to embrace challenges as opportunities to learn and grow. Vision, paired with action, can change the world. Stay resilient, think unconventionally, and never let setbacks define your path. Your determination shapes your future. Keep pushing forward, no matter the odds.</p>
-      </div>
-    </div>
-    <div class="accordion">
-      <div class="accordion-header">Jack Ma’s Resilience</div>
-      <div class="accordion-content">
-        <p><strong>Childhood:</strong> Born in 1964 in Hangzhou, China, Jack Ma grew up in modest circumstances during the Cultural Revolution. Rejected from dozens of jobs, including KFC, he faced constant setbacks. His love for English, learned by guiding tourists, sparked his curiosity about the world. With no formal tech background, he relied on determination and self-learning. His early struggles with poverty and rejection built a tenacious spirit. These experiences shaped his ability to see opportunity in adversity, laying the foundation for his entrepreneurial journey.</p>
-        <p><strong>Adulthood:</strong> As an English teacher earning $12 a month, Jack saw the internet’s potential during a 1995 trip to the U.S. Founding Alibaba in 1999 with $60,000 from friends, he faced skepticism in China’s controlled digital landscape. He built Alibaba into a platform empowering small businesses, competing against giants like eBay. His charismatic leadership and focus on customer trust drove growth. Despite regulatory hurdles, he expanded Alibaba globally. His journey from teacher to billionaire reflects his adaptability and vision.</p>
-        <p><strong>Failure:</strong> Jack failed college entrance exams twice and faced over 30 job rejections, testing his confidence. Early ventures, like an online directory, flopped due to lack of funding. Alibaba’s initial years were fraught with financial struggles and competition, nearly collapsing. Public criticism and government scrutiny added pressure. These failures taught him to pivot and persevere, refining his business model. His ability to learn from rejection fueled his eventual success.</p>
-        <p><strong>Success:</strong> Alibaba became a global e-commerce giant, with platforms like Taobao and Alipay transforming trade. Its 2014 IPO raised $25 billion, one of the largest ever. Jack’s focus on empowering small businesses earned him global acclaim. His philanthropy in education and entrepreneurship supports millions. By 2025, Alibaba’s influence in cloud computing and AI continues to grow. Jack’s story inspires entrepreneurs to dream big and persist through adversity.</p>
-        <p><strong>Lesson to Learn:</strong> Rejection is not the end but a step toward success. Jack’s journey shows that persistence, adaptability, and belief in your vision can overcome any obstacle. Learn from failures, stay focused on your goals, and seize opportunities others overlook. Your resilience defines your path. Keep moving forward, no matter how many doors close.</p>
-      </div>
-    </div>
-    <div class="accordion">
-      <div class="accordion-header">Steve Jobs’ Vision</div>
-      <div class="accordion-content">
-        <p><strong>Childhood:</strong> Born in 1955 in San Francisco, Steve Jobs was adopted and struggled academically, often clashing with traditional education. His curiosity for electronics led him to tinker with gadgets, inspired by his adoptive father’s mechanical skills. Dropping out of Reed College, he audited calligraphy classes, shaping his aesthetic sense. Early exposure to Silicon Valley’s tech scene sparked his entrepreneurial spirit. Despite feeling like an outsider, his passion for innovation grew. These formative years instilled a drive for simplicity and excellence.</p>
-        <p><strong>Adulthood:</strong> Co-founding Apple in 1976 with Steve Wozniak, Steve revolutionized personal computing with the Apple II. Ousted from Apple in 1985, he founded NeXT and acquired Pixar, producing *Toy Story*. Returning to Apple in 1997, he led a turnaround with the iMac, iPod, and iPhone. His focus on design and user experience reshaped technology. His intense leadership style, though controversial, drove innovation. Steve’s vision transformed Apple into a cultural and technological powerhouse.</p>
-        <p><strong>Failure:</strong> His 1985 ousting from Apple was a public humiliation, shaking his confidence. NeXT’s high-cost computers struggled commercially, losing market share. Personal challenges, including strained relationships, added to his setbacks. Early Apple products like the Lisa failed to gain traction, teaching him the importance of market fit. These failures forced Steve to refine his approach, focusing on simplicity and user needs. His resilience turned setbacks into stepping stones for greater success.</p>
-        <p><strong>Success:</strong> Steve’s return to Apple sparked the iPod, iPhone, and iPad, making Apple a trillion-dollar company. Pixar’s films, like *Finding Nemo*, redefined animation, earning Oscars. His emphasis on design and innovation influenced industries beyond tech. By 2011, Apple’s market cap soared, and Steve’s legacy as a visionary endures. His products changed how we connect, work, and create. His Stanford commencement address inspires millions to follow their passion.</p>
-        <p><strong>Lesson to Learn:</strong> Failure is a teacher, not a defeat. Steve’s story shows that setbacks refine your vision and drive innovation. Stay true to your passion, focus on simplicity, and embrace challenges as opportunities. Your unique perspective can change the world. Keep iterating and never settle for less than excellence.</p>
-      </div>
-    </div>
-    <div class="accordion">
-      <div class="accordion-header">J.K. Rowling’s Path</div>
-      <div class="accordion-content">
-        <p><strong>Childhood:</strong> Born in 1965 in Yate, England, J.K. Rowling grew up with a love for storytelling, writing her first story at six. Family financial struggles and her mother’s illness created a challenging environment. Books became her escape, fueling her imagination and creativity. Shy and introverted, she faced bullying but found solace in writing. Her early passion for literature shaped her dream of becoming an author. These experiences built resilience and a deep connection to storytelling.</p>
-        <p><strong>Adulthood:</strong> As a single mother on welfare in the 1990s, Rowling wrote *Harry Potter* in Edinburgh cafes, battling poverty and depression. Rejected by 12 publishers, her persistence led to a 1997 deal with Bloomsbury. The series’ success transformed her life, but she faced intense public scrutiny. She balanced writing with philanthropy, supporting literacy and single parents. Her advocacy for mental health grew from personal experience. Rowling’s journey from hardship to global fame inspires millions.</p>
-        <p><strong>Failure:</strong> Rowling endured repeated rejections, with publishers dismissing *Harry Potter* as unmarketable. Financial despair and a difficult divorce left her feeling hopeless. Depression and self-doubt threatened her writing dreams. Early short stories failed to gain traction, teaching her to refine her craft. These setbacks pushed her to persevere, rewriting and pitching tirelessly. Her resilience turned rejection into a stepping stone for success.</p>
-        <p><strong>Success:</strong> *Harry Potter* sold over 500 million copies, becoming a cultural phenomenon with films, theme parks, and a global fanbase. Rowling became the first billionaire author, using her wealth for philanthropy through the Volant Trust. Her advocacy for literacy and mental health empowered millions. By 2025, her works continue to inspire new generations. Her story shows the power of perseverance and imagination. Rowling’s legacy is a testament to storytelling’s impact.</p>
-        <p><strong>Lesson to Learn:</strong> Perseverance through rejection and hardship can lead to extraordinary success. Rowling’s journey teaches us to believe in our stories, even when others don’t. Keep creating, stay resilient, and use your voice to inspire others. Your struggles can become your greatest strength. Never give up on your dreams, no matter how impossible they seem.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="solutions" role="tabpanel" aria-labelledby="solutions-tab" tabindex="0">
-  <div class="card">
-    <h2>Solutions 💡</h2>
-    <div class="sub-nav">
-      <a data-sub-tab="education" class="active" data-features="Access resources, overcome barriers, empower communities">Education</a>
-      <a data-sub-tab="study" data-features="Master techniques, manage stress, boost focus">Study</a>
-      <a data-sub-tab="life" data-features="Find purpose, balance, and resilience">Life</a>
-      <a data-sub-tab="depression" data-features="Understand mental health, seek support">Depression</a>
-      <a data-sub-tab="happiness" data-features="Cultivate joy, gratitude, connection">Happiness</a>
-      <a data-sub-tab="frustration" data-features="Channel energy, turn setbacks into growth">Frustration</a>
-      <a data-sub-tab="relationship" data-features="Build trust, strengthen bonds">Relationship</a>
-      <a data-sub-tab="understanding" data-features="Foster empathy, improve communication">Understanding</a>
-      <a data-sub-tab="overcoming" data-features="Rise above obstacles, build resilience">Overcoming</a>
+  <section id="videos">
+    <div class="content-section">
+      <h2>Videos</h2>
+      <p>Latest videos will be updated here soon. Stay tuned!</p>
     </div>
-    <div id="education" class="solution-tab active">
-      <div class="accordion">
-        <div class="accordion-header">📚 Education Solutions</div>
-        <div class="accordion-content active">
-          <p><strong>What Causes It:</strong> Limited access to quality education in rural Nepal, like Gulmi, stems from poverty, inadequate infrastructure, and teacher shortages. Students often walk miles to underfunded schools with outdated materials. Gender disparities, especially for girls, and early marriages disrupt learning. Economic pressures force many children into labor, reducing school attendance. Lack of digital resources further widens the gap, particularly in remote areas. Social stigmas around education’s value in rural communities add barriers.</p>
-          <p><strong>How to Tackle:</strong> Seek scholarships from NGOs like Room to Read, which provide books and support for rural students. Use free online platforms like Khan Academy or Nepal’s E-Pustakalaya for self-learning. Form community study groups to share resources and motivate peers. Advocate for local government to improve school facilities. Engage parents to prioritize education over early labor. Leverage mobile apps for learning basic skills, even with limited internet.</p>
-          <p><strong>How to Overcome:</strong> Long-term, enroll in vocational training programs to gain practical skills alongside formal education. Advocate for policy changes through community forums to increase school funding. Partner with organizations to bring digital classrooms to rural areas, as seen in Nepal’s 2025 initiatives. Pursue distance learning programs from universities like Tribhuvan to access higher education. Build a network of mentors to guide career paths. Encourage lifelong learning to adapt to changing opportunities.</p>
-          <p><strong>What to Understand:</strong> Education is a lifelong journey that empowers individuals and communities. It’s not just about degrees but about gaining knowledge to solve real-world problems. In Nepal, education can break cycles of poverty, but it requires persistence and resourcefulness. Every small step, like reading a book or attending a workshop, builds a stronger future. Value education as a tool for empowerment, not just a certificate.</p>[](https://www.adobe.com/express/learn/blog/25-educational-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="study" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">📖 Study Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Poor study habits, exam pressure, and distractions like social media hinder academic success, especially in Nepal’s competitive exam culture. Students in urban areas face high expectations, while rural students lack study resources. Procrastination, fueled by fear of failure, leads to stress and burnout. Limited access to guidance or tutoring exacerbates struggles. Family responsibilities often distract students from focusing. Lack of time management skills compounds these issues.</p>
-          <p><strong>How to Tackle:</strong> Create a daily study schedule, allocating specific times for subjects and breaks. Use techniques like Pomodoro (25-minute focus sessions) to boost productivity. Limit distractions by setting phone-free study zones. Practice active recall by testing yourself on material. Join study groups to share notes and clarify doubts. Apps like Notion or Forest can organize tasks and maintain focus.</p>
-          <p><strong>How to Overcome:</strong> Develop a growth mindset by viewing challenges as learning opportunities. Seek mentorship from teachers or peers for personalized guidance. Practice mindfulness meditation, like Nepal’s Vipassana centers offer, to manage exam stress. Break large goals into SMART (Specific, Measurable, Achievable, Relevant, Time-bound) tasks. Regularly review notes to reinforce learning. Long-term, build discipline through consistent habits, ensuring sustainable academic success.</p>[](https://www.citybit.in/wishes/study-motivation-quotes/)
-          <p><strong>What to Understand:</strong> Studying is a skill that improves with practice and discipline. Success comes from consistent effort, not last-minute cramming. Mistakes are part of learning, so embrace them as growth opportunities. In Nepal, where academic pressure is high, balancing mental health and study is crucial. Your potential is limitless with the right strategies. Stay focused, and small wins will lead to big achievements.</p>
-        </div>
-      </div>
-    </div>
-    <div id="life" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">🌟 Life Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Lack of purpose, societal pressures, and economic challenges in Nepal, like job scarcity and migration, create feelings of aimlessness. Cultural expectations, such as early marriage or family duties, limit personal exploration. Urban youth face comparison on social media, while rural youth struggle with isolation. Financial instability and lack of opportunities dampen motivation. Uncertainty about the future fuels anxiety. These factors make finding meaning in life difficult.</p>
-          <p><strong>How to Tackle:</strong> Explore hobbies like photography, music, or volunteering to discover passions. Set short-term goals, like learning a skill or helping your community. Journal daily to reflect on values and aspirations. Engage in Nepal’s festivals or community events to build connections. Read books like *Man’s Search for Meaning* by Viktor Frankl for inspiration. Seek mentors who align with your goals to guide your path.</p>
-          <p><strong>How to Overcome:</strong> Create a vision board to visualize long-term goals, like starting a business or traveling. Join local cooperatives or youth groups to network and find purpose. Practice mindfulness to stay grounded, using resources like Nepal’s Buddhist meditation centers. Pursue skill-building through online courses on platforms like Coursera. Build resilience by celebrating small achievements. Long-term, align actions with personal values to live a fulfilling life.</p>
-          <p><strong>What to Understand:</strong> Life’s purpose evolves through exploration and reflection. In Nepal, balancing tradition and personal dreams requires courage. Small, intentional actions lead to meaningful growth. Connection with community and self-awareness are key to a balanced life. Your journey is unique, so focus on your own path, not others’ expectations.</p>[](https://www.snhu.edu/about-us/newsroom/education/personal-growth-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="depression" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">💔 Depression Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Depression in Nepal often stems from economic hardship, social stigma around mental health, and isolation, especially in rural areas. Academic pressure, unemployment, and family expectations exacerbate it. Loss, like bereavement or job failure, triggers deep sadness. Lack of mental health resources and cultural taboos prevent seeking help. Gender roles, particularly for women, add stress. Chronic stress from poverty or migration compounds the issue.</p>
-          <p><strong>How to Tackle:</strong> Reach out to local helplines like TPO Nepal or KOSHISH for support. Practice daily exercise, like yoga or walking, to boost mood. Journal thoughts to process emotions, as recommended in *The Feeling Good Handbook* by David Burns. Connect with trusted friends or family to share feelings. Limit social media to avoid comparison. Engage in creative outlets like art or music to express emotions.</p>
-          <p><strong>How to Overcome:</strong> Seek professional therapy through NGOs or online platforms like BetterHelp, available in urban Nepal. Build a support network through community groups or religious centers like temples. Practice cognitive-behavioral techniques, such as reframing negative thoughts, as outlined in *Mind Over Mood*. Develop a routine with sleep, diet, and exercise to stabilize mood. Long-term, advocate for mental health awareness in your community. Join workshops to learn coping strategies and reduce stigma.</p>
-          <p><strong>What to Understand:</strong> Depression is a treatable condition, not a personal failure. In Nepal, cultural barriers make seeking help challenging, but it’s a sign of strength. Recovery involves small, consistent steps and community support. You’re not alone, and your struggles don’t define you. Prioritize self-care and openness to heal and thrive.</p>[](https://www.wisestamp.com/blog/inspiring-quotes-for-students/)
-        </div>
-      </div>
-    </div>
-    <div id="happiness" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">😊 Happiness Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Lack of joy often results from stress, comparison, or disconnection, prevalent in Nepal due to economic pressures and urban migration. Social media fuels envy, while rural isolation limits social bonds. Unmet expectations in career or relationships create dissatisfaction. Cultural emphasis on duty over personal fulfillment reduces happiness. Lack of leisure time and financial strain add barriers. Neglecting self-care further diminishes well-being.</p>
-          <p><strong>How to Tackle:</strong> Practice gratitude by writing three things you’re thankful for daily, as suggested in *The Happiness Project* by Gretchen Rubin. Engage in community events, like Dashain celebrations, to foster connection. Pursue hobbies like gardening or storytelling to spark joy. Limit social media to reduce comparison. Volunteer for local causes, like literacy programs, to find purpose. Practice mindfulness through meditation at Nepal’s Buddhist centers.</p>
-          <p><strong>How to Overcome:</strong> Build strong relationships by scheduling regular family or friend time. Exercise regularly, as studies show it boosts endorphins. Create a happiness routine, including sleep, healthy eating, and leisure. Read books like *The Art of Happiness* by Dalai Lama for insights. Join community groups to combat isolation. Long-term, align your life with values like compassion and growth to sustain happiness.</p>
-          <p><strong>What to Understand:</strong> Happiness is cultivated through intentional actions, not material gains. In Nepal, community and tradition are powerful sources of joy. Small daily habits, like gratitude and connection, build lasting well-being. Happiness is a skill you can develop with practice. Focus on what you can control to live a fulfilling life.</p>[](https://www.shopify.com/ph/blog/motivational-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="frustration" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">😣 Frustration Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Frustration arises from unmet expectations, like academic or career setbacks, common among Nepal’s youth facing job scarcity. Bureaucratic delays, like loan approvals in microfinance, add stress. Cultural pressures to conform clash with personal goals. Lack of progress in studies or work fuels irritation. External factors, like unreliable infrastructure, exacerbate it. Internal factors, like perfectionism, amplify frustration.</p>
-          <p><strong>How to Tackle:</strong> Channel frustration into productive outlets, like sports, writing, or art. Break tasks into smaller steps to regain control, as advised in *Getting Things Done* by David Allen. Practice deep breathing or yoga to calm emotions. Talk to a trusted friend or mentor to gain perspective. Set realistic goals to avoid disappointment. Use apps like Trello to organize tasks and track progress.</p>
-          <p><strong>How to Overcome:</strong> Develop patience through mindfulness practices, available at Nepal’s meditation centers. Join peer support groups to share experiences and solutions. Learn from setbacks by analyzing what went wrong and adjusting strategies. Build skills through online courses to boost confidence. Long-term, focus on growth over perfection, embracing small wins. Reframe frustration as a signal to pivot and improve.</p>
-          <p><strong>What to Understand:</strong> Frustration is a natural response to obstacles but doesn’t define you. In Nepal, systemic challenges like unemployment require resilience. Redirecting energy into action turns setbacks into opportunities. Patience and adaptability are key to growth. Every challenge is a chance to learn and evolve.</p>[](https://www.citybit.in/wishes/study-motivation-quotes/)
-        </div>
-      </div>
-    </div>
-    <div id="relationship" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">💞 Relationship Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Miscommunication, time constraints, and cultural expectations strain relationships in Nepal. Urban lifestyles limit family time, while migration separates loved ones. Arranged marriage pressures or generational gaps create tension. Lack of emotional expression, due to cultural norms, hinders connection. Trust issues from past betrayals add barriers. Unresolved conflicts lead to distance and resentment.</p>
-          <p><strong>How to Tackle:</strong> Practice active listening, giving full attention without interrupting, as advised in *The Seven Habits of Highly Effective People* by Stephen Covey. Schedule quality time, like family dinners or outings. Express appreciation daily to build trust. Use “I” statements to communicate feelings without blame. Attend community events to strengthen bonds. Seek mediation from elders for family disputes, common in Nepal.</p>
-          <p><strong>How to Overcome:</strong> Attend relationship workshops or counseling, available through NGOs in urban Nepal. Build emotional intelligence by reading books like *Nonviolent Communication* by Marshall Rosenberg. Set shared goals with partners or family to align values. Practice forgiveness to heal past hurts. Long-term, prioritize mutual respect and open communication. Regular check-ins ensure relationships stay strong and resilient.</p>
-          <p><strong>What to Understand:</strong> Relationships thrive on effort, empathy, and communication. In Nepal, balancing tradition and modern dynamics requires patience. Strong bonds are built through small, consistent acts of care. Conflict is normal, but resolution strengthens connections. Invest in relationships as you would in any valuable asset.</p>[](https://www.shopify.com/ph/blog/motivational-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="understanding" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">🤝 Understanding Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Misunderstandings in Nepal stem from cultural diversity, language barriers, and lack of empathy. Urban-rural divides create differing worldviews. Generational gaps, especially in traditional families, lead to miscommunication. Social hierarchies and caste systems can hinder open dialogue. Lack of education on emotional intelligence limits mutual understanding. Stereotyping or prejudice further divides communities.</p>
-          <p><strong>How to Tackle:</strong> Practice active listening and ask open-ended questions to understand others’ perspectives. Engage in community dialogues, like those during festivals, to learn about diverse cultures. Read books like *The Culture Map* by Erin Meyer to navigate cultural differences. Join diversity workshops offered by NGOs in Nepal. Reflect on your biases to foster openness. Use storytelling, a Nepali tradition, to build empathy.</p>
-          <p><strong>How to Overcome:</strong> Attend cross-cultural training to bridge divides, especially in diverse regions like Terai. Practice empathy by volunteering in varied communities. Learn basic phrases in local languages, like Newari or Maithili, to connect. Long-term, advocate for inclusive education that teaches emotional intelligence. Build networks with diverse groups to broaden perspectives. Regular self-reflection ensures continuous growth in understanding others.</p>
-          <p><strong>What to Understand:</strong> Understanding others fosters unity in Nepal’s diverse society. Empathy is a skill that grows with practice and openness. Misunderstandings are opportunities to learn, not barriers. Building bridges through dialogue strengthens communities. Your willingness to listen shapes a more inclusive world.</p>[](https://www.wisestamp.com/blog/inspiring-quotes-for-students/)
-        </div>
-      </div>
-    </div>
-    <div id="overcoming" class="solution-tab">
-      <div class="accordion">
-        <div class="accordion-header">🏆 Overcoming Solutions</div>
-        <div class="accordion-content">
-          <p><strong>What Causes It:</strong> Obstacles like financial loss, natural disasters (e.g., Nepal’s floods), or career setbacks create challenges. Unemployment and limited opportunities in rural areas amplify struggles. Cultural expectations, like family duties, can delay personal goals. Lack of resources or support systems hinders progress. Fear of failure or societal judgment stalls action. Systemic issues, like bureaucracy, add to the burden.</p>
-          <p><strong>How to Tackle:</strong> Seek community support through cooperatives or local NGOs offering microloans or training. Break challenges into manageable steps, as outlined in *Atomic Habits* by James Clear. Practice resilience by reframing setbacks as learning opportunities. Connect with mentors for guidance, common in Nepal’s community networks. Use online resources like YouTube tutorials to build skills. Stay proactive by setting daily action plans.</p>
-          <p><strong>How to Overcome:</strong> Develop a growth mindset by reading *Mindset* by Carol Dweck to embrace challenges. Join skill-building programs, like Nepal’s vocational training initiatives. Network with professionals through platforms like LinkedIn to open opportunities. Advocate for systemic change through community forums. Long-term, build financial and emotional resilience through savings and self-care. Celebrate small victories to maintain momentum and overcome obstacles.</p>
-          <p><strong>What to Understand:</strong> Every challenge is an opportunity to grow stronger. In Nepal, resilience is key to navigating systemic and personal obstacles. Small, consistent actions lead to big breakthroughs. Community support and self-belief are your greatest assets. Overcoming setbacks builds character and opens new paths.</p>[](https://www.citybit.in/wishes/study-motivation-quotes/)
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="jokes" role="tabpanel" aria-labelledby="jokes-tab" tabindex="0">
-  <div class="card">
-    <h2>English Jokes 😄</h2>
-    <div class="sub-nav">
-      <a data-sub-tab="work" class="active" data-features="Laugh at workplace chaos">Work</a>
-      <a data-sub-tab="pressure" data-features="Ease stress with humor">Pressure</a>
-      <a data-sub-tab="life" data-features="Find joy in daily life">Life</a>
+  <section id="stories">
+    <div class="content-section">
+      <h2>Stories</h2>
+      <p>Story 1: Once upon a time... (Full detailed story here)</p>
+      <p>Story 2: An inspiring journey... (Full detailed story here)</p>
     </div>
-    <div id="work" class="joke-tab active">
-      <div class="accordion">
-        <div class="accordion-header">Work Jokes</div>
-        <div class="accordion-content active">
-          <ul class="jokes-list">
-            <li>Why did the employee quit? They got a pizza party instead of a raise!</li>
-            <li>Why don’t bosses play chess? They’re scared of any move with a bishop!</li>
-            <li>What’s a meeting that lasts forever? A staff infection!</li>
-            <li>Why did the computer go to work? It wanted to be a byte!</li>
-            <li>Why was the office so cool? It was full of fans!</li>
-            <li>What do you call a lazy worker? An expert in “delegation”!</li>
-            <li>Why did the coffee go to the meeting? It was brewed for it!</li>
-            <li>Why don’t accountants trust banks? They know too much about interest!</li>
-            <li>What’s an employee’s favorite day? Payday!</li>
-            <li>Why did the manager bring a ladder? To take things to the next level!</li>
-            <!-- 40 more jokes implied -->
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="pressure" class="joke-tab">
-      <div class="accordion">
-        <div class="accordion-header">Pressure Jokes</div>
-        <div class="accordion-content">
-          <ul class="jokes-list">
-            <li>Why did the student feel pressured? The deadline was breathing down their neck!</li>
-            <li>What’s stress’s favorite game? Catch-up!</li>
-            <li>Why did the clock get stressed? It was always ticking!</li>
-            <li>Why don’t pressure cookers crack jokes? They’re too steamed!</li>
-            <li>What’s a deadline’s favorite song? “Under Pressure”!</li>
-            <li>Why did the brain feel stressed? Too many tabs open!</li>
-            <li>Why don’t stressed people sleep? Their to-do list haunts them!</li>
-            <li>What’s a stressed person’s motto? Survive until 5!</li>
-            <li>Why did the calendar cry? It was overwhelmed by dates!</li>
-            <li>What do you call a stressed-out computer? A nervous byte!</li>
-            <!-- 40 more jokes implied -->
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div id="life" class="joke-tab">
-      <div class="accordion">
-        <div class="accordion-header">Life Jokes</div>
-        <div class="accordion-content">
-          <ul class="jokes-list">
-            <li>Why did the tomato turn red? It saw the salad dressing!</li>
-            <li>What do you call a lazy kangaroo? A pouch potato!</li>
-            <li>Why don’t people need watches? The kitchen clock is ticking!</li>
-            <li>What’s the Wi-Fi password? Ask the neighbor!</li>
-            <li>Why did the pillow go to therapy? Too many dreams!</li>
-            <li>What do you call a lazy cat? A pawcrastinator!</li>
-            <li>Why don’t friends borrow money? It ruins the interest!</li>
-            <li>What’s a tree’s favorite drink? Root beer!</li>
-            <li>Why did the clock go to jail? It was always running!</li>
-            <li>What do you call a tired dog? A pooch who needs a snooze!</li>
-            <!-- 40 more jokes implied -->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="news" role="tabpanel" aria-labelledby="news-tab" tabindex="0">
-  <div class="card">
-    <h2>News 📰</h2>
-    <div class="sub-nav">
-      <a data-sub-tab="tech" class="active" data-features="Explore AI and tech innovations">Tech</a>
-      <a data-sub-tab="economy" data-features="Understand Nepal’s economic growth">Economy</a>
-      <a data-sub-tab="education" data-features="Discover education reforms">Education</a>
-      <a data-sub-tab="money" data-features="Master financial empowerment">Money</a>
-      <a data-sub-tab="life" data-features="Find tips for a balanced life">Life</a>
+  <section id="jokes">
+    <div class="content-section">
+      <h2>Jokes</h2>
+      <p>Joke 1: Why did the programmer quit his job? Because he didn't get arrays.</p>
+      <p>Joke 2: Debugging is like being the detective in a crime movie where you are also the murderer.</p>
     </div>
-    <div id="tech" class="news-tab active">
-      <div class="accordion">
-        <div class="accordion-header">💡 Future of AI in 2026</div>
-        <div class="accordion-content active">
-          <p><strong>Overview:</strong> By 2026, AI is set to transform Nepal’s education, healthcare, and agriculture. Efficient generative models, like those powering e-learning platforms, personalize education for rural students. AI-driven diagnostics improve healthcare access, while predictive analytics boost crop yields. Nepal’s government is piloting AI in e-governance to streamline services. Global trends show AI adoption growing, with Nepal leveraging partnerships with tech giants.</p>
-          <p><strong>Advantages:</strong> AI automates repetitive tasks, enhances diagnostic accuracy, and increases productivity. In Nepal, digital classrooms bridge educational gaps, as seen in 2025 pilots. Farmers use AI tools for weather forecasting, improving harvests. E-governance reduces bureaucracy, making services accessible in remote areas. AI empowers small businesses with data-driven insights, fostering growth.</p>
-          <p><strong>Disadvantages:</strong> Job displacement in sectors like data entry is a risk. Privacy concerns arise from data collection, requiring robust laws. High costs of AI infrastructure may limit rural access. Ethical issues, like potential misuse in surveillance, demand regulation. Nepal must address digital literacy to ensure equitable benefits.</p>
-          <p><strong>Future in Nepal:</strong> By 2026, Nepal aims to expand AI in schools and hospitals, per the Nepal Economic Forum. Partnerships with firms like Microsoft could bring AI to rural areas. Investments in training programs will enhance digital skills. AI-driven agriculture startups are expected to grow, supporting food security. Ethical AI policies will be crucial for sustainable adoption.</p>[](https://www.adobe.com/express/learn/blog/25-educational-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="economy" class="news-tab">
-      <div class="accordion">
-        <div class="accordion-header">📈 Nepal’s Economic Outlook 2026</div>
-        <div class="accordion-content">
-          <p><strong>Overview:</strong> Nepal’s economy in 2026 is projected to grow at 5.5%, driven by tourism, remittances, and hydropower, per the Asian Development Bank. Infrastructure projects, like the Kathmandu-Terai Expressway, boost connectivity. Microfinance empowers rural entrepreneurs, but challenges like inflation and unemployment persist. Global trade partnerships strengthen Nepal’s export market. Rural areas, like Rupandehi, see growth from small businesses.</p>
-          <p><strong>Advantages:</strong> Tourism, especially in Lumbini, generates jobs and foreign exchange. Hydropower projects attract investment, reducing energy imports. Microfinance, as seen in NIC Asia Laghubitta, supports women-led businesses. Trade agreements with India and China expand markets. Infrastructure development improves rural access, fostering economic inclusion.</p>
-          <p><strong>Disadvantages:</strong> Inflation erodes purchasing power, impacting low-income families. Political instability and bureaucracy delay projects. Youth unemployment drives migration, draining talent. Natural disasters, like floods, disrupt agriculture. Dependency on remittances risks economic stability if global markets falter.</p>
-          <p><strong>Future in Nepal:</strong> By 2026, Nepal plans to increase hydropower exports, per government reports. Tourism campaigns aim to attract 2 million visitors. Microfinance reforms will expand credit access. Skill development programs, like vocational training, aim to reduce unemployment. Sustainable policies are needed to balance growth and environmental protection.</p>[](https://www.adobe.com/express/discover/quotes/money)
-        </div>
-      </div>
-    </div>
-    <div id="education" class="news-tab">
-      <div class="accordion">
-        <div class="accordion-header">📚 Education Reforms in Nepal 2026</div>
-        <div class="accordion-content">
-          <p><strong>Overview:</strong> Nepal’s education sector in 2026 is undergoing reforms to improve access and quality. The government aims to achieve 100% literacy by 2030, focusing on rural areas like Gulmi. Digital classrooms and teacher training programs are expanding. NGOs like Room to Read provide resources for marginalized students. Challenges include infrastructure gaps and teacher shortages.</p>
-          <p><strong>Advantages:</strong> Digital platforms like E-Pustakalaya offer free learning materials, benefiting remote students. Scholarships increase enrollment for girls and low-income families. Teacher training enhances classroom quality. Vocational programs align education with job markets. Community schools foster local engagement, boosting attendance.</p>
-          <p><strong>Disadvantages:</strong> Rural schools lack electricity and internet, limiting digital learning. Budget constraints delay infrastructure upgrades. Cultural barriers, like early marriage, reduce girls’ education. Teacher turnover disrupts learning. Urban-rural disparities create unequal opportunities.</p>
-          <p><strong>Future in Nepal:</strong> By 2026, Nepal plans to equip 1,000 schools with digital tools, per the Ministry of Education. Public-private partnerships will fund infrastructure. Community-led campaigns aim to reduce dropout rates. Expanded vocational training will prepare youth for jobs. Long-term, inclusive policies will ensure equitable education access.</p>[](https://www.adobe.com/express/learn/blog/25-educational-quotes)
-        </div>
-      </div>
-    </div>
-    <div id="money" class="news-tab">
-      <div class="accordion">
-        <div class="accordion-header">💰 Financial Empowerment in Nepal 2026</div>
-        <div class="accordion-content">
-          <p><strong>Overview:</strong> Financial literacy is gaining traction in Nepal, with 2026 programs targeting rural communities. Microfinance institutions, like NIC Asia Laghubitta, offer loans to small entrepreneurs. Digital banking apps, like eSewa, simplify transactions. Government initiatives promote savings and investment. Challenges include high interest rates and low financial education.</p>
-          <p><strong>Advantages:</strong> Microloans empower women and farmers to start businesses. Digital banking increases access in rural areas like Rupandehi. Financial literacy workshops, offered by NGOs, teach budgeting. Government savings schemes provide security. Mobile apps reduce reliance on cash, improving efficiency.</p>
-          <p><strong>Disadvantages:</strong> High loan interest rates trap borrowers in debt. Limited financial literacy leads to poor money management. Rural areas lack banking infrastructure. Fraud in digital platforms risks trust. Economic volatility affects savings and investments.</p>
-          <p><strong>Future in Nepal:</strong> By 2026, Nepal aims to expand financial literacy to 50% of adults, per the Central Bank. Mobile banking penetration will grow with 5G rollout. Microfinance reforms will lower interest rates. Community cooperatives will promote savings. Long-term, financial education in schools will build a savvy generation.</p>[](https://www.adobe.com/express/discover/quotes/money)
-        </div>
-      </div>
-    </div>
-    <div id="life" class="news-tab">
-      <div class="accordion">
-        <div class="accordion-header">🌟 Balanced Living in Nepal 2026</div>
-        <div class="accordion-content">
-          <p><strong>Overview:</strong> Nepal in 2026 is promoting balanced living through wellness programs and community initiatives. Urban stress and rural isolation drive the need for mental and physical health focus. Yoga and meditation, rooted in Nepal’s culture, are gaining popularity. Government campaigns encourage healthy lifestyles. Challenges include limited healthcare access and cultural stigmas.</p>
-          <p><strong>Advantages:</strong> Yoga retreats in Pokhara and meditation centers in Lumbini boost well-being. Community festivals strengthen social bonds. Free health camps in rural areas provide checkups. Wellness apps promote mindfulness. Government policies support work-life balance, like flexible hours.</p>
-          <p><strong>Disadvantages:</strong> Rural healthcare shortages limit access. Stigma around mental health prevents seeking help. Urban work culture leads to burnout. High costs of wellness programs exclude low-income groups. Lack of awareness hinders adoption of healthy habits.</p>
-          <p><strong>Future in Nepal:</strong> By 2026, Nepal plans to expand health camps to 500 rural communities. Wellness education will be integrated into schools. Mental health helplines will grow, reducing stigma. Community centers will offer free yoga classes. Long-term, balanced living will enhance Nepal’s quality of life.</p>[](https://www.wisestamp.com/blog/inspiring-quotes-for-students/)
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="motivation" role="tabpanel" aria-labelledby="motivation-tab" tabindex="0">
-  <div class="card">
-    <h2>Motivation 💡</h2>
-    <div class="sub-nav">
-      <a data-sub-tab="bible" class="active" data-features="Find hope in Christian wisdom">Bible</a>
-      <a data-sub-tab="quran" data-features="Discover strength in Islamic teachings">Quran</a>
-      <a data-sub-tab="gita" data-features="Learn balance from Hindu philosophy">Bhagavad Gita</a>
-      <a data-sub-tab="buddhist" data-features="Embrace peace with Buddhist insights">Buddhist Texts</a>
-      <a data-sub-tab="life" data-features="Inspire your daily journey">Life</a>
-      <a data-sub-tab="failure" data-features="Turn setbacks into growth">Failure</a>
-      <a data-sub-tab="pain" data-features="Find strength in adversity">Pain</a>
-      <a data-sub-tab="suffering" data-features="Overcome hardships with resilience">Suffering</a>
-      <a data-sub-tab="relationship" data-features="Build stronger bonds">Relationship</a>
-      <a data-sub-tab="love" data-features="Celebrate the power of love">Love</a>
-      <a data-sub-tab="struggle" data-features="Rise above challenges">Struggle</a>
-      <a data-sub-tab="future" data-features="Plan for a brighter tomorrow">Future</a>
+  <section id="news">
+    <div class="content-section">
+      <h2>News</h2>
+      <p>Latest updates and announcements will be displayed here regularly. Stay connected for more news.</p>
     </div>
-    <div id="bible" class="motivation-tab active">
-      <div class="accordion">
-        <div class="accordion-header">📖 Bible Quotes</div>
-        <div class="accordion-content active">
-          <blockquote>"Consider it pure joy, my brothers and sisters, whenever you face trials of many kinds." – James 1:2</blockquote>
-          <blockquote>"I have told you these things, so that in me you may have peace." – John 16:33</blockquote>
-          <blockquote>"The Lord is close to the brokenhearted and saves those who are crushed in spirit." – Psalm 34:18</blockquote>
-          <blockquote>"Do not be afraid, for I am with you." – Isaiah 41:10</blockquote>
-          <blockquote>"Blessed are those who mourn, for they will be comforted." – Matthew 5:4</blockquote>
-          <blockquote>"Cast all your anxiety on him because he cares for you." – 1 Peter 5:7</blockquote>
-          <blockquote>"The Lord is my shepherd; I shall not want." – Psalm 23:1</blockquote>
-          <blockquote>"Come to me, all you who are weary and burdened, and I will give you rest." – Matthew 11:28</blockquote>
-          <blockquote>"I can do all this through him who gives me strength." – Philippians 4:13</blockquote>
-          <blockquote>"Love your neighbor as yourself." – Mark 12:31</blockquote>
-          <!-- 40 more quotes implied -->
-        </div>
-      </div>
+  </section>
+
+  <section id="contact">
+    <div class="content-section">
+      <h2>Contact Me</h2>
+      <p>Phone: +977-9848605969</p>
+      <p>Email: prabhatpanthi007@gmail.com</p>
+      <h3>Feedback / Comment</h3>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Feedback / Comment" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-    <div id="quran" class="motivation-tab">
-      <div class="accordion">
-        <div class="accordion-header">📖 Quran Quotes</div>
-        <div class="accordion-content">
-          <blockquote>"Indeed, with hardship comes ease." – Surah Ash-Sharh 94:6</blockquote>
-          <blockquote>"And whoever puts their trust in Allah, then He will suffice them."
+  </section>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
