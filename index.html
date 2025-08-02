@@ -98,6 +98,24 @@
       nav { gap: 15px; padding: 15px 0; }
       section { margin: 120px 15px 50px 15px; }
     }
+    /* Added styles for photos gallery */
+    #photos div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    #photos img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    #photos img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -135,17 +153,21 @@
   <h2>About Me</h2>
   <img src="brp.jpg" alt="Prabhat Panthi Full Photo" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 15px;" />
   <p><strong>Born in:</strong> Gulmi Madane 7 Gaaupalika, Nepal</p>
-  <p>I grew up in Bhairahawa, completed my schooling and +2 education, then pursued my bachelor's at Oxford University. Currently, I work as a Financial Analyst, blending finance with strategic decision-making.</p>
-  <p>This website shares my journey, photos, videos, stories, jokes, news, and a special motivation section combining holy book wisdom with Buddha's teachings.</p>
+  <p>I grew up in Bhairahawa, where I spent my childhood and formative years surrounded by rich culture and natural beauty. After completing my schooling and +2 education, I was fortunate to pursue my bachelor's degree at Oxford University, one of the world’s leading academic institutions.</p>
+  <p>My academic journey deepened my passion for finance and strategic thinking. I have dedicated my career as a Financial Analyst, focusing on helping organizations make data-driven decisions to foster growth and sustainability.</p>
+  <p>Besides my professional life, I am deeply interested in philosophy, spirituality, and personal development. This website is my way of sharing stories, insights, and experiences that have shaped who I am today.</p>
+  <p>I believe in continuous learning, humility, and the power of community. Feel free to explore the different sections, and I hope you find something meaningful here.</p>
 </section>
 
 <section id="photos">
   <h2>Photos</h2>
   <div>
-    <img src="images/photo.jpg" alt="Photo 1" style="width: 100%; max-width: 300px; margin: 5px; border-radius: 10px;" />
-    <img src="images/photop.jpg" alt="Photo 2" style="width: 100%; max-width: 300px; margin: 5px; border-radius: 10px;" />
-    <img src="images/photopp.jpg" alt="Photo 3" style="width: 100%; max-width: 300px; margin: 5px; border-radius: 10px;" />
-    <img src="images/photoppp.jpg" alt="Photo 4" style="width: 100%; max-width: 300px; margin: 5px; border-radius: 10px;" />
+    <img src="images/photo1.jpg" alt="At a conference" />
+    <img src="images/photo2.jpg" alt="Traveling in Nepal" />
+    <img src="images/photo3.jpg" alt="With friends" />
+    <img src="images/photo4.jpg" alt="At work" />
+    <img src="images/photo5.jpg" alt="Nature walk" />
+    <img src="images/photo6.jpg" alt="Speaking at an event" />
   </div>
 </section>
 
@@ -158,11 +180,11 @@
   <h2>Stories</h2>
   <article>
     <h3>The Inspiring Journey of Chester</h3>
-    <p>Chester was born into humble beginnings... (keep full story here)</p>
+    <p>Chester was born into humble beginnings in a small village surrounded by mountains. Despite many hardships, his determination to succeed was unwavering. He pursued education relentlessly, overcoming obstacles to eventually become a community leader and advocate for youth empowerment. Chester’s story reminds us that resilience and hope can transform lives no matter where you start.</p>
   </article>
   <article>
     <h3>Jack Ma: From Teacher to Global Icon</h3>
-    <p>Jack Ma, the founder of Alibaba Group... (keep full story here)</p>
+    <p>Jack Ma, the founder of Alibaba Group, started as an English teacher in China. Facing repeated rejections and failures, he persisted with vision and innovation. His journey from humble origins to becoming a global e-commerce leader inspires entrepreneurs worldwide. Jack Ma teaches us the importance of persistence, innovation, and believing in your vision against all odds.</p>
   </article>
 </section>
 
