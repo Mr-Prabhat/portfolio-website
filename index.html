@@ -585,9 +585,16 @@
   </div>
 </section>
 
+<section id="motivation">
+  <h2>📜 50-50 Motivation Quotes</h2>
+  <div id="motivation-container">
+    Loading motivation quotes...
+  </div>
+</section>
+
 <script>
   // Load motivation.html content dynamically into #motivation-container
-  fetch('motivation/index.html')
+  fetch('https://prabhatpanthi.github.io/website/motivation.html')  // <-- Correct this URL
     .then(response => {
       if (!response.ok) throw new Error('Failed to load motivation content');
       return response.text();
@@ -600,7 +607,6 @@
       console.error(error);
     });
 </script>
-
 
   <section id="contact">
   <h2>📞 Contact Me</h2>
