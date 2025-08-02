@@ -1,0 +1,46 @@
+<div class="tabs">
+  <button class="tab-button active" data-tab="buddha">Buddha</button>
+  <button class="tab-button" data-tab="quran">Quran</button>
+  <button class="tab-button" data-tab="gita">Gita</button>
+  <button class="tab-button" data-tab="bible">Bible</button>
+</div>
+
+<div class="tab-content active" id="buddha">
+  <!-- 50 Buddha Quotes -->
+  <p>1. The mind is everything. What you think you become.</p>
+  <!-- Add all 50 Buddha Quotes here -->
+</div>
+
+<div class="tab-content" id="quran">
+  <!-- 50 Quran Quotes -->
+  <p>1. So verily, with hardship, there is relief.</p>
+  <!-- Add all 50 Quran Quotes here -->
+</div>
+
+<div class="tab-content" id="gita">
+  <!-- 50 Gita Quotes -->
+  <p>1. You have the right to perform your duty but not the fruits of your actions.</p>
+  <!-- Add all 50 Gita Quotes here -->
+</div>
+
+<div class="tab-content" id="bible">
+  <!-- 50 Bible Quotes -->
+  <p>1. I can do all things through Christ who strengthens me.</p>
+  <!-- Add all 50 Bible Quotes here -->
+</div>
+
+<script>
+// Tab Switching Logic
+const buttons = document.querySelectorAll('.tab-button');
+const contents = document.querySelectorAll('.tab-content');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    buttons.forEach(btn => btn.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+
+    button.classList.add('active');
+    document.getElementById(button.dataset.tab).classList.add('active');
+  });
+});
+</script>
