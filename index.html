@@ -569,8 +569,16 @@
 </section>
 
 
+<section id="motivation">
+  <h2>📜 50-50 Motivation Quotes</h2>
+  <div id="motivation-container">
+    Loading motivation quotes...
+  </div>
+</section>
+
 <script>
-  fetch('/motivation/index.html')  <!-- use relative path instead of full URL -->
+  // Dynamically load motivation quotes from motivation/quotes.html
+  fetch('motivation/quotes.html')
     .then(response => {
       if (!response.ok) throw new Error('Failed to load motivation content');
       return response.text();
