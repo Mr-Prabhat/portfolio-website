@@ -561,49 +561,119 @@
   }
 </style>
 
-<section id="motivation" style="max-width: 800px; margin: 30px auto; display: none;">
-  <button onclick="showHome()" 
-          style="margin-bottom: 15px; padding: 10px 20px; border-radius: 30px; border: 2px solid #4a90e2; background: #fff; color: #4a90e2; font-weight: 600; cursor: pointer;">
-    ← Back to Home
-  </button>
-  <iframe src="motivation/quotes.html" 
-          style="width: 100%; height: 600px; border: none; border-radius: 6px;">
-  </iframe>
+<!-- Motivation Section Starts -->
+<section id="motivation" style="max-width: 800px; margin: 30px auto;">
+  <h2>🧘 Motivation Quotes</h2>
+  
+  <div class="tabs" style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <button class="tab-button active" data-tab="buddha">Buddha</button>
+    <button class="tab-button" data-tab="quran">Quran</button>
+    <button class="tab-button" data-tab="gita">Gita</button>
+    <button class="tab-button" data-tab="bible">Bible</button>
+  </div>
+
+  <div class="tab-content active" id="buddha">
+    <ul>
+      <li>Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.</li>
+      <li>Peace comes from within. Do not seek it without.</li>
+      <li>The mind is everything. What you think you become.</li>
+      <li>All that we are is the result of what we have thought.</li>
+      <li>No one saves us but ourselves. No one can and no one may. We ourselves must walk the path.</li>
+      <li>Better than a thousand hollow words, is one word that brings peace.</li>
+      <li>However many holy words you read, what good will they do you if you do not act on upon them?</li>
+      <li>Three things cannot be long hidden: the sun, the moon, and the truth.</li>
+      <li>Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.</li>
+      <li>Every morning we are born again. What we do today is what matters most.</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="quran">
+    <ul>
+      <li>Indeed, with hardship comes ease. (94:6)</li>
+      <li>So remember Me; I will remember you. (2:152)</li>
+      <li>Allah does not burden a soul beyond that it can bear. (2:286)</li>
+      <li>And He found you lost and guided you. (93:7)</li>
+      <li>And whoever puts their trust in Allah, then He will suffice him. (65:3)</li>
+      <li>Indeed, Allah is with the patient. (2:153)</li>
+      <li>So verily, with every difficulty, there is relief. (94:5)</li>
+      <li>Call upon Me; I will respond to you. (40:60)</li>
+      <li>Indeed, Allah is ever Knowing and Wise. (4:26)</li>
+      <li>And whoever relies upon Allah – then He is sufficient for him. (65:3)</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="gita">
+    <ul>
+      <li>Change is the law of the universe. You can be a millionaire, or a pauper in an instant.</li>
+      <li>Man is made by his belief. As he believes, so he is.</li>
+      <li>There is nothing lost or wasted in this life.</li>
+      <li>You have the right to work, but never to the fruit of work.</li>
+      <li>A person can rise through the efforts of his own mind; or draw himself down.</li>
+      <li>Perform your obligatory duty, because action is indeed better than inaction.</li>
+      <li>The soul is neither born, and nor does it die.</li>
+      <li>For one who has conquered his mind, a mind is the best of friends; but for one who has failed to do so, a mind is the greatest enemy.</li>
+      <li>There is neither this world, nor the world beyond, nor happiness for the one who doubts.</li>
+      <li>Set thy heart upon thy work, but never on its reward.</li>
+    </ul>
+  </div>
+
+  <div class="tab-content" id="bible">
+    <ul>
+      <li>I can do all things through Christ who strengthens me. (Philippians 4:13)</li>
+      <li>For I know the plans I have for you. (Jeremiah 29:11)</li>
+      <li>Trust in the Lord with all your heart. (Proverbs 3:5)</li>
+      <li>Be strong and courageous. (Joshua 1:9)</li>
+      <li>The Lord is my shepherd; I shall not want. (Psalm 23:1)</li>
+      <li>With God all things are possible. (Matthew 19:26)</li>
+      <li>Love is patient, love is kind. (1 Corinthians 13:4)</li>
+      <li>Cast all your anxiety on Him because He cares for you. (1 Peter 5:7)</li>
+      <li>Be still, and know that I am God. (Psalm 46:10)</li>
+      <li>Ask and it will be given to you; seek and you will find. (Matthew 7:7)</li>
+    </ul>
+  </div>
 </section>
-
-<nav style="text-align: center; margin-bottom: 30px;">
-  <button id="motivation-btn" onclick="showMotivation()" 
-          style="cursor: pointer; font-weight: 600; font-size: 18px; border: 2px solid #4a90e2; padding: 10px 20px; border-radius: 30px; color: #4a90e2; background: #fff; transition: 0.3s;">
-    Motivation Quotes
-  </button>
-</nav>
-
-<main id="home-content" style="max-width: 800px; margin: 0 auto;">
-  <h2>About This Website</h2>
-  <p>This is the homepage where you can find info about me and navigate to different sections, including the Motivation Quotes page.</p>
-  <p>Click the button above to read inspiring 50-50 motivation quotes from Buddha, Quran, Gita, and Bible.</p>
-</main>
+<!-- Motivation Section Ends -->
 
 <script>
-  const motivationSection = document.getElementById('motivation');
-  const homeContent = document.getElementById('home-content');
-  const motivationBtn = document.getElementById('motivation-btn');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
 
-  function showMotivation() {
-    homeContent.style.display = 'none';
-    motivationSection.style.display = 'block';
-    motivationBtn.style.display = 'none';
-  }
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
 
-  function showHome() {
-    motivationSection.style.display = 'none';
-    homeContent.style.display = 'block';
-    motivationBtn.style.display = 'inline-block';
-  }
-
-  // Show home on page load
-  showHome();
+      // Add active class to clicked button and corresponding content
+      button.classList.add('active');
+      document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+    });
+  });
 </script>
+
+<style>
+  .tab-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .tab-button.active {
+    background-color: #4a90e2;
+    color: #fff;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+</style>
+
 
 
   <section id="contact">
