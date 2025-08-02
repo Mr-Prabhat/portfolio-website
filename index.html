@@ -569,28 +569,67 @@
 </section>
 
 
-<section id="motivation">
-  <h2>📜 50-50 Motivation Quotes</h2>
-  <div id="motivation-container">
-    Loading motivation quotes...
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prabhat Panthi | Home</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      margin: 0; padding: 20px;
+      color: #333;
+    }
+    header {
+      background: #4a90e2;
+      padding: 15px 30px;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #4a90e2;
+      font-weight: 600;
+      font-size: 18px;
+      border: 2px solid #4a90e2;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #4a90e2;
+      color: white;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
 
-<script>
-  // Dynamically load motivation quotes from motivation/quotes.html
-  fetch('motivation/quotes.html')
-    .then(response => {
-      if (!response.ok) throw new Error('Failed to load motivation content');
-      return response.text();
-    })
-    .then(data => {
-      document.getElementById('motivation-container').innerHTML = data;
-    })
-    .catch(error => {
-      document.getElementById('motivation-container').innerHTML = 'Sorry, failed to load motivation quotes.';
-      console.error(error);
-    });
-</script>
+<header>
+  <h1>Welcome to Prabhat Panthi's Website</h1>
+</header>
+
+<nav style="text-align:center; margin-bottom: 30px;">
+  <a href="motivation/quotes.html">Motivation Quotes</a>
+</nav>
+
+<main>
+  <h2>About This Website</h2>
+  <p>This is the homepage where you can find info about me and navigate to different sections, including the Motivation Quotes page.</p>
+  <p>Click the button above to read inspiring 50-50 motivation quotes from Buddha, Quran, Gita, and Bible.</p>
+</main>
+
+</body>
+</html>
 
 
 
