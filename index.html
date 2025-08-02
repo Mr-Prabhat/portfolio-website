@@ -578,15 +578,8 @@
 </section>
 
 
-<section id="motivation">
-  <h2>📜 50-50 Motivation Quotes</h2>
-  <div id="motivation-container">
-    Loading motivation quotes...
-  </div>
-</section>
-
 <script>
-  fetch('https://prabhatpanthi.github.io/website/motivation/index.html')
+  fetch('/motivation/index.html')  <!-- use relative path instead of full URL -->
     .then(response => {
       if (!response.ok) throw new Error('Failed to load motivation content');
       return response.text();
@@ -599,6 +592,7 @@
       console.error(error);
     });
 </script>
+
 
 
   <section id="contact">
