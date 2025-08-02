@@ -575,19 +575,115 @@
     <p class="searchable">News updates here...</p>
   </section>
 
-  <section id="motivation">
-    <h2>Motivation</h2>
-    <div class="tabs">
-      <button onclick="showMotivationTab('quran')">Quran</button>
-      <button onclick="showMotivationTab('bible')">Bible</button>
-      <button onclick="showMotivationTab('gita')">Gita</button>
-      <button onclick="showMotivationTab('buddha')">Buddha</button>
-    </div>
-    <div id="quran" class="tab-content active">Quran Quotes...</div>
-    <div id="bible" class="tab-content">Bible Quotes...</div>
-    <div id="gita" class="tab-content">Gita Quotes...</div>
-    <div id="buddha" class="tab-content">Buddha Quotes...</div>
-  </section>
+ <section id="motivation">
+  <h2>📜 50-50 Motivation Quotes</h2>
+
+  <div class="motivation-tabs">
+    <button onclick="showMotivationTab('buddha')" class="active">Buddha 🧘‍♂️</button>
+    <button onclick="showMotivationTab('quran')">Quran 📖</button>
+    <button onclick="showMotivationTab('gita')">Gita 📜</button>
+    <button onclick="showMotivationTab('bible')">Bible ✝️</button>
+  </div>
+
+  <div id="buddha" class="motivation-content active" style="margin-top:20px;">
+    <p><strong>1.</strong> "Peace comes from within. Do not seek it without." 🧘‍♂️</p>
+    <p><strong>2.</strong> "Pain is certain, suffering is optional." 🌿</p>
+    <p><strong>3.</strong> "No one saves us but ourselves. No one can and no one may." 🌅</p>
+    <p><strong>4.</strong> "Success depends upon effort." 💪</p>
+    <p><strong>5.</strong> "The mind is everything. What you think you become." 🧠</p>
+    <p><strong>6.</strong> "You only lose what you cling to." 🌬️</p>
+    <p><strong>7.</strong> "Thousands of candles can be lighted from a single candle." 🕯️</p>
+    <p><strong>8.</strong> "Do not dwell in the past, do not dream of the future." ⏳</p>
+    <p><strong>9.</strong> "Happiness does not depend on what you have or who you are." 😊</p>
+    <p><strong>10.</strong> "To understand everything is to forgive everything." 💖</p>
+    <!-- continue numbering up to 50 -->
+  </div>
+
+  <div id="quran" class="motivation-content" style="margin-top:20px; display:none;">
+    <p><strong>1.</strong> "Indeed, with hardship [will be] ease." (94:6) 🌙</p>
+    <p><strong>2.</strong> "And whoever fears Allah – He will make for him a way out." (65:2) 🌟</p>
+    <p><strong>3.</strong> "So be patient. Indeed, the promise of Allah is truth." (30:60) ⏳</p>
+    <p><strong>4.</strong> "Do good; indeed, Allah loves the doers of good." (2:195) 🤲</p>
+    <p><strong>5.</strong> "Verily, with every difficulty there is relief." (94:5) 🌈</p>
+    <p><strong>6.</strong> "Your Lord has not forsaken you." (93:3) 💪</p>
+    <p><strong>7.</strong> "Allah does not burden a soul beyond that it can bear." (2:286) 🛡️</p>
+    <p><strong>8.</strong> "Call upon Me; I will respond to you." (40:60) 📞</p>
+    <p><strong>9.</strong> "Indeed, Allah is with the patient." (2:153) 🌿</p>
+    <p><strong>10.</strong> "Whoever puts all his trust in Allah, He will suffice him." (65:3) ✨</p>
+    <!-- continue numbering up to 50 -->
+  </div>
+
+  <div id="gita" class="motivation-content" style="margin-top:20px; display:none;">
+    <p><strong>1.</strong> "You have the right to work, but never to the fruit of work." ⚖️</p>
+    <p><strong>2.</strong> "Pain is the result of desire and attachment." 🔥</p>
+    <p><strong>3.</strong> "Be steadfast in yoga, O Arjuna." 🕉️</p>
+    <p><strong>4.</strong> "When meditation is mastered, the mind is unwavering." 🕯️</p>
+    <p><strong>5.</strong> "The soul is neither born, and nor does it die." 🌱</p>
+    <p><strong>6.</strong> "Perform your prescribed duties, for action is better than inaction." ⚡</p>
+    <p><strong>7.</strong> "The wise see knowledge and action as one." 🎯</p>
+    <p><strong>8.</strong> "Control the mind, and you control your world." 🧘‍♀️</p>
+    <p><strong>9.</strong> "Fearlessness comes from knowledge." 🦁</p>
+    <p><strong>10.</strong> "Attachment leads to bondage; detachment brings freedom." 🔓</p>
+    <!-- continue numbering up to 50 -->
+  </div>
+
+  <div id="bible" class="motivation-content" style="margin-top:20px; display:none;">
+    <p><strong>1.</strong> "I can do all things through Christ who strengthens me." (Phil 4:13) ✝️</p>
+    <p><strong>2.</strong> "The Lord is close to the brokenhearted." (Psalm 34:18) 💔</p>
+    <p><strong>3.</strong> "Trust in the Lord with all your heart." (Prov 3:5) 🙏</p>
+    <p><strong>4.</strong> "For I know the plans I have for you." (Jer 29:11) 🌈</p>
+    <p><strong>5.</strong> "Be strong and courageous." (Josh 1:9) 🦁</p>
+    <p><strong>6.</strong> "Cast all your anxiety on Him." (1 Peter 5:7) 🕊️</p>
+    <p><strong>7.</strong> "God is our refuge and strength." (Psalm 46:1) 🛡️</p>
+    <p><strong>8.</strong> "Do not be anxious about anything." (Phil 4:6) 🌿</p>
+    <p><strong>9.</strong> "Love never fails." (1 Cor 13:8) ❤️</p>
+    <p><strong>10.</strong> "Walk by faith, not by sight." (2 Cor 5:7) 🚶‍♂️</p>
+    <!-- continue numbering up to 50 -->
+  </div>
+</section>
+
+<script>
+  function showMotivationTab(tabName) {
+    const tabs = document.querySelectorAll('#motivation .motivation-content');
+    const buttons = document.querySelectorAll('#motivation .motivation-tabs button');
+
+    tabs.forEach(tab => {
+      tab.style.display = (tab.id === tabName) ? 'block' : 'none';
+    });
+
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(tabName));
+    });
+  }
+</script>
+
+<style>
+  #motivation .motivation-tabs button.active {
+    background-color: #4a90e2;
+    color: white;
+    box-shadow: 0 4px 12px #4a90e2cc;
+  }
+  #motivation .motivation-tabs button {
+    padding: 8px 16px;
+    background: #b0c4de;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 600;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  #motivation .motivation-tabs button:hover {
+    background-color: #4a90e2;
+    color: white;
+  }
+  #motivation p {
+    margin-bottom: 18px;
+    font-size: 1.1em;
+    line-height: 1.4;
+  }
+</style>
 
   <section id="contact">
     <h2>Contact</h2>
