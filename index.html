@@ -561,75 +561,45 @@
   }
 </style>
 
- <section id="news-link">
-  <h2>📢 News</h2>
-  <a href="news/" style="padding:10px 20px; background:#4a90e2; color:#fff; border-radius:5px; text-decoration:none; font-weight:bold;">
-    Visit News Page
-  </a>
+<section id="motivation" style="max-width: 800px; margin: 30px auto;">
+  <button onclick="showHome()" style="margin-bottom: 15px; padding: 10px 20px; border-radius: 30px; border: 2px solid #4a90e2; background: #fff; color: #4a90e2; font-weight: 600; cursor: pointer;">
+    ← Back to Home
+  </button>
+  <iframe src="motivation/quotes.html" style="width:100%; height:600px; border:none; border-radius:6px;"></iframe>
 </section>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prabhat Panthi | Home</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f0f2f5;
-      margin: 0; padding: 20px;
-      color: #333;
-    }
-    header {
-      background: #4a90e2;
-      padding: 15px 30px;
-      color: white;
-      text-align: center;
-      border-radius: 6px;
-      margin-bottom: 30px;
-    }
-    nav a {
-      text-decoration: none;
-      color: #4a90e2;
-      font-weight: 600;
-      font-size: 18px;
-      border: 2px solid #4a90e2;
-      padding: 10px 20px;
-      border-radius: 30px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    nav a:hover {
-      background-color: #4a90e2;
-      color: white;
-    }
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Welcome to Prabhat Panthi's Website</h1>
-</header>
-
 <nav style="text-align:center; margin-bottom: 30px;">
-  <a href="motivation/quotes.html">Motivation Quotes</a>
+  <button id="motivation-btn" onclick="showMotivation()" style="cursor:pointer; font-weight:600; font-size:18px; border:2px solid #4a90e2; padding:10px 20px; border-radius:30px; color:#4a90e2; background:#fff; transition:0.3s;">
+    Motivation Quotes
+  </button>
 </nav>
 
-<main>
+<main id="home-content" style="max-width: 800px; margin: 0 auto;">
   <h2>About This Website</h2>
   <p>This is the homepage where you can find info about me and navigate to different sections, including the Motivation Quotes page.</p>
   <p>Click the button above to read inspiring 50-50 motivation quotes from Buddha, Quran, Gita, and Bible.</p>
 </main>
 
-</body>
-</html>
+<script>
+  const motivationSection = document.getElementById('motivation');
+  const homeContent = document.getElementById('home-content');
+  const motivationBtn = document.getElementById('motivation-btn');
+
+  // Initially hide motivation section
+  motivationSection.style.display = 'none';
+
+  function showMotivation() {
+    homeContent.style.display = 'none';
+    motivationSection.style.display = 'block';
+    motivationBtn.style.display = 'none';
+  }
+  function showHome() {
+    motivationSection.style.display = 'none';
+    homeContent.style.display = 'block';
+    motivationBtn.style.display = 'inline-block';
+  }
+</script>
+
 
 
 
