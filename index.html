@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
+  <meta name="description" content="Prabhat Panthi official site with photos, stories, motivational quotes, videos, jokes, news, and contact info" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,6 +14,9 @@
       color: #222;
       line-height: 1.6;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     nav {
       position: fixed; top: 0; left: 0; width: 100%;
@@ -21,6 +25,7 @@
       gap: 30px; padding: 20px 0;
       z-index: 1000;
       flex-wrap: wrap;
+      align-items: center;
     }
     nav a {
       color: #f0f0f0; text-decoration: none;
@@ -28,11 +33,49 @@
       text-transform: uppercase; letter-spacing: 1.5px;
       transition: color 0.3s ease; cursor: pointer;
       padding: 5px 10px;
+      user-select: none;
     }
     nav a:hover, nav a.active {
       color: #50C878;
       border-bottom: 2px solid #50C878;
     }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #f0f0f0;
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+    .nav-open nav {
+      flex-direction: column;
+      gap: 10px;
+      padding: 15px 0;
+    }
+    @media (max-width: 700px) {
+      nav {
+        justify-content: flex-start;
+        padding-left: 15px;
+        gap: 0;
+        display: none;
+      }
+      nav.show {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      section { margin: 120px 15px 50px 15px; }
+    }
+
     section {
       max-width: 1000px; margin: 120px auto 80px auto;
       padding: 30px 20px;
@@ -92,13 +135,10 @@
       padding: 25px 20px;
       font-size: 1rem;
       letter-spacing: 0.05em;
-      margin-top: 80px;
+      margin-top: auto;
     }
-    @media (max-width: 700px) {
-      nav { gap: 15px; padding: 15px 0; }
-      section { margin: 120px 15px 50px 15px; }
-    }
-    /* Added styles for photos gallery */
+
+    /* Photo Gallery */
     #photos div {
       display: flex;
       flex-wrap: wrap;
@@ -116,32 +156,106 @@
     #photos img:hover {
       transform: scale(1.05);
     }
+
+    blockquote {
+      font-style: italic;
+      color: #555;
+      border-left: 4px solid #50C878;
+      padding-left: 15px;
+      margin: 15px 0;
+    }
+
+    /* Videos Section */
+    #videos iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Jokes & News */
+    ul.jokes-list, ul.news-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      max-width: 700px;
+      margin: 15px auto 0 auto;
+    }
+
+    /* Contact Form */
+    #contact form {
+      max-width: 400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact label {
+      font-weight: 600;
+    }
+    #contact input, #contact textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+    }
+    #contact button {
+      background: #50C878;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #contact button:hover {
+      background: #3da65c;
+    }
+    #contact .form-message {
+      color: green;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a data-tab="home" class="active">Home</a>
-  <a data-tab="about">About Me</a>
-  <a data-tab="photos">Photos</a>
-  <a data-tab="videos">Videos</a>
-  <a data-tab="stories">Stories</a>
-  <a data-tab="jokes">Jokes</a>
-  <a data-tab="news">News</a>
-  <a data-tab="motivation">Motivation</a>
-  <a data-tab="contact">Contact</a>
-</nav>
+<header style="display: flex; align-items: center; background: #111; padding: 15px;">
+  <div class="hamburger" aria-label="Toggle navigation menu" tabindex="0" role="button" aria-expanded="false" aria-controls="nav-menu">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <nav id="nav-menu" role="navigation" aria-label="Primary navigation">
+    <a data-tab="home" class="active" tabindex="0" role="tab" aria-selected="true">Home</a>
+    <a data-tab="about" tabindex="-1" role="tab" aria-selected="false">About Me</a>
+    <a data-tab="photos" tabindex="-1" role="tab" aria-selected="false">Photos</a>
+    <a data-tab="videos" tabindex="-1" role="tab" aria-selected="false">Videos</a>
+    <a data-tab="stories" tabindex="-1" role="tab" aria-selected="false">Stories</a>
+    <a data-tab="jokes" tabindex="-1" role="tab" aria-selected="false">Jokes</a>
+    <a data-tab="news" tabindex="-1" role="tab" aria-selected="false">News</a>
+    <a data-tab="motivation" tabindex="-1" role="tab" aria-selected="false">Motivation</a>
+    <a data-tab="contact" tabindex="-1" role="tab" aria-selected="false">Contact</a>
+  </nav>
+</header>
 
-<section id="home" class="active">
+<section id="home" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
   <h1>PRABHAT PANTHI</h1>
   <p class="subtitle">The Official Website</p>
-  <img src="brp.jpg" alt="Prabhat Panthi" class="photo-round" />
+  <img src="brp.jpg" alt="Prabhat Panthi" class="photo-round" loading="lazy" />
   <p><strong>Born in:</strong> Gulmi Madane 7 Gaaupalika, Nepal</p>
   <p><strong>Raised in:</strong> Bhairahawa</p>
   <p><strong>Profession:</strong> Financial Analyst</p>
   <div style="margin-top: 40px; text-align: left; max-width: 800px;">
     <h2>Welcome to My Official Website</h2>
-    <p>Explore my journey, stories, experiences, and life lessons from Nepal to the global stage. This is where I share my thoughts and moments with you all.</p>
+    <p>This site is a window into my life — sharing my journey from humble beginnings in Nepal to becoming a passionate financial analyst.</p>
+    <p>Here you will find stories, photos, motivational wisdom, and more — all curated to inspire, educate, and connect with you.</p>
+    <p>Whether you're here to learn, be motivated, or just explore, I hope you feel at home. Enjoy the journey!</p>
     <h3>Quotes That Inspire Me</h3>
     <blockquote>"Success is not final, failure is not fatal: It is the courage to continue that counts."</blockquote>
     <blockquote>"The mind is everything. What you think you become."</blockquote>
@@ -149,117 +263,97 @@
   </div>
 </section>
 
-<section id="about">
+<section id="about" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
   <h2>About Me</h2>
-  <img src="brp.jpg" alt="Prabhat Panthi Full Photo" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 15px;" />
+  <img src="brp.jpg" alt="Prabhat Panthi Full Photo" loading="lazy" style="width: 100%; max-width: 400px; border-radius: 10px; margin-bottom: 15px;" />
   <p><strong>Born in:</strong> Gulmi Madane 7 Gaaupalika, Nepal</p>
-  <p>I grew up in Bhairahawa, where I spent my childhood and formative years surrounded by rich culture and natural beauty. After completing my schooling and +2 education, I was fortunate to pursue my bachelor's degree at Oxford University, one of the world’s leading academic institutions.</p>
-  <p>My academic journey deepened my passion for finance and strategic thinking. I have dedicated my career as a Financial Analyst, focusing on helping organizations make data-driven decisions to foster growth and sustainability.</p>
-  <p>Besides my professional life, I am deeply interested in philosophy, spirituality, and personal development. This website is my way of sharing stories, insights, and experiences that have shaped who I am today.</p>
-  <p>I believe in continuous learning, humility, and the power of community. Feel free to explore the different sections, and I hope you find something meaningful here.</p>
+  <p>I was born and raised in Nepal, surrounded by breathtaking mountains and a culture rich in tradition and warmth. My childhood in Bhairahawa was filled with exploration, learning, and deep connections with family and community.</p>
+  <p>Driven by curiosity and determination, I pursued my education passionately, ultimately carving a career in financial analysis — a field where I combine analytical thinking with strategic planning to help others grow their wealth and make informed decisions.</p>
+  <p>Beyond my profession, I am an avid traveler, storyteller, and motivator who believes in the power of sharing wisdom and experiences. This website is my way of giving back, inspiring others, and building a community united by growth and positivity.</p>
 </section>
 
-<section id="photos">
+<section id="photos" role="tabpanel" aria-labelledby="photos-tab" tabindex="0">
   <h2>Photos</h2>
   <div>
-    <img src="images/photo1.jpg" alt="At a conference" />
-    <img src="images/photo2.jpg" alt="Traveling in Nepal" />
-    <img src="images/photo3.jpg" alt="With friends" />
-    <img src="images/photo4.jpg" alt="At work" />
-    <img src="images/photo5.jpg" alt="Nature walk" />
-    <img src="images/photo6.jpg" alt="Speaking at an event" />
+    <img src="images/photo.jpg" alt="Photo 1" loading="lazy" />
+    <img src="images/photop.jpg" alt="Photo 2" loading="lazy" />
+    <img src="images/photopp.jpg" alt="Photo 3" loading="lazy" />
+    <img src="images/photoppp.jpg" alt="Photo 4" loading="lazy" />
   </div>
 </section>
 
-<section id="videos">
+<section id="videos" role="tabpanel" aria-labelledby="videos-tab" tabindex="0">
   <h2>Videos</h2>
-  <p>Coming Soon...</p>
+  <iframe 
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    title="Sample Video" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen 
+    loading="lazy"></iframe>
 </section>
 
-<section id="stories">
+<section id="stories" role="tabpanel" aria-labelledby="stories-tab" tabindex="0">
   <h2>Stories</h2>
-  <article>
-    <h3>The Inspiring Journey of Chester</h3>
-    <p>Chester was born into humble beginnings in a small village surrounded by mountains. Despite many hardships, his determination to succeed was unwavering. He pursued education relentlessly, overcoming obstacles to eventually become a community leader and advocate for youth empowerment. Chester’s story reminds us that resilience and hope can transform lives no matter where you start.</p>
-  </article>
-  <article>
-    <h3>Jack Ma: From Teacher to Global Icon</h3>
-    <p>Jack Ma, the founder of Alibaba Group, started as an English teacher in China. Facing repeated rejections and failures, he persisted with vision and innovation. His journey from humble origins to becoming a global e-commerce leader inspires entrepreneurs worldwide. Jack Ma teaches us the importance of persistence, innovation, and believing in your vision against all odds.</p>
-  </article>
+  <p>Throughout my life, I have had many experiences that shaped who I am today. From the early days in Bhairahawa to my professional career, every chapter holds valuable lessons.</p>
+  <p>One memorable story is when I faced a significant challenge during a project. Despite the obstacles, perseverance and teamwork helped me overcome it, teaching me the power of resilience.</p>
+  <p>I look forward to sharing more stories here that inspire, educate, and entertain. Stay tuned!</p>
 </section>
 
-<section id="jokes">
+<section id="jokes" role="tabpanel" aria-labelledby="jokes-tab" tabindex="0">
   <h2>Jokes</h2>
-  <p>Coming Soon...</p>
+  <ul class="jokes-list">
+    <li>Why don’t scientists trust atoms? Because they make up everything!</li>
+    <li>Why did the scarecrow win an award? Because he was outstanding in his field!</li>
+    <li>Why don’t programmers like nature? It has too many bugs.</li>
+    <li>Why do we tell actors to “break a leg?” Because every play has a cast.</li>
+    <li>Why did the math book look sad? Because it had too many problems.</li>
+  </ul>
 </section>
 
-<section id="news">
+<section id="news" role="tabpanel" aria-labelledby="news-tab" tabindex="0">
   <h2>News</h2>
-  <p>Coming Soon...</p>
+  <ul class="news-list">
+    <li>Financial markets show signs of steady recovery after recent volatility.</li>
+    <li>New initiatives launched to promote financial literacy in Nepal.</li>
+    <li>Technology continues to reshape investment strategies worldwide.</li>
+    <li>Upcoming webinar: "Personal Finance Tips for 2025" - Join us live!</li>
+    <li>Community projects gain momentum towards sustainable development goals.</li>
+  </ul>
 </section>
 
-<section id="motivation">
+<section id="motivation" role="tabpanel" aria-labelledby="motivation-tab" tabindex="0">
   <h2>Motivation (50-50 Wisdom)</h2>
-  <div>
-    <h4>10 Inspirational Quotes from the Bible</h4>
-    <ul>
-      <li>"I can do all things through Christ who strengthens me." – Philippians 4:13</li>
-      <li>"For I know the plans I have for you..." – Jeremiah 29:11</li>
-      <li>"Trust in the Lord with all your heart..." – Proverbs 3:5</li>
-      <li>"Be strong and courageous..." – Joshua 1:9</li>
-      <li>"The Lord is my shepherd; I shall not want." – Psalm 23:1</li>
-      <li>"Rejoice in hope, be patient in tribulation..." – Romans 12:12</li>
-      <li>"Love is patient, love is kind." – 1 Corinthians 13:4</li>
-      <li>"Ask, and it will be given to you." – Matthew 7:7</li>
-      <li>"Your word is a lamp to my feet." – Psalm 119:105</li>
-      <li>"Cast all your anxiety on Him..." – 1 Peter 5:7</li>
-    </ul>
-    <h4>10 Inspirational Quotes from the Quran</h4>
-    <ul>
-      <li>"Indeed, with hardship comes ease." – Quran 94:6</li>
-      <li>"Allah does not burden a soul beyond that it can bear." – Quran 2:286</li>
-      <li>"So be patient. Indeed, the promise of Allah is truth." – Quran 30:60</li>
-      <li>"And whoever puts all his trust in Allah..." – Quran 65:3</li>
-      <li>"Verily, in the remembrance of Allah do hearts find rest." – Quran 13:28</li>
-      <li>"The best among you are those who have the best manners." – Hadith</li>
-      <li>"Indeed, Allah is with the patient." – Quran 2:153</li>
-      <li>"Say: My Lord has commanded justice." – Quran 7:29</li>
-      <li>"The mercy of Allah is near to the doers of good." – Quran 7:56</li>
-      <li>"And He is with you wherever you are." – Quran 57:4</li>
-    </ul>
-    <h4>10 Inspirational Quotes from Bhagavad Gita</h4>
-    <ul>
-      <li>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</li>
-      <li>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</li>
-      <li>"Man is made by his belief." – Bhagavad Gita</li>
-      <li>"Change is the law of the universe." – Bhagavad Gita</li>
-      <li>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</li>
-      <li>"A person can rise through the efforts of his own mind." – Bhagavad Gita</li>
-      <li>"Be steadfast in yoga, O Arjuna." – Bhagavad Gita 6:46</li>
-      <li>"The wise see knowledge and action as one." – Bhagavad Gita</li>
-      <li>"When meditation is mastered, the mind is unwavering." – Bhagavad Gita</li>
-      <li>"Those who are motivated only by desire for the fruits of action are miserable." – Bhagavad Gita</li>
-    </ul>
-    <h4>10 Inspirational Quotes from Buddha's Teachings</h4>
-    <ul>
-      <li>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."</li>
-      <li>"Peace comes from within. Do not seek it without."</li>
-      <li>"Thousands of candles can be lighted from a single candle."</li>
-      <li>"The mind is everything. What you think you become."</li>
-      <li>"Health is the greatest gift."</li>
-      <li>"To understand everything is to forgive everything."</li>
-      <li>"The root of suffering is attachment."</li>
-      <li>"You only lose what you cling to."</li>
-      <li>"Happiness does not depend on what you have."</li>
-      <li>"Better than a thousand hollow words is one word that brings peace."</li>
-    </ul>
-  </div>
+  
+  <p><strong>Quotes from Holy Books:</strong></p>
+  <blockquote><em>Bible:</em> "Do unto others as you would have them do unto you."</blockquote>
+  <blockquote><em>Quran:</em> "Indeed, with hardship comes ease."</blockquote>
+  <blockquote><em>Gita:</em> "You have the right to work, but never to the fruit of work."</blockquote>
+  
+  <p><strong>Quotes from Buddha's Teachings:</strong></p>
+  <blockquote>"Peace comes from within. Do not seek it without."</blockquote>
+  <blockquote>"The mind is everything. What you think you become."</blockquote>
+  <blockquote>"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened."</blockquote>
 </section>
 
-<section id="contact">
+<section id="contact" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
   <h2>Contact</h2>
-  <p>Call Me: +977-9848605969</p>
-  <p>Email: prabhatpanthi007@gmail.com</p>
+  <p><strong>Call Me:</strong> +977-9848605969</p>
+  <p><strong>Email:</strong> prabhatpanthi007@gmail.com</p>
+  
+  <form id="contactForm" novalidate>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required minlength="2" />
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Your email address" required />
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required minlength="10"></textarea>
+    
+    <button type="submit">Send Message</button>
+    <p class="form-message" aria-live="polite"></p>
+  </form>
 </section>
 
 <footer>&copy; 2025 Prabhat Panthi. All rights reserved.</footer>
@@ -267,46 +361,22 @@
 <script>
   const navLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('section');
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav');
   
   function activateTab(tab) {
-    navLinks.forEach(link => {
-      link.classList.toggle('active', link.getAttribute('data-tab') === tab);
-    });
-    sections.forEach(section => {
-      section.classList.toggle('active', section.id === tab);
+    navLinks.forEach((link, i) => {
+      const isActive = link.getAttribute('data-tab') === tab;
+      link.classList.toggle('active', isActive);
+      link.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      link.tabIndex = isActive ? 0 : -1;
+      // For accessibility: focus on active tab's section
+      if (isActive) {
+        sections[i].classList.add('active');
+        sections[i].focus();
+      } else {
+        sections[i].classList.remove('active');
+      }
     });
     window.scrollTo({top: 0, behavior: 'smooth'});
     if (window.location.hash !== '#' + tab) {
-      history.pushState(null, '', '#' + tab);
-    }
-  }
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const tab = link.getAttribute('data-tab');
-      activateTab(tab);
-    });
-  });
-  
-  window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash)) {
-      activateTab(hash);
-    } else {
-      activateTab('home');
-    }
-  });
-  
-  window.addEventListener('popstate', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash)) {
-      activateTab(hash);
-    } else {
-      activateTab('home');
-    }
-  });
-</script>
-
-</body>
-</html>
