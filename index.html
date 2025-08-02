@@ -561,7 +561,7 @@
   }
 </style>
 
-<section id="motivation" style="max-width: 800px; margin: 30px auto;">
+<section id="motivation" style="max-width: 800px; margin: 30px auto; display: none;">
   <button onclick="showHome()" style="margin-bottom: 15px; padding: 10px 20px; border-radius: 30px; border: 2px solid #4a90e2; background: #fff; color: #4a90e2; font-weight: 600; cursor: pointer;">
     ← Back to Home
   </button>
@@ -585,14 +585,12 @@
   const homeContent = document.getElementById('home-content');
   const motivationBtn = document.getElementById('motivation-btn');
 
-  // Initially hide motivation section
-  motivationSection.style.display = 'none';
-
   function showMotivation() {
     homeContent.style.display = 'none';
     motivationSection.style.display = 'block';
     motivationBtn.style.display = 'none';
   }
+
   function showHome() {
     motivationSection.style.display = 'none';
     homeContent.style.display = 'block';
