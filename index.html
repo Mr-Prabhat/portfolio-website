@@ -489,11 +489,6 @@
 
 <!-- Sections -->
 
-<section id="home" style="display: block;">
-  <h2>🏠 Home Content</h2>
-  <p>Welcome to the home tab content.</p>
-</section>
-
 <section id="my-story" style="display: none; margin: 30px auto; max-width: 800px;">
   <h2>📖 My Story</h2>
 
@@ -527,92 +522,6 @@
   </div>
 </section>
 
-<section id="motivation" style="display:none;">
-  <h2>💡 Motivation Content</h2>
-  <p>Motivation tab content goes here.</p>
-</section>
-
-<script>
-  // Show/hide main sections by tab click
-  function showTab(tabId) {
-    // Tabs buttons active class toggle
-    document.querySelectorAll('nav button').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(tabId.replace('-', '')));
-    });
-    
-    // Show the clicked tab's section, hide others
-    document.querySelectorAll('section').forEach(section => {
-      section.style.display = (section.id === tabId) ? 'block' : 'none';
-    });
-  }
-
-  // Story sub-tabs inside #my-story
-  function showStory(storyName) {
-    const contents = document.querySelectorAll('#my-story .story-content');
-    const buttons = document.querySelectorAll('#my-story .story-tabs button');
-
-    contents.forEach(content => {
-      content.style.display = (content.id === storyName) ? 'block' : 'none';
-    });
-
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-story') === storyName);
-    });
-  }
-</script>
-
-<style>
-  /* Tab Buttons */
-  nav button {
-    padding: 10px 18px;
-    margin-right: 12px;
-    font-weight: 600;
-    border-radius: 8px;
-    border: none;
-    background-color: #ccc;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  nav button.active,
-  nav button:hover {
-    background-color: #4a90e2;
-    color: white;
-  }
-
-  /* My Story tabs buttons */
-  #my-story .story-tabs button {
-    padding: 12px 20px;
-    margin-right: 12px;
-    background: #b0c4de;
-    color: #333;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
-
-  #my-story .story-tabs button.active {
-    background-color: #4a90e2;
-    color: white;
-    box-shadow: 0 4px 12px #4a90e2cc;
-  }
-
-  #my-story .story-tabs button:hover {
-    background-color: #4a90e2;
-    color: white;
-  }
-
-  /* Paragraph styling */
-  #my-story p {
-    margin-bottom: 20px;
-    line-height: 1.7;
-    font-size: 1.1em;
-    text-align: justify;
-  }
-</style>
 
 
 <!-- Motivation Section Starts -->
