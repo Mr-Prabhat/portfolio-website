@@ -480,93 +480,84 @@
   </p>
 </section>
 
-<section id="jokes">
-  <h2>😄 Nepali Jokes</h2>
+<section id="my-story">
+  <h2>📖 My Story</h2>
 
-  <!-- Joke Category Tabs -->
-  <div class="tabs">
-    <button onclick="showJokeTab('kaaley')" class="active">Kaaley-Gorey 😂</button>
-    <button onclick="showJokeTab('couple')">Couples 👩‍❤️‍👨</button>
-    <button onclick="showJokeTab('others')">Others 🤓</button>
+  <div class="story-tabs">
+    <button data-story="poverty" onclick="showStory('poverty')" class="active">Story of Poverty 💔</button>
+    <button data-story="success" onclick="showStory('success')">Story of Success 🏆</button>
   </div>
 
-  <!-- Kaaley-Gorey Jokes -->
-  <div id="kaaley" class="tab-content active" style="margin-top: 20px;">
-    <h3>1. कसरी अडिन्छ पानी 💧</h3>
-    <p>गिलास उल्टो समात्दै कालेः “होइन यो गिलास को मुर्खले बनाको ? यसमा पानी कसरी राख्ने हो ? तल खुल्लै छ, कसरी अडिन्छ पानी ?” 🤔😂</p><br>
-
-    <h3>2. म किन भाग्ने 🐆🏃</h3>
-    <p>चितुवा देखेर गोरेः “भाग काले भाग !”<br>कालेः “म किन भाग्ने? चितुवाको आँखामा माटो त तैले फालेको हो नि !!” 😂</p><br>
-
-    <h3>3. पस्न दे 👮‍♂️🕵️‍♂️</h3>
-    <p>कालेको घरमा चोर पस्यो । श्रीमतीः “उठ न हजुर!”<br>कालेः “पस्न दे, म अहिले डिउटीमा छैन।” 🤣</p><br>
+  <div id="poverty" class="story-content active" style="margin-top:20px;">
+    <h3>The Unseen Struggles of Poverty</h3>
+    <p>Poverty is a relentless companion that shapes life in ways many will never comprehend. It is not just the absence of money but the constant presence of uncertainty, fear, and struggle. Every morning begins with the same haunting question — how will we get through today? For families trapped in poverty, life is a daily battle for survival, where luxury is not about expensive things, but about having two full meals, a safe place to sleep, and access to basic education.</p>
+    <p>The environment of poverty is unforgiving. Streets filled with dust, homes built of tin and mud, and a neighborhood where dreams are often laughed at rather than nurtured. Yet, it is in these harsh surroundings that resilience is born. Children learn early to adjust, to sacrifice, and to mature beyond their years. They help their parents in labor work, fetch water from distant sources, and make do with whatever little they have. School is not an everyday reality; it’s a privilege, and even when accessible, resources like uniforms, books, and shoes become luxury items many cannot afford.</p>
+    <p>One of the cruelest aspects of poverty is the constant feeling of being left behind. Watching others progress while being stuck in the same cycle of lack and hardship sows seeds of frustration and helplessness. Yet, it also lights a fire within those who refuse to accept poverty as their destiny. The smallest of opportunities are grasped with utmost determination. A borrowed book becomes a treasure, a free seminar becomes a life lesson, and a part-time job, however small, becomes a lifeline.</p>
+    <p>The struggle is not just physical but deeply emotional. The inability to fulfill even the simplest desires of family members creates a burden that words cannot describe. Seeing parents age faster under the weight of unending labor, watching siblings drop out of school due to financial constraints, these are wounds that leave permanent scars. Yet, amidst these hardships, some find an indomitable spirit to rise, to educate themselves against the odds, and to prove that poverty can be broken.</p>
+    <p>There are countless sleepless nights spent thinking of ways to change the future. Whether it’s learning skills through free community programs or saving every penny for a distant goal, every small step taken feels like moving a mountain. The road is filled with failures, rejections, and moments of deep despair, but giving up is never an option. Poverty teaches that no one is coming to save you, but it also teaches that you have the power to save yourself.</p>
+    <p>Eventually, small victories begin to appear. Completing a course, getting a small job, or even being recognized for hard work becomes monumental achievements. These moments are not just personal milestones but acts of defiance against a system that had written you off. Slowly, the shackles of poverty start to break, and with each broken link, the vision of a better future becomes clearer.</p>
+    <p>But poverty never truly leaves the mind. It becomes a silent motivator, a constant reminder of where one came from and why it’s important to keep pushing forward. It instills a sense of gratitude for even the simplest comforts of life. Most importantly, those who rise from poverty often feel an unshakable responsibility to lift others, to become the helping hand they once longed for.</p>
+    <p>Poverty is a brutal teacher, but its lessons are invaluable. It teaches humility, hard work, compassion, and most importantly, it teaches that circumstances do not define destiny. With relentless effort, poverty can be turned into a story of resilience, strength, and eventual triumph.</p>
   </div>
 
-  <!-- Couple Jokes -->
-  <div id="couple" class="tab-content" style="margin-top: 20px; display:none;">
-    <h3>1. श्रीमान-श्रीमती ❤️</h3>
-    <p>श्रीमानः “म मरे भने तिमी दोस्रो विहे गर्छौ ?”<br>श्रीमतीः “छि...म त बहिनी सित बस्छु।”<br>श्रीमानः “म पनि तिम्रै बहिनी सित बस्छु।” 😆💔</p><br>
-
-    <h3>2. जब तिम्रो बिहे हुन्छ 💍</h3>
-    <p>Boyfriend: “Don't touch me. बिहेपछि मात्र।”<br>Boyfriend: “ओके, मलाई कल गर जब तिम्रो बिहे हुन्छ।” 🤣📞</p><br>
-
-    <h3>3. Godawari Park 🌳</h3>
-    <p>Boy: “Godawari Park जाऔँ।”<br>Girl: “तिमी जे पायो त्यही गर्छौ नि !”<br>Boy: “Promise केही गर्दिन क।” 😅🌿</p><br>
-
-    <h3>4. एकचोटी किस गरम 😘</h3>
-    <p>कालेः “तिमी रिसाउदैनौ भने एकचोटी किस गरम ?”<br>कालीः “हुन्छ, तर त्यसको Boyfriend रिसाउला नि।” 😂💋</p><br>
-
-    <h3>Funny Pic of Milan Aryal Palpali Mian 📸</h3>
-    <div class="home-banner">
-      <img src="images/milanaryal.jpg" alt="Milan Aryal Palpali Mian Funny" style="max-width: 260px; border-radius: 18px; border: 3px solid #b8860b;" />
-    </div>
-  </div>
-
-  <!-- Others Jokes -->
-  <div id="others" class="tab-content" style="margin-top: 20px; display:none;">
-    <h3>1. किराना पसल 🛍️</h3>
-    <p>ग्राहकः “यहाँ के पाइन्छ ?”<br>पसले झर्कदैः “सबैथोक पाइन्छ, के चाहियो ?”<br>ग्राहकः “उसो भए रेखा थापाको नम्बर दिनुस्।” 🤭🤣</p><br>
-
-    <h3>2. स्कूल आगोमा 😲🔥</h3>
-    <p>स्कूलमा आगो लाग्यो । बच्चा खुशी, एक जना उदास ।<br>टिचरः “बाबु तिमी किन उदास ?”<br>बच्चाः “बिल्डिङ त जलेको हो, तपाईं त जिउँदै हुनुहुन्छ नि !!” 🤣🔥</p><br>
+  <div id="success" class="story-content" style="margin-top:20px; display:none;">
+    <h3>The Journey to Success: A Battle of Persistence</h3>
+    <p>Success is often glamorized as a moment of glory, but in truth, it is a journey carved through years of unnoticed toil, endless failures, and an unyielding mindset. It starts with a vision—an ambitious idea that seems impossible at first, laughed at by many, doubted even by close ones. But deep inside, the desire to prove oneself ignites a determination that refuses to fade, even when the path ahead is filled with uncertainties.</p>
+    <p>The early days are the hardest. With no achievements to show, no support system in place, and minimal resources, the struggle feels overwhelming. Sleepless nights become routine, and every small step forward demands immense effort. Learning new skills, failing, learning again—it becomes a cycle. The harsh truth is that success doesn’t come to those who wait; it comes to those who are willing to fail more than others can imagine.</p>
+    <p>As time passes, the small habits formed begin to accumulate. Waking up early, dedicating hours to honing the craft, networking, seeking feedback — these small actions compound, silently building a foundation of strength and expertise. Most of the world remains unaware of these efforts, but that’s how real success is born — away from the spotlight, in the quiet hours when no one is watching.</p>
+    <p>Every rejection hurts, but each one adds a layer of toughness. Eventually, persistence starts to pay off. A project gets accepted, a skill gets recognized, or a small win occurs. These moments, however minor they seem, become stepping stones. Confidence grows not from applause but from the realization that progress, however slow, is real and unstoppable.</p>
+    <p>One of the biggest misconceptions about success is that it gets easier with time. In reality, success demands more discipline after it is achieved. The challenges become bigger, the expectations heavier, but so does the resilience built through years of struggle. Maintaining focus amidst praise, avoiding complacency, and continuously innovating becomes the new fight.</p>
+    <p>True success, however, is not measured by bank balances or fame, but by the impact one can make. It is about inspiring others who are still in their struggle, about lifting those who are in the same shoes you once wore. The journey of success teaches that the biggest satisfaction comes from giving back, from knowing that your story could be the motivation someone else needs to not give up.</p>
+    <p>At its core, success is not a destination but a mindset — a constant pursuit of growth, a refusal to settle, and a commitment to hard work regardless of circumstances. It is about turning visions into reality, step by step, no matter how long it takes. The taste of success is sweetest for those who have bled for it, who have faced rock bottom and still stood up stronger each time.</p>
+    <p>In the end, success is a lifelong journey. It is not defined by a single moment but by the countless moments of persistence, the quiet victories that no one sees, and the courage to keep moving forward when everything else says stop. Success belongs to those who believe in themselves even when no one else does.</p>
   </div>
 </section>
 
 <script>
-  function showJokeTab(tabName) {
-    const tabs = document.querySelectorAll('#jokes .tab-content');
-    const buttons = document.querySelectorAll('#jokes .tabs button');
+  function showStory(storyName) {
+    const contents = document.querySelectorAll('#my-story .story-content');
+    const buttons = document.querySelectorAll('#my-story .story-tabs button');
 
-    tabs.forEach(tab => {
-      tab.style.display = (tab.id === tabName) ? 'block' : 'none';
+    contents.forEach(content => {
+      content.style.display = (content.id === storyName) ? 'block' : 'none';
     });
 
     buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(tabName));
+      btn.classList.toggle('active', btn.getAttribute('data-story') === storyName);
     });
   }
 </script>
 
 <style>
-  #jokes .tabs button.active {
-    background-color: #d4af37;
-    color: #3a2200;
-    box-shadow: 0 6px 18px #d4af37cc;
-  }
-  #jokes .tabs button {
-    padding: 10px 20px;
-    background: #b8860b;
-    color: #fff3c4;
+  #my-story .story-tabs button {
+    padding: 12px 20px;
+    margin-right: 12px;
+    background: #b0c4de;
+    color: #333;
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    margin-right: 12px;
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 16px;
     transition: background-color 0.3s, box-shadow 0.3s;
   }
-  #jokes .tabs button:hover {
-    background-color: #d4af37;
-    color: #3a2200;
+
+  #my-story .story-tabs button.active {
+    background-color: #4a90e2;
+    color: white;
+    box-shadow: 0 4px 12px #4a90e2cc;
+  }
+
+  #my-story .story-tabs button:hover {
+    background-color: #4a90e2;
+    color: white;
+  }
+
+  #my-story p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.1em;
+    text-align: justify;
   }
 </style>
 
