@@ -5,141 +5,296 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     body {
-      background: linear-gradient(to bottom, #e8f5e9, #ffffff);
-      color: #333;
+      background: #fff;
+      color: #5a3e1b;
       font-family: 'Poppins', sans-serif;
       transition: background 0.5s, color 0.5s;
+      margin: 0;
+      padding: 0;
     }
+
     header {
-      background: linear-gradient(to right, #4caf50, #81c784);
-      color: white;
-      padding: 20px;
+      background: linear-gradient(90deg, #d4af37, #f9e79f);
+      color: #5a3e1b;
+      padding: 25px 15px;
       text-align: center;
+      font-weight: 600;
+      font-size: 2rem;
+      box-shadow: 0 4px 8px rgb(212 175 55 / 0.3);
     }
+
     nav {
-      background: #222;
+      background: #fff7dc;
       display: flex;
       justify-content: center;
-      gap: 15px;
-      padding: 10px;
+      gap: 20px;
+      padding: 12px 10px;
       flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 2px solid #d4af37;
     }
+
     nav a {
-      color: white;
+      color: #b8860b;
       text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+      font-size: 1rem;
     }
-    nav a:hover {
-      background: #444;
+
+    nav a:hover,
+    nav a:focus {
+      background-color: #d4af37;
+      color: white;
+      outline: none;
     }
+
     .search-bar {
       text-align: center;
-      margin: 15px;
+      margin: 18px 10px;
     }
+
     .search-bar input {
-      padding: 10px;
-      width: 50%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      width: 60%;
+      max-width: 450px;
+      border-radius: 25px;
+      border: 2px solid #d4af37;
+      font-size: 1rem;
+      color: #5a3e1b;
+      font-weight: 500;
+      transition: border-color 0.3s;
     }
+
+    .search-bar input:focus {
+      border-color: #b8860b;
+      outline: none;
+    }
+
     section {
-      padding: 20px;
+      padding: 25px 15px;
       display: none;
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      line-height: 1.65;
+      font-size: 1.1rem;
     }
+
     section.active {
       display: block;
     }
-    .home-banner {
+
+    .home-banner,
+    #about .home-banner {
       text-align: center;
+      margin-bottom: 20px;
     }
+
     .home-banner img {
-      width: 250px;
-      height: 250px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #4caf50;
-      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
-      margin-bottom: 15px;
+      border: 6px solid #d4af37;
+      box-shadow: 0 6px 12px rgba(212, 175, 55, 0.5);
     }
+
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 25px;
     }
+
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+      cursor: pointer;
+      transition: transform 0.25s ease-in-out;
     }
+
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
     }
+
     .tabs {
       display: flex;
-      gap: 10px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 20px;
+      margin-top: 25px;
     }
+
     .tabs button {
-      padding: 10px 20px;
-      background: #3f5efb;
-      color: white;
+      padding: 12px 24px;
+      background: #d4af37;
+      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.3s;
     }
-    .tabs button:hover {
-      background: #fc466b;
+
+    .tabs button:hover,
+    .tabs button:focus {
+      background: #b8860b;
+      outline: none;
     }
+
     .tab-content {
       display: none;
-      margin-top: 20px;
+      margin-top: 25px;
+      color: #5a3e1b;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
+
     .tab-content.active {
       display: block;
     }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 12px 15px;
+      margin: 12px 0;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      font-size: 1rem;
+      color: #5a3e1b;
+      font-weight: 500;
+      transition: border-color 0.3s;
     }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #b8860b;
+      outline: none;
+    }
+
     .contact-form button {
-      padding: 10px 20px;
-      background: #fc466b;
+      background-color: #d4af37;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 15px;
+      padding: 14px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
     }
+
+    .contact-form button:hover,
+    .contact-form button:focus {
+      background-color: #b8860b;
+      outline: none;
+    }
+
+    button.dark-mode-toggle {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #d4af37;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(212, 175, 55, 0.7);
+      color: white;
+      transition: background-color 0.3s;
+      z-index: 1100;
+    }
+
+    button.dark-mode-toggle:hover,
+    button.dark-mode-toggle:focus {
+      background: #b8860b;
+      outline: none;
+    }
+
+    /* Dark mode */
     .dark-mode {
-      background: #121212;
-      color: #f7f7f7;
+      background: #2c2c2c;
+      color: #d4af37;
     }
+
+    .dark-mode header {
+      background: linear-gradient(90deg, #b8860b, #f9d871);
+      color: #2c2c2c;
+      box-shadow: none;
+    }
+
     .dark-mode nav {
-      background: #1e1e1e;
+      background: #3a2e0d;
+      border-bottom: 2px solid #b8860b;
     }
+
+    .dark-mode nav a {
+      color: #f9d871;
+    }
+
+    .dark-mode nav a:hover,
+    .dark-mode nav a:focus {
+      background-color: #b8860b;
+      color: #2c2c2c;
+    }
+
+    .dark-mode .search-bar input {
+      background: #453b16;
+      border-color: #b8860b;
+      color: #d4af37;
+    }
+
+    .dark-mode .search-bar input:focus {
+      border-color: #f9d871;
+    }
+
+    .dark-mode .gallery img {
+      box-shadow: 0 4px 8px rgba(184, 134, 11, 0.5);
+    }
+
     .dark-mode .tabs button {
-      background: #444;
+      background: #b8860b;
+      color: #2c2c2c;
     }
-    .dark-mode .tabs button:hover {
-      background: #fc466b;
+
+    .dark-mode .tabs button:hover,
+    .dark-mode .tabs button:focus {
+      background: #f9d871;
+      color: #2c2c2c;
+    }
+
+    .dark-mode .tab-content {
+      color: #f9d871;
+    }
+
+    .dark-mode .contact-form input,
+    .dark-mode .contact-form textarea {
+      background: #453b16;
+      border-color: #b8860b;
+      color: #f9d871;
+    }
+
+    .dark-mode .contact-form button {
+      background-color: #b8860b;
+      color: #2c2c2c;
+    }
+
+    .dark-mode .contact-form button:hover,
+    .dark-mode .contact-form button:focus {
+      background-color: #f9d871;
+      color: #2c2c2c;
     }
   </style>
 </head>
@@ -162,93 +317,76 @@
   </nav>
 
   <div class="search-bar">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search Stories, Jokes, News..."
-      onkeyup="searchContent()"
-    />
+    <input type="text" id="searchInput" placeholder="Search Stories, Jokes, News..." onkeyup="searchContent()" />
   </div>
 
   <section id="home" class="active">
     <div class="home-banner">
-      <img src="images/brp.jpg" alt="Prabhat Panthi" />
+      <img src="brp.jpg" alt="Prabhat Panthi" />
     </div>
     <h2>Welcome to My World</h2>
     <p>
-      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene
-      hills of Gulmi, Nepal. My journey took me from the peaceful landscapes of
-      Gulmi to the bustling city of Bhairahawa, and then to the vibrant town of
-      Murgiya where I grew up.
+      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal. My journey took me
+      from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa, and then to the vibrant town of Murgiya
+      where I grew up.
     </p>
     <p>
-      With a Bachelor’s degree completed, I have always been enthusiastic about
-      technology, storytelling, and spreading positivity through creative
-      content. This website is my personal space to share photos, videos,
-      inspiring stories, jokes, and powerful motivational quotes from various
-      holy scriptures.
+      With a Bachelor’s degree completed, I have always been enthusiastic about technology, storytelling, and spreading
+      positivity through creative content. This website is my personal space to share photos, videos, inspiring stories,
+      jokes, and powerful motivational quotes from various holy scriptures.
     </p>
     <p>
-      I believe in continuous learning, evolving, and connecting with people
-      worldwide. Here, you'll not only find glimpses of my personal journey but
-      also content that aims to motivate and entertain.
+      I believe in continuous learning, evolving, and connecting with people worldwide. Here, you'll not only find glimpses
+      of my personal journey but also content that aims to motivate and entertain.
     </p>
     <p>
-      Feel free to explore and get in touch with me through the Contact section
-      below. Let's stay connected and grow together!
+      Feel free to explore and get in touch with me through the Contact section below. Let's stay connected and grow together!
     </p>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
     <div class="home-banner">
-      <img src="images/brp.jpg" alt="Prabhat Panthi About" />
+      <img src="brp.jpg" alt="Prabhat Panthi About" />
     </div>
     <p>
-      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich
-      culture and heritage. Later, my family moved to Bhairahawa where I
-      experienced a vibrant city life. Eventually, we settled in Murgiya, a
-      place that played a big role in shaping who I am today.
+      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage. Later, my family
+      moved to Bhairahawa where I experienced a vibrant city life. Eventually, we settled in Murgiya, a place that played a
+      big role in shaping who I am today.
     </p>
     <p>
-      From a young age, I was curious about technology and storytelling. This
-      curiosity led me to pursue a Bachelor's degree, where I honed my skills in
-      digital media and communication.
+      From a young age, I was curious about technology and storytelling. This curiosity led me to pursue a Bachelor's
+      degree, where I honed my skills in digital media and communication.
     </p>
     <p>
-      Besides digital content, I have a keen interest in reading motivational
-      books, listening to spiritual discourses, and understanding various
-      cultures and philosophies.
+      Besides digital content, I have a keen interest in reading motivational books, listening to spiritual discourses, and
+      understanding various cultures and philosophies.
     </p>
     <p>
-      One of my core beliefs is that every person has a unique story, and
-      through creativity and positive mindset, we can all inspire each other
-      to grow.
+      One of my core beliefs is that every person has a unique story, and through creativity and positive mindset, we can all
+      inspire each other to grow.
     </p>
     <p>
-      Through this platform, I aim to share stories that uplift spirits, jokes
-      that bring smiles, and wisdom from ancient scriptures that enlighten
-      minds. Every piece of content here reflects my journey of learning and
-      sharing.
+      Through this platform, I aim to share stories that uplift spirits, jokes that bring smiles, and wisdom from ancient
+      scriptures that enlighten minds. Every piece of content here reflects my journey of learning and sharing.
     </p>
     <p>
-      Outside the digital world, I enjoy traveling, meeting new people, and
-      immersing myself in nature. I believe that staying connected to our roots
-      keeps us humble and grounded.
+      Outside the digital world, I enjoy traveling, meeting new people, and immersing myself in nature. I believe that staying
+      connected to our roots keeps us humble and grounded.
     </p>
     <p>
-      Thank you for visiting my website. Let’s continue this journey together,
-      sharing laughter, wisdom, and positivity across borders!
+      Thank you for visiting my website. Let’s continue this journey together, sharing laughter, wisdom, and positivity across
+      borders!
     </p>
   </section>
 
   <section id="photos">
     <h2>Photo Gallery</h2>
     <div class="gallery">
-      <img src="images/photo.jpg" alt="Photo 1" />
-      <img src="images/photop.jpg" alt="Photo 2" />
-      <img src="images/photopp.jpg" alt="Photo 3" />
-      <img src="images/photoppp.jpg" alt="Photo 4" />
+      <img src="photo.jpg" alt="Photo 1" />
+      <img src="photop.jpg" alt="Photo 2" />
+      <img src="photopp.jpg" alt="Photo 3" />
+      <img src="photoppp.jpg" alt="Photo 4" />
     </div>
   </section>
 
@@ -298,30 +436,20 @@
     </form>
   </section>
 
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
 
   <script>
     function showTab(tabId) {
-      document.querySelectorAll('section').forEach((section) =>
-        section.classList.remove('active')
-      );
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
       const target = document.getElementById(tabId);
-      if (target) {
-        target.classList.add('active');
-      }
-      if (tabId === 'motivation') {
-        showMotivationTab('quran');
-      }
+      if (target) target.classList.add('active');
+      if (tabId === 'motivation') showMotivationTab('quran');
     }
 
     function showMotivationTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach((tab) =>
-        tab.classList.remove('active')
-      );
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
       const target = document.getElementById(tabName);
-      if (target) {
-        target.classList.add('active');
-      }
+      if (target) target.classList.add('active');
     }
 
     function toggleDarkMode() {
@@ -332,12 +460,10 @@
       let filter = document.getElementById('searchInput').value.toUpperCase();
       let searchableSections = document.querySelectorAll('.searchable');
 
-      document.querySelectorAll('section').forEach((section) =>
-        section.classList.remove('active')
-      );
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
 
       let found = false;
-      searchableSections.forEach((el) => {
+      searchableSections.forEach(el => {
         if (el.innerText.toUpperCase().indexOf(filter) > -1) {
           el.parentElement.classList.add('active');
           found = true;
