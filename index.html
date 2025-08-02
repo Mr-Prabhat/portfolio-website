@@ -7,36 +7,143 @@
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body { background: linear-gradient(to bottom, #e1bee7, #bbdefb); color: #333; font-family: 'Poppins', sans-serif; transition: background 0.5s, color 0.5s; }
-    header { background: linear-gradient(to right, #ff6f61, #ffca28); color: white; padding: 20px; text-align: center; }
-    nav { background: #222; display: flex; justify-content: center; gap: 15px; padding: 10px; flex-wrap: wrap; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: white; text-decoration: none; font-weight: bold; padding: 8px 15px; border-radius: 5px; transition: background 0.3s; }
-    nav a:hover { background: #444; }
-    .search-bar { text-align: center; margin: 15px; }
-    .search-bar input { padding: 10px; width: 50%; border-radius: 5px; border: 1px solid #ccc; }
-    section { padding: 20px; display: none; }
-    section.active { display: block; }
-    .home-banner { text-align: center; }
-    .home-banner img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #ff6f61; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-    .gallery img { width: 100%; border-radius: 10px; transition: transform 0.3s; }
-    .gallery img:hover { transform: scale(1.05); }
-    .tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-    .tabs button { padding: 10px 20px; background: #3f5efb; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-    .tabs button:hover { background: #fc466b; }
-    .tab-content { display: none; margin-top: 20px; }
-    .tab-content.active { display: block; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
-    .contact-form button { padding: 10px 20px; background: #fc466b; color: white; border: none; border-radius: 5px; cursor: pointer; }
-    .dark-mode { background: #121212; color: #f7f7f7; }
-    .dark-mode nav { background: #1e1e1e; }
-    .dark-mode .tabs button { background: #444; }
-    .dark-mode .tabs button:hover { background: #fc466b; }
+    body {
+      background: linear-gradient(to bottom, #fceabb, #f8b500, #e1bee7);
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.5s, color 0.5s;
+    }
+    header {
+      background: linear-gradient(to right, #ff6f61, #ffca28);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #444;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 15px;
+    }
+    .search-bar input {
+      padding: 10px;
+      width: 50%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    section {
+      padding: 20px;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    .home-banner {
+      text-align: center;
+    }
+    .home-banner img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ff6f61;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .tabs button {
+      padding: 10px 20px;
+      background: #3f5efb;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .tabs button:hover {
+      background: #fc466b;
+    }
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .contact-form button {
+      padding: 10px 20px;
+      background: #fc466b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #f7f7f7;
+    }
+    .dark-mode nav {
+      background: #1e1e1e;
+    }
+    .dark-mode .tabs button {
+      background: #444;
+    }
+    .dark-mode .tabs button:hover {
+      background: #fc466b;
+    }
   </style>
 </head>
 
 <body>
-  <header><h1>Prabhat Panthi | Official Website</h1></header>
+  <header>
+    <h1>Prabhat Panthi | Official Website</h1>
+  </header>
+
   <nav>
     <a href="#" onclick="showTab('home')">Home</a>
     <a href="#" onclick="showTab('about')">About Me</a>
@@ -55,7 +162,7 @@
 
   <section id="home" class="active">
     <div class="home-banner">
-      <img src="brp.jpg" alt="Prabhat Panthi">
+      <img src="images/brp.jpg" alt="Prabhat Panthi">
     </div>
     <h2>Welcome to My World</h2>
     <p>Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal. My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa, and then to the vibrant town of Murgiya where I grew up.</p>
@@ -66,20 +173,25 @@
 
   <section id="about">
     <h2>About Me</h2>
+    <div class="home-banner">
+      <img src="images/brp.jpg" alt="Prabhat Panthi About">
+    </div>
     <p>I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage. Later, my family moved to Bhairahawa where I experienced a vibrant city life. Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.</p>
     <p>From a young age, I was curious about technology and storytelling. This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.</p>
-    <p>I am passionate about creating meaningful content that resonates with people. Whether it's through photos, videos, or words, I aim to inspire, entertain, and spread positivity.</p>
-    <p>This website is my way of connecting with a larger audience, sharing my journey, my works, and the lessons I've learned along the way.</p>
-    <p>Thank you for visiting, and I hope you enjoy the content I share here!</p>
+    <p>Besides digital content, I have a keen interest in reading motivational books, listening to spiritual discourses, and understanding various cultures and philosophies.</p>
+    <p>One of my core beliefs is that every person has a unique story, and through creativity and positive mindset, we can all inspire each other to grow.</p>
+    <p>Through this platform, I aim to share stories that uplift spirits, jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds. Every piece of content here reflects my journey of learning and sharing.</p>
+    <p>Outside the digital world, I enjoy traveling, meeting new people, and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.</p>
+    <p>Thank you for visiting my website. Let’s continue this journey together, sharing laughter, wisdom, and positivity across borders!</p>
   </section>
 
   <section id="photos">
     <h2>Photo Gallery</h2>
     <div class="gallery">
-      <img src="photo.jpg" alt="Photo 1">
-      <img src="photop.jpg" alt="Photo 2">
-      <img src="photopp.jpg" alt="Photo 3">
-      <img src="photoppp.jpg" alt="Photo 4">
+      <img src="images/photo.jpg" alt="Photo 1">
+      <img src="images/photop.jpg" alt="Photo 2">
+      <img src="images/photopp.jpg" alt="Photo 3">
+      <img src="images/photoppp.jpg" alt="Photo 4">
     </div>
   </section>
 
