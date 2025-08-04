@@ -1,19 +1,457 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Videos - Prabhat Panthi</title>
-  </head>
-  <body>
-    <a href="/index.html">Home</a> |
-    <a href="/about.html">About Me</a> |
-    <a href="/technews.html">Tech News</a> |
-    <a href="/photos/">Photos</a> |
-    <a href="/videos/">Videos</a> |
-    <a href="/stories/">Stories</a> |
-    <a href="/jokes/">Jokes</a>
-    <hr>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prabhat Panthi | Official Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #fff8e1;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+      padding: 30px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #222;
+      padding: 12px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    nav button {
+      background: linear-gradient(145deg, #b8860b, #ffd700);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      margin: 0 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    nav button:hover, nav button.active {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+    section {
+      display: none;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    #home {
+      display: block;
+    }
+    .profile-pic {
+      width: 250px;
+      border-radius: 50%;
+      border: 8px solid #ffd700;
+      display: block;
+      margin: 20px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .about-text {
+      font-size: 1.2em;
+      line-height: 1.8;
+      text-align: justify;
+      padding: 0 20px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .gallery img {
+      width: 250px;
+      border-radius: 10px;
+      border: 5px solid #ffd700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .story-tabs button, .motivation-tabs button {
+      background: #d4af37;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .story-tabs button.active, .motivation-tabs button.active {
+      background: #b8860b;
+    }
+    .story-content, .motivation-content {
+      margin-top: 20px;
+      display: none;
+    }
+    .contact-links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background: linear-gradient(145deg, #b8860b, #ffd700);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .contact-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prabhat Panthi</h1>
+    <p>Official Personal Website</p>
+  </header>
+  <nav>
+    <button onclick="showTab('home')" class="active">Home</button>
+    <button onclick="showTab('about')">About Me</button>
+    <button onclick="showTab('my-story')">Story of Sucess</button>
+    <button onclick="showTab('motivation')">Motivation</button>
+    <button onclick="showTab('photos')">Photos</button>
+    <button onclick="showTab('contact')">Contact</button>
+  </nav>
+  <section id="home">
+    <h2>Welcome to My Official Website</h2>
+    <img src="neww.jpg" alt="Prabhat Panthi" class="profile-pic">
+    <p class="about-text">Namaste! I'm Prabhat Panthi — an explorer of life’s challenges, a speaker of truth, and a believer in simplicity. My journey from a small town in Nepal to becoming a voice for positivity has been filled with lessons that I share with you here. Let's embark on this journey together — of stories, struggles, and success.</p>
+  </section>
+  <section id="my-story" style="max-width: 1200px; margin: 0 auto; padding: 0;">
 
-    <h1>Videos Section</h1>
-    <p>This is where your videos will be displayed.</p>
-  </body>
+  <!-- Full Width Image Banner -->
+  <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+    <img src="newa.jpg" alt="Prabhat Panthi" style="width: 100%; height: 100%; object-fit: cover;">
+  </div>
+
+  <!-- Story Content Below Image -->
+  <div style="background: linear-gradient(135deg, #fff7e6, #fff1cc); padding: 40px; border-radius: 20px; margin-top: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+    <h2 style="font-size: 2.5rem; color: #d4af37; text-align: center; margin-bottom: 30px;">📖 My Story</h2>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      I am <strong>Prabhat Panthi</strong>, born in the peaceful hills of <strong>Gulmi Madane Ward No. 7</strong>. My early days were shaped by the simple yet rich culture of my village, teaching me the essence of hard work and family values.
+    </p>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      I did my schooling in <strong>Bhairahawa</strong>, where I was exposed to diverse people and experiences that broadened my perspective. My passion for learning and growing pushed me to pursue a Bachelor’s degree in <strong>Oxford College</strong>, specializing in <strong>Business Studies (BBS)</strong>.
+    </p>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      After graduation, I joined <strong>NIC Asia Laghubitta Microfinance</strong> and worked there for 4 years. It was a life-changing experience where I worked closely with rural communities, helping them with financial services and witnessing firsthand the impact of microfinance in empowering lives.
+    </p>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      Currently, I am focused on building my personal brand through my website, <strong>Mero Sansaar</strong>. This platform is my way of sharing stories, inspirational quotes, videos, jokes, and life lessons with the world. I believe every story matters, and my goal is to create a digital space filled with positivity and motivation.
+    </p>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      Life has been a journey of ups and downs, but every challenge has been a lesson that shaped my character. I believe in the power of consistency, learning from mistakes, and helping others grow. Through my content, I want to inspire people to believe in themselves, embrace struggles, and celebrate small victories.
+    </p>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; text-align: justify;">
+      Thank you for visiting my world. Let’s walk this journey of life together, spreading smiles, stories, and inspiration.
+    </p>
+  </div>
+</section>
+
+  <section id="Story of Sucess" style="max-width: 1000px; margin: 50px auto; padding: 20px; background: #fff8e7; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+
+  <h2 style="text-align: center; font-size: 2.5rem; color: #d4af37; margin-bottom: 30px;">📖 Stories of Success from Poverty</h2>
+
+  <!-- Tabs -->
+  <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+    <button class="tab-btn active" data-tab="story1" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid #d4af37; background: transparent; cursor: pointer;">Elon Musk</button>
+    <button class="tab-btn" data-tab="story2" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">Oprah Winfrey</button>
+    <button class="tab-btn" data-tab="story3" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">J.K. Rowling</button>
+    <button class="tab-btn" data-tab="story4" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">Howard Schultz</button>
+  </div>
+
+  <!-- Story Contents -->
+  <div id="story1" class="story-content" style="display: block; color: #333; line-height: 1.8; font-size: 1.15rem;">
+
+    <h3 style="color: #b8860b; margin-bottom: 15px;">Elon Musk</h3>
+    <p>Elon Musk was born on June 28, 1971, in Pretoria, South Africa, into a middle-class family. His childhood was marked by challenges — he was introverted, bookish, and often bullied by peers. Despite this, Elon displayed exceptional curiosity and intelligence from a young age, teaching himself computer programming at age 10 and creating a video game called Blastar by age 12, which he sold for $500.</p>
+    
+    <p>Elon’s early life wasn’t easy. He faced family difficulties, including his parents’ divorce, and struggled socially. In search of better opportunities, he moved to Canada at 17 to attend Queen’s University and later transferred to the University of Pennsylvania. Elon earned degrees in physics and economics, equipping himself with both scientific insight and business acumen.</p>
+    
+    <p>After dropping out of a PhD program at Stanford, he jumped into the tech startup world. He co-founded Zip2, a city guide software company, which was sold for nearly $300 million. Next came X.com, which evolved into PayPal, revolutionizing online payments.</p>
+    
+    <p>Despite early success, Elon’s journey was fraught with near financial ruin. Both Tesla and SpaceX faced multiple failed launches and production delays. Yet his relentless drive, belief in innovation, and willingness to risk everything saw him through. Today, Musk leads cutting-edge companies like Tesla, SpaceX, Neuralink, and The Boring Company, shaping the future of transportation, energy, and even space colonization.</p>
+    
+    <p>Elon Musk’s story is a testament to perseverance, creativity, and an unyielding vision — rising from a bullied kid in South Africa to one of the world’s most influential entrepreneurs.</p>
+  </div>
+
+  <div id="story2" class="story-content" style="display: none; color: #333; line-height: 1.8; font-size: 1.15rem;">
+
+    <h3 style="color: #b8860b; margin-bottom: 15px;">Oprah Winfrey</h3>
+    <p>Oprah Winfrey was born on January 29, 1954, in rural Kosciusko, Mississippi, to a teenage single mother living in poverty. Raised in a poor household, Oprah experienced hardship from an early age, including abuse and neglect. However, her strong spirit and intellect shone through despite adversity.</p>
+    
+    <p>As a child, Oprah excelled in school and won a scholarship to Tennessee State University. She began working in local media, initially as a news anchor and reporter. Oprah’s natural charisma and empathy helped her connect with viewers, making her talk shows highly popular.</p>
+    
+    <p>Her groundbreaking show, “The Oprah Winfrey Show,” launched in 1986, became the highest-rated daytime talk show in history, running for 25 years. Oprah used her platform to explore important social issues, promote literature, and empower audiences worldwide.</p>
+    
+    <p>Beyond television, Oprah became a billionaire businesswoman, philanthropist, and cultural icon, breaking barriers for African-American women in media. She founded her own television network and authored best-selling books.</p>
+    
+    <p>Her journey from poverty and abuse to global influence is a powerful example of resilience, compassion, and the transformative power of storytelling.</p>
+  </div>
+
+  <div id="story3" class="story-content" style="display: none; color: #333; line-height: 1.8; font-size: 1.15rem;">
+
+    <h3 style="color: #b8860b; margin-bottom: 15px;">J.K. Rowling</h3>
+    <p>Joanne Rowling, better known as J.K. Rowling, was born on July 31, 1965, in Yate, England. Raised in a modest household, Rowling’s childhood was marked by a passion for reading and storytelling. She studied French and Classics at the University of Exeter.</p>
+    
+    <p>After university, Rowling worked in various jobs while writing her famous Harry Potter series. The death of her mother deeply affected her and influenced the emotional depth of her writing. As a single mother living on welfare, Rowling wrote in cafes, often struggling financially.</p>
+    
+    <p>Her manuscript for “Harry Potter and the Philosopher’s Stone” was rejected by multiple publishers before being accepted by Bloomsbury. The series went on to become a worldwide phenomenon, selling over 500 million copies and spawning blockbuster movies.</p>
+    
+    <p>Rowling’s rise from poverty and hardship to becoming one of the most successful authors in history illustrates how talent and persistence can overcome adversity. Beyond writing, she has supported numerous charities and advocated for social justice.</p>
+  </div>
+
+  <div id="story4" class="story-content" style="display: none; color: #333; line-height: 1.8; font-size: 1.15rem;">
+
+    <h3 style="color: #b8860b; margin-bottom: 15px;">Howard Schultz</h3>
+    <p>Howard Schultz was born on July 19, 1953, in Brooklyn, New York, into a working-class family. His father worked low-wage jobs, often struggling to provide for the family. Schultz’s upbringing in a tough neighborhood inspired him to aim higher.</p>
+    
+    <p>He earned a football scholarship to Northern Michigan University and graduated with a degree in communications. Schultz began his career in sales and marketing before joining Starbucks in 1982 when it was a small coffee bean retailer.</p>
+    
+    <p>Inspired by Italian coffee culture, Schultz convinced Starbucks’ owners to expand into coffee shops serving espresso drinks. Under his leadership, Starbucks grew into a global coffee empire with thousands of stores worldwide.</p>
+    
+    <p>Schultz’s story is one of vision, leadership, and turning humble beginnings into a legacy. He also emphasizes corporate responsibility and has engaged in philanthropic efforts to support veterans and underprivileged youth.</p>
+  </div>
+
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const stories = document.querySelectorAll('.story-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and hide all stories
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.style.borderBottomColor = 'transparent';
+      });
+      stories.forEach(s => s.style.display = 'none');
+
+      // Add active class to clicked tab and show corresponding story
+      tab.classList.add('active');
+      tab.style.borderBottomColor = '#d4af37';
+      const activeStory = document.getElementById(tab.dataset.tab);
+      activeStory.style.display = 'block';
+    });
+  });
+</script>
+
+  <section id="motivation" style="max-width: 900px; margin: 50px auto; padding: 20px; background: #fff9e6; border-radius: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.1); font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; font-size: 2.5rem; color: #d4af37; margin-bottom: 30px;">🌟 Motivational Quotes from Holy Books</h2>
+
+  <!-- Tabs -->
+  <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+    <button class="mot-tab-btn active" data-tab="buddha" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid #d4af37; background: transparent; cursor: pointer;">Buddha</button>
+    <button class="mot-tab-btn" data-tab="quran" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">Quran</button>
+    <button class="mot-tab-btn" data-tab="gita" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">Gita</button>
+    <button class="mot-tab-btn" data-tab="bible" style="padding: 10px 20px; font-weight: bold; border: none; border-bottom: 3px solid transparent; background: transparent; cursor: pointer;">Bible</button>
+  </div>
+
+  <!-- Quotes Sections -->
+
+  <!-- Buddha Quotes -->
+  <div id="buddha" class="motivation-content" style="display: block; color: #333; line-height: 1.6; font-size: 1.1rem;">
+    <ol>
+      <li>“The mind is everything. What you think you become.”</li>
+      <li>“Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.”</li>
+      <li>“Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened.”</li>
+      <li>“Peace comes from within. Do not seek it without.”</li>
+      <li>“Health is the greatest gift, contentment the greatest wealth, faithfulness the best relationship.”</li>
+      <li>“No one saves us but ourselves. No one can and no one may. We ourselves must walk the path.”</li>
+      <li>“Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned.”</li>
+      <li>“To understand everything is to forgive everything.”</li>
+      <li>“The root of suffering is attachment.”</li>
+      <li>“Better than a thousand hollow words, is one word that brings peace.”</li>
+      <li>“You, yourself, as much as anybody in the entire universe, deserve your love and affection.”</li>
+      <li>“Every morning we are born again. What we do today is what matters most.”</li>
+      <li>“In the confrontation between the stream and the rock, the stream always wins – not through strength but by perseverance.”</li>
+      <li>“Hatred does not cease through hatred at any time. Hatred ceases through love. This is an unalterable law.”</li>
+      <li>“Your work is to discover your world and then with all your heart give yourself to it.”</li>
+      <li>“Radiate boundless love towards the entire world.”</li>
+      <li>“True love is born from understanding.”</li>
+      <li>“Just as a candle cannot burn without fire, men cannot live without a spiritual life.”</li>
+      <li>“Let go of attachments to be truly free.”</li>
+      <li>“Happiness does not depend on what you have or who you are. It solely relies on what you think.”</li>
+    </ol>
+  </div>
+
+  <!-- Quran Quotes -->
+  <div id="quran" class="motivation-content" style="display: none; color: #333; line-height: 1.6; font-size: 1.1rem;">
+    <ol>
+      <li>“Indeed, with hardship comes ease.” (94:6)</li>
+      <li>“And whoever puts all his trust in Allah, He will be enough for him.” (65:3)</li>
+      <li>“So remember Me; I will remember you.” (2:152)</li>
+      <li>“Do not lose hope, nor be sad.” (3:139)</li>
+      <li>“Verily, Allah does not change the condition of a people until they change what is in themselves.” (13:11)</li>
+      <li>“Indeed, Allah is with the patient.” (2:153)</li>
+      <li>“And whoever fears Allah – He will make for him a way out.” (65:2)</li>
+      <li>“Your ally is none but Allah and [therefore] His Messenger and those who have believed.” (5:55)</li>
+      <li>“The best of people are those that bring most benefit to the rest of mankind.”</li>
+      <li>“Indeed, the patient will be given their reward without account.” (39:10)</li>
+      <li>“Say, ‘O My servants who have transgressed against themselves [by sinning], do not despair of the mercy of Allah.’” (39:53)</li>
+      <li>“And We have not sent you, [O Muhammad], except as a mercy to the worlds.” (21:107)</li>
+      <li>“Whoever does righteousness, whether male or female, while he is a believer – We will surely cause him to live a good life.” (16:97)</li>
+      <li>“Indeed, Allah is over all things competent.” (2:20)</li>
+      <li>“So be patient. Indeed, the promise of Allah is truth.” (30:60)</li>
+      <li>“And whoever relies upon Allah – then He is sufficient for him.” (65:3)</li>
+      <li>“He who created death and life to test you as to which of you is best in deed.” (67:2)</li>
+      <li>“And the servants of the Most Merciful are those who walk upon the earth humbly.” (25:63)</li>
+      <li>“Indeed, prayer prohibits immorality and wrongdoing.” (29:45)</li>
+      <li>“Whoever does an atom’s weight of good will see it.” (99:7)</li>
+    </ol>
+  </div>
+
+  <!-- Gita Quotes -->
+  <div id="gita" class="motivation-content" style="display: none; color: #333; line-height: 1.6; font-size: 1.1rem;">
+    <ol>
+      <li>“You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions.” (Chapter 2, Verse 47)</li>
+      <li>“Be steadfast in yoga, O Arjuna. Perform your duty and abandon all attachment to success or failure.” (Chapter 2, Verse 48)</li>
+      <li>“When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.” (Chapter 6, Verse 19)</li>
+      <li>“The soul is neither born, and nor does it die.” (Chapter 2, Verse 20)</li>
+      <li>“The mind acts like an enemy for those who do not control it.” (Chapter 6, Verse 6)</li>
+      <li>“Selfless service is the path to liberation.” (Chapter 3, Verse 19)</li>
+      <li>“The person who is devoted to the welfare of all beings is truly wise.” (Chapter 5, Verse 7)</li>
+      <li>“Perform your work with your body, mind, intellect, and without attachment.” (Chapter 5, Verse 11)</li>
+      <li>“There is neither this world, nor the world beyond.” (Chapter 8, Verse 16)</li>
+      <li>“Those who are motivated only by desire for the fruits of action are miserable.” (Chapter 2, Verse 49)</li>
+      <li>“Yoga is the journey of the self, through the self, to the self.” (Chapter 6, Verse 20)</li>
+      <li>“Among thousands of men, one may strive for perfection; and among those who have achieved perfection, hardly one knows me in truth.” (Chapter 7, Verse 3)</li>
+      <li>“By devotion, one attains peace.” (Chapter 12, Verse 15)</li>
+      <li>“Equanimity is the hallmark of the wise.” (Chapter 2, Verse 56)</li>
+      <li>“A person is said to be elevated when he regards all equally.” (Chapter 5, Verse 18)</li>
+      <li>“Those who are free from malice towards all beings are dear to me.” (Chapter 12, Verse 13)</li>
+      <li>“Abandon all attachment to the results of your actions.” (Chapter 2, Verse 50)</li>
+      <li>“The mind is restless, turbulent, strong and unyielding, O Krishna; I consider it as difficult to subdue as the wind.” (Chapter 6, Verse 34)</li>
+      <li>“Arise, awake, and stop not till the goal is reached.” (Chapter 2, Verse 3)</li>
+      <li>“Perform your prescribed duties without attachment.” (Chapter 3, Verse 7)</li>
+    </ol>
+  </div>
+
+  <!-- Bible Quotes -->
+  <div id="bible" class="motivation-content" style="display: none; color: #333; line-height: 1.6; font-size: 1.1rem;">
+    <ol>
+      <li>“I can do all things through Christ who strengthens me.” (Philippians 4:13)</li>
+      <li>“For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you.” (Jeremiah 29:11)</li>
+      <li>“Be strong and courageous. Do not be afraid; do not be discouraged.” (Joshua 1:9)</li>
+      <li>“Trust in the Lord with all your heart and lean not on your own understanding.” (Proverbs 3:5)</li>
+      <li>“The joy of the Lord is your strength.” (Nehemiah 8:10)</li>
+      <li>“Cast all your anxiety on Him because He cares for you.” (1 Peter 5:7)</li>
+      <li>“Commit to the Lord whatever you do, and your plans will succeed.” (Proverbs 16:3)</li>
+      <li>“The Lord is my shepherd; I shall not want.” (Psalm 23:1)</li>
+      <li>“Delight yourself in the Lord, and He will give you the desires of your heart.” (Psalm 37:4)</li>
+      <li>“Do not fear, for I am with you; do not be dismayed, for I am your God.” (Isaiah 41:10)</li>
+      <li>“Let us not become weary in doing good, for at the proper time we will reap a harvest.” (Galatians 6:9)</li>
+      <li>“Be joyful in hope, patient in affliction, faithful in prayer.” (Romans 12:12)</li>
+      <li>“Love is patient, love is kind.” (1 Corinthians 13:4)</li>
+      <li>“For God gave us a spirit not of fear but of power and love.” (2 Timothy 1:7)</li>
+      <li>“Ask and it will be given to you; seek and you will find.” (Matthew 7:7)</li>
+      <li>“Peace I leave with you; my peace I give you.” (John 14:27)</li>
+      <li>“Your faith has made you well.” (Mark 10:52)</li>
+      <li>“The Lord is good, a refuge in times of trouble.” (Nahum 1:7)</li>
+      <li>“Therefore encourage one another and build each other up.” (1 Thessalonians 5:11)</li>
+      <li>“In all your ways acknowledge Him, and He will make your paths straight.” (Proverbs 3:6)</li>
+    </ol>
+  </div>
+
+</section>
+
+<script>
+  const motTabs = document.querySelectorAll('.mot-tab-btn');
+  const motContents = document.querySelectorAll('.motivation-content');
+
+  motTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      motTabs.forEach(t => {
+        t.classList.remove('active');
+        t.style.borderBottomColor = 'transparent';
+      });
+      motContents.forEach(c => c.style.display = 'none');
+
+      tab.classList.add('active');
+      tab.style.borderBottomColor = '#d4af37';
+
+      const activeContent = document.getElementById(tab.dataset.tab);
+      activeContent.style.display = 'block';
+    });
+  });
+</script>
+
+  <section id="photos">
+    <h2>📸 Event Photos</h2>
+    <div class="gallery">
+      <img src="brp.jpg">
+      <img src="chester.jpg">
+      <img src="new.jpg">
+      <img src="newa.jpg">
+      <img src="newb.jpg">
+      <img src="newc.jpg">
+      <img src="neww.jpg">
+      <img src="photop.jpg">
+      <img src="photopp.jpg">
+      <img src="photoppp.jpg">
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-links">
+      <a href="https://facebook.com/prabhatpanthi" target="_blank">Facebook</a>
+      <a href="https://www.youtube.com/@prabhatpanthi6059" target="_blank">YouTube</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+    <form>
+      <input type="email" placeholder="Your Email" required style="padding:10px; width:300px;"><br><br>
+      <textarea placeholder="Your Message" required style="padding:10px; width:300px; height:100px;"></textarea><br><br>
+      <button type="submit" style="padding:10px 20px; background:#d4af37; color:white; border:none; border-radius:5px;">Send Message</button>
+    </form>
+  </section>
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = (section.id === tabId) ? 'block' : 'none';
+      });
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(tabId));
+      });
+    }
+    function showStory(storyName) {
+      document.querySelectorAll('#my-story .story-content').forEach(content => {
+        content.style.display = (content.id === storyName) ? 'block' : 'none';
+      });
+      document.querySelectorAll('#my-story .story-tabs button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-story') === storyName);
+      });
+    }
+    function showMotivation(tabName) {
+      document.querySelectorAll('.motivation-content').forEach(content => {
+        content.style.display = (content.id === tabName) ? 'block' : 'none';
+      });
+      document.querySelectorAll('.motivation-tabs button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-motivation') === tabName);
+      });
+    }
+  </script>
+</body>
 </html>
