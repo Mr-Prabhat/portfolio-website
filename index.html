@@ -7,22 +7,33 @@
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --primary-gold: #ffd700;
+      --dark-gold: #b8860b;
+      --light-gold: #fffacd;
+      --metallic-gold: #e6b800;
+      --bg-light: #faf8e6;
+      --text-color: #2c2c2c;
+    }
+
     body {
-      background: linear-gradient(to bottom, #e8f5e9, #ffffff);
-      color: #333;
+      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
+      color: var(--text-color);
       font-family: 'Poppins', sans-serif;
+      margin: 0;
       transition: background 0.5s, color 0.5s;
     }
 
     header {
-      background: linear-gradient(to right, #4caf50, #81c784);
+      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
       color: white;
       padding: 20px;
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     nav {
-      background: #222;
+      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
       display: flex;
       justify-content: center;
       gap: 15px;
@@ -31,6 +42,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
@@ -39,11 +51,12 @@
       font-weight: bold;
       padding: 8px 15px;
       border-radius: 5px;
-      transition: background 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav a:hover {
-      background: #444;
+      background: var(--primary-gold);
+      color: var(--text-color);
     }
 
     .search-bar {
@@ -53,14 +66,17 @@
 
     .search-bar input {
       padding: 10px;
-      width: 50%;
+      width: min(80%, 500px);
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
     }
 
     section {
       padding: 20px;
       display: none;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     section.active {
@@ -76,8 +92,8 @@
       height: 250px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #4caf50;
-      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+      border: 4px solid var(--primary-gold);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
       margin-bottom: 15px;
     }
 
@@ -91,6 +107,7 @@
     .gallery img {
       width: 100%;
       border-radius: 10px;
+      border: 2px solid var(--metallic-gold);
       transition: transform 0.3s;
     }
 
@@ -103,29 +120,43 @@
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 20px;
+      justify-content: center;
     }
 
     .tabs button {
       padding: 10px 20px;
-      background: #3f5efb;
-      color: white;
+      background: var(--primary-gold);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
     }
 
     .tabs button:hover {
-      background: #fc466b;
+      background: var(--dark-gold);
+      transform: translateY(-2px);
     }
 
     .tab-content {
       display: none;
       margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      border: 1px solid var(--metallic-gold);
     }
 
     .tab-content.active {
       display: block;
+    }
+
+    .quote, .story, .joke {
+      margin: 15px 0;
+      padding: 15px;
+      background: var(--light-gold);
+      border-left: 4px solid var(--primary-gold);
+      border-radius: 5px;
     }
 
     .contact-form input,
@@ -134,33 +165,79 @@
       padding: 10px;
       margin: 10px 0;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
     }
 
     .contact-form button {
       padding: 10px 20px;
-      background: #fc466b;
-      color: white;
+      background: var(--primary-gold);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
     }
 
     .dark-mode {
-      background: #121212;
-      color: #f7f7f7;
+      background: #2b2b2b;
+      color: #f0f0f0;
     }
 
     .dark-mode nav {
-      background: #1e1e1e;
+      background: linear-gradient(to right, #4a3c00, #6b5400);
     }
 
     .dark-mode .tabs button {
-      background: #444;
+      background: var(--dark-gold);
+      color: white;
     }
 
     .dark-mode .tabs button:hover {
-      background: #fc466b;
+      background: var(--primary-gold);
+    }
+
+    .dark-mode .tab-content {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .home-banner img {
+        width: 150px;
+        height: 150px;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      .search-bar input {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -188,7 +265,7 @@
 
   <section id="home" class="active">
     <div class="home-banner">
-      <img src="images/brp.jpg" alt="Prabhat Panthi" />
+      <img src="images/neww.jpg" alt="Prabhat Panthi" />
     </div>
     <h2>Welcome to My World</h2>
     <p>
@@ -216,7 +293,7 @@
   <section id="about">
     <h2>About Me</h2>
     <div class="home-banner">
-      <img src="images/brp.jpg" alt="Prabhat Panthi About" />
+      <img src="images/newa.jpg" alt="Prabhat Panthi About" />
     </div>
     <p>
       I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
@@ -257,6 +334,8 @@
       <img src="images/photop.jpg" alt="Photo 2" />
       <img src="images/photopp.jpg" alt="Photo 3" />
       <img src="images/photoppp.jpg" alt="Photo 4" />
+      <img src="images/newb.jpg" alt="Photo 4" />
+      <img src="images/newc.jpg" alt="Photo 4" />
     </div>
   </section>
 
@@ -266,13 +345,67 @@
   </section>
 
   <section id="stories">
-    <h2>Stories</h2>
-    <p class="searchable">Stories content here...</p>
+    <h2>Success Stories</h2>
+    <div class="story searchable">
+      <h3>The Journey of Chester charles bennington</h3>
+       <p>
+    Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
+  </p>
+  <p>
+    However, <strong>music became his ultimate escape</strong>. Influenced by bands like Stone Temple Pilots, Chester developed a unique, raw vocal style that could switch from soothing melodies to powerful screams, capturing the emotions of millions.
+  </p>
+  <p>
+    Chester’s life took a pivotal turn when he joined <strong>Linkin Park in 1999</strong>. The band’s debut album <em>“Hybrid Theory” (2000)</em> became a global phenomenon, giving a voice to a generation dealing with frustration, identity, and emotional struggles. Songs like <em>“In the End”</em>, <em>“Crawling”</em>, and <em>“Numb”</em> resonated deeply with fans worldwide.
+  </p>
+  <p>
+    Despite his success, Chester continuously battled with inner demons. He used his platform to speak openly about mental health, encouraging others to seek help and never be ashamed of their struggles. Tragically, Chester passed away on <strong>July 20, 2017</strong>, leaving behind a legacy that still inspires millions.
+  </p>
+  <p>
+    Chester’s journey from a tormented childhood to becoming a global rock icon is a story of <strong>pain, passion, and the power of art to heal</strong>. His voice lives on, reminding us that <em>“it's okay to not be okay”</em> — and that seeking help is a sign of strength, not weakness.
+  </p>
+    </div>
+    <div class="story searchable">
+      <h3>From Streets to Success: APJ Abdul Kalam</h3>
+      <p>
+        Dr. APJ Abdul Kalam, former President of India, grew up in a modest family, selling newspapers to support his education.
+        His dedication to science led him to become a key figure in India's space and missile programs.
+        Known as the "Missile Man," his story teaches us that humble beginnings can lead to extraordinary achievements through perseverance.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Elon Musk: Visionary Innovator</h3>
+      <p>
+        Elon Musk, born in South Africa, faced numerous setbacks before becoming a global icon of innovation.
+        From co-founding PayPal to leading Tesla and SpaceX, Musk's relentless pursuit of ambitious goals, like colonizing Mars, shows the power of thinking big and never giving up, even after failures.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Oprah Winfrey: Rising Above Adversity</h3>
+      <p>
+        Oprah Winfrey overcame a childhood of poverty and abuse to become one of the most influential media personalities in the world.
+        Through her talk show and philanthropy, she empowered millions, proving that resilience and compassion can transform lives and inspire global change.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Malala Yousafzai: Voice for Education</h3>
+      <p>
+        Malala Yousafzai, a Pakistani activist, survived an assassination attempt by the Taliban for advocating girls' education.
+        At age 17, she became the youngest Nobel Peace Prize laureate. Her courage and dedication continue to inspire millions to fight for education and equality.
+      </p>
+    </div>
   </section>
 
   <section id="jokes">
     <h2>Jokes</h2>
-    <p class="searchable">Jokes content here...</p>
+    <div class="joke searchable">
+      <p>Why did the computer go to art school? Because it wanted to learn how to draw a better "byte"!</p>
+    </div>
+    <div class="joke searchable">
+      <p>Why don't programmers prefer dark mode? Because the light attracts bugs.</p>
+    </div>
+    <div class="joke searchable">
+      <p>What do you call a dinosaur that takes care of its teeth? A Flossiraptor!</p>
+    </div>
   </section>
 
   <section id="news">
@@ -288,22 +421,50 @@
       <button onclick="showMotivationTab('gita')">Gita</button>
       <button onclick="showMotivationTab('buddha')">Buddha</button>
     </div>
-    <div id="quran" class="tab-content active">Quran Quotes...</div>
-    <div id="bible" class="tab-content">Bible Quotes...</div>
-    <div id="gita" class="tab-content">Gita Quotes...</div>
-    <div id="buddha" class="tab-content">Buddha Quotes...</div>
+    <div id="quran" class="tab-content active">
+      <div class="quote">
+        <p>"And whoever puts their trust in Allah, then He ˹alone˺ is sufficient for them." – Quran 65:3</p>
+      </div>
+      <div class="quote">
+        <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
+      </div>
+    </div>
+    <div id="bible" class="tab-content">
+      <div class="quote">
+        <p>"I can do all things through Christ who strengthens me." – Philippians 4:13</p>
+      </div>
+      <div class="quote">
+        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
+      </div>
+    </div>
+    <div id="gita" class="tab-content">
+      <div class="quote">
+        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</p>
+      </div>
+      <div class="quote">
+        <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
+      </div>
+    </div>
+    <div id="buddha" class="tab-content">
+      <div class="quote">
+        <p>"The mind is everything. What you think, you become." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
     <p>Phone: +977-9848605969</p>
     <p>Email: prabhatpanthi007@gmail.com</p>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Your Feedback / Comment" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea rows="5" id="message" placeholder="Your Feedback / Comment" required></textarea>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </div>
   </section>
 
   <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
@@ -342,6 +503,21 @@
 
       if (!found && filter === '') {
         showTab('home');
+      }
+    }
+
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Please fill in all fields.');
       }
     }
   </script>
