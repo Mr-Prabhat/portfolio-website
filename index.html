@@ -88,9 +88,10 @@
     }
 
     .home-banner img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
       object-fit: cover;
       border: 4px solid var(--primary-gold);
       box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
@@ -227,8 +228,9 @@
 
     @media (max-width: 600px) {
       .home-banner img {
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
       }
 
       nav {
@@ -347,7 +349,7 @@
   <section id="stories">
     <h2>Success Stories</h2>
     <div class="story searchable">
-      <h3>The Journey of Chester charles bennington</h3>
+      <h3>The Journey of Chester Charles Bennington</h3>
        <p>
     Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
   </p>
@@ -428,6 +430,12 @@
       <div class="quote">
         <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
       </div>
+      <div class="quote">
+        <p>"Indeed, Allah will not change the condition of a people until they change what is in themselves." – Quran 13:11</p>
+      </div>
+      <div class="quote">
+        <p>"Call upon Me; I will respond to you." – Quran 40:60</p>
+      </div>
     </div>
     <div id="bible" class="tab-content">
       <div class="quote">
@@ -435,6 +443,12 @@
       </div>
       <div class="quote">
         <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
+      </div>
+      <div class="quote">
+        <p>"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
+      </div>
+      <div class="quote">
+        <p>"Love your neighbor as yourself." – Mark 12:31</p>
       </div>
     </div>
     <div id="gita" class="tab-content">
@@ -444,6 +458,12 @@
       <div class="quote">
         <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
       </div>
+      <div class="quote">
+        <p>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</p>
+      </div>
+      <div class="quote">
+        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place." – Bhagavad Gita 6:19</p>
+      </div>
     </div>
     <div id="buddha" class="tab-content">
       <div class="quote">
@@ -451,6 +471,12 @@
       </div>
       <div class="quote">
         <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Peace comes from within. Do not seek it without." – Buddha</p>
       </div>
     </div>
   </section>
