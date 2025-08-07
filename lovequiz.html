@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Love Quiz For My Baby ❤️</title>
+  <title>Abishma Baby Quiz ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -16,16 +16,17 @@
       padding: 20px;
       min-height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
       color: #e91e63;
-      font-size: 32px;
+      font-size: 28px;
     }
 
     #question {
-      font-size: 24px;
-      margin-bottom: 20px;
+      font-size: 22px;
+      margin: 20px 0;
       color: #333;
     }
 
@@ -33,17 +34,19 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      position: relative;
     }
 
     .option-btn {
       padding: 10px 20px;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       background-color: #ff69b4;
       color: white;
       transition: background-color 0.3s ease;
+      position: relative;
     }
 
     .option-btn:hover {
@@ -52,201 +55,86 @@
 
     #remark {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 16px;
       color: #b30059;
+      min-height: 40px;
     }
   </style>
 </head>
 <body>
 
-  <h1>💘 Funny Love Quiz For My Baby 💘</h1>
+  <h1>🤣 Abishma Baby Funny Quiz 💘</h1>
 
   <div id="question"></div>
-
   <div class="options" id="options"></div>
-
   <div id="remark"></div>
 
   <script>
     const questions = [
       {
-        q: "Do you love me?",
+        q: "Do you love me more than momo?",
         options: ["Yes", "No"],
         answer: 0,
         remarks: [
-          "If you say no, I’ll cry 😭",
-          "Aachi That’s illegal! 😡",
-          "Heart = broken 💔",
-          "You're joking, right? 😢",
-          "Say yes before I faint 😵"
+          "So you love paaji momo more than me?? 😭",
+          "You broke my bhuteko heart 💔",
+          "I'm steaming in sadness now 🥟😭",
+          "Even momo is crying now 😂"
         ]
       },
       {
-        q: "Do you like me?",
-        options: ["Yes", "No", "A little", "Who are you?"],
+        q: "Will you marry me or should I cry now?",
+        options: ["Yes", "No"],
         answer: 0,
         remarks: [
-          "so you like hawa? 😭",
-          "I thought we had something! 😢",
-          "I need therapy now 😩",
-          "yei sunna bacheychu bhukampa bata 🙄",
-          "Don’t play with my feelings! 🥺"
+          "😭 Ok fine... I'll buy ring for momo then",
+          "I'll change my surname to Sad Prabhat 😢",
+          "I just fainted... emotionally 😭",
+          "Come on, say yes before I turn into ice cream 🍦"
         ]
       },
       {
-        q: "How many times did we go to Palpa?",
-        options: ["2", "3", "4", "5"],
-        answer: 2,
-        remarks: [
-          "Count again, aalu! 😂",
-          "4 times, and each was epic 🏞️",
-          "Really? That’s your guess? 😅",
-          "You forgot eating dhulo of those days? 😢",
-          "Even Google remembers that!"
-        ]
-      },
-      {
-        q: "How many times did we go to Lumbini?",
-        options: ["1", "2", "3", "4"],
-        answer: 2,
-        remarks: [
-          "Three peaceful visits, my Buddha baby 🧘‍♀️",
-          "You forgot our temple date? 😔",
-          "I’ll pray for your memory 🙏",
-          "You’re guessing, admit it 😆",
-          "My brain hurts now 😵"
-        ]
-      },
-      {
-        q: "What did we eat the most?",
-        options: ["Pizza", "Momo", "Thupka", "Burger"],
-        answer: 2,
-        remarks: [
-          "Thupka was our soul food 🍜",
-          "I can smell it even now 😂",
-          "You’re wrong and hungry 😅",
-          "No thupka = no us 🥲",
-          "That answer is cold like a fridge"
-        ]
-      },
-      {
-        q: "Which is our favourite cafe?",
-        options: ["Galaxy Cafe", "craving", "bnbatika wala", "soulmate"],
+        q: "If I fall naked, you'll catch me or record video?",
+        options: ["Catch", "No"],
         answer: 0,
         remarks: [
-          "We had our best talks in Galaxy 💫",
-          "You really forgot our table? 😢",
-          "My chicken lollypop is crying now ☕😭",
-          "Check drive ! 📸",
-          "You’re hurting my coke feelings 😒"
+          "So I’m viral now? 💀",
+          "Why are you like this 😭",
+          "Even my bones said ouch!",
+          "Broken leg, broken heart 😩"
         ]
       },
       {
-        q: "Who falls asleep first?",
-        options: ["You", "Me", "Dog", "Phone battery"],
+        q: "What would you do if I become fat like Hippo?",
+        options: ["Love you more", "No"],
         answer: 0,
         remarks: [
-          "You snore before my goodnight 😴",
-          "Even your phone stays awake longer 😅",
-          "You sleep fast like a baby! 😂",
-          "I talk to myself after 10pm 😭",
-          "Your dreams come before my hugs 🥺"
+          "So now I have to diet and cry? 🐼💔",
+          "Even chubby cheeks have feelings 😭",
+          "Fine! I’ll eat salad... maybe 🍃",
+          "Sad panda activated 🐼💔"
         ]
       },
       {
-        q: "What's your pet name for me?",
-        options: ["Lalu", "Babu", "oiee", "Motu"],
-        answer: 1,
-        remarks: [
-          "You called me oiee  like 1 million times 😂",
-          "You forgot the nickname you invented?!",
-          "Next time I'm saving chats as proof 📱",
-          "Now I’m Motu? That hurts 💔",
-          "Nickname downgrade alert 🚨"
-        ]
-      },
-      {
-        q: "What color dress do I love on you?",
-        options: ["Black", "Red", "White", "Pink"],
+        q: "If I get ugly, will you still love me?",
+        options: ["Of course", "No"],
         answer: 0,
         remarks: [
-          "Black = my weakness on you 🖤",
-          "It’s in your selfies bro 😅",
-          "Red? You wear it once!",
-          "You forgot your charm color?",
-          "No other color gives me butterflies 😘"
+          "So I’m just a ugly face to you? 😢",
+          "Beauty fades, but heartbreak stays 😭",
+          "Mirror crying with me now 😭🪞",
+          "I’ll wear mask forever then 😷"
         ]
       },
       {
-        q: "Which month did we first meet?",
-        options: ["January", "February", "March", "April"],
-        answer: 1,
-        remarks: [
-          "Feb = Love Month 💕",
-          "You forgot our origin story? 😭",
-          "I’ll cry into my calendar now 😢",
-          "Even February is offended 😂",
-          "Try again, Memory Queen!"
-        ]
-      },
-      {
-        q: "What’s our most-used emoji?",
-        options: ["😂", "❤️", "😡", "🥹"],
-        answer: 1,
-        remarks: [
-          "❤️ is our love language!",
-          "We send hearts daily 🫶",
-          "Stop playing, you know the truth!",
-          "Even your keyboard knows ❤️",
-          "Are you even paying attention? 😂"
-        ]
-      },
-      {
-        q: "Which side do I sleep on?",
-        options: ["Left", "Right", "Middle", "Upside down 😂"],
+        q: "Can I get one kiss daily forever?",
+        options: ["Yes", "No"],
         answer: 0,
         remarks: [
-          "Left side – always. Duh!",
-          "You observe nothing huh? 😂",
-          "Now you sleep on the floor! 🛏️❌",
-          "Sleep tracker betrayed 😅",
-          "I told you last night 😭"
-        ]
-      },
-      {
-        q: "Who says sorry first?",
-        options: ["Me", "You", "No one", "Your dog"],
-        answer: 1,
-        remarks: [
-          "I always melt first 🥺",
-          "Don't deny your soft heart 💖",
-          "Even god say sorry before You 😂",
-          "I = peacemaker 🕊️",
-          "Oops, guess again sweetie!"
-        ]
-      },
-      {
-        q: "If I get angry, what do you do?",
-        options: ["Run away", "Say sorry", "Buy chocolate", "Cry"],
-        answer: 2,
-        remarks: [
-          "of course you get more angry 🍫",
-          "you don’t want my sorry, you want Dairy Milk!",
-          "You forgot my secret weakness?! 😒",
-          "but sweet kiss is my love language!",
-          "Wrong again, now gimme KitKat!"
-        ]
-      },
-      {
-        q: "What do we always fight about?",
-        options: ["Food", "facebook", "Reply time", "Random things 😂"],
-        answer: 3,
-        remarks: [
-          "We fight over silly things always 😂",
-          "Random = our relationship’s middle name",
-          "Are you pretending now? 😒",
-          "You don’t even know what we fight about? 😭",
-          "Fighting is love training 😂💪"
+          "No kiss? No peace 😤",
+          "You wanna fight? Because I will hug attack!",
+          "Heart rate dropping 💔",
+          "I’m suing for kiss custody 😤"
         ]
       }
     ];
@@ -255,9 +143,9 @@
 
     function loadQuestion() {
       if (current >= questions.length) {
-        document.getElementById("question").innerHTML = "🎉 You finished the quiz! I still love you most 😘";
+        document.getElementById("question").innerHTML = "🎉 That’s it baby! You passed... kind of 😜";
         document.getElementById("options").innerHTML = "";
-        document.getElementById("remark").innerHTML = "";
+        document.getElementById("remark").innerHTML = "But remember – I love you infinity ❤️";
         return;
       }
 
@@ -272,6 +160,16 @@
         const btn = document.createElement("button");
         btn.classList.add("option-btn");
         btn.innerText = option;
+
+        // If this is the "No" option, make it run
+        if (option.toLowerCase() === "no") {
+          btn.onmouseenter = () => {
+            btn.style.position = "absolute";
+            btn.style.left = Math.floor(Math.random() * 80) + "%";
+            btn.style.top = Math.floor(Math.random() * 80) + "%";
+          };
+        }
+
         btn.onclick = () => checkAnswer(index);
         optionsContainer.appendChild(btn);
       });
