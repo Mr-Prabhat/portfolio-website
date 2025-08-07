@@ -2,201 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Abishma Baby Quiz ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Message</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff0f5;
+      background: #ffe6e6;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      min-height: 100vh;
-      text-align: center;
-      overflow: hidden;
-      position: relative;
+      height: 100vh;
+      margin: 0;
     }
-
     h1 {
-      color: #e91e63;
-      font-size: 28px;
+      color: #ff0066;
+      font-size: 2em;
+      margin-bottom: 30px;
     }
-
-    #question {
-      font-size: 22px;
-      margin: 20px 0;
-      color: #333;
-    }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      position: relative;
-      width: 100%;
-    }
-
-    .option-btn {
-      padding: 10px 20px;
-      font-size: 16px;
+    .btn {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
       border: none;
-      border-radius: 8px;
       cursor: pointer;
-      background-color: #ff69b4;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    #yesBtn {
+      background-color: #00cc66;
       color: white;
-      transition: background-color 0.3s ease;
-      position: relative;
     }
-
-    .option-btn:hover {
-      background-color: #e91e63;
+    #noBtn {
+      background-color: #ff3300;
+      color: white;
+      position: absolute;
     }
-
-    #remark {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #b30059;
-      min-height: 40px;
+    #message {
+      margin-top: 40px;
+      max-height: 300px;
+      overflow-y: auto;
+      width: 90%;
+      text-align: center;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #999;
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>Do you love me, Abishma? 🥺</h1>
+  <button id="yesBtn" class="btn">Yes 💖</button>
+  <button id="noBtn" class="btn">No 😒</button>
 
-  <h1>🤣 Abishma Baby Funny Quiz 💘</h1>
-
-  <div id="question"></div>
-  <div class="options" id="options"></div>
-  <div id="remark"></div>
+  <div id="message"></div>
 
   <script>
-    const questions = [
-      {
-        q: "Do you love me more than momo?",
-        options: ["Yes", "No"],
-        answer: 0,
-        remarks: [
-          "So you love paaji momo more than me?? 😭",
-          "You broke my bhuteko heart 💔",
-          "I'm steaming in sadness now 🥟😭",
-          "Even momo is crying now 😂"
-        ]
-      },
-      {
-        q: "Will you marry me or should I cry now?",
-        options: ["Yes", "No"],
-        answer: 0,
-        remarks: [
-          "😭 Ok fine... I'll buy ring for momo then",
-          "I'll change my surname to Sad Prabhat 😢",
-          "I just fainted... emotionally 😭",
-          "Come on, say yes before I turn into ice cream 🍦"
-        ]
-      },
-      {
-        q: "If I fall naked, you'll catch me or record video?",
-        options: ["Catch", "No"],
-        answer: 0,
-        remarks: [
-          "So I’m viral now? 💀",
-          "Why are you like this 😭",
-          "Even my bones said ouch!",
-          "Broken leg, broken heart 😩"
-        ]
-      },
-      {
-        q: "What would you do if I become fat like Hippo?",
-        options: ["Love you more", "No"],
-        answer: 0,
-        remarks: [
-          "So now I have to diet and cry? 🐼💔",
-          "Even chubby cheeks have feelings 😭",
-          "Fine! I’ll eat salad... maybe 🍃",
-          "Sad panda activated 🐼💔"
-        ]
-      },
-      {
-        q: "If I get ugly, will you still love me?",
-        options: ["Of course", "No"],
-        answer: 0,
-        remarks: [
-          "So I’m just a ugly face to you? 😢",
-          "Beauty fades, but heartbreak stays 😭",
-          "Mirror crying with me now 😭🪞",
-          "I’ll wear mask forever then 😷"
-        ]
-      },
-      {
-        q: "Can I get one kiss daily forever?",
-        options: ["Yes", "No"],
-        answer: 0,
-        remarks: [
-          "No kiss? No peace 😤",
-          "You wanna fight? Because I will hug attack!",
-          "Heart rate dropping 💔",
-          "I’m suing for kiss custody 😤"
-        ]
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const message = document.getElementById('message');
+
+    // Move "No" button to a random position on click
+    noBtn.addEventListener('mouseover', () => {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
+    // On "Yes", show 1000 I love you messages
+    yesBtn.addEventListener('click', () => {
+      let loveMessages = "";
+      for (let i = 1; i <= 1000; i++) {
+        loveMessages += `❤️ ${i}. I love you Abishma ❤️<br>`;
       }
-    ];
-
-    let current = 0;
-
-    function loadQuestion() {
-      if (current >= questions.length) {
-        document.getElementById("question").innerHTML = "🎉 That’s it baby! You passed... kind of 😜";
-        document.getElementById("options").innerHTML = "";
-        document.getElementById("remark").innerHTML = "But remember – I love you infinity ❤️";
-        return;
-      }
-
-      const q = questions[current];
-      document.getElementById("question").innerText = q.q;
-      document.getElementById("remark").innerText = "";
-
-      const optionsContainer = document.getElementById("options");
-      optionsContainer.innerHTML = "";
-
-      q.options.forEach((option, index) => {
-        const btn = document.createElement("button");
-        btn.classList.add("option-btn");
-        btn.innerText = option;
-
-        // Make "No" or wrong answer run like a rat 🐭
-        if (index !== q.answer) {
-          btn.style.position = "absolute";
-          btn.addEventListener("mouseover", () => moveButton(btn));
-          btn.addEventListener("touchstart", () => moveButton(btn)); // mobile
-        }
-
-        btn.onclick = () => checkAnswer(index);
-        optionsContainer.appendChild(btn);
-      });
-    }
-
-    function moveButton(btn) {
-      const maxX = window.innerWidth - btn.offsetWidth - 20;
-      const maxY = window.innerHeight - btn.offsetHeight - 20;
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
-      btn.style.left = `${randomX}px`;
-      btn.style.top = `${randomY}px`;
-    }
-
-    function checkAnswer(selected) {
-      const q = questions[current];
-      if (selected === q.answer) {
-        current++;
-        loadQuestion();
-      } else {
-        const remark = q.remarks[Math.floor(Math.random() * q.remarks.length)];
-        document.getElementById("remark").innerText = remark;
-      }
-    }
-
-    loadQuestion();
+      message.innerHTML = loveMessages;
+      message.style.display = 'block';
+    });
   </script>
-
 </body>
 </html>
