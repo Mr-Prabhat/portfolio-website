@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amore MiO - Real-time Chat</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f0f0f0; margin: 0; padding: 0; text-align: center; }
+  #auth, #chat { max-width: 480px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);}
+  #chat { display: none; flex-direction: column; height: 600px; }
+  #messages { flex: 1; overflow-y: auto; border: 1px solid #ddd; padding: 10px; text-align: left; background: #fff; margin-bottom: 10px; }
+  #messages div { margin-bottom: 8px; padding: 8px; border-radius: 5px; max-width: 75%; }
+  .msg-self { background: #dcf8c6; margin-left: auto; }
+  .msg-other { background: #eee; }
+  input[type=text], input[type=email], input[type=password] {
+    width: calc(100% - 22px); padding: 10px; margin: 5px 0 15px; border-radius: 4px; border: 1px solid #ccc;
+  }
+  button {
+    background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 16px;
+  }
+  button:hover { background: #1ebe5a; }
+</style>
+</head>
+<body>
 
+<div id="auth">
+  <h2>Amore MiO - Login or Signup</h2>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <br />
+  <button onclick="signup()">Sign Up</button>
+  <button onclick="login()">Log In</button>
+</div>
+
+<div id="chat">
+  <h3>Amore MiO - Chat Room</h3>
+  <div id="messages"></div>
+  <input type="text" id="messageInput" placeholder="Type a message..." />
+  <button onclick="sendMessage()">Send</button>
+  <br /><br />
+  <button onclick="logout()" style="background:#f44336;">Logout</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  // Your Supabase credentials:
+  const SUPABASE_URL = 'https://fflawatbcocazbsblzkl.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmbGF3YXRiY29jYXpic2JsemtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1OTQzMDcsImV4cCI6MjA3MDE3MDMwN30.4bCY4AcHHsWsXJCvcVhoVXABdn7UV3S7pxIuX4jMoww';
+
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const authDiv = document.getElementById('auth');
+  const chatDiv = document.getElementById('chat');
+  const messagesDiv = document.getElementById('messages');
+  const messageInput = document.getElementById('messageInput');
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (session && session.user) {
+      authDiv.style.display = 'none';
+      chatDiv.style.display = 'flex';
+      loadMessages();
+    } else {
+      authDiv.style.display = 'block';
+      chatDiv.style.display = 'none';
+      messagesDiv.innerHTML = '';
+    }
+  });
+
+  async function signup() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    if (!email || !password) {
+      alert('Please enter email and password');
+      return;
+    }
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) alert('Signup error: ' + error.message);
+    else alert('Signup successful! Check your email for confirmation.');
+  }
+
+  async function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    if (!email || !password) {
+      alert('Please enter email and password');
+      return;
+    }
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) alert('Login error: ' + error.message);
+  }
+
+  async function logout() {
+    await supabase.auth.signOut();
+  }
+
+  async function sendMessage() {
+    const user = supabase.auth.user();
+    const message = messageInput.value.trim();
+    if (!message) return alert('Please enter a message');
+    if (!user) return alert('You must be logged in to send messages');
+
+    const { error } = await supabase
+      .from('messages')
+      .insert([{ sender: user.email, content: message }]);
+
+    if (error) {
+      alert('Error sending message: ' + error.message);
+    } else {
+      messageInput.value = '';
+    }
+  }
+
+  async function loadMessages() {
+    const { data, error } = await supabase
+      .from('messages')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    if (error) {
+      alert('Error loading messages: ' + error.message);
+      return;
+    }
+
+    messagesDiv.innerHTML = '';
+    data.forEach(msg => appendMessage(msg));
+
+    supabase
+      .channel('chat')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'messages' },
+        payload => appendMessage(payload.new)
+      )
+      .subscribe();
+  }
+
+  function appendMessage(msg) {
+    const sessionUser = supabase.auth.user();
+    const div = document.createElement('div');
+    div.textContent = `${msg.sender}: ${msg.content}`;
+    div.className = sessionUser && sessionUser.email === msg.sender ? 'msg-self' : 'msg-other';
+    messagesDiv.appendChild(div);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
