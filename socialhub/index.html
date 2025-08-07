@@ -1,1 +1,1489 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialConnect - Unified Social Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #1877f2;
+            --primary-dark: #166fe5;
+            --secondary: #42b72a;
+            --text-primary: #050505;
+            --text-secondary: #65676b;
+            --background: #f0f2f5;
+            --card-bg: #ffffff;
+            --border: #dddfe2;
+            --success: #31a24c;
+            --error: #f02849;
+            --warning: #f7b928;
+            --online: #31a24c;
+            --offline: #b0b3b8;
+            --dark-bg: #18191a;
+            --dark-card: #242526;
+            --dark-text: #e4e6eb;
+            --dark-border: #3a3b3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Layout */
+        .app-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--card-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .dark-mode .sidebar {
+            background-color: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        .logo-container {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dark-mode .logo-container {
+            border-color: var(--dark-border);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dark-mode .logo {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            padding: 16px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .nav-item:hover, .dark-mode .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item i {
+            font-size: 24px;
+            width: 36px;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .nav-item i {
+            color: var(--dark-text);
+        }
+
+        .nav-item.active i, .nav-item:hover i {
+            color: var(--primary);
+        }
+
+        .nav-item span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .dark-mode .user-profile {
+            border-color: var(--dark-border);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e4e6eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+
+        .user-info .username {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .user-info .status {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dark-mode .user-info .status {
+            color: #b0b3b8;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--online);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .feed-column {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            border-right: 1px solid var(--border);
+        }
+
+        .dark-mode .feed-column {
+            border-color: var(--dark-border);
+        }
+
+        .chat-column {
+            width: 380px;
+            background-color: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .dark-mode .chat-column {
+            background-color: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        /* Header */
+        .header {
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dark-mode .header {
+            border-color: var(--dark-border);
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: background-color 0.2s;
+        }
+
+        .dark-mode .icon-btn {
+            color: var(--dark-text);
+        }
+
+        .icon-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .icon-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Feed */
+        .create-post {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .create-post {
+            background-color: var(--dark-card);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .create-post-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .post-input {
+            flex-grow: 1;
+            background-color: var(--background);
+            border: none;
+            border-radius: 20px;
+            padding: 12px 16px;
+            font-size: 16px;
+            resize: none;
+            height: 40px;
+        }
+
+        .dark-mode .post-input {
+            background-color: #3a3b3c;
+            color: var(--dark-text);
+        }
+
+        .create-post-footer {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .dark-mode .create-post-footer {
+            border-color: var(--dark-border);
+        }
+
+        .post-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .post-option:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .post-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .post-option i {
+            font-size: 20px;
+        }
+
+        .post-option .photo-video {
+            color: var(--success);
+        }
+
+        .post-option .tag-friends {
+            color: var(--primary);
+        }
+
+        .post-option .feeling {
+            color: var(--warning);
+        }
+
+        /* Post */
+        .post {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .post {
+            background-color: var(--dark-card);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .post-author {
+            flex-grow: 1;
+        }
+
+        .post-author-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .post-time {
+            color: #b0b3b8;
+        }
+
+        .post-content {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .post-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .post-stats {
+            border-color: var(--dark-border);
+            color: #b0b3b8;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .post-action:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .post-action:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Chat */
+        .chats-header {
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dark-mode .chats-header {
+            border-color: var(--dark-border);
+        }
+
+        .chats-search {
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .chats-search input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: var(--background);
+            font-size: 14px;
+        }
+
+        .dark-mode .chats-search input {
+            background-color: #3a3b3c;
+            color: var(--dark-text);
+        }
+
+        .chats-search i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .chats-search i {
+            color: #b0b3b8;
+        }
+
+        .chats-list {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .chat-item:hover, .chat-item.active {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .chat-item:hover, .dark-mode .chat-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-avatar {
+            position: relative;
+        }
+
+        .chat-avatar img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .online-status {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--online);
+            border: 2px solid var(--card-bg);
+        }
+
+        .dark-mode .online-status {
+            border-color: var(--dark-card);
+        }
+
+        .chat-info {
+            flex-grow: 1;
+        }
+
+        .chat-info-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .chat-name {
+            font-weight: 600;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .chat-time {
+            color: #b0b3b8;
+        }
+
+        .chat-preview {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .chat-preview {
+            color: #b0b3b8;
+        }
+
+        .chat-preview.unread {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .dark-mode .chat-preview.unread {
+            color: var(--dark-text);
+        }
+
+        .unread-badge {
+            background-color: var(--primary);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Chat Window */
+        .chat-window {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            border-left: 1px solid var(--border);
+        }
+
+        .dark-mode .chat-window {
+            background-color: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dark-mode .chat-header {
+            border-color: var(--dark-border);
+        }
+
+        .chat-header-info {
+            flex-grow: 1;
+            margin-left: 12px;
+        }
+
+        .chat-header-name {
+            font-weight: 600;
+        }
+
+        .chat-header-status {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dark-mode .chat-header-status {
+            color: #b0b3b8;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.received {
+            align-self: flex-start;
+            background-color: var(--background);
+            border-bottom-left-radius: 4px;
+        }
+
+        .dark-mode .message.received {
+            background-color: #3a3b3c;
+        }
+
+        .message.sent {
+            align-self: flex-end;
+            background-color: var(--primary);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            margin-top: 4px;
+            text-align: right;
+            opacity: 0.8;
+        }
+
+        .message.sent .message-time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .message.received .message-time {
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .message.received .message-time {
+            color: #b0b3b8;
+        }
+
+        .chat-input-area {
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .dark-mode .chat-input-area {
+            border-color: var(--dark-border);
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            background-color: var(--background);
+            border: none;
+            border-radius: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .dark-mode .chat-input {
+            background-color: #3a3b3c;
+            color: var(--dark-text);
+        }
+
+        .chat-input-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .emoji-btn, .send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: background-color 0.2s;
+        }
+
+        .dark-mode .emoji-btn, .dark-mode .send-btn {
+            color: var(--dark-text);
+        }
+
+        .emoji-btn:hover, .send-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .emoji-btn:hover, .dark-mode .send-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .send-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .send-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Auth Screens */
+        .auth-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .auth-left {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary), #0d5cbf);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .auth-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: var(--card-bg);
+        }
+
+        .dark-mode .auth-right {
+            background-color: var(--dark-card);
+        }
+
+        .auth-logo {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .auth-slogan {
+            font-size: 28px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.4;
+        }
+
+        .auth-form {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .auth-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .dark-mode .auth-subtitle {
+            color: #b0b3b8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: var(--background);
+        }
+
+        .dark-mode .form-input {
+            background-color: #3a3b3c;
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .auth-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .auth-divider {
+            text-align: center;
+            position: relative;
+            margin: 20px 0;
+            color: var(--text-secondary);
+        }
+
+        .dark-mode .auth-divider {
+            color: #b0b3b8;
+        }
+
+        .auth-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        .dark-mode .auth-divider::before {
+            background-color: var(--dark-border);
+        }
+
+        .auth-divider::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background-color: var(--border);
+        }
+
+        .dark-mode .auth-divider::after {
+            background-color: var(--dark-border);
+        }
+
+        .oauth-btns {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .oauth-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .dark-mode .oauth-btn {
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        .oauth-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-mode .oauth-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-link {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .chat-column {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            .nav-item span {
+                display: none;
+            }
+            .user-profile .user-info {
+                display: none;
+            }
+            .feed-column {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chat-column {
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                transform: translateX(100%);
+                transition: transform 0.3s;
+            }
+            .chat-column.open {
+                transform: translateX(0);
+            }
+            .feed-column {
+                padding: 10px;
+            }
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .active {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div class="auth-container">
+        <div class="auth-left">
+            <div class="auth-logo">
+                <i class="fas fa-comments"></i>
+            </div>
+            <div class="auth-slogan">
+                Connect with friends, family, and communities around the world.
+            </div>
+        </div>
+        <div class="auth-right">
+            <div class="auth-form">
+                <h1 class="auth-title">Welcome to SocialConnect</h1>
+                <p class="auth-subtitle">Sign in to continue to your account</p>
+                
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Enter your password">
+                </div>
+                
+                <button class="auth-btn">Sign In</button>
+                
+                <div class="auth-link">Forgot Password?</div>
+                
+                <div class="auth-divider">or continue with</div>
+                
+                <div class="oauth-btns">
+                    <button class="oauth-btn">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="oauth-btn">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </button>
+                </div>
+                
+                <div class="auth-link">Don't have an account? Sign Up</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main App -->
+    <div class="app-container hidden">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                    <span>SocialConnect</span>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <div class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>News Feed</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Friends</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Groups</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-store"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-video"></i>
+                    <span>Watch</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Saved</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="user-avatar">JS</div>
+                <div class="user-info">
+                    <div class="username">John Smith</div>
+                    <div class="status">
+                        <div class="status-indicator"></div>
+                        <span>Online</span>
+                    </div>
+                </div>
+                <div class="icon-btn">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Feed Column -->
+            <div class="feed-column">
+                <!-- Create Post -->
+                <div class="create-post">
+                    <div class="create-post-header">
+                        <div class="user-avatar">JS</div>
+                        <textarea class="post-input" placeholder="What's on your mind, John?"></textarea>
+                    </div>
+                    <div class="create-post-footer">
+                        <div class="post-option">
+                            <i class="fas fa-image photo-video"></i>
+                            <span>Photo/Video</span>
+                        </div>
+                        <div class="post-option">
+                            <i class="fas fa-user-tag tag-friends"></i>
+                            <span>Tag Friends</span>
+                        </div>
+                        <div class="post-option">
+                            <i class="fas fa-smile feeling"></i>
+                            <span>Feeling/Activity</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Posts -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="user-avatar">MJ</div>
+                        <div class="post-author">
+                            <div class="post-author-name">Michael Jordan</div>
+                            <div class="post-time">2 hrs ago</div>
+                        </div>
+                        <div class="icon-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Just set a new personal record! 🏀 What's your fitness goal this month?
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1190&q=80" alt="Basketball" class="post-image">
+                    <div class="post-stats">
+                        <div>1.2K likes</div>
+                        <div>184 comments · 42 shares</div>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="fas fa-share"></i>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post">
+                    <div class="post-header">
+                        <div class="user-avatar">TS</div>
+                        <div class="post-author">
+                            <div class="post-author-name">Tech Startup</div>
+                            <div class="post-time">5 hrs ago</div>
+                        </div>
+                        <div class="icon-btn">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        We're excited to announce our new AI-powered productivity suite! 🚀 
+                        Join our beta program and get early access to all features.
+                    </div>
+                    <div class="post-stats">
+                        <div>842 likes</div>
+                        <div>76 comments · 18 shares</div>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="fas fa-share"></i>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Column -->
+            <div class="chat-column">
+                <div class="chats-header">
+                    <div class="header-title">Chats</div>
+                    <div class="header-actions">
+                        <div class="icon-btn">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="icon-btn">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chats-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search messages or people">
+                </div>
+                
+                <div class="chats-list">
+                    <div class="chat-item active">
+                        <div class="chat-avatar">
+                            <div class="user-avatar">ES</div>
+                            <div class="online-status"></div>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-info-top">
+                                <div class="chat-name">Emma Stone</div>
+                                <div class="chat-time">10:42 AM</div>
+                            </div>
+                            <div class="chat-preview unread">
+                                <span>Are we still meeting tomorrow?</span>
+                                <div class="unread-badge">3</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-item">
+                        <div class="chat-avatar">
+                            <div class="user-avatar">RD</div>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-info-top">
+                                <div class="chat-name">Robert Downey</div>
+                                <div class="chat-time">Yesterday</div>
+                            </div>
+                            <div class="chat-preview">
+                                Thanks for the recommendation!
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-item">
+                        <div class="chat-avatar">
+                            <div class="user-avatar">SG</div>
+                            <div class="online-status"></div>
+                        </div>
+                        <div class="chat-info">
+                            <div class="chat-info-top">
+                                <div class="chat-name">Startup Group</div>
+                                <div class="chat-time">9:15 AM</div>
+                            </div>
+                            <div class="chat-preview">
+                                <span>Alex:</span> Meeting moved to 2 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chat Window -->
+            <div class="chat-window">
+                <div class="chat-header">
+                    <div class="icon-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div class="chat-avatar">
+                        <div class="user-avatar">ES</div>
+                        <div class="online-status"></div>
+                    </div>
+                    <div class="chat-header-info">
+                        <div class="chat-header-name">Emma Stone</div>
+                        <div class="chat-header-status">
+                            <div class="status-indicator"></div>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <div class="icon-btn">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="icon-btn">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="icon-btn">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-messages">
+                    <div class="message received">
+                        Hey John! How's it going?
+                        <div class="message-time">10:30 AM</div>
+                    </div>
+                    
+                    <div class="message sent">
+                        Pretty good! Just finished the project we were working on.
+                        <div class="message-time">10:32 AM</div>
+                    </div>
+                    
+                    <div class="message received">
+                        That's great to hear! Are we still meeting tomorrow to discuss the next steps?
+                        <div class="message-time">10:35 AM</div>
+                    </div>
+                    
+                    <div class="message sent">
+                        Absolutely! 11 AM still works for me. Should I prepare anything?
+                        <div class="message-time">10:36 AM</div>
+                    </div>
+                    
+                    <div class="message received">
+                        If you could bring the analytics report, that would be perfect!
+                        <div class="message-time">10:42 AM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="icon-btn emoji-btn">
+                        <i class="far fa-smile"></i>
+                    </div>
+                    <textarea class="chat-input" placeholder="Type a message..."></textarea>
+                    <div class="chat-input-actions">
+                        <div class="icon-btn">
+                            <i class="fas fa-paperclip"></i>
+                        </div>
+                        <div class="icon-btn send-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Supabase client (REPLACE WITH YOUR CREDENTIALS)
+        const supabaseUrl = 'https://your-project.supabase.co';
+        const supabaseKey = 'your-anon-key';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // DOM Elements
+        const authContainer = document.querySelector('.auth-container');
+        const appContainer = document.querySelector('.app-container');
+        const darkModeToggle = document.createElement('div');
+        darkModeToggle.className = 'icon-btn';
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        
+        // Add dark mode toggle to header
+        document.querySelector('.header-actions').appendChild(darkModeToggle);
+
+        // Simulate login for demo
+        document.querySelector('.auth-btn').addEventListener('click', () => {
+            authContainer.classList.add('hidden');
+            appContainer.classList.remove('hidden');
+        });
+
+        // Dark Mode Toggle
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        });
+
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.nav-item.active').classList.remove('active');
+                item.classList.add('active');
+            });
+        });
+
+        // Chat functionality
+        document.querySelectorAll('.chat-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelector('.chat-item.active')?.classList.remove('active');
+                item.classList.add('active');
+                document.querySelector('.chat-column').classList.add('open');
+            });
+        });
+
+        // Close chat on mobile
+        document.querySelector('.fa-arrow-left').addEventListener('click', () => {
+            document.querySelector('.chat-column').classList.remove('open');
+        });
+
+        // Send message
+        const chatInput = document.querySelector('.chat-input');
+        const sendBtn = document.querySelector('.send-btn');
+        
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                const messagesContainer = document.querySelector('.chat-messages');
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message sent';
+                messageElement.innerHTML = `
+                    ${message}
+                    <div class="message-time">${getCurrentTime()}</div>
+                `;
+                messagesContainer.appendChild(messageElement);
+                chatInput.value = '';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                // Simulate reply
+                setTimeout(() => {
+                    const replyElement = document.createElement('div');
+                    replyElement.className = 'message received';
+                    replyElement.innerHTML = `
+                        Thanks for your message! This is an automated reply.
+                        <div class="message-time">${getCurrentTime()}</div>
+                    `;
+                    messagesContainer.appendChild(replyElement);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Simulate Supabase integration
+        async function initApp() {
+            // Check if user is authenticated
+            const { data: { user } } = await supabase.auth.getUser();
+            
+            if (user) {
+                authContainer.classList.add('hidden');
+                appContainer.classList.remove('hidden');
+                
+                // Load user data
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', user.id)
+                    .single();
+                
+                if (data) {
+                    document.querySelector('.user-avatar').textContent = 
+                        data.full_name.split(' ').map(n => n[0]).join('');
+                    document.querySelector('.username').textContent = data.full_name;
+                }
+            }
+        }
+
+        // Initialize app
+        // initApp();
+    </script>
+</body>
+</html>
