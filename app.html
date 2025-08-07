@@ -1,156 +1,194 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>MyChat App</title>
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-database-compat.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       max-width: 600px;
       margin: auto;
       padding: 20px;
-      background-color: #f3f3f3;
+      background: #f9f9f9;
     }
-
     h1 {
       text-align: center;
-      color: #4CAF50;
+      color: #2e7d32;
     }
-
-    #chat {
-      border: 1px solid #ccc;
-      padding: 10px;
-      height: 250px;
-      background-color: #fff;
-      overflow-y: scroll;
-      margin-bottom: 10px;
+    #auth, #chatApp {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px #ccc;
+      margin-top: 20px;
     }
-
     input, button {
-      margin: 5px 0;
-      padding: 10px;
       width: 100%;
+      padding: 12px;
+      margin: 6px 0;
       font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
     }
-
     button {
-      background-color: #4CAF50;
+      background-color: #2e7d32;
       color: white;
       border: none;
       cursor: pointer;
     }
-
-    #video {
-      margin-top: 20px;
+    button:hover {
+      background-color: #1b4d21;
     }
-
-    #chatApp {
-      display: none;
-    }
-
-    .message {
-      margin-bottom: 5px;
-      padding: 5px;
-      background: #e6ffe6;
+    #chat {
+      height: 280px;
+      overflow-y: scroll;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #e8f5e9;
       border-radius: 5px;
+    }
+    .message {
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      background: #c8e6c9;
+      border-radius: 5px;
+      word-wrap: break-word;
+    }
+    #video iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <h1>MyChat App</h1>
 
+  <!-- Authentication UI -->
   <div id="auth">
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
     <button onclick="signup()">Sign Up</button>
     <button onclick="login()">Login</button>
   </div>
 
-  <div id="chatApp">
-    <p>Welcome, <span id="userEmail"></span> <button onclick="logout()">Logout</button></p>
+  <!-- Chat and Call UI -->
+  <div id="chatApp" style="display:none;">
+    <p>
+      Welcome, <strong><span id="userEmail"></span></strong>
+      <button onclick="logout()" style="width:auto; padding:6px 12px; margin-left:20px;">Logout</button>
+    </p>
 
     <div id="chat"></div>
-    <input type="text" id="msgInput" placeholder="Type your message" />
+
+    <input type="text" id="msgInput" placeholder="Type your message here..." />
     <button onclick="sendMsg()">Send</button>
 
     <div id="video">
-      <h3>Video/Audio Call</h3>
-      <iframe src="https://meet.jit.si/MyChatRoom123"
-              width="100%"
-              height="300"
-              allow="camera; microphone; fullscreen"
-              allowfullscreen>
-      </iframe>
+      <h3>Audio/Video Call</h3>
+      <iframe src="https://meet.jit.si/MyChatRoom123" allow="camera; microphone; fullscreen" allowfullscreen></iframe>
     </div>
   </div>
 
   <script>
+    // Paste your Firebase config here from Firebase Console
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
+      apiKey: "AIzaSyB874d6wJBicuRjnYyFarg-cxejqc_O5KY",
       authDomain: "mychat-27910.firebaseapp.com",
       databaseURL: "https://mychat-27910-default-rtdb.firebaseio.com",
       projectId: "mychat-27910",
       storageBucket: "mychat-27910.appspot.com",
       messagingSenderId: "589965278612",
-      appId: "YOUR_APP_ID"
+      appId: "1:589965278612:web:d7c4a213dcad7e601be381"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
 
+    // Sign up new users
     function signup() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      if (!email || !password) {
+        alert("Please enter email and password");
+        return;
+      }
       auth.createUserWithEmailAndPassword(email, password)
-        .then(() => alert("Signed up successfully!"))
-        .catch(err => alert(err.message));
+        .then(() => alert("Sign up successful! You can now login."))
+        .catch(error => alert(error.message));
     }
 
+    // Login existing users
     function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      if (!email || !password) {
+        alert("Please enter email and password");
+        return;
+      }
       auth.signInWithEmailAndPassword(email, password)
-        .then(user => {
+        .then(userCredential => {
           document.getElementById("auth").style.display = "none";
           document.getElementById("chatApp").style.display = "block";
-          document.getElementById("userEmail").innerText = user.user.email;
+          document.getElementById("userEmail").innerText = userCredential.user.email;
           listenForMessages();
         })
-        .catch(err => alert(err.message));
+        .catch(error => alert(error.message));
     }
 
+    // Logout
     function logout() {
       auth.signOut().then(() => {
         document.getElementById("auth").style.display = "block";
         document.getElementById("chatApp").style.display = "none";
+        document.getElementById("chat").innerHTML = "";
       });
     }
 
+    // Send message
     function sendMsg() {
-      const msg = document.getElementById("msgInput").value;
+      const msgInput = document.getElementById("msgInput");
+      const msg = msgInput.value.trim();
       const user = auth.currentUser;
-      if (msg && user) {
-        db.ref("messages").push({
-          user: user.email,
-          text: msg,
-          time: Date.now()
-        });
-        document.getElementById("msgInput").value = "";
+      if (!msg) {
+        alert("Message cannot be empty");
+        return;
       }
+      if (!user) {
+        alert("You must be logged in");
+        return;
+      }
+      db.ref("messages").push({
+        user: user.email,
+        text: msg,
+        time: Date.now()
+      });
+      msgInput.value = "";
     }
 
+    // Listen for new messages
     function listenForMessages() {
+      db.ref("messages").off(); // Remove previous listeners
       db.ref("messages").on("child_added", snapshot => {
         const msg = snapshot.val();
-        const div = document.createElement("div");
-        div.classList.add("message");
-        div.textContent = msg.user + ": " + msg.text;
-        document.getElementById("chat").appendChild(div);
-        document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+        const chatDiv = document.getElementById("chat");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message";
+        const timeString = new Date(msg.time).toLocaleTimeString();
+        messageDiv.textContent = `[${timeString}] ${msg.user}: ${msg.text}`;
+        chatDiv.appendChild(messageDiv);
+        chatDiv.scrollTop = chatDiv.scrollHeight;
       });
     }
   </script>
