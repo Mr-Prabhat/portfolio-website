@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MyChat App - Step 1: Auth & Profile</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 480px;
+    margin: 30px auto;
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  h2 {
+    text-align: center;
+  }
+  #authDiv, #profileDiv, #userInfo {
+    background: white;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+  }
+  button {
+    margin-top: 12px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #1976d2;
+    color: white;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #115293;
+  }
+  #errorMsg {
+    color: red;
+    margin-top: 10px;
+    min-height: 20px;
+  }
+  #userInfo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  #logoutBtn {
+    margin-top: 15px;
+    background-color: #c62828;
+  }
+</style>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+
+<h2>MyChat App - Register / Login</h2>
+
+<div id="authDiv">
+  <input type="email" id="email" placeholder="Email" autocomplete="username" />
+  <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
+  <button id="signupBtn">Sign Up</button>
+  <button id="loginBtn">Log In</button>
+  <div id="errorMsg"></div>
+</div>
+
+<div id="profileDiv" style="display:none;">
+  <h3>Create Your Profile</h3>
+  <input type="text" id="username" placeholder="Username" maxlength="20" />
+  <input type="file" id="profilePic" accept="image/*" />
+  <button id="saveProfileBtn">Save Profile</button>
+  <div id="profileErrorMsg" style="color:red; min-height: 20px;"></div>
+</div>
+
+<div id="userInfo" style="display:none;">
+  <h3>Welcome, <span id="displayName"></span></h3>
+  <img id="displayPhoto" src="" alt="Profile Picture" />
+  <button id="logoutBtn">Logout</button>
+</div>
+
+<script>
+  // ==== Your Firebase config ====
+  const firebaseConfig = {
+    apiKey: "AIzaSyB874d6wJBicuRjnYyFarg-cxejqc_O5KY",
+    authDomain: "mychat-27910.firebaseapp.com",
+    databaseURL: "https://mychat-27910-default-rtdb.firebaseio.com",
+    projectId: "mychat-27910",
+    storageBucket: "mychat-27910.firebasestorage.app",
+    messagingSenderId: "589965278612",
+    appId: "1:589965278612:web:d7c4a213dcad7e601be381",
+    measurementId: "G-ZGH6D545Z7"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.database();
+  const storage = firebase.storage();
+
+  const authDiv = document.getElementById('authDiv');
+  const profileDiv = document.getElementById('profileDiv');
+  const userInfoDiv = document.getElementById('userInfo');
+
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const signupBtn = document.getElementById('signupBtn');
+  const loginBtn = document.getElementById('loginBtn');
+  const errorMsg = document.getElementById('errorMsg');
+
+  const usernameInput = document.getElementById('username');
+  const profilePicInput = document.getElementById('profilePic');
+  const saveProfileBtn = document.getElementById('saveProfileBtn');
+  const profileErrorMsg = document.getElementById('profileErrorMsg');
+
+  const displayNameSpan = document.getElementById('displayName');
+  const displayPhotoImg = document.getElementById('displayPhoto');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  let currentUser = null;
+
+  // Show error message helper
+  function showError(msg, elem) {
+    elem.textContent = msg;
+  }
+
+  // Clear error message helper
+  function clearError(elem) {
+    elem.textContent = '';
+  }
+
+  // Signup function
+  signupBtn.addEventListener('click', () => {
+    clearError(errorMsg);
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      showError('Please enter email and password', errorMsg);
+      return;
+    }
+    if (password.length < 6) {
+      showError('Password should be at least 6 characters', errorMsg);
+      return;
+    }
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        currentUser = userCredential.user;
+        authDiv.style.display = 'none';
+        profileDiv.style.display = 'block';
+      })
+      .catch(error => {
+        showError(error.message, errorMsg);
+      });
+  });
+
+  // Login function
+  loginBtn.addEventListener('click', () => {
+    clearError(errorMsg);
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      showError('Please enter email and password', errorMsg);
+      return;
+    }
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        currentUser = userCredential.user;
+        loadUserProfile();
+      })
+      .catch(error => {
+        showError(error.message, errorMsg);
+      });
+  });
+
+  // Load user profile info after login
+  function loadUserProfile() {
+    clearError(errorMsg);
+    authDiv.style.display = 'none';
+    profileDiv.style.display = 'none';
+    userInfoDiv.style.display = 'block';
+
+    db.ref('profiles/' + currentUser.uid).once('value')
+      .then(snapshot => {
+        const profile = snapshot.val();
+        if (profile) {
+          displayNameSpan.textContent = profile.username || 'User';
+          displayPhotoImg.src = profile.photoURL || 'https://via.placeholder.com/60';
+        } else {
+          // No profile found, ask user to create one
+          profileDiv.style.display = 'block';
+          userInfoDiv.style.display = 'none';
+        }
+      })
+      .catch(() => {
+        profileDiv.style.display = 'block';
+        userInfoDiv.style.display = 'none';
+      });
+  }
+
+  // Save profile info
+  saveProfileBtn.addEventListener('click', () => {
+    clearError(profileErrorMsg);
+    const username = usernameInput.value.trim();
+    const file = profilePicInput.files[0];
+
+    if (!username) {
+      showError('Please enter a username', profileErrorMsg);
+      return;
+    }
+
+    if (!file) {
+      showError('Please select a profile picture', profileErrorMsg);
+      return;
+    }
+
+    // Upload profile picture
+    const storageRef = storage.ref();
+    const profilePicRef = storageRef.child('profile_pics/' + currentUser.uid + '/' + file.name);
+
+    profilePicRef.put(file).then(snapshot => {
+      snapshot.ref.getDownloadURL().then(url => {
+        // Save profile data in Realtime Database
+        db.ref('profiles/' + currentUser.uid).set({
+          username: username,
+          photoURL: url,
+          email: currentUser.email
+        }).then(() => {
+          displayNameSpan.textContent = username;
+          displayPhotoImg.src = url;
+          profileDiv.style.display = 'none';
+          userInfoDiv.style.display = 'block';
+        });
+      });
+    }).catch(error => {
+      showError('Failed to upload profile picture: ' + error.message, profileErrorMsg);
+    });
+  });
+
+  // Logout
+  logoutBtn.addEventListener('click', () => {
+    auth.signOut().then(() => {
+      currentUser = null;
+      authDiv.style.display = 'block';
+      profileDiv.style.display = 'none';
+      userInfoDiv.style.display = 'none';
+      emailInput.value = '';
+      passwordInput.value = '';
+      usernameInput.value = '';
+      profilePicInput.value = '';
+      clearError(errorMsg);
+      clearError(profileErrorMsg);
+    });
+  });
+
+  // Listen for auth state changes
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      currentUser = user;
+      loadUserProfile();
+    } else {
+      currentUser = null;
+      authDiv.style.display = 'block';
+      profileDiv.style.display = 'none';
+      userInfoDiv.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
