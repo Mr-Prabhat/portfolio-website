@@ -36,6 +36,7 @@
       flex-direction: column;
       gap: 10px;
       position: relative;
+      width: 100%;
     }
 
     .option-btn {
@@ -162,22 +163,25 @@
         btn.classList.add("option-btn");
         btn.innerText = option;
 
-        // Make the "No" button run like a rat
-        if (option.toLowerCase() === "no") {
-          function jumpAway() {
-            btn.style.position = "absolute";
-            btn.style.left = Math.floor(Math.random() * 80) + "%";
-            btn.style.top = Math.floor(Math.random() * 80) + "%";
-          }
-
-          btn.addEventListener("mouseover", jumpAway);
-          btn.addEventListener("mousedown", jumpAway);
-          btn.addEventListener("touchstart", jumpAway); // for mobile
+        // Make "No" or wrong answer run like a rat 🐭
+        if (index !== q.answer) {
+          btn.style.position = "absolute";
+          btn.addEventListener("mouseover", () => moveButton(btn));
+          btn.addEventListener("touchstart", () => moveButton(btn)); // mobile
         }
 
         btn.onclick = () => checkAnswer(index);
         optionsContainer.appendChild(btn);
       });
+    }
+
+    function moveButton(btn) {
+      const maxX = window.innerWidth - btn.offsetWidth - 20;
+      const maxY = window.innerHeight - btn.offsetHeight - 20;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      btn.style.left = `${randomX}px`;
+      btn.style.top = `${randomY}px`;
     }
 
     function checkAnswer(selected) {
