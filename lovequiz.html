@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Quiz For My Baby ❤️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 32px;
+    }
+
+    #question {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #ff69b4;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .option-btn:hover {
+      background-color: #e91e63;
+    }
+
+    #remark {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #b30059;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💘 Funny Love Quiz For My Baby 💘</h1>
+
+  <div id="question"></div>
+
+  <div class="options" id="options"></div>
+
+  <div id="remark"></div>
+
+  <script>
+    const questions = [
+      {
+        q: "Do you love me?",
+        options: ["Yes", "No"],
+        answer: 0,
+        remarks: [
+          "If you say no, I’ll cry 😭",
+          "Aachi That’s illegal! 😡",
+          "Heart = broken 💔",
+          "You're joking, right? 😢",
+          "Say yes before I faint 😵"
+        ]
+      },
+      {
+        q: "Do you like me?",
+        options: ["Yes", "No", "A little", "Who are you?"],
+        answer: 0,
+        remarks: [
+          "so you like hawa? 😭",
+          "I thought we had something! 😢",
+          "I need therapy now 😩",
+          "yei sunna bacheychu bhukampa bata 🙄",
+          "Don’t play with my feelings! 🥺"
+        ]
+      },
+      {
+        q: "How many times did we go to Palpa?",
+        options: ["2", "3", "4", "5"],
+        answer: 2,
+        remarks: [
+          "Count again, aalu! 😂",
+          "4 times, and each was epic 🏞️",
+          "Really? That’s your guess? 😅",
+          "You forgot eating dhulo of those days? 😢",
+          "Even Google remembers that!"
+        ]
+      },
+      {
+        q: "How many times did we go to Lumbini?",
+        options: ["1", "2", "3", "4"],
+        answer: 2,
+        remarks: [
+          "Three peaceful visits, my Buddha baby 🧘‍♀️",
+          "You forgot our temple date? 😔",
+          "I’ll pray for your memory 🙏",
+          "You’re guessing, admit it 😆",
+          "My brain hurts now 😵"
+        ]
+      },
+      {
+        q: "What did we eat the most?",
+        options: ["Pizza", "Momo", "Thupka", "Burger"],
+        answer: 2,
+        remarks: [
+          "Thupka was our soul food 🍜",
+          "I can smell it even now 😂",
+          "You’re wrong and hungry 😅",
+          "No thupka = no us 🥲",
+          "That answer is cold like a fridge"
+        ]
+      },
+      {
+        q: "Which is our favourite cafe?",
+        options: ["Galaxy Cafe", "craving", "bnbatika wala", "soulmate"],
+        answer: 0,
+        remarks: [
+          "We had our best talks in Galaxy 💫",
+          "You really forgot our table? 😢",
+          "My chicken lollypop is crying now ☕😭",
+          "Check drive ! 📸",
+          "You’re hurting my coke feelings 😒"
+        ]
+      },
+      {
+        q: "Who falls asleep first?",
+        options: ["You", "Me", "Dog", "Phone battery"],
+        answer: 0,
+        remarks: [
+          "You snore before my goodnight 😴",
+          "Even your phone stays awake longer 😅",
+          "You sleep fast like a baby! 😂",
+          "I talk to myself after 10pm 😭",
+          "Your dreams come before my hugs 🥺"
+        ]
+      },
+      {
+        q: "What's your pet name for me?",
+        options: ["Lalu", "Babu", "oiee", "Motu"],
+        answer: 1,
+        remarks: [
+          "You called me oiee  like 1 million times 😂",
+          "You forgot the nickname you invented?!",
+          "Next time I'm saving chats as proof 📱",
+          "Now I’m Motu? That hurts 💔",
+          "Nickname downgrade alert 🚨"
+        ]
+      },
+      {
+        q: "What color dress do I love on you?",
+        options: ["Black", "Red", "White", "Pink"],
+        answer: 0,
+        remarks: [
+          "Black = my weakness on you 🖤",
+          "It’s in your selfies bro 😅",
+          "Red? You wear it once!",
+          "You forgot your charm color?",
+          "No other color gives me butterflies 😘"
+        ]
+      },
+      {
+        q: "Which month did we first meet?",
+        options: ["January", "February", "March", "April"],
+        answer: 1,
+        remarks: [
+          "Feb = Love Month 💕",
+          "You forgot our origin story? 😭",
+          "I’ll cry into my calendar now 😢",
+          "Even February is offended 😂",
+          "Try again, Memory Queen!"
+        ]
+      },
+      {
+        q: "What’s our most-used emoji?",
+        options: ["😂", "❤️", "😡", "🥹"],
+        answer: 1,
+        remarks: [
+          "❤️ is our love language!",
+          "We send hearts daily 🫶",
+          "Stop playing, you know the truth!",
+          "Even your keyboard knows ❤️",
+          "Are you even paying attention? 😂"
+        ]
+      },
+      {
+        q: "Which side do I sleep on?",
+        options: ["Left", "Right", "Middle", "Upside down 😂"],
+        answer: 0,
+        remarks: [
+          "Left side – always. Duh!",
+          "You observe nothing huh? 😂",
+          "Now you sleep on the floor! 🛏️❌",
+          "Sleep tracker betrayed 😅",
+          "I told you last night 😭"
+        ]
+      },
+      {
+        q: "Who says sorry first?",
+        options: ["Me", "You", "No one", "Your dog"],
+        answer: 1,
+        remarks: [
+          "I always melt first 🥺",
+          "Don't deny your soft heart 💖",
+          "Even god say sorry before You 😂",
+          "I = peacemaker 🕊️",
+          "Oops, guess again sweetie!"
+        ]
+      },
+      {
+        q: "If I get angry, what do you do?",
+        options: ["Run away", "Say sorry", "Buy chocolate", "Cry"],
+        answer: 2,
+        remarks: [
+          "of course you get more angry 🍫",
+          "you don’t want my sorry, you want Dairy Milk!",
+          "You forgot my secret weakness?! 😒",
+          "but sweet kiss is my love language!",
+          "Wrong again, now gimme KitKat!"
+        ]
+      },
+      {
+        q: "What do we always fight about?",
+        options: ["Food", "facebook", "Reply time", "Random things 😂"],
+        answer: 3,
+        remarks: [
+          "We fight over silly things always 😂",
+          "Random = our relationship’s middle name",
+          "Are you pretending now? 😒",
+          "You don’t even know what we fight about? 😭",
+          "Fighting is love training 😂💪"
+        ]
+      }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      if (current >= questions.length) {
+        document.getElementById("question").innerHTML = "🎉 You finished the quiz! I still love you most 😘";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("remark").innerHTML = "";
+        return;
+      }
+
+      const q = questions[current];
+      document.getElementById("question").innerText = q.q;
+      document.getElementById("remark").innerText = "";
+
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      q.options.forEach((option, index) => {
+        const btn = document.createElement("button");
+        btn.classList.add("option-btn");
+        btn.innerText = option;
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const q = questions[current];
+      if (selected === q.answer) {
+        current++;
+        loadQuestion();
+      } else {
+        const remark = q.remarks[Math.floor(Math.random() * q.remarks.length)];
+        document.getElementById("remark").innerText = remark;
+      }
+    }
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
