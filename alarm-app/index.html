@@ -1,1 +1,918 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abishma's Care Reminder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff85a2;
+            --secondary: #ffacc7;
+            --accent: #a2d2ff;
+            --light: #fff9fb;
+            --dark: #333;
+            --success: #a0e7a0;
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe8f0, #d1e0fd);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -60px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 25px;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-container {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ff6b9d;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ff6b9d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ffd1dc;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(255, 133, 162, 0.4);
+        }
+
+        .btn:hover {
+            background: #ff6b9d;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255, 133, 162, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-snooze {
+            background: var(--accent);
+            box-shadow: 0 4px 10px rgba(162, 210, 255, 0.4);
+        }
+
+        .btn-snooze:hover {
+            background: #7fbfff;
+            box-shadow: 0 7px 15px rgba(162, 210, 255, 0.5);
+        }
+
+        .reminder-list-container {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 2px solid #ffd1dc;
+        }
+
+        .list-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .reminder-list {
+            overflow-y: auto;
+            max-height: 500px;
+            padding: 10px;
+        }
+
+        .reminder-item {
+            padding: 20px;
+            border-bottom: 2px dashed #ffd1dc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            animation: slideIn 0.3s ease;
+            border-radius: 15px;
+            margin: 8px;
+            background: white;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .reminder-item:last-child {
+            border-bottom: none;
+        }
+
+        .reminder-item:hover {
+            background: rgba(255, 214, 228, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .reminder-content {
+            flex: 1;
+        }
+
+        .reminder-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ff6b9d;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reminder-desc {
+            color: #777;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .reminder-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .reminder-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 214, 228, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .reminder-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #aaa;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ffd1dc;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff6b9d;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            max-width: 400px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border: 3px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 133, 162, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 133, 162, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 133, 162, 0); }
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification h4 {
+            margin-bottom: 8px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            color: #ff6b9d;
+        }
+
+        .notification .close {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            color: #aaa;
+        }
+
+        .notification .close:hover {
+            color: #ff6b9d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 2px dashed #ffd1dc;
+            background: rgba(255, 214, 228, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background: rgba(255, 214, 228, 0.2);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ff6b9d;
+        }
+
+        .baby-icon {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="20" fill="%23ffacc7"/><circle cx="40" cy="30" r="4" fill="white"/><circle cx="60" cy="30" r="4" fill="white"/><path d="M45 40 Q50 45 55 40" stroke="white" stroke-width="2" fill="none"/><path d="M30 60 Q50 85 70 60" stroke="%23ffacc7" stroke-width="10" fill="none"/></svg>');
+            background-size: contain;
+            z-index: 0;
+        }
+
+        .baby-icon-1 {
+            top: 20px;
+            left: 20px;
+        }
+
+        .baby-icon-2 {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(20deg);
+        }
+
+        .water-drop {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 15 Q70 30 65 60 Q60 85 50 95 Q40 85 35 60 Q30 30 50 15Z" fill="%23a2d2ff"/></svg>');
+            background-size: contain;
+            z-index: 0;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .water-drop-1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .water-drop-2 {
+            top: 25%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .water-drop-3 {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @media (max-width: 768px) {
+            .reminder-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .reminder-actions {
+                align-self: flex-end;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .app-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="baby-icon baby-icon-1"></div>
+    <div class="baby-icon baby-icon-2"></div>
+    
+    <div class="water-drop water-drop-1"></div>
+    <div class="water-drop water-drop-2"></div>
+    <div class="water-drop water-drop-3"></div>
+    
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-baby"></i> Abishma's Care Reminder</h1>
+            <p>Sweet reminders for my precious baby to drink water and take care</p>
+        </header>
+
+        <div class="app-container">
+            <div class="form-container">
+                <h2><i class="fas fa-plus-circle"></i> New Care Reminder</h2>
+                <div class="form-group">
+                    <label for="title"><i class="fas fa-heading"></i> Activity *</label>
+                    <input type="text" id="title" placeholder="What should Abishma remember?">
+                </div>
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-align-left"></i> Description</label>
+                    <textarea id="description" placeholder="Add details about this activity..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="datetime"><i class="far fa-calendar-alt"></i> Date & Time *</label>
+                    <input type="datetime-local" id="datetime">
+                </div>
+                <div class="form-group">
+                    <label for="frequency"><i class="fas fa-redo"></i> Frequency</label>
+                    <select id="frequency">
+                        <option value="once">Once</option>
+                        <option value="daily">Daily</option>
+                        <option value="hourly">Hourly (Water Reminder)</option>
+                    </select>
+                </div>
+                <button id="addBtn" class="btn"><i class="fas fa-plus"></i> Add Reminder</button>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalReminders">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="upcomingReminders">0</div>
+                        <div class="stat-label">Upcoming</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="waterReminders">0</div>
+                        <div class="stat-label">Water</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reminder-list-container">
+                <div class="list-header">
+                    <span><i class="fas fa-list"></i> Abishma's Reminders</span>
+                    <span id="reminderCount">0 reminders</span>
+                </div>
+                <div class="reminder-list" id="remindersContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-heart"></i>
+                        <h3>No reminders yet</h3>
+                        <p>Add your first care reminder for Abishma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notification" id="notification">
+            <div class="notification-content">
+                <h4><i class="fas fa-bell"></i> Time for Abishma!</h4>
+                <p id="notificationText">Remember to drink water, sweetheart!</p>
+            </div>
+            <button class="close" onclick="closeNotification()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <footer>
+            <p>Made with <i class="fas fa-heart" style="color: #ff6b9d;"></i> for Abishma | All reminders are stored in your browser</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const addBtn = document.getElementById('addBtn');
+            const titleInput = document.getElementById('title');
+            const descInput = document.getElementById('description');
+            const datetimeInput = document.getElementById('datetime');
+            const frequencySelect = document.getElementById('frequency');
+            const remindersContainer = document.getElementById('remindersContainer');
+            const reminderCount = document.getElementById('reminderCount');
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            const totalRemindersEl = document.getElementById('totalReminders');
+            const upcomingRemindersEl = document.getElementById('upcomingReminders');
+            const waterRemindersEl = document.getElementById('waterReminders');
+            
+            // Helper function to get next hour time
+            function getNextHourTime(hours = 1) {
+                const now = new Date();
+                const nextHour = new Date(now.getTime() + hours * 60 * 60000);
+                return nextHour.toISOString().slice(0, 16);
+            }
+            
+            // Pre-populated water reminders
+            const defaultReminders = [
+                {
+                    id: 1,
+                    title: "Drink Water",
+                    description: "Time to hydrate, sweetheart! 💧",
+                    datetime: getNextHourTime(),
+                    frequency: "hourly",
+                    completed: false,
+                    createdAt: new Date().toISOString(),
+                    isWater: true
+                },
+                {
+                    id: 2,
+                    title: "Take a Break",
+                    description: "Rest your eyes and stretch a bit",
+                    datetime: getNextHourTime(2),
+                    frequency: "once",
+                    completed: false,
+                    createdAt: new Date().toISOString(),
+                    isWater: false
+                }
+            ];
+            
+            // Reminders array
+            let reminders = JSON.parse(localStorage.getItem('abishma_reminders')) || defaultReminders;
+            
+            // Initialize the app
+            renderReminders();
+            updateReminderCount();
+            updateStats();
+            checkReminders();
+            
+            // Set min date/time to now
+            const now = new Date();
+            const timezoneOffset = now.getTimezoneOffset() * 60000;
+            const localISOTime = new Date(now - timezoneOffset).toISOString().slice(0, 16);
+            datetimeInput.min = localISOTime;
+            
+            // Save reminders to localStorage
+            saveReminders();
+            
+            // Event Listeners
+            addBtn.addEventListener('click', addReminder);
+            
+            // Add reminder function
+            function addReminder() {
+                const title = titleInput.value.trim();
+                const description = descInput.value.trim();
+                const datetime = datetimeInput.value;
+                const frequency = frequencySelect.value;
+                
+                // Validation
+                if (!title) {
+                    showNotification('Activity name is required', 'warning');
+                    titleInput.focus();
+                    return;
+                }
+                
+                if (!datetime) {
+                    showNotification('Date and time are required', 'warning');
+                    datetimeInput.focus();
+                    return;
+                }
+                
+                // Create reminder object
+                const reminder = {
+                    id: Date.now(),
+                    title,
+                    description,
+                    datetime,
+                    frequency,
+                    completed: false,
+                    createdAt: new Date().toISOString(),
+                    isWater: title.toLowerCase().includes("water") || frequency === "hourly"
+                };
+                
+                // Add to reminders array
+                reminders.push(reminder);
+                
+                // Save to localStorage
+                saveReminders();
+                
+                // Render reminders
+                renderReminders();
+                updateReminderCount();
+                updateStats();
+                
+                // Reset form
+                titleInput.value = '';
+                descInput.value = '';
+                datetimeInput.value = '';
+                frequencySelect.value = 'once';
+                
+                showNotification('Reminder added for Abishma!', 'success');
+            }
+            
+            // Render reminders
+            function renderReminders() {
+                if (reminders.length === 0) {
+                    remindersContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-heart"></i>
+                            <h3>No reminders yet</h3>
+                            <p>Add your first care reminder for Abishma</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Sort reminders by datetime (soonest first)
+                reminders.sort((a, b) => new Date(a.datetime) - new Date(b.datetime));
+                
+                let html = '';
+                
+                reminders.forEach(reminder => {
+                    const date = new Date(reminder.datetime);
+                    const dateStr = date.toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                    const timeStr = date.toLocaleTimeString('en-US', {
+                        hour: '2-digit', 
+                        minute: '2-digit'
+                    });
+                    
+                    // Calculate time until reminder
+                    const timeUntil = calculateTimeUntil(reminder.datetime);
+                    
+                    html += `
+                        <div class="reminder-item" data-id="${reminder.id}">
+                            <div class="reminder-content">
+                                <div class="reminder-title">
+                                    <i class="${reminder.isWater ? 'fas fa-tint' : 'fas fa-bell'}"></i>
+                                    ${reminder.title}
+                                </div>
+                                ${reminder.description ? `<div class="reminder-desc">${reminder.description}</div>` : ''}
+                                <div class="reminder-meta">
+                                    <span><i class="far fa-calendar"></i> ${dateStr}</span>
+                                    <span><i class="far fa-clock"></i> ${timeStr}</span>
+                                    <span><i class="fas fa-redo"></i> ${reminder.frequency}</span>
+                                    <span><i class="fas fa-hourglass-half"></i> ${timeUntil}</span>
+                                </div>
+                            </div>
+                            <div class="reminder-actions">
+                                <button class="btn btn-snooze" onclick="snoozeReminder(${reminder.id})"><i class="fas fa-bed"></i> Snooze</button>
+                                <button class="btn" onclick="completeReminder(${reminder.id})"><i class="fas fa-check"></i> Done</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                remindersContainer.innerHTML = html;
+            }
+            
+            // Calculate time until reminder
+            function calculateTimeUntil(datetime) {
+                const now = new Date();
+                const reminderTime = new Date(datetime);
+                const diff = reminderTime - now;
+                
+                if (diff <= 0) return 'Now!';
+                
+                const minutes = Math.floor(diff / 60000);
+                const hours = Math.floor(minutes / 60);
+                const days = Math.floor(hours / 24);
+                
+                if (days > 0) return `${days}d ${hours % 24}h`;
+                if (hours > 0) return `${hours}h ${minutes % 60}m`;
+                return `${minutes}m`;
+            }
+            
+            // Snooze reminder
+            window.snoozeReminder = function(id) {
+                const reminder = reminders.find(r => r.id === id);
+                if (reminder) {
+                    // Snooze for 10 minutes
+                    const currentTime = new Date(reminder.datetime).getTime();
+                    const newTime = new Date(currentTime + 10 * 60000);
+                    reminder.datetime = newTime.toISOString().slice(0, 16);
+                    saveReminders();
+                    renderReminders();
+                    showNotification('Snoozed for 10 minutes 😴', 'info');
+                }
+            };
+            
+            // Complete reminder
+            window.completeReminder = function(id) {
+                reminders = reminders.filter(reminder => reminder.id !== id);
+                saveReminders();
+                renderReminders();
+                updateReminderCount();
+                updateStats();
+                showNotification('Completed! Great job Abishma! 🎉', 'success');
+            };
+            
+            // Save reminders to localStorage
+            function saveReminders() {
+                localStorage.setItem('abishma_reminders', JSON.stringify(reminders));
+            }
+            
+            // Update reminder count
+            function updateReminderCount() {
+                const count = reminders.length;
+                reminderCount.textContent = `${count} reminder${count !== 1 ? 's' : ''}`;
+            }
+            
+            // Update stats
+            function updateStats() {
+                totalRemindersEl.textContent = reminders.length;
+                
+                const now = new Date();
+                const upcoming = reminders.filter(reminder => new Date(reminder.datetime) > now).length;
+                upcomingRemindersEl.textContent = upcoming;
+                
+                const waterReminders = reminders.filter(reminder => reminder.isWater).length;
+                waterRemindersEl.textContent = waterReminders;
+            }
+            
+            // Show notification
+            function showNotification(text, type = 'info') {
+                notificationText.textContent = text;
+                notification.classList.add('show');
+                
+                // Trigger vibration if supported
+                if (navigator.vibrate) {
+                    navigator.vibrate([200, 100, 200, 100, 200]);
+                }
+                
+                // Play sound
+                playNotificationSound();
+                
+                // Auto hide after 8 seconds
+                setTimeout(() => {
+                    if (notification.classList.contains('show')) {
+                        notification.classList.remove('show');
+                    }
+                }, 8000);
+            }
+            
+            // Play notification sound
+            function playNotificationSound() {
+                try {
+                    // Create audio context
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    const audioContext = new AudioContext();
+                    
+                    // Create oscillator
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    // Configure sound
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+                    oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                    oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+                    
+                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                    
+                    // Play the sound
+                    oscillator.start();
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                } catch (e) {
+                    console.log("Audio not supported:", e);
+                    // Fallback to simple beep
+                    const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAAAA');
+                    audio.play();
+                }
+            }
+            
+            // Close notification
+            window.closeNotification = function() {
+                notification.classList.remove('show');
+            };
+            
+            // Check for upcoming reminders
+            function checkReminders() {
+                const now = new Date();
+                
+                reminders.forEach(reminder => {
+                    const reminderTime = new Date(reminder.datetime);
+                    
+                    // If reminder time is within the next minute and not completed
+                    if (!reminder.completed && reminderTime - now <= 60000 && reminderTime > now) {
+                        // Show notification
+                        notificationText.textContent = `${reminder.description || reminder.title}`;
+                        notification.classList.add('show');
+                        
+                        // Play sound and vibrate
+                        playNotificationSound();
+                        
+                        // Mark as completed if it's not recurring
+                        if (reminder.frequency === "once") {
+                            reminder.completed = true;
+                        } else if (reminder.frequency === "hourly") {
+                            // Reschedule hourly reminders
+                            const nextHour = new Date(reminderTime.getTime() + 60 * 60000);
+                            reminder.datetime = nextHour.toISOString().slice(0, 16);
+                        } else if (reminder.frequency === "daily") {
+                            // Reschedule daily reminders
+                            const nextDay = new Date(reminderTime.getTime() + 24 * 60 * 60000);
+                            reminder.datetime = nextDay.toISOString().slice(0, 16);
+                        }
+                        
+                        saveReminders();
+                        renderReminders();
+                        updateStats();
+                    }
+                });
+            }
+            
+            // Check reminders every 30 seconds
+            setInterval(checkReminders, 30000);
+        });
+    </script>
+</body>
+</html>
