@@ -3,139 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motivation Hub | Inspire Your Life</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Prabhat Panthi's motivational website with inspiring quotes, success stories, photos, videos and positive content">
+    <meta name="keywords" content="motivation, quotes, success stories, inspiration, positivity, Prabhat Panthi, Nepal, digital creator">
+    <meta property="og:title" content="Prabhat Panthi - Motivational Content Creator">
+    <meta property="og:description" content="Sharing inspiring quotes, success stories, and positive content to uplift spirits">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prabhatpanthi.com">
+    <title>Prabhat Panthi - Motivational Content Creator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
     <style>
-        /* Global Styles */
         :root {
-            --primary: #4a6fa5;
-            --secondary: #166088;
-            --accent: #4fc3f7;
-            --dark: #1a2639;
-            --light: #f8f9fa;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #d4af37;
+            --secondary-color: #1a1a1a;
+            --accent-color: #f5d042;
+            --text-color: #333;
+            --light-text: #f8f8f8;
+            --bg-color: #ffffff;
+            --dark-bg: #121212;
+            --section-padding: 80px 0;
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .dark-mode {
+            --primary-color: #f5d042;
+            --secondary-color: #f8f8f8;
+            --text-color: #f8f8f8;
+            --bg-color: #121212;
+            --light-text: #333;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: var(--font-main);
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-color: var(--light);
+
+        html {
+            scroll-behavior: smooth;
         }
-        
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Base Styles */
         a {
             text-decoration: none;
-            color: var(--primary);
-            transition: all 0.3s ease;
+            color: var(--primary-color);
+            transition: var(--transition);
         }
-        
+
         a:hover {
-            color: var(--secondary);
+            color: var(--accent-color);
         }
-        
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .container {
-            width: 100%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+
         .section {
-            padding: 80px 0;
-            position: relative;
+            padding: var(--section-padding);
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
             position: relative;
         }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .section-title p {
-            color: #666;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
+
         .section-title::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
-            height: 4px;
-            background: var(--accent);
-            margin: 20px auto;
-            border-radius: 2px;
+            height: 3px;
+            background: var(--primary-color);
         }
-        
+
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: var(--primary);
-            color: white;
+            background: var(--primary-color);
+            color: var(--secondary-color);
             border: none;
-            border-radius: 50px;
+            border-radius: var(--border-radius);
             cursor: pointer;
-            font-size: 1rem;
             font-weight: 600;
+            transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn:hover {
-            background: var(--secondary);
-            color: white;
+            background: var(--accent-color);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-        
-        .mb-30 {
-            margin-bottom: 30px;
-        }
-        
-        .mb-50 {
-            margin-bottom: 50px;
-        }
-        
+
         /* Header & Navigation */
         header {
             position: fixed;
@@ -143,118 +172,181 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            transition: all 0.3s ease;
-            background-color: rgba(26, 38, 57, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
+            transition: var(--transition);
         }
-        
-        header.scrolled {
-            background-color: rgba(26, 38, 57, 0.95);
+
+        .header-scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
-        
-        .navbar {
+
+        .dark-mode .header-scrolled {
+            background-color: rgba(20, 20, 20, 0.95);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
         }
-        
+
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: white;
+            color: var(--primary-color);
         }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
-            color: white;
-            font-weight: 600;
+            color: var(--light-text);
+            font-weight: 500;
             position: relative;
-            padding: 5px 0;
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
+            background: var(--primary-color);
+            transition: var(--transition);
         }
-        
-        .nav-links a:hover::after,
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
         .nav-links a.active::after {
             width: 100%;
         }
-        
+
         .hamburger {
             display: none;
             cursor: pointer;
         }
-        
+
         .hamburger div {
             width: 25px;
             height: 3px;
-            background: white;
+            background: var(--light-text);
             margin: 5px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin-left: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: var(--transition);
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: '';
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            color: var(--light-text);
+        }
+
         /* Hero Section */
-        #home {
+        .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/neww.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
-            color: white;
+            color: var(--light-text);
+            position: relative;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
+
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            line-height: 1.2;
-            text-transform: uppercase;
+            color: var(--primary-color);
         }
-        
-        .hero-content p {
+
+        .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            opacity: 0.9;
+            line-height: 1.8;
         }
-        
+
         .scroll-down {
             position: absolute;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
+            color: var(--light-text);
             font-size: 2rem;
             animation: bounce 2s infinite;
             cursor: pointer;
         }
-        
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0) translateX(-50%);
@@ -266,226 +358,157 @@
                 transform: translateY(-10px) translateX(-50%);
             }
         }
-        
+
         /* About Section */
-        #about {
-            background-color: white;
+        .about {
+            background-color: var(--bg-color);
         }
-        
+
         .about-content {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 50px;
         }
-        
+
         .about-img {
             flex: 1;
-            min-width: 300px;
-            padding: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
         }
-        
-        .about-img img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
+
         .about-text {
             flex: 1;
-            min-width: 300px;
-            padding: 20px;
         }
-        
+
         .about-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--primary-color);
         }
-        
+
         .about-text p {
             margin-bottom: 15px;
-            color: #555;
         }
-        
-        .mission-vision {
-            display: flex;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .mission, .vision {
-            flex: 1;
-            min-width: 250px;
-            padding: 20px;
-            background: rgba(74, 111, 165, 0.05);
-            margin: 10px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .mission:hover, .vision:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .mission h4, .vision h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
+
         /* Quotes Section */
-        #quotes {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        .quotes {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
         }
-        
+
         .tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
-        
+
         .tab-btn {
             padding: 12px 25px;
-            margin: 0 5px;
-            background: white;
+            background: transparent;
             border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            color: var(--light-text);
             font-weight: 600;
-            color: var(--dark);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            margin: 0 5px;
         }
-        
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover::after, .tab-btn.active::after {
+            width: 100%;
+        }
+
         .tab-btn.active {
-            background: var(--primary);
-            color: white;
+            color: var(--primary-color);
         }
-        
-        .tab-btn:hover:not(.active) {
-            background: rgba(74, 111, 165, 0.1);
-        }
-        
+
         .tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
+        .tab-content.active {
+            display: block;
+        }
+
         .quote-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .quote-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .quote-item p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .quote-item .source {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--bg-color);
+        }
+
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        
-        .quote-card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .quote-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .quote-card::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 5rem;
-            color: rgba(74, 111, 165, 0.1);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .quote-card p {
-            font-style: italic;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .quote-card .author {
-            font-weight: 600;
-            color: var(--primary);
-            text-align: right;
-        }
-        
-        .load-more {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        /* Gallery Section */
-        #gallery {
-            background-color: white;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
+
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 1/1;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             cursor: pointer;
+            transition: var(--transition);
         }
-        
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
         .gallery-item img {
             width: 100%;
-            height: 100%;
+            height: 250px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
-        
+
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
-        .gallery-item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .overlay {
-            opacity: 1;
-        }
-        
-        .gallery-item .overlay i {
-            color: white;
-            font-size: 2rem;
-        }
-        
+
         /* Lightbox */
         .lightbox {
             position: fixed;
@@ -494,96 +517,74 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
         }
-        
+
         .lightbox.active {
-            display: flex;
+            opacity: 1;
+            pointer-events: all;
         }
-        
+
         .lightbox-content {
             position: relative;
             max-width: 90%;
             max-height: 90%;
         }
-        
+
         .lightbox-content img {
-            max-width: 100%;
             max-height: 80vh;
-            display: block;
-            border-radius: 5px;
+            max-width: 100%;
+            border-radius: var(--border-radius);
         }
-        
+
         .close-lightbox {
             position: absolute;
             top: -40px;
             right: 0;
-            color: white;
+            color: var(--light-text);
             font-size: 2rem;
             cursor: pointer;
         }
-        
-        .lightbox-nav {
-            position: absolute;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 0 20px;
+
+        /* Videos Section */
+        .videos {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
         }
-        
-        .lightbox-nav button {
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .lightbox-nav button:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Video Gallery */
-        #videos {
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-        }
-        
+
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
-        
+
         .video-card {
-            background: white;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
-        
+
         .video-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-        
-        .video-container {
+
+        .video-thumbnail {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
         }
-        
-        .video-container iframe {
+
+        .video-thumbnail iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -591,915 +592,574 @@
             height: 100%;
             border: none;
         }
-        
+
         .video-info {
             padding: 20px;
         }
-        
+
         .video-info h3 {
             margin-bottom: 10px;
-            color: var(--dark);
+            color: var(--primary-color);
         }
-        
-        .video-info p {
-            color: #666;
-            font-size: 0.9rem;
+
+        /* Success Stories Section */
+        .stories {
+            background-color: var(--bg-color);
         }
-        
-        /* Success Stories */
-        #stories {
-            background-color: white;
-        }
-        
-        .stories-grid {
+
+        .story-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
-        
+
         .story-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
-        
+
         .story-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .story-img {
-            height: 200px;
+            height: 250px;
             overflow: hidden;
         }
-        
+
         .story-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
-        
+
         .story-card:hover .story-img img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
+
         .story-content {
             padding: 20px;
         }
-        
+
         .story-content h3 {
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-        
-        .story-content .title {
-            color: var(--primary);
-            font-size: 0.9rem;
             margin-bottom: 10px;
-            display: block;
+            color: var(--primary-color);
         }
-        
+
         .story-content p {
-            color: #666;
-            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
-        
+
         /* Blog Section */
-        #blog {
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        .blog {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
         }
-        
-        .blog-grid {
+
+        .blog-posts {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
-        
+
         .blog-card {
-            background: white;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
-        
+
         .blog-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         .blog-img {
-            height: 200px;
+            height: 250px;
             overflow: hidden;
         }
-        
+
         .blog-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: var(--transition);
         }
-        
+
         .blog-card:hover .blog-img img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
+
         .blog-content {
             padding: 20px;
         }
-        
-        .blog-content .meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.8rem;
-            color: #888;
-        }
-        
+
         .blog-content h3 {
             margin-bottom: 10px;
-            color: var(--dark);
+            color: var(--primary-color);
         }
-        
+
         .blog-content p {
-            color: #666;
             margin-bottom: 15px;
-            font-size: 0.9rem;
         }
-        
+
         .read-more {
-            color: var(--primary);
+            display: inline-block;
+            color: var(--primary-color);
             font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
         }
-        
-        .read-more i {
-            margin-left: 5px;
-            transition: transform 0.3s ease;
+
+        /* Jokes Section */
+        .jokes {
+            background-color: var(--bg-color);
         }
-        
-        .blog-card:hover .read-more i {
-            transform: translateX(5px);
-        }
-        
-        /* Quizzes & Games */
-        #quizzes {
-            background-color: white;
-        }
-        
-        .quiz-section, .games-section {
-            margin-bottom: 50px;
-        }
-        
-        .quiz-grid, .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .quiz-card, .game-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid #eee;
-        }
-        
-        .quiz-card:hover, .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
-        }
-        
-        .quiz-card h3, .game-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .quiz-card p, .game-card p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        /* Quiz Modal */
-        .quiz-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        
-        .quiz-modal.active {
-            display: flex;
-        }
-        
-        .quiz-container {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 10px;
-            padding: 30px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .close-quiz {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #888;
-        }
-        
-        .quiz-header h2 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .quiz-header p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .quiz-progress {
-            height: 5px;
-            background: #eee;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        
-        .quiz-progress-bar {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-        
-        .quiz-question {
-            margin-bottom: 20px;
-        }
-        
-        .quiz-question h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .quiz-options {
-            display: grid;
-            gap: 10px;
-        }
-        
-        .quiz-option {
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid #ddd;
-        }
-        
-        .quiz-option:hover {
-            background: #e9ecef;
-        }
-        
-        .quiz-option.selected {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .quiz-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        
-        .quiz-result {
-            text-align: center;
-            display: none;
-        }
-        
-        .quiz-result h2 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .quiz-result p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .result-score {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-        
-        /* Spinner Game */
-        .spinner-container {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .spinner {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            position: relative;
-        }
-        
-        .spinner-wheel {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            border: 10px solid #f8f9fa;
-            box-shadow: 0 0 0 10px var(--primary), 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-            transform: rotate(0deg);
-        }
-        
-        .spinner-section {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            transform-origin: bottom right;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .spinner-arrow {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--danger);
-            font-size: 2.5rem;
-            z-index: 10;
-        }
-        
-        .spin-btn {
-            margin-top: 20px;
-        }
-        
-        .challenge-display {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(74, 111, 165, 0.1);
-            border-radius: 10px;
-            display: none;
-        }
-        
-        .challenge-display h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        /* Guess the Quote Game */
-        .quote-game-container {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .quote-display {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .quote-display::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 4rem;
-            color: rgba(74, 111, 165, 0.1);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .quote-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .author-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .author-option {
-            padding: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .author-option:hover {
-            background: #dee2e6;
-        }
-        
-        .author-option.selected {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .game-feedback {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .game-feedback.correct {
-            background: rgba(40, 167, 69, 0.2);
-            color: #28a745;
-        }
-        
-        .game-feedback.incorrect {
-            background: rgba(220, 53, 69, 0.2);
-            color: #dc3545;
-        }
-        
-        .next-quote {
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .game-score {
-            font-weight: 600;
-            margin-top: 20px;
-            color: var(--dark);
-        }
-        
-        /* Testimonials */
-        #testimonials {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-        
-        .testimonial-slider {
-            position: relative;
+
+        .jokes-container {
             max-width: 800px;
             margin: 0 auto;
         }
-        
-        .testimonial-slide {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+        .joke-item {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .joke-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .joke-item p {
+            margin-bottom: 10px;
+        }
+
+        .joke-item .punchline {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* News Section */
+        .news {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        .news-container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
+        }
+
+        .news-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .news-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .news-item .date {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
             display: none;
+            padding: 30px;
+            text-align: center;
             animation: fadeIn 0.5s ease;
         }
-        
+
         .testimonial-slide.active {
             display: block;
         }
-        
+
         .testimonial-content {
-            margin-bottom: 20px;
+            font-size: 1.2rem;
             font-style: italic;
-            color: #555;
-            position: relative;
+            margin-bottom: 20px;
         }
-        
-        .testimonial-content::before,
-        .testimonial-content::after {
-            content: '"';
-            font-size: 2rem;
-            color: rgba(74, 111, 165, 0.3);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .testimonial-content::before {
-            position: absolute;
-            top: -15px;
-            left: -10px;
-        }
-        
-        .testimonial-content::after {
-            position: absolute;
-            bottom: -30px;
-            right: -10px;
-        }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 15px;
         }
-        
-        .testimonial-author img {
+
+        .author-img {
             width: 60px;
             height: 60px;
             border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            margin-right: 15px;
-            border: 3px solid var(--accent);
         }
-        
+
         .author-info h4 {
+            color: var(--primary-color);
             margin-bottom: 5px;
-            color: var(--dark);
         }
-        
-        .author-info p {
-            color: #888;
-            font-size: 0.9rem;
-        }
-        
-        .testimonial-nav {
+
+        .slider-nav {
             display: flex;
             justify-content: center;
             margin-top: 30px;
+            gap: 10px;
         }
-        
-        .testimonial-dot {
+
+        .slider-dot {
             width: 12px;
             height: 12px;
-            background: #ddd;
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            margin: 0 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
-        .testimonial-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
+
+        .slider-dot.active {
+            background: var(--primary-color);
         }
-        
-        .testimonial-prev,
-        .testimonial-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.7);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--dark);
-            font-size: 1.2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-        
-        .testimonial-prev {
-            left: -50px;
-        }
-        
-        .testimonial-next {
-            right: -50px;
-        }
-        
+
         /* Counters */
-        #counters {
-            background: linear-gradient(rgba(26, 38, 57, 0.9), rgba(26, 38, 57, 0.9)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: white;
+        .counters {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/brp.jpg') no-repeat center center/cover;
+            color: var(--light-text);
             text-align: center;
+            padding: 60px 0;
         }
-        
+
         .counter-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
         }
-        
+
         .counter-item {
-            padding: 30px;
+            padding: 20px;
         }
-        
-        .counter-item i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-        
+
         .counter-number {
             font-size: 3rem;
             font-weight: 700;
+            color: var(--primary-color);
             margin-bottom: 10px;
         }
-        
+
         .counter-text {
             font-size: 1.2rem;
-            opacity: 0.9;
         }
-        
-        /* Contact Section */
-        #contact {
-            background-color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .contact-info p {
-            margin-bottom: 30px;
-            color: #666;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--dark);
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
-            outline: none;
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
+
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
             padding: 50px 0 20px;
             text-align: center;
         }
-        
-        .footer-content {
+
+        .footer-quote {
+            font-style: italic;
             margin-bottom: 30px;
+            padding: 0 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
+        .footer-quote span {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
         .footer-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 30px;
         }
-        
+
         .footer-links a {
-            color: #ddd;
-            margin: 0 15px;
-            font-size: 0.9rem;
+            color: var(--light-text);
+            transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
-            color: var(--accent);
+            color: var(--primary-color);
         }
-        
+
         .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
             color: #aaa;
-            font-size: 0.8rem;
         }
-        
-        /* Back to Top */
+
+        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--primary);
-            color: white;
+            background: var(--primary-color);
+            color: var(--secondary-color);
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            align-items: center;
+            font-size: 1.5rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            z-index: 999;
         }
-        
+
         .back-to-top.active {
             opacity: 1;
             visibility: visible;
         }
-        
+
         .back-to-top:hover {
-            background: var(--secondary);
+            background: var(--accent-color);
             transform: translateY(-5px);
         }
-        
+
+        /* Animations */
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .counter-grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
-            
-            .testimonial-prev {
-                left: 10px;
-            }
-            
-            .testimonial-next {
-                right: 10px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .section {
-                padding: 60px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background: var(--dark);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 30px;
-                transition: all 0.5s ease;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
-            
             .about-content {
                 flex-direction: column;
             }
             
-            .mission-vision {
-                flex-direction: column;
+            .about-img, .about-text {
+                flex: none;
+                width: 100%;
             }
             
-            .quote-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .video-grid, .stories-grid, .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .author-options {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2rem;
             }
         }
-        
-        @media (max-width: 576px) {
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .theme-toggle {
+                margin-left: 0;
+                margin-top: 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
             .section {
-                padding: 50px 0;
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .section-title h2 {
-                font-size: 1.6rem;
-            }
-            
-            .hero-content h1 {
+            .section-title {
                 font-size: 1.8rem;
             }
             
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            .counter-number {
+                font-size: 2.5rem;
             }
             
-            .quiz-container {
-                padding: 20px;
-            }
-            
-            .spinner {
-                width: 150px;
-                height: 150px;
+            .counter-text {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <nav class="navbar">
-                <a href="#home" class="logo">Motivation<span>Hub</span></a>
+            <nav>
+                <a href="#" class="logo">Prabhat Panthi</a>
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -1507,10 +1167,15 @@
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#videos">Videos</a></li>
                     <li><a href="#stories">Stories</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#quizzes">Quizzes</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <div class="theme-toggle">
+                        <span class="theme-icon">☀️</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="theme-icon">🌙</span>
+                    </div>
                 </ul>
                 <div class="hamburger">
                     <div></div>
@@ -1522,53 +1187,105 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="section">
-        <div class="hero-content">
-            <h1>Unlock Your Full Potential</h1>
-            <p>Discover daily motivation, inspiration and tools to transform your life and achieve your dreams.</p>
-            <a href="#about" class="btn">Begin Your Journey</a>
+    <section class="hero" id="home">
+        <div class="hero-content animate">
+            <h1>Welcome to My Motivational Space</h1>
+            <p>
+                Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
+                My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
+                and then to the vibrant town of Murgiya where I grew up.
+                <br><br>
+                With a Bachelor's degree completed, I have always been enthusiastic about technology,
+                storytelling, and spreading positivity through creative content.
+                This website is my personal space to share photos, videos, inspiring stories, jokes,
+                and powerful motivational quotes from various holy scriptures.
+                <br><br>
+                I believe in continuous learning, evolving, and connecting with people worldwide.
+                Here, you'll not only find glimpses of my personal journey but also content
+                that aims to motivate and entertain.
+                <br><br>
+                Feel free to explore and get in touch with me through the Contact section below.
+                Let's stay connected and grow together!
+            </p>
+            <a href="#about" class="btn">Explore More</a>
         </div>
-        <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+        <a href="#about" class="scroll-down">↓</a>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
+    <section class="section about" id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-                <p>My mission is to help people overcome challenges and live their best lives through motivation and personal development.</p>
-            </div>
+            <h2 class="section-title animate">About Me</h2>
             <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="About Me">
+                <div class="about-img animate">
+                    <img src="images/newa.jpg" alt="Prabhat Panthi" loading="lazy">
                 </div>
-                <div class="about-text">
-                    <h3>My Story</h3>
-                    <p>After years of struggling with self-doubt and lack of direction, I discovered the power of motivation and personal development. Through dedicated study and application of these principles, I transformed my life from one of frustration to fulfillment.</p>
-                    <p>Now, I'm passionate about sharing what I've learned to help others break through their limitations and achieve their goals. My approach combines timeless wisdom with practical, actionable strategies that work in the real world.</p>
-                    <div class="mission-vision">
-                        <div class="mission">
-                            <h4>Mission</h4>
-                            <p>To empower individuals with the motivation, tools and mindset needed to overcome obstacles and create extraordinary lives.</p>
-                        </div>
-                        <div class="vision">
-                            <h4>Vision</h4>
-                            <p>A world where everyone recognizes their potential and has the courage to pursue their dreams with passion and purpose.</p>
-                        </div>
-                    </div>
+                <div class="about-text animate">
+                    <h3>My Journey</h3>
+                    <p>
+                        I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
+                        Later, my family moved to Bhairahawa where I experienced a vibrant city life.
+                        Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
+                    </p>
+                    <p>
+                        From a young age, I was curious about technology and storytelling.
+                        This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
+                    </p>
+                    <p>
+                        Besides digital content, I have a keen interest in reading motivational books,
+                        listening to spiritual discourses, and understanding various cultures and philosophies.
+                    </p>
+                    <p>
+                        One of my core beliefs is that every person has a unique story,
+                        and through creativity and positive mindset, we can all inspire each other to grow.
+                    </p>
+                    <p>
+                        Through this platform, I aim to share stories that uplift spirits,
+                        jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
+                        Every piece of content here reflects my journey of learning and sharing.
+                    </p>
+                    <p>
+                        Outside the digital world, I enjoy traveling, meeting new people,
+                        and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
+                    </p>
+                    <p>
+                        Thank you for visiting my website. Let's continue this journey together,
+                        sharing laughter, wisdom, and positivity across borders!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counters Section -->
+    <section class="counters">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item animate">
+                    <div class="counter-number" data-count="1000">0</div>
+                    <div class="counter-text">Motivational Quotes</div>
+                </div>
+                <div class="counter-item animate">
+                    <div class="counter-number" data-count="500">0</div>
+                    <div class="counter-text">Success Stories</div>
+                </div>
+                <div class="counter-item animate">
+                    <div class="counter-number" data-count="200">0</div>
+                    <div class="counter-text">Photos & Videos</div>
+                </div>
+                <div class="counter-item animate">
+                    <div class="counter-number" data-count="50">0</div>
+                    <div class="counter-text">Happy Followers</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Quotes Section -->
-    <section id="quotes" class="section">
+    <section class="section quotes" id="quotes">
         <div class="container">
-            <div class="section-title">
-                <h2>Wisdom Quotes</h2>
-                <p>Inspirational words from sacred texts and great thinkers to uplift your spirit and strengthen your resolve.</p>
-            </div>
-            <div class="tabs">
+            <h2 class="section-title animate">Sacred Wisdom</h2>
+            <div class="tabs animate">
                 <button class="tab-btn active" data-tab="buddha">Buddha</button>
                 <button class="tab-btn" data-tab="quran">Quran</button>
                 <button class="tab-btn" data-tab="gita">Gita</button>
@@ -1577,213 +1294,218 @@
             
             <div class="tab-content active" id="buddha">
                 <div class="quote-container">
-                    <div class="quote-card">
-                        <p>Peace comes from within. Do not seek it without.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                    <div class="quote-card">
-                        <p>You yourself, as much as anybody in the entire universe, deserve your love and affection.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"Peace comes from within. Do not seek it without."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Three things cannot be long hidden: the sun, the moon, and the truth.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"You will not be punished for your anger, you will be punished by your anger."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"The mind is everything. What you think you become."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"Three things cannot be long hidden: the sun, the moon, and the truth."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.</p>
-                        <div class="author">- Buddha</div>
+                    <div class="quote-item animate">
+                        <p>"Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned."</p>
+                        <div class="source">- Buddha</div>
                     </div>
-                </div>
-                <div class="load-more">
-                    <button class="btn btn-outline">Load More Quotes</button>
+                    <div class="quote-item animate">
+                        <p>"No one saves us but ourselves. No one can and no one may. We ourselves must walk the path."</p>
+                        <div class="source">- Buddha</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared."</p>
+                        <div class="source">- Buddha</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"You only lose what you cling to."</p>
+                        <div class="source">- Buddha</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"In the end, only three things matter: how much you loved, how gently you lived, and how gracefully you let go of things not meant for you."</p>
+                        <div class="source">- Buddha</div>
+                    </div>
+                    <!-- More Buddha quotes can be added here -->
                 </div>
             </div>
             
             <div class="tab-content" id="quran">
                 <div class="quote-container">
-                    <div class="quote-card">
-                        <p>Indeed, with hardship comes ease.</p>
-                        <div class="author">- Quran 94:5</div>
+                    <div class="quote-item animate">
+                        <p>"Allah does not burden a soul beyond that it can bear."</p>
+                        <div class="source">- Quran 2:286</div>
                     </div>
-                    <div class="quote-card">
-                        <p>And whoever relies upon Allah - then He is sufficient for him.</p>
-                        <div class="author">- Quran 65:3</div>
+                    <div class="quote-item animate">
+                        <p>"And whoever relies upon Allah - then He is sufficient for him."</p>
+                        <div class="source">- Quran 65:3</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Allah does not burden a soul beyond that it can bear.</p>
-                        <div class="author">- Quran 2:286</div>
+                    <div class="quote-item animate">
+                        <p>"Indeed, with hardship comes ease."</p>
+                        <div class="source">- Quran 94:5</div>
                     </div>
-                    <div class="quote-card">
-                        <p>And be patient, for indeed, Allah does not allow to be lost the reward of those who do good.</p>
-                        <div class="author">- Quran 11:115</div>
+                    <div class="quote-item animate">
+                        <p>"Do not lose hope, nor be sad."</p>
+                        <div class="source">- Quran 3:139</div>
                     </div>
-                    <div class="quote-card">
-                        <p>And whoever fears Allah - He will make for him a way out and will provide for him from where he does not expect.</p>
-                        <div class="author">- Quran 65:2-3</div>
+                    <div class="quote-item animate">
+                        <p>"And He found you lost and guided you."</p>
+                        <div class="source">- Quran 93:7</div>
                     </div>
-                    <div class="quote-card">
-                        <p>So verily, with the hardship, there is relief. Verily, with the hardship, there is relief.</p>
-                        <div class="author">- Quran 94:5-6</div>
+                    <div class="quote-item animate">
+                        <p>"Allah is with those who are patient."</p>
+                        <div class="source">- Quran 2:153</div>
                     </div>
-                </div>
-                <div class="load-more">
-                    <button class="btn btn-outline">Load More Quotes</button>
+                    <div class="quote-item animate">
+                        <p>"And whoever fears Allah - He will make for him a way out."</p>
+                        <div class="source">- Quran 65:2</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"Verily, in the remembrance of Allah do hearts find rest."</p>
+                        <div class="source">- Quran 13:28</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"So remember Me; I will remember you."</p>
+                        <div class="source">- Quran 2:152</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"And We have certainly created man to face hardship."</p>
+                        <div class="source">- Quran 90:4</div>
+                    </div>
+                    <!-- More Quran quotes can be added here -->
                 </div>
             </div>
             
             <div class="tab-content" id="gita">
                 <div class="quote-container">
-                    <div class="quote-card">
-                        <p>You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions.</p>
-                        <div class="author">- Bhagavad Gita 2:47</div>
+                    <div class="quote-item animate">
+                        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions."</p>
+                        <div class="source">- Bhagavad Gita 2:47</div>
                     </div>
-                    <div class="quote-card">
-                        <p>A person can rise through the efforts of his own mind; or draw himself down, in the same manner. Because each person is his own friend or enemy.</p>
-                        <div class="author">- Bhagavad Gita 6:5</div>
+                    <div class="quote-item animate">
+                        <p>"The soul is neither born, nor does it ever die; nor having once existed, does it ever cease to be. The soul is without birth, eternal, immortal, and ageless."</p>
+                        <div class="source">- Bhagavad Gita 2:20</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Change is the law of the universe. You can be a millionaire, or a pauper in an instant.</p>
-                        <div class="author">- Bhagavad Gita 2:14</div>
+                    <div class="quote-item animate">
+                        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place."</p>
+                        <div class="source">- Bhagavad Gita 6:19</div>
                     </div>
-                    <div class="quote-card">
-                        <p>The soul is neither born, nor does it ever die; nor having once existed, does it ever cease to be. The soul is without birth, eternal, immortal, and ageless.</p>
-                        <div class="author">- Bhagavad Gita 2:20</div>
+                    <div class="quote-item animate">
+                        <p>"There is neither this world nor the world beyond nor happiness for the one who doubts."</p>
+                        <div class="source">- Bhagavad Gita 4:40</div>
                     </div>
-                    <div class="quote-card">
-                        <p>When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place.</p>
-                        <div class="author">- Bhagavad Gita 6:19</div>
+                    <div class="quote-item animate">
+                        <p>"A person can rise through the efforts of his own mind; or draw himself down, in the same manner. Because each person is his own friend or enemy."</p>
+                        <div class="source">- Bhagavad Gita 6:5</div>
                     </div>
-                    <div class="quote-card">
-                        <p>There is neither this world nor the world beyond nor happiness for the one who doubts.</p>
-                        <div class="author">- Bhagavad Gita 4:40</div>
+                    <div class="quote-item animate">
+                        <p>"The wise are those who see the same in all - in a learned and gentle priest, a cow, an elephant, a dog, and a dog-eater."</p>
+                        <div class="source">- Bhagavad Gita 5:18</div>
                     </div>
-                </div>
-                <div class="load-more">
-                    <button class="btn btn-outline">Load More Quotes</button>
+                    <div class="quote-item animate">
+                        <p>"The self-controlled soul, who moves amongst sense objects, free from either attachment or repulsion, he wins eternal peace."</p>
+                        <div class="source">- Bhagavad Gita 2:64</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"One who has control over the mind is tranquil in heat and cold, in pleasure and pain, and in honor and dishonor."</p>
+                        <div class="source">- Bhagavad Gita 6:7</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"The peace of God is with them whose mind and soul are in harmony, who are free from desire and wrath, who know their own soul."</p>
+                        <div class="source">- Bhagavad Gita 5:26</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"The key to happiness is the reduction of desires."</p>
+                        <div class="source">- Bhagavad Gita</div>
+                    </div>
+                    <!-- More Gita quotes can be added here -->
                 </div>
             </div>
             
             <div class="tab-content" id="bible">
                 <div class="quote-container">
-                    <div class="quote-card">
-                        <p>I can do all things through Christ who strengthens me.</p>
-                        <div class="author">- Philippians 4:13</div>
+                    <div class="quote-item animate">
+                        <p>"I can do all things through Christ who strengthens me."</p>
+                        <div class="source">- Philippians 4:13</div>
                     </div>
-                    <div class="quote-card">
-                        <p>For God has not given us a spirit of fear, but of power and of love and of a sound mind.</p>
-                        <div class="author">- 2 Timothy 1:7</div>
+                    <div class="quote-item animate">
+                        <p>"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</p>
+                        <div class="source">- John 3:16</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Trust in the Lord with all your heart, and lean not on your own understanding.</p>
-                        <div class="author">- Proverbs 3:5</div>
+                    <div class="quote-item animate">
+                        <p>"Trust in the LORD with all your heart and lean not on your own understanding."</p>
+                        <div class="source">- Proverbs 3:5</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.</p>
-                        <div class="author">- Joshua 1:9</div>
+                    <div class="quote-item animate">
+                        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."</p>
+                        <div class="source">- Joshua 1:9</div>
                     </div>
-                    <div class="quote-card">
-                        <p>But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.</p>
-                        <div class="author">- Isaiah 40:31</div>
+                    <div class="quote-item animate">
+                        <p>"The LORD is my shepherd, I lack nothing."</p>
+                        <div class="source">- Psalm 23:1</div>
                     </div>
-                    <div class="quote-card">
-                        <p>Cast all your anxiety on him because he cares for you.</p>
-                        <div class="author">- 1 Peter 5:7</div>
+                    <div class="quote-item animate">
+                        <p>"Cast all your anxiety on him because he cares for you."</p>
+                        <div class="source">- 1 Peter 5:7</div>
                     </div>
-                </div>
-                <div class="load-more">
-                    <button class="btn btn-outline">Load More Quotes</button>
+                    <div class="quote-item animate">
+                        <p>"For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
+                        <div class="source">- Jeremiah 29:11</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."</p>
+                        <div class="source">- Isaiah 40:31</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God."</p>
+                        <div class="source">- Philippians 4:6</div>
+                    </div>
+                    <div class="quote-item animate">
+                        <p>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud."</p>
+                        <div class="source">- 1 Corinthians 13:4</div>
+                    </div>
+                    <!-- More Bible quotes can be added here -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section">
+    <section class="section gallery" id="gallery">
         <div class="container">
-            <div class="section-title">
-                <h2>Inspiration Gallery</h2>
-                <p>Visual motivation to spark your creativity and fuel your determination.</p>
-            </div>
+            <h2 class="section-title animate">Photo Gallery</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/photo.jpg" alt="Nature landscape" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/photop.jpg" alt="Mountain view" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/photopp.jpg" alt="Sunset" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/photoppp.jpg" alt="River flowing" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/newb.jpg" alt="Cultural event" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/newc.jpg" alt="Traditional architecture" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/neww.jpg" alt="Himalayan range" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd96bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motivational Image">
-                    <div class="overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
+                <div class="gallery-item animate">
+                    <img src="images/brp.jpg" alt="Local festival" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1793,146 +1515,88 @@
     <div class="lightbox">
         <div class="lightbox-content">
             <span class="close-lightbox">&times;</span>
-            <img src="" alt="Enlarged Image">
-            <div class="lightbox-nav">
-                <button class="prev-img"><i class="fas fa-chevron-left"></i></button>
-                <button class="next-img"><i class="fas fa-chevron-right"></i></button>
-            </div>
+            <img src="" alt="Lightbox image">
         </div>
     </div>
 
-    <!-- Video Gallery -->
-    <section id="videos" class="section">
+    <!-- Videos Section -->
+    <section class="section videos" id="videos">
         <div class="container">
-            <div class="section-title">
-                <h2>Motivational Videos</h2>
-                <p>Powerful videos to inspire action and transform your mindset.</p>
-            </div>
+            <h2 class="section-title animate">Motivational Videos</h2>
             <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/7XFLTDQ4JMk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-card animate">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>How to Stop Wasting Time</h3>
-                        <p>Learn powerful strategies to overcome procrastination and make the most of your time.</p>
+                        <h3>The Power of Positive Thinking</h3>
+                        <p>Learn how to transform your mindset and attract success through positive thinking techniques.</p>
                     </div>
                 </div>
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/Ws6qmXDJgwU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-card animate">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>The Power of Discipline</h3>
-                        <p>Discover how discipline is the bridge between goals and accomplishment.</p>
+                        <h3>Overcoming Life's Challenges</h3>
+                        <p>Strategies to face difficulties with courage and come out stronger on the other side.</p>
                     </div>
                 </div>
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/0wlUyA2oF1w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-card animate">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Overcoming Fear of Failure</h3>
-                        <p>Practical techniques to conquer fear and turn setbacks into stepping stones.</p>
+                        <h3>Finding Inner Peace</h3>
+                        <p>Meditation and mindfulness techniques to achieve calmness in a chaotic world.</p>
                     </div>
                 </div>
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="video-card animate">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Morning Routine for Success</h3>
-                        <p>Start your day right with these powerful morning habits of highly successful people.</p>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/5MgBikgcWnY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>The 1% Rule</h3>
-                        <p>How small, consistent improvements lead to massive long-term results.</p>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/TQfWrdTs0t4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Building Unshakeable Confidence</h3>
-                        <p>Learn the psychology behind confidence and how to develop it in any area of life.</p>
+                        <h3>The Science of Happiness</h3>
+                        <p>Discover what research says about what truly makes us happy and how to cultivate it.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Success Stories -->
-    <section id="stories" class="section">
+    <!-- Success Stories Section -->
+    <section class="section stories" id="stories">
         <div class="container">
-            <div class="section-title">
-                <h2>Success Stories</h2>
-                <p>Real people who overcame challenges and achieved extraordinary results.</p>
-            </div>
-            <div class="stories-grid">
-                <div class="story-card">
+            <h2 class="section-title animate">Success Stories</h2>
+            <div class="story-cards">
+                <div class="story-card animate">
                     <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
+                        <img src="https://via.placeholder.com/400x300" alt="Chester Bennington" loading="lazy">
                     </div>
                     <div class="story-content">
-                        <h3>Michael Johnson</h3>
-                        <span class="title">From Bankruptcy to Millionaire</span>
-                        <p>After losing everything in the 2008 crash, Michael rebuilt his life using principles of persistence and smart investing.</p>
+                        <h3>Chester Bennington</h3>
+                        <p>Despite a childhood marked by abuse and struggles with addiction, Chester rose to become the iconic voice of Linkin Park, inspiring millions with his music and message of resilience.</p>
+                        <a href="#" class="btn">Read Full Story</a>
                     </div>
                 </div>
-                <div class="story-card">
+                <div class="story-card animate">
                     <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
+                        <img src="https://via.placeholder.com/400x300" alt="J.K. Rowling" loading="lazy">
                     </div>
                     <div class="story-content">
-                        <h3>Sarah Williams</h3>
-                        <span class="title">Weight Loss Transformation</span>
-                        <p>Sarah lost 150 pounds by changing her mindset and developing sustainable healthy habits.</p>
+                        <h3>J.K. Rowling</h3>
+                        <p>From being a single mother on welfare to creating the Harry Potter phenomenon, Rowling's journey teaches us about perseverance and believing in one's dreams.</p>
+                        <a href="#" class="btn">Read Full Story</a>
                     </div>
                 </div>
-                <div class="story-card">
+                <div class="story-card animate">
                     <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
+                        <img src="https://via.placeholder.com/400x300" alt="Nick Vujicic" loading="lazy">
                     </div>
                     <div class="story-content">
-                        <h3>David Chen</h3>
-                        <span class="title">Immigrant to Tech CEO</span>
-                        <p>Arrived with nothing, built a billion-dollar tech company through relentless learning and hard work.</p>
-                    </div>
-                </div>
-                <div class="story-card">
-                    <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
-                    </div>
-                    <div class="story-content">
-                        <h3>Maria Garcia</h3>
-                        <span class="title">Single Mom to Best-Selling Author</span>
-                        <p>Wrote her first novel while working two jobs, now a New York Times best-selling author.</p>
-                    </div>
-                </div>
-                <div class="story-card">
-                    <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
-                    </div>
-                    <div class="story-content">
-                        <h3>James Wilson</h3>
-                        <span class="title">PTSD Survivor to Motivational Speaker</span>
-                        <p>After serving in combat, James overcame PTSD and now inspires thousands with his story.</p>
-                    </div>
-                </div>
-                <div class="story-card">
-                    <div class="story-img">
-                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Success Story">
-                    </div>
-                    <div class="story-content">
-                        <h3>Lisa Thompson</h3>
-                        <span class="title">From Homeless to Real Estate Mogul</span>
-                        <p>Lisa went from living in her car to owning a portfolio of over 100 properties.</p>
+                        <h3>Nick Vujicic</h3>
+                        <p>Born without limbs, Nick overcame immense challenges to become a motivational speaker inspiring millions worldwide with his message of hope and determination.</p>
+                        <a href="#" class="btn">Read Full Story</a>
                     </div>
                 </div>
             </div>
@@ -1940,384 +1604,220 @@
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="section">
+    <section class="section blog" id="blog">
         <div class="container">
-            <div class="section-title">
-                <h2>Latest Articles</h2>
-                <p>Insights and strategies to help you stay motivated and achieve your goals.</p>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card">
+            <h2 class="section-title animate">Latest Blogs</h2>
+            <div class="blog-posts">
+                <div class="blog-card animate">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog Post">
+                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
                     </div>
                     <div class="blog-content">
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
-                            <span><i class="far fa-comment"></i> 24 Comments</span>
-                        </div>
-                        <h3>5 Morning Habits That Will Transform Your Day</h3>
-                        <p>Discover the simple yet powerful morning routines used by successful people to maximize productivity and set a positive tone for the day.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <h3>The Art of Mindful Living</h3>
+                        <p>Discover how practicing mindfulness can transform your daily life, reduce stress, and increase happiness.</p>
+                        <a href="#" class="read-more">Read More →</a>
                     </div>
                 </div>
-                <div class="blog-card">
+                <div class="blog-card animate">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog Post">
+                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
                     </div>
                     <div class="blog-content">
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> June 8, 2023</span>
-                            <span><i class="far fa-comment"></i> 18 Comments</span>
-                        </div>
-                        <h3>How to Build Discipline When Motivation Fades</h3>
-                        <p>Motivation is fleeting, but discipline lasts. Learn proven techniques to develop unshakable discipline that carries you through tough times.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <h3>Turning Failures Into Stepping Stones</h3>
+                        <p>Learn how successful people view failures as opportunities and how you can adopt this mindset.</p>
+                        <a href="#" class="read-more">Read More →</a>
                     </div>
                 </div>
-                <div class="blog-card">
+                <div class="blog-card animate">
                     <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog Post">
+                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
                     </div>
                     <div class="blog-content">
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> June 1, 2023</span>
-                            <span><i class="far fa-comment"></i> 32 Comments</span>
-                        </div>
-                        <h3>The Science of Goal Setting: What Really Works</h3>
-                        <p>Research-backed strategies for setting and achieving goals that most people never learn. Transform your results with these evidence-based methods.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd96bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog Post">
-                    </div>
-                    <div class="blog-content">
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> May 25, 2023</span>
-                            <span><i class="far fa-comment"></i> 14 Comments</span>
-                        </div>
-                        <h3>Overcoming Imposter Syndrome: Why You're More Capable Than You Think</h3>
-                        <p>Millions struggle with feeling like frauds despite evidence of their competence. Learn how to recognize and overcome imposter syndrome.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blog Post">
-                    </div>
-                    <div class="blog-content">
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> May 18, 2023</span>
-                            <span><i class="far fa-comment"></i> 27 Comments</span>
-                        </div>
-                        <h3>The Power of Small Wins: How to Build Momentum</h3>
-                        <p>Why celebrating small victories is crucial for long-term success and how to structure your goals to create a cascade of achievement.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <h3>Finding Your Life's Purpose</h3>
+                        <p>A guide to discovering what truly matters to you and aligning your life with your core values.</p>
+                        <a href="#" class="read-more">Read More →</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quizzes & Games -->
-    <section id="quizzes" class="section">
+    <!-- Jokes Section -->
+    <section class="section jokes" id="jokes">
         <div class="container">
-            <div class="section-title">
-                <h2>Quizzes & Games</h2>
-                <p>Interactive tools to help you discover more about yourself and stay motivated.</p>
-            </div>
-            
-            <div class="quiz-section">
-                <h3 class="text-center mb-30">Motivational Quizzes</h3>
-                <div class="quiz-grid">
-                    <div class="quiz-card" data-quiz="purpose">
-                        <h3>Find Your Life Purpose</h3>
-                        <p>Discover your true calling with this insightful 10-question quiz that reveals what really drives you.</p>
-                        <button class="btn btn-outline start-quiz">Start Quiz</button>
-                    </div>
-                    <div class="quiz-card" data-quiz="motivation">
-                        <h3>What Motivates You Most?</h3>
-                        <p>Understand your primary motivation style and how to harness it for maximum productivity.</p>
-                        <button class="btn btn-outline start-quiz">Start Quiz</button>
-                    </div>
-                    <div class="quiz-card" data-quiz="mindset">
-                        <h3>Mindset Check</h3>
-                        <p>Assess whether you have a fixed or growth mindset and learn how to develop a success-oriented perspective.</p>
-                        <button class="btn btn-outline start-quiz">Start Quiz</button>
-                    </div>
+            <h2 class="section-title animate">Motivational Jokes</h2>
+            <div class="jokes-container">
+                <div class="joke-item animate">
+                    <p>Why did the motivational speaker bring a ladder to the presentation?</p>
+                    <p class="punchline">Because he wanted to take his advice to the next level!</p>
                 </div>
-            </div>
-            
-            <div class="games-section">
-                <h3 class="text-center mb-30">Motivational Games</h3>
-                <div class="game-grid">
-                    <div class="game-card">
-                        <h3>Guess the Quote</h3>
-                        <p>Test your knowledge of famous motivational quotes by matching them to their authors.</p>
-                        <button class="btn btn-outline start-game" data-game="quote">Play Game</button>
-                    </div>
-                    <div class="game-card">
-                        <h3>Daily Challenge Spinner</h3>
-                        <p>Spin the wheel to get your daily motivation challenge to push you outside your comfort zone.</p>
-                        <button class="btn btn-outline start-game" data-game="spinner">Play Game</button>
-                    </div>
+                <div class="joke-item animate">
+                    <p>Why don't motivational speakers ever get lost?</p>
+                    <p class="punchline">Because they always find a way!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>How many motivational speakers does it take to change a light bulb?</p>
+                    <p class="punchline">Just one, but the light bulb has to really want to change!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>Why did the chicken cross the road?</p>
+                    <p class="punchline">To prove to the armadillo that it could be done!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>What did the grape say when it got stepped on?</p>
+                    <p class="punchline">Nothing, it just let out a little wine... but then it became vinegar and preserved its usefulness!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>Why was the math book sad?</p>
+                    <p class="punchline">Because it had too many problems... but then it realized every problem was an opportunity to learn!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>What's the most positive bone in the body?</p>
+                    <p class="punchline">The humerus - because it's always trying to be funny!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>Why don't eggs tell jokes?</p>
+                    <p class="punchline">Because they might crack up... but then they become omelets and serve a new purpose!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>What did the ocean say to the beach?</p>
+                    <p class="punchline">Nothing, it just waved... persistently, showing that consistency makes an impact!</p>
+                </div>
+                <div class="joke-item animate">
+                    <p>Why was the belt arrested?</p>
+                    <p class="punchline">For holding up a pair of pants... demonstrating that sometimes you have to take one for the team!</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quiz Modals -->
-    <div class="quiz-modal" id="purpose-quiz">
-        <div class="quiz-container">
-            <span class="close-quiz">&times;</span>
-            <div class="quiz-header">
-                <h2>Find Your Life Purpose</h2>
-                <p>Answer these 10 questions honestly to discover what truly drives you and gives your life meaning.</p>
-                <div class="quiz-progress">
-                    <div class="quiz-progress-bar" style="width: 0%"></div>
-                </div>
-            </div>
-            
-            <div class="quiz-questions">
-                <div class="quiz-question active" data-question="1">
-                    <h3>1. When you were a child, what did you want to be when you grew up?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option">A doctor or healer</div>
-                        <div class="quiz-option">A teacher or mentor</div>
-                        <div class="quiz-option">An artist or creator</div>
-                        <div class="quiz-option">An explorer or adventurer</div>
-                    </div>
-                </div>
-                
-                <div class="quiz-question" data-question="2">
-                    <h3>2. What activities make you lose track of time?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option">Helping others solve problems</div>
-                        <div class="quiz-option">Learning new things</div>
-                        <div class="quiz-option">Creating something beautiful</div>
-                        <div class="quiz-option">Physical challenges or competitions</div>
-                    </div>
-                </div>
-                
-                <!-- More questions would be here in a real implementation -->
-            </div>
-            
-            <div class="quiz-nav">
-                <button class="btn btn-outline prev-question" disabled>Previous</button>
-                <button class="btn next-question">Next</button>
-            </div>
-            
-            <div class="quiz-result">
-                <h2>Your Life Purpose Revealed</h2>
-                <p>Based on your answers, your primary life purpose is:</p>
-                <div class="result-score">To Inspire Others</div>
-                <p>You have a natural ability to motivate and uplift people. Your purpose involves helping others see their potential and encouraging them to pursue their dreams. Consider careers in coaching, teaching, or leadership where you can maximize this gift.</p>
-                <button class="btn restart-quiz">Take Again</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- More quiz modals would be here -->
-
-    <!-- Games -->
-    <div class="quiz-modal" id="quote-game">
-        <div class="quiz-container">
-            <span class="close-quiz">&times;</span>
-            <div class="quiz-header">
-                <h2>Guess the Quote</h2>
-                <p>Match these famous motivational quotes to their correct authors.</p>
-            </div>
-            
-            <div class="quote-game-container">
-                <div class="quote-display">
-                    <p class="quote-text">The only way to do great work is to love what you do.</p>
-                </div>
-                
-                <div class="author-options">
-                    <div class="author-option">Steve Jobs</div>
-                    <div class="author-option">Oprah Winfrey</div>
-                    <div class="author-option">Tony Robbins</div>
-                    <div class="author-option">Albert Einstein</div>
-                </div>
-                
-                <div class="game-feedback correct">
-                    <p><i class="fas fa-check-circle"></i> Correct! This quote is from Steve Jobs.</p>
-                </div>
-                
-                <div class="game-feedback incorrect">
-                    <p><i class="fas fa-times-circle"></i> Incorrect. The correct answer is Steve Jobs.</p>
-                </div>
-                
-                <div class="game-score">
-                    Score: <span class="score">0</span>/<span class="total">0</span>
-                </div>
-                
-                <button class="btn next-quote" style="display: none;">Next Quote</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="quiz-modal" id="spinner-game">
-        <div class="quiz-container">
-            <span class="close-quiz">&times;</span>
-            <div class="quiz-header">
-                <h2>Daily Challenge Spinner</h2>
-                <p>Spin the wheel to get your motivational challenge for today!</p>
-            </div>
-            
-            <div class="spinner-container">
-                <div class="spinner-arrow">
-                    <i class="fas fa-arrow-up"></i>
-                </div>
-                <div class="spinner">
-                    <div class="spinner-wheel">
-                        <div class="spinner-section" style="transform: rotate(0deg); background-color: #4a6fa5;">Exercise</div>
-                        <div class="spinner-section" style="transform: rotate(60deg); background-color: #166088;">Gratitude</div>
-                        <div class="spinner-section" style="transform: rotate(120deg); background-color: #4fc3f7;">Learn</div>
-                        <div class="spinner-section" style="transform: rotate(180deg); background-color: #28a745;">Create</div>
-                        <div class="spinner-section" style="transform: rotate(240deg); background-color: #ffc107;">Connect</div>
-                        <div class="spinner-section" style="transform: rotate(300deg); background-color: #dc3545;">Reflect</div>
-                    </div>
-                </div>
-                
-                <button class="btn spin-btn">Spin the Wheel</button>
-                
-                <div class="challenge-display">
-                    <h3>Your Daily Challenge:</h3>
-                    <p class="challenge-text">Write down three things you're grateful for today.</p>
-                    <p>This simple practice can boost your happiness and shift your focus to the positive aspects of your life.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="section">
+    <!-- News Section -->
+    <section class="section news" id="news">
         <div class="container">
-            <div class="section-title">
-                <h2>What People Say</h2>
-                <p>Hear from those who have transformed their lives with our motivational resources.</p>
+            <h2 class="section-title animate">Latest News</h2>
+            <div class="news-container">
+                <div class="news-item animate">
+                    <div class="date">June 15, 2023</div>
+                    <h3>New Motivational Series Launching Soon</h3>
+                    <p>Stay tuned for our upcoming video series featuring interviews with inspiring individuals from around the world.</p>
+                </div>
+                <div class="news-item animate">
+                    <div class="date">May 28, 2023</div>
+                    <h3>Community Outreach Program</h3>
+                    <p>We're starting a new initiative to bring motivational workshops to schools in rural areas.</p>
+                </div>
+                <div class="news-item animate">
+                    <div class="date">April 10, 2023</div>
+                    <h3>Website Redesign Complete</h3>
+                    <p>Welcome to our newly redesigned website with more content and better user experience!</p>
+                </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title animate">What People Say</h2>
             <div class="testimonial-slider">
                 <div class="testimonial-slide active">
                     <div class="testimonial-content">
-                        <p>This website completely changed my perspective on life. The daily quotes and articles gave me the push I needed to start my own business after years of hesitation.</p>
+                        "Prabhat's motivational content has truly transformed my outlook on life. His words have helped me through some of my toughest times."
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Testimonial Author">
+                        <div class="author-img">
+                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
+                        </div>
                         <div class="author-info">
-                            <h4>Jennifer K.</h4>
-                            <p>Small Business Owner</p>
+                            <h4>Sarah Johnson</h4>
+                            <p>Teacher, Kathmandu</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>I was stuck in a dead-end job and feeling hopeless. The success stories and motivational videos inspired me to go back to school. Now I'm pursuing my dream career!</p>
+                        "The wisdom shared from different scriptures in one place is incredible. I've shared many quotes with my friends and family."
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Testimonial Author">
+                        <div class="author-img">
+                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
+                        </div>
                         <div class="author-info">
-                            <h4>Michael T.</h4>
-                            <p>Nursing Student</p>
+                            <h4>Rajesh Gupta</h4>
+                            <p>Business Owner, Delhi</p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-slide">
                     <div class="testimonial-content">
-                        <p>The mindset quizzes helped me understand why I was self-sabotaging. With the insights I gained, I've been able to break through barriers I thought were permanent.</p>
+                        "I start every morning with a quote from this website. It sets the right tone for my day and keeps me motivated."
                     </div>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonial Author">
+                        <div class="author-img">
+                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
+                        </div>
                         <div class="author-info">
-                            <h4>Sarah L.</h4>
-                            <p>Marketing Director</p>
+                            <h4>Emily Chen</h4>
+                            <p>Student, Singapore</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="testimonial-nav">
-                    <div class="testimonial-dot active" data-slide="0"></div>
-                    <div class="testimonial-dot" data-slide="1"></div>
-                    <div class="testimonial-dot" data-slide="2"></div>
-                </div>
-                
-                <div class="testimonial-prev"><i class="fas fa-chevron-left"></i></div>
-                <div class="testimonial-next"><i class="fas fa-chevron-right"></i></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Counters -->
-    <section id="counters" class="section">
-        <div class="container">
-            <div class="counter-grid">
-                <div class="counter-item">
-                    <i class="fas fa-quote-left"></i>
-                    <div class="counter-number" data-target="1250">0</div>
-                    <div class="counter-text">Quotes Collected</div>
-                </div>
-                <div class="counter-item">
-                    <i class="fas fa-gamepad"></i>
-                    <div class="counter-number" data-target="8500">0</div>
-                    <div class="counter-text">Games Played</div>
-                </div>
-                <div class="counter-item">
-                    <i class="fas fa-heart"></i>
-                    <div class="counter-number" data-target="25000">0</div>
-                    <div class="counter-text">Lives Inspired</div>
-                </div>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-title">
-                <h2>Get In Touch</h2>
-                <p>Have questions or feedback? We'd love to hear from you!</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Connect With Us</h3>
-                    <p>Whether you're looking for personalized motivation advice or just want to share your success story, our team is here to support your journey.</p>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <h2 class="section-title animate">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info animate">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+977-9848605969</p>
+                        </div>
                     </div>
-                    
-                    <p><i class="fas fa-envelope"></i> contact@motivationhub.com</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>prabhatpanthi007@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Murgiya, Nepal</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+                        <a href="#" class="social-link" aria-label="Facebook">f</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                    </div>
                 </div>
-                
-                <div class="contact-form">
+                <div class="contact-form animate">
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea id="message" name="message" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -2329,58 +1829,63 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo">Motivation<span>Hub</span></a>
-                <p>Your daily dose of inspiration to achieve greatness.</p>
+            <div class="footer-quote animate">
+                "The only limit to our realization of tomorrow is our doubts of today. <span>Let us move forward with strong and active faith.</span>"
             </div>
-            
-            <div class="footer-links">
+            <div class="footer-links animate">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#quotes">Quotes</a>
                 <a href="#gallery">Gallery</a>
                 <a href="#videos">Videos</a>
                 <a href="#stories">Stories</a>
-                <a href="#blog">Blog</a>
-                <a href="#quizzes">Quizzes</a>
-                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
             </div>
-            
-            <div class="copyright">
-                &copy; 2023 MotivationHub. All Rights Reserved.
+            <div class="copyright animate">
+                &copy; 2023 Prabhat Panthi. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        ↑
+    </div>
 
     <!-- JavaScript -->
     <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const navItems = document.querySelectorAll('.nav-links li');
-        
+
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
-        
+
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
             });
         });
-        
+
         // Sticky Header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 100);
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            header.classList.toggle('header-scrolled', window.scrollY > 100);
         });
-        
+
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -2389,18 +1894,18 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-        
-        // Active Menu Highlighting
+
+        // Active Navigation Link
         const sections = document.querySelectorAll('section');
-        const navLinksAll = document.querySelectorAll('.nav-links a');
-        
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function() {
             let current = '';
             
             sections.forEach(section => {
@@ -2412,126 +1917,137 @@
                 }
             });
             
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
+            navItems.forEach(item => {
+                item.querySelector('a').classList.remove('active');
+                if (item.querySelector('a').getAttribute('href') === `#${current}`) {
+                    item.querySelector('a').classList.add('active');
                 }
             });
         });
-        
-        // Back to Top Button
-        const backToTop = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', this.checked);
         });
-        
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        }
+
         // Quote Tabs
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
-        
+
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
                 
-                // Remove active class from all buttons and contents
                 tabBtns.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to clicked button and corresponding content
                 btn.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
         });
-        
+
         // Lightbox Gallery
         const galleryItems = document.querySelectorAll('.gallery-item');
         const lightbox = document.querySelector('.lightbox');
-        const lightboxImg = lightbox.querySelector('img');
-        const closeLightbox = lightbox.querySelector('.close-lightbox');
-        const prevBtn = lightbox.querySelector('.prev-img');
-        const nextBtn = lightbox.querySelector('.next-img');
-        
-        let currentImgIndex = 0;
-        const imgSources = Array.from(galleryItems).map(item => item.querySelector('img').src);
-        
-        galleryItems.forEach((item, index) => {
+        const lightboxImg = document.querySelector('.lightbox-content img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+
+        galleryItems.forEach(item => {
             item.addEventListener('click', () => {
-                currentImgIndex = index;
-                lightboxImg.src = imgSources[currentImgIndex];
+                const imgSrc = item.querySelector('img').getAttribute('src');
+                lightboxImg.setAttribute('src', imgSrc);
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
         });
-        
+
         closeLightbox.addEventListener('click', () => {
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
-        
-        prevBtn.addEventListener('click', () => {
-            currentImgIndex = (currentImgIndex - 1 + imgSources.length) % imgSources.length;
-            lightboxImg.src = imgSources[currentImgIndex];
-        });
-        
-        nextBtn.addEventListener('click', () => {
-            currentImgIndex = (currentImgIndex + 1) % imgSources.length;
-            lightboxImg.src = imgSources[currentImgIndex];
-        });
-        
+
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         });
-        
+
         // Testimonial Slider
         const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const testimonialDots = document.querySelectorAll('.testimonial-dot');
-        const prevTestimonial = document.querySelector('.testimonial-prev');
-        const nextTestimonial = document.querySelector('.testimonial-next');
-        
+        const sliderDots = document.querySelectorAll('.slider-dot');
         let currentSlide = 0;
-        
+
         function showSlide(index) {
             testimonialSlides.forEach(slide => slide.classList.remove('active'));
-            testimonialDots.forEach(dot => dot.classList.remove('active'));
+            sliderDots.forEach(dot => dot.classList.remove('active'));
             
             testimonialSlides[index].classList.add('active');
-            testimonialDots[index].classList.add('active');
+            sliderDots[index].classList.add('active');
             currentSlide = index;
         }
-        
-        testimonialDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
+
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
         });
-        
-        prevTestimonial.addEventListener('click', () => {
-            showSlide((currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length);
-        });
-        
-        nextTestimonial.addEventListener('click', () => {
-            showSlide((currentSlide + 1) % testimonialSlides.length);
-        });
-        
-        // Auto-rotate testimonials
+
+        // Auto slide change
         setInterval(() => {
-            showSlide((currentSlide + 1) % testimonialSlides.length);
+            currentSlide = (currentSlide + 1) % testimonialSlides.length;
+            showSlide(currentSlide);
         }, 5000);
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate on Scroll
+        const animateElements = document.querySelectorAll('.animate');
         
-        // Animated Counters
+        function checkAnimation() {
+            animateElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkAnimation);
+        window.addEventListener('load', checkAnimation);
+
+        // Counter Animation
         const counters = document.querySelectorAll('.counter-number');
         const speed = 200;
-        
+
         function animateCounters() {
             counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
+                const target = +counter.getAttribute('data-count');
                 const count = +counter.innerText;
                 const increment = target / speed;
                 
@@ -2539,278 +2055,37 @@
                     counter.innerText = Math.ceil(count + increment);
                     setTimeout(animateCounters, 1);
                 } else {
-                    counter.innerText = target.toLocaleString();
+                    counter.innerText = target;
                 }
             });
         }
-        
-        // Start counters when section is in view
-        const counterSection = document.querySelector('#counters');
+
+        // Start counters when they come into view
+        const counterSection = document.querySelector('.counters');
         const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.unobserve(counterSection);
-            }
-        });
-        
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
         observer.observe(counterSection);
-        
-        // Quiz Functionality
-        const quizCards = document.querySelectorAll('.quiz-card');
-        const quizModals = document.querySelectorAll('.quiz-modal');
-        const closeQuizBtns = document.querySelectorAll('.close-quiz');
-        
-        quizCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (e.target.classList.contains('start-quiz') || e.target.classList.contains('start-game')) {
-                    const quizType = card.getAttribute('data-quiz') || card.querySelector('.start-game').getAttribute('data-game');
-                    document.getElementById(`${quizType}-quiz`).classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        });
-        
-        closeQuizBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.closest('.quiz-modal').classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-        
-        // Quiz Navigation
-        const quizQuestions = document.querySelectorAll('.quiz-question');
-        const prevQuestionBtns = document.querySelectorAll('.prev-question');
-        const nextQuestionBtns = document.querySelectorAll('.next-question');
-        const quizOptions = document.querySelectorAll('.quiz-option');
-        const quizProgressBars = document.querySelectorAll('.quiz-progress-bar');
-        const restartQuizBtns = document.querySelectorAll('.restart-quiz');
-        
-        quizOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options in this question
-                this.parentNode.querySelectorAll('.quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-            });
-        });
-        
-        nextQuestionBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const currentQuestion = this.closest('.quiz-container').querySelector('.quiz-question.active');
-                const nextQuestion = currentQuestion.nextElementSibling;
-                const quizContainer = this.closest('.quiz-container');
-                
-                if (nextQuestion) {
-                    currentQuestion.classList.remove('active');
-                    nextQuestion.classList.add('active');
-                    
-                    // Update progress bar
-                    const totalQuestions = quizContainer.querySelectorAll('.quiz-question').length;
-                    const answeredQuestions = Array.from(quizContainer.querySelectorAll('.quiz-question')).indexOf(nextQuestion);
-                    const progress = (answeredQuestions / totalQuestions) * 100;
-                    quizContainer.querySelector('.quiz-progress-bar').style.width = `${progress}%`;
-                    
-                    // Update nav buttons
-                    quizContainer.querySelector('.prev-question').disabled = false;
-                    
-                    if (!nextQuestion.nextElementSibling) {
-                        this.textContent = 'See Results';
-                    }
-                } else {
-                    // Show results
-                    quizContainer.querySelector('.quiz-questions').style.display = 'none';
-                    quizContainer.querySelector('.quiz-nav').style.display = 'none';
-                    quizContainer.querySelector('.quiz-result').style.display = 'block';
-                }
-            });
-        });
-        
-        prevQuestionBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const currentQuestion = this.closest('.quiz-container').querySelector('.quiz-question.active');
-                const prevQuestion = currentQuestion.previousElementSibling;
-                const quizContainer = this.closest('.quiz-container');
-                
-                if (prevQuestion) {
-                    currentQuestion.classList.remove('active');
-                    prevQuestion.classList.add('active');
-                    
-                    // Update progress bar
-                    const totalQuestions = quizContainer.querySelectorAll('.quiz-question').length;
-                    const answeredQuestions = Array.from(quizContainer.querySelectorAll('.quiz-question')).indexOf(prevQuestion);
-                    const progress = (answeredQuestions / totalQuestions) * 100;
-                    quizContainer.querySelector('.quiz-progress-bar').style.width = `${progress}%`;
-                    
-                    // Update nav buttons
-                    quizContainer.querySelector('.next-question').textContent = 'Next';
-                    
-                    if (!prevQuestion.previousElementSibling) {
-                        this.disabled = true;
-                    }
-                }
-            });
-        });
-        
-        restartQuizBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const quizContainer = this.closest('.quiz-container');
-                
-                // Reset quiz
-                quizContainer.querySelector('.quiz-questions').style.display = 'block';
-                quizContainer.querySelector('.quiz-nav').style.display = 'flex';
-                quizContainer.querySelector('.quiz-result').style.display = 'none';
-                
-                const firstQuestion = quizContainer.querySelector('.quiz-question');
-                quizContainer.querySelectorAll('.quiz-question').forEach((q, i) => {
-                    q.classList.remove('active');
-                    if (i === 0) q.classList.add('active');
-                });
-                
-                quizContainer.querySelectorAll('.quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                quizContainer.querySelector('.quiz-progress-bar').style.width = '0%';
-                quizContainer.querySelector('.prev-question').disabled = true;
-                quizContainer.querySelector('.next-question').textContent = 'Next';
-            });
-        });
-        
-        // Spinner Game
-        const spinnerWheel = document.querySelector('.spinner-wheel');
-        const spinBtn = document.querySelector('.spin-btn');
-        const challengeDisplay = document.querySelector('.challenge-display');
-        const challengeText = document.querySelector('.challenge-text');
-        
-        const challenges = [
-            "Do 30 minutes of exercise today - it boosts energy and mental clarity.",
-            "Write down three things you're grateful for today.",
-            "Learn something new by reading for 20 minutes.",
-            "Create something - draw, write, build, or design.",
-            "Connect with someone you haven't spoken to in a while.",
-            "Spend 10 minutes in quiet reflection or meditation."
-        ];
-        
-        spinBtn.addEventListener('click', () => {
-            // Disable button during spin
-            spinBtn.disabled = true;
-            
-            // Random rotation (5-7 full rotations plus segment)
-            const segmentAngle = 60; // 6 segments at 60 degrees each
-            const extraRotation = Math.floor(Math.random() * 6) * segmentAngle;
-            const fullRotations = 5 + Math.floor(Math.random() * 3); // 5-7 full rotations
-            const totalRotation = fullRotations * 360 + extraRotation;
-            
-            spinnerWheel.style.transform = `rotate(${-totalRotation}deg)`;
-            
-            // Calculate which segment will land at the top
-            const normalizedRotation = totalRotation % 360;
-            const segmentIndex = Math.floor(normalizedRotation / segmentAngle);
-            
-            // Show challenge after spin completes
-            setTimeout(() => {
-                challengeText.textContent = challenges[segmentIndex];
-                challengeDisplay.style.display = 'block';
-                spinBtn.disabled = false;
-            }, 4000); // Match this with CSS transition duration
-        });
-        
-        // Guess the Quote Game
-        const quoteGameContainer = document.querySelector('#quote-game .quote-game-container');
-        const authorOptions = document.querySelectorAll('.author-option');
-        const nextQuoteBtn = document.querySelector('.next-quote');
-        const gameFeedback = document.querySelectorAll('.game-feedback');
-        const gameScore = document.querySelector('.game-score .score');
-        
-        const quotes = [
-            {
-                text: "The only way to do great work is to love what you do.",
-                author: "Steve Jobs",
-                options: ["Steve Jobs", "Oprah Winfrey", "Tony Robbins", "Albert Einstein"]
-            },
-            {
-                text: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-                author: "Winston Churchill",
-                options: ["Winston Churchill", "Nelson Mandela", "Eleanor Roosevelt", "Thomas Edison"]
-            },
-            {
-                text: "Your time is limited, don't waste it living someone else's life.",
-                author: "Steve Jobs",
-                options: ["Steve Jobs", "Bill Gates", "Mark Zuckerberg", "Jeff Bezos"]
-            }
-        ];
-        
-        let currentQuoteIndex = 0;
-        let score = 0;
-        
-        function loadQuote(index) {
-            const quote = quotes[index];
-            
-            document.querySelector('.quote-text').textContent = quote.text;
-            
-            // Shuffle options
-            const shuffledOptions = [...quote.options].sort(() => Math.random() - 0.5);
-            
-            authorOptions.forEach((option, i) => {
-                option.textContent = shuffledOptions[i];
-            });
-            
-            // Reset UI
-            gameFeedback.forEach(fb => fb.style.display = 'none');
-            nextQuoteBtn.style.display = 'none';
-            authorOptions.forEach(opt => opt.classList.remove('selected'));
-        }
-        
-        authorOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                if (this.classList.contains('selected')) return;
-                
-                const selectedAuthor = this.textContent;
-                const correctAuthor = quotes[currentQuoteIndex].author;
-                
-                // Disable all options
-                authorOptions.forEach(opt => opt.classList.add('selected'));
-                
-                // Show feedback
-                if (selectedAuthor === correctAuthor) {
-                    document.querySelector('.game-feedback.correct').style.display = 'block';
-                    score++;
-                    gameScore.textContent = score;
-                } else {
-                    document.querySelector('.game-feedback.incorrect').style.display = 'block';
-                }
-                
-                nextQuoteBtn.style.display = 'block';
-            });
-        });
-        
-        nextQuoteBtn.addEventListener('click', () => {
-            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-            loadQuote(currentQuoteIndex);
-        });
-        
-        // Initialize first quote
-        document.querySelector('.game-score .total').textContent = quotes.length;
-        loadQuote(0);
-        
+
         // Form Submission
         const contactForm = document.getElementById('contactForm');
-        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
             // Here you would typically send the data to a server
-            // For this demo, we'll just show an alert
-            alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon at ${email}.`);
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
             
             // Reset form
             contactForm.reset();
