@@ -1,1 +1,187 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vunti Chat App</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
+  #messages { border: 1px solid #ccc; height: 300px; overflow-y: scroll; padding: 0.5rem; margin-bottom: 1rem; }
+  #messages div { margin-bottom: 0.5rem; }
+  #status { margin-bottom: 1rem; }
+  #usernameInput, #messageInput { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+  #sendBtn { padding: 0.5rem 1rem; }
+</style>
+</head>
+<body>
+
+<h2>Vunti Chat</h2>
+
+<div id="status">Status: Not logged in</div>
+
+<input type="text" id="usernameInput" placeholder="Enter username" />
+<button id="loginBtn">Login / Signup</button>
+
+<div id="messages"></div>
+
+<input type="text" id="messageInput" placeholder="Type your message..." disabled />
+<button id="sendBtn" disabled>Send</button>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  // Your Supabase info here
+  const SUPABASE_URL = 'https://fflawatbcocazbsblzkl.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmbGF3YXRiY29jYXpic2JsemtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1OTQzMDcsImV4cCI6MjA3MDE3MDMwN30.4bCY4AcHHsWsXJCvcVhoVXABdn7UV3S7pxIuX4jMoww';
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const statusDiv = document.getElementById('status');
+  const usernameInput = document.getElementById('usernameInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const messagesDiv = document.getElementById('messages');
+  const messageInput = document.getElementById('messageInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  let user = null;
+  let cooldown = false;
+
+  // Helper: Scroll messages to bottom
+  function scrollMessages() {
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  // Show messages
+  function addMessage(data) {
+    const div = document.createElement('div');
+    const time = new Date(data.created_at).toLocaleTimeString();
+    div.textContent = `[${time}] ${data.username || 'Anonymous'}: ${data.content}`;
+    messagesDiv.appendChild(div);
+    scrollMessages();
+  }
+
+  // Load recent messages
+  async function loadMessages() {
+    let { data, error } = await supabase
+      .from('messages')
+      .select('id, content, created_at, profiles(username)')
+      .order('created_at', { ascending: true })
+      .limit(100);
+
+    if (error) {
+      console.error('Error loading messages:', error);
+      return;
+    }
+    messagesDiv.innerHTML = '';
+    data.forEach(msg => {
+      addMessage({
+        content: msg.content,
+        created_at: msg.created_at,
+        username: msg.profiles?.username || 'Anonymous'
+      });
+    });
+  }
+
+  // Subscribe to realtime messages
+  supabase
+    .from('messages')
+    .on('INSERT', payload => {
+      addMessage({
+        content: payload.new.content,
+        created_at: payload.new.created_at,
+        username: payload.new.username || 'Anonymous'
+      });
+    })
+    .subscribe();
+
+  // Username signup/login
+  loginBtn.onclick = async () => {
+    const username = usernameInput.value.trim();
+    if (!username || username.length < 3) {
+      alert('Please enter a username with at least 3 characters.');
+      return;
+    }
+
+    // Check if username exists
+    let { data: existing, error } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('username', username)
+      .single();
+
+    if (existing) {
+      alert('Username already taken, please choose another.');
+      return;
+    }
+
+    // Sign in anonymously first
+    let { data: anonUser, error: anonError } = await supabase.auth.signInAnonymously();
+    if (anonError) {
+      alert('Error during anonymous login: ' + anonError.message);
+      return;
+    }
+
+    user = anonUser.user;
+
+    // Create profile with username
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .insert({ id: user.id, username })
+      .single();
+
+    if (profileError) {
+      alert('Error creating profile: ' + profileError.message);
+      return;
+    }
+
+    statusDiv.textContent = `Logged in as ${username}`;
+    usernameInput.disabled = true;
+    loginBtn.disabled = true;
+    messageInput.disabled = false;
+    sendBtn.disabled = false;
+
+    loadMessages();
+  };
+
+  // Send message
+  sendBtn.onclick = async () => {
+    if (cooldown) {
+      alert('Please wait a few seconds before sending another message.');
+      return;
+    }
+
+    const content = messageInput.value.trim();
+    if (!content || content.length < 1) {
+      alert('Message cannot be empty.');
+      return;
+    }
+    if (content.length > 500) {
+      alert('Message too long. Max 500 characters.');
+      return;
+    }
+
+    cooldown = true;
+    setTimeout(() => (cooldown = false), 3000); // 3 seconds cooldown
+
+    const { error } = await supabase.from('messages').insert({
+      user_id: user.id,
+      content
+    });
+
+    if (error) {
+      alert('Error sending message: ' + error.message);
+      cooldown = false;
+      return;
+    }
+
+    messageInput.value = '';
+  };
+
+  // On page load, try to load messages for public users
+  loadMessages();
+
+</script>
+
+</body>
+</html>
