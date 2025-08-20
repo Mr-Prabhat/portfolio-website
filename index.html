@@ -1,2095 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Prabhat Panthi's motivational website with inspiring quotes, success stories, photos, videos and positive content">
-    <meta name="keywords" content="motivation, quotes, success stories, inspiration, positivity, Prabhat Panthi, Nepal, digital creator">
-    <meta property="og:title" content="Prabhat Panthi - Motivational Content Creator">
-    <meta property="og:description" content="Sharing inspiring quotes, success stories, and positive content to uplift spirits">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prabhatpanthi.com">
-    <title>Prabhat Panthi - Motivational Content Creator</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
-    <style>
-        :root {
-            --primary-color: #d4af37;
-            --secondary-color: #1a1a1a;
-            --accent-color: #f5d042;
-            --text-color: #333;
-            --light-text: #f8f8f8;
-            --bg-color: #ffffff;
-            --dark-bg: #121212;
-            --section-padding: 80px 0;
-            --transition: all 0.3s ease;
-            --border-radius: 8px;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark-mode {
-            --primary-color: #f5d042;
-            --secondary-color: #f8f8f8;
-            --text-color: #f8f8f8;
-            --bg-color: #121212;
-            --light-text: #333;
-            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: var(--transition);
-            overflow-x: hidden;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 5px;
-        }
-
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--primary-color);
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Base Styles */
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-color);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .section {
-            padding: var(--section-padding);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .header-scrolled {
-            background-color: rgba(0, 0, 0, 0.9);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark-mode .header-scrolled {
-            background-color: rgba(20, 20, 20, 0.95);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--light-text);
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a.active {
-            color: var(--primary-color);
-        }
-
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background: var(--light-text);
-            margin: 5px;
-            transition: var(--transition);
-        }
-
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-            margin-left: 20px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: var(--transition);
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: '';
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: var(--transition);
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--primary-color);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-
-        .theme-toggle {
-            display: flex;
-            align-items: center;
-            margin-left: 30px;
-        }
-
-        .theme-icon {
-            font-size: 1.2rem;
-            color: var(--light-text);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/website.jpg') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--light-text);
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--light-text);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--bg-color);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-img {
-            flex: 1;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-        }
-
-        /* Quotes Section */
-        .quotes {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 12px 25px;
-            background: transparent;
-            border: none;
-            color: var(--light-text);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            margin: 0 5px;
-        }
-
-        .tab-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .tab-btn:hover::after, .tab-btn.active::after {
-            width: 100%;
-        }
-
-        .tab-btn.active {
-            color: var(--primary-color);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .quote-container {
-            max-height: 500px;
-            overflow-y: auto;
-            padding-right: 15px;
-        }
-
-        .quote-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .quote-item p {
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .quote-item .source {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background-color: var(--bg-color);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-
-        .lightbox.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-height: 80vh;
-            max-width: 100%;
-            border-radius: var(--border-radius);
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: var(--light-text);
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* Videos Section */
-        .videos {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .video-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-thumbnail {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-thumbnail iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-info {
-            padding: 20px;
-        }
-
-        .video-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        /* Success Stories Section */
-        .stories {
-            background-color: var(--bg-color);
-        }
-
-        .story-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .story-card {
-            background: var(--bg-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .story-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .story-img {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .story-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .story-card:hover .story-img img {
-            transform: scale(1.05);
-        }
-
-        .story-content {
-            padding: 20px;
-        }
-
-        .story-content h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .story-content p {
-            margin-bottom: 15px;
-        }
-
-        /* Blog Section */
-        .blog {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .blog-img {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .blog-card:hover .blog-img img {
-            transform: scale(1.05);
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-content h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .blog-content p {
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            display: inline-block;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        /* Jokes Section */
-        .jokes {
-            background-color: var(--bg-color);
-        }
-
-        .jokes-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .joke-item {
-            background: var(--bg-color);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .joke-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .joke-item p {
-            margin-bottom: 10px;
-        }
-
-        .joke-item .punchline {
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        /* News Section */
-        .news {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        .news-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .news-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-        }
-
-        .news-item h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .news-item .date {
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--bg-color);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            background: var(--bg-color);
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-slide {
-            display: none;
-            padding: 30px;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .testimonial-slide.active {
-            display: block;
-        }
-
-        .testimonial-content {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .author-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .author-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .author-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-            gap: 10px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .slider-dot.active {
-            background: var(--primary-color);
-        }
-
-        /* Counters */
-        .counters {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/brp.jpg') no-repeat center center/cover;
-            color: var(--light-text);
-            text-align: center;
-            padding: 60px 0;
-        }
-
-        .counter-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .counter-item {
-            padding: 20px;
-        }
-
-        .counter-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .counter-text {
-            font-size: 1.2rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--light-text);
-            padding: 50px 0 20px;
-            text-align: center;
-        }
-
-        .footer-quote {
-            font-style: italic;
-            margin-bottom: 30px;
-            padding: 0 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-quote span {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links a {
-            color: var(--light-text);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--accent-color);
-            transform: translateY(-5px);
-        }
-
-        /* Animations */
-        .animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-img, .about-text {
-                flex: none;
-                width: 100%;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                z-index: 1001;
-            }
-            
-            .hamburger.active div:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            
-            .hamburger.active div:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .hamburger.active div:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                height: 100vh;
-                background: var(--secondary-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: var(--transition);
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .nav-links li {
-                margin: 20px 0;
-            }
-            
-            .theme-toggle {
-                margin-left: 0;
-                margin-top: 30px;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .counter-number {
-                font-size: 2.5rem;
-            }
-            
-            .counter-text {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prabhat Panthi | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-gold: #ffd700;
+      --dark-gold: #b8860b;
+      --light-gold: #fffacd;
+      --metallic-gold: #e6b800;
+      --bg-light: #faf8e6;
+      --text-color: #2c2c2c;
+    }
+
+    body {
+      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--primary-gold);
+      color: var(--text-color);
+    }
+
+    .search-bar {
+      text-align: center;
+      margin: 15px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: min(80%, 500px);
+      border-radius: 5px;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .home-banner {
+      text-align: center;
+    }
+
+    .home-banner img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 4px solid var(--primary-gold);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+      margin-bottom: 15px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--metallic-gold);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .tabs button:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      border: 1px solid var(--metallic-gold);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .quote, .story, .joke {
+      margin: 15px 0;
+      padding: 15px;
+      background: var(--light-gold);
+      border-left: 4px solid var(--primary-gold);
+      border-radius: 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    .dark-mode {
+      background: #2b2b2b;
+      color: #f0f0f0;
+    }
+
+    .dark-mode nav {
+      background: linear-gradient(to right, #4a3c00, #6b5400);
+    }
+
+    .dark-mode .tabs button {
+      background: var(--dark-gold);
+      color: white;
+    }
+
+    .dark-mode .tabs button:hover {
+      background: var(--primary-gold);
+    }
+
+    .dark-mode .tab-content {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .home-banner img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      .search-bar input {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
+  <header>
+    <h1>Prabhat Panthi | Official Website</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showTab('home')">Home</a>
+    <a href="#" onclick="showTab('about')">About Me</a>
+    <a href="#" onclick="showTab('photos')">Photos</a>
+    <a href="#" onclick="showTab('videos')">Videos</a>
+    <a href="#" onclick="showTab('stories')">Stories</a>
+    <a href="#" onclick="showTab('jokes')">Jokes</a>
+    <a href="#" onclick="showTab('news')">News</a>
+    <a href="#" onclick="showTab('motivation')">Motivation</a>
+    <a href="#" onclick="showTab('contact')">Contact</a>
+  </nav>
+
+  
+  <section id="home" class="active">
+    <div class="home-banner">
+      <img src="images/neww.jpg" alt="Prabhat Panthi" />
     </div>
+    <h2>Welcome to My World</h2>
+    <p>
+      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
+      My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
+      and then to the vibrant town of Murgiya where I grew up.
+    </p>
+    <p>
+      With a Bachelor’s degree completed, I have always been enthusiastic about technology,
+      storytelling, and spreading positivity through creative content.
+      This website is my personal space to share photos, videos, inspiring stories, jokes,
+      and powerful motivational quotes from various holy scriptures.
+    </p>
+    <p>
+      I believe in continuous learning, evolving, and connecting with people worldwide.
+      Here, you'll not only find glimpses of my personal journey but also content
+      that aims to motivate and entertain.
+    </p>
+    <p>
+      Feel free to explore and get in touch with me through the Contact section below.
+      Let's stay connected and grow together!
+    </p>
+  </section>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Prabhat Panthi</a>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#quotes">Quotes</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#stories">Stories</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <div class="theme-toggle">
-                        <span class="theme-icon">☀️</span>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="theme-toggle">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="theme-icon">🌙</span>
-                    </div>
-                </ul>
-                <div class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content animate">
-            <h1>Welcome to My Motivational Space</h1>
-            <p>
-                Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
-                My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
-                and then to the vibrant town of Murgiya where I grew up.
-                <br><br>
-                With a Bachelor's degree completed, I have always been enthusiastic about technology,
-                storytelling, and spreading positivity through creative content.
-                This website is my personal space to share photos, videos, inspiring stories, jokes,
-                and powerful motivational quotes from various holy scriptures.
-                <br><br>
-                I believe in continuous learning, evolving, and connecting with people worldwide.
-                Here, you'll not only find glimpses of my personal journey but also content
-                that aims to motivate and entertain.
-                <br><br>
-                Feel free to explore and get in touch with me through the Contact section below.
-                Let's stay connected and grow together!
-            </p>
-            <a href="#about" class="btn">Explore More</a>
-        </div>
-        <a href="#about" class="scroll-down">↓</a>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <h2 class="section-title animate">About Me</h2>
-            <div class="about-content">
-                <div class="about-img animate">
-                    <img src="images/newa.jpg" alt="Prabhat Panthi" loading="lazy">
-                </div>
-                <div class="about-text animate">
-                    <h3>My Journey</h3>
-                    <p>
-                        I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
-                        Later, my family moved to Bhairahawa where I experienced a vibrant city life.
-                        Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
-                    </p>
-                    <p>
-                        From a young age, I was curious about technology and storytelling.
-                        This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
-                    </p>
-                    <p>
-                        Besides digital content, I have a keen interest in reading motivational books,
-                        listening to spiritual discourses, and understanding various cultures and philosophies.
-                    </p>
-                    <p>
-                        One of my core beliefs is that every person has a unique story,
-                        and through creativity and positive mindset, we can all inspire each other to grow.
-                    </p>
-                    <p>
-                        Through this platform, I aim to share stories that uplift spirits,
-                        jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
-                        Every piece of content here reflects my journey of learning and sharing.
-                    </p>
-                    <p>
-                        Outside the digital world, I enjoy traveling, meeting new people,
-                        and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
-                    </p>
-                    <p>
-                        Thank you for visiting my website. Let's continue this journey together,
-                        sharing laughter, wisdom, and positivity across borders!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Counters Section -->
-    <section class="counters">
-        <div class="container">
-            <div class="counter-grid">
-                <div class="counter-item animate">
-                    <div class="counter-number" data-count="1000">0</div>
-                    <div class="counter-text">Motivational Quotes</div>
-                </div>
-                <div class="counter-item animate">
-                    <div class="counter-number" data-count="500">0</div>
-                    <div class="counter-text">Success Stories</div>
-                </div>
-                <div class="counter-item animate">
-                    <div class="counter-number" data-count="200">0</div>
-                    <div class="counter-text">Photos & Videos</div>
-                </div>
-                <div class="counter-item animate">
-                    <div class="counter-number" data-count="50">0</div>
-                    <div class="counter-text">Happy Followers</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quotes Section -->
-    <section class="section quotes" id="quotes">
-        <div class="container">
-            <h2 class="section-title animate">Sacred Wisdom</h2>
-            <div class="tabs animate">
-                <button class="tab-btn active" data-tab="buddha">Buddha</button>
-                <button class="tab-btn" data-tab="quran">Quran</button>
-                <button class="tab-btn" data-tab="gita">Gita</button>
-                <button class="tab-btn" data-tab="bible">Bible</button>
-            </div>
-            
-            <div class="tab-content active" id="buddha">
-                <div class="quote-container">
-                    <div class="quote-item animate">
-                        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Peace comes from within. Do not seek it without."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"You will not be punished for your anger, you will be punished by your anger."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The mind is everything. What you think you become."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Three things cannot be long hidden: the sun, the moon, and the truth."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Holding on to anger is like grasping a hot coal with the intent of throwing it at someone else; you are the one who gets burned."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"No one saves us but ourselves. No one can and no one may. We ourselves must walk the path."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"You only lose what you cling to."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"In the end, only three things matter: how much you loved, how gently you lived, and how gracefully you let go of things not meant for you."</p>
-                        <div class="source">- Buddha</div>
-                    </div>
-                    <!-- More Buddha quotes can be added here -->
-                </div>
-            </div>
-            
-            <div class="tab-content" id="quran">
-                <div class="quote-container">
-                    <div class="quote-item animate">
-                        <p>"Allah does not burden a soul beyond that it can bear."</p>
-                        <div class="source">- Quran 2:286</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"And whoever relies upon Allah - then He is sufficient for him."</p>
-                        <div class="source">- Quran 65:3</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Indeed, with hardship comes ease."</p>
-                        <div class="source">- Quran 94:5</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Do not lose hope, nor be sad."</p>
-                        <div class="source">- Quran 3:139</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"And He found you lost and guided you."</p>
-                        <div class="source">- Quran 93:7</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Allah is with those who are patient."</p>
-                        <div class="source">- Quran 2:153</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"And whoever fears Allah - He will make for him a way out."</p>
-                        <div class="source">- Quran 65:2</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Verily, in the remembrance of Allah do hearts find rest."</p>
-                        <div class="source">- Quran 13:28</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"So remember Me; I will remember you."</p>
-                        <div class="source">- Quran 2:152</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"And We have certainly created man to face hardship."</p>
-                        <div class="source">- Quran 90:4</div>
-                    </div>
-                    <!-- More Quran quotes can be added here -->
-                </div>
-            </div>
-            
-            <div class="tab-content" id="gita">
-                <div class="quote-container">
-                    <div class="quote-item animate">
-                        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions."</p>
-                        <div class="source">- Bhagavad Gita 2:47</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The soul is neither born, nor does it ever die; nor having once existed, does it ever cease to be. The soul is without birth, eternal, immortal, and ageless."</p>
-                        <div class="source">- Bhagavad Gita 2:20</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place."</p>
-                        <div class="source">- Bhagavad Gita 6:19</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"There is neither this world nor the world beyond nor happiness for the one who doubts."</p>
-                        <div class="source">- Bhagavad Gita 4:40</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"A person can rise through the efforts of his own mind; or draw himself down, in the same manner. Because each person is his own friend or enemy."</p>
-                        <div class="source">- Bhagavad Gita 6:5</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The wise are those who see the same in all - in a learned and gentle priest, a cow, an elephant, a dog, and a dog-eater."</p>
-                        <div class="source">- Bhagavad Gita 5:18</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The self-controlled soul, who moves amongst sense objects, free from either attachment or repulsion, he wins eternal peace."</p>
-                        <div class="source">- Bhagavad Gita 2:64</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"One who has control over the mind is tranquil in heat and cold, in pleasure and pain, and in honor and dishonor."</p>
-                        <div class="source">- Bhagavad Gita 6:7</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The peace of God is with them whose mind and soul are in harmony, who are free from desire and wrath, who know their own soul."</p>
-                        <div class="source">- Bhagavad Gita 5:26</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The key to happiness is the reduction of desires."</p>
-                        <div class="source">- Bhagavad Gita</div>
-                    </div>
-                    <!-- More Gita quotes can be added here -->
-                </div>
-            </div>
-            
-            <div class="tab-content" id="bible">
-                <div class="quote-container">
-                    <div class="quote-item animate">
-                        <p>"I can do all things through Christ who strengthens me."</p>
-                        <div class="source">- Philippians 4:13</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</p>
-                        <div class="source">- John 3:16</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Trust in the LORD with all your heart and lean not on your own understanding."</p>
-                        <div class="source">- Proverbs 3:5</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."</p>
-                        <div class="source">- Joshua 1:9</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"The LORD is my shepherd, I lack nothing."</p>
-                        <div class="source">- Psalm 23:1</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Cast all your anxiety on him because he cares for you."</p>
-                        <div class="source">- 1 Peter 5:7</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
-                        <div class="source">- Jeremiah 29:11</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."</p>
-                        <div class="source">- Isaiah 40:31</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God."</p>
-                        <div class="source">- Philippians 4:6</div>
-                    </div>
-                    <div class="quote-item animate">
-                        <p>"Love is patient, love is kind. It does not envy, it does not boast, it is not proud."</p>
-                        <div class="source">- 1 Corinthians 13:4</div>
-                    </div>
-                    <!-- More Bible quotes can be added here -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="section gallery" id="gallery">
-        <div class="container">
-            <h2 class="section-title animate">Photo Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item animate">
-                    <img src="images/photo.jpg" alt="Nature landscape" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/photop.jpg" alt="Mountain view" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/photopp.jpg" alt="Sunset" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/photoppp.jpg" alt="River flowing" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/newb.jpg" alt="Cultural event" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/newc.jpg" alt="Traditional architecture" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/neww.jpg" alt="Himalayan range" loading="lazy">
-                </div>
-                <div class="gallery-item animate">
-                    <img src="images/brp.jpg" alt="Local festival" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox">
-        <div class="lightbox-content">
-            <span class="close-lightbox">&times;</span>
-            <img src="" alt="Lightbox image">
-        </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="home-banner">
+      <img src="images/newa.jpg" alt="Prabhat Panthi About" />
     </div>
+    <p>
+      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
+      Later, my family moved to Bhairahawa where I experienced a vibrant city life.
+      Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
+    </p>
+    <p>
+      From a young age, I was curious about technology and storytelling.
+      This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
+    </p>
+    <p>
+      Besides digital content, I have a keen interest in reading motivational books,
+      listening to spiritual discourses, and understanding various cultures and philosophies.
+    </p>
+    <p>
+      One of my core beliefs is that every person has a unique story,
+      and through creativity and positive mindset, we can all inspire each other to grow.
+    </p>
+    <p>
+      Through this platform, I aim to share stories that uplift spirits,
+      jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
+      Every piece of content here reflects my journey of learning and sharing.
+    </p>
+    <p>
+      Outside the digital world, I enjoy traveling, meeting new people,
+      and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
+    </p>
+    <p>
+      Thank you for visiting my website. Let’s continue this journey together,
+      sharing laughter, wisdom, and positivity across borders!
+    </p>
+  </section>
 
-    <!-- Videos Section -->
-    <section class="section videos" id="videos">
-        <div class="container">
-            <h2 class="section-title animate">Motivational Videos</h2>
-            <div class="video-grid">
-                <div class="video-card animate">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>The Power of Positive Thinking</h3>
-                        <p>Learn how to transform your mindset and attract success through positive thinking techniques.</p>
-                    </div>
-                </div>
-                <div class="video-card animate">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Overcoming Life's Challenges</h3>
-                        <p>Strategies to face difficulties with courage and come out stronger on the other side.</p>
-                    </div>
-                </div>
-                <div class="video-card animate">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>Finding Inner Peace</h3>
-                        <p>Meditation and mindfulness techniques to achieve calmness in a chaotic world.</p>
-                    </div>
-                </div>
-                <div class="video-card animate">
-                    <div class="video-thumbnail">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>The Science of Happiness</h3>
-                        <p>Discover what research says about what truly makes us happy and how to cultivate it.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Success Stories Section -->
-    <section class="section stories" id="stories">
-        <div class="container">
-            <h2 class="section-title animate">Success Stories</h2>
-            <div class="story-cards">
-                <div class="story-card animate">
-                    <div class="story-img">
-                        <img src="https://via.placeholder.com/400x300" alt="Chester Bennington" loading="lazy">
-                    </div>
-                    <div class="story-content">
-                        <h3>Chester Bennington</h3>
-                        <p>Despite a childhood marked by abuse and struggles with addiction, Chester rose to become the iconic voice of Linkin Park, inspiring millions with his music and message of resilience.</p>
-                        <a href="#" class="btn">Read Full Story</a>
-                    </div>
-                </div>
-                <div class="story-card animate">
-                    <div class="story-img">
-                        <img src="https://via.placeholder.com/400x300" alt="J.K. Rowling" loading="lazy">
-                    </div>
-                    <div class="story-content">
-                        <h3>J.K. Rowling</h3>
-                        <p>From being a single mother on welfare to creating the Harry Potter phenomenon, Rowling's journey teaches us about perseverance and believing in one's dreams.</p>
-                        <a href="#" class="btn">Read Full Story</a>
-                    </div>
-                </div>
-                <div class="story-card animate">
-                    <div class="story-img">
-                        <img src="https://via.placeholder.com/400x300" alt="Nick Vujicic" loading="lazy">
-                    </div>
-                    <div class="story-content">
-                        <h3>Nick Vujicic</h3>
-                        <p>Born without limbs, Nick overcame immense challenges to become a motivational speaker inspiring millions worldwide with his message of hope and determination.</p>
-                        <a href="#" class="btn">Read Full Story</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="section blog" id="blog">
-        <div class="container">
-            <h2 class="section-title animate">Latest Blogs</h2>
-            <div class="blog-posts">
-                <div class="blog-card animate">
-                    <div class="blog-img">
-                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <h3>The Art of Mindful Living</h3>
-                        <p>Discover how practicing mindfulness can transform your daily life, reduce stress, and increase happiness.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-                <div class="blog-card animate">
-                    <div class="blog-img">
-                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <h3>Turning Failures Into Stepping Stones</h3>
-                        <p>Learn how successful people view failures as opportunities and how you can adopt this mindset.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-                <div class="blog-card animate">
-                    <div class="blog-img">
-                        <img src="https://via.placeholder.com/400x300" alt="Blog post image" loading="lazy">
-                    </div>
-                    <div class="blog-content">
-                        <h3>Finding Your Life's Purpose</h3>
-                        <p>A guide to discovering what truly matters to you and aligning your life with your core values.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Jokes Section -->
-    <section class="section jokes" id="jokes">
-        <div class="container">
-            <h2 class="section-title animate">Motivational Jokes</h2>
-            <div class="jokes-container">
-                <div class="joke-item animate">
-                    <p>Why did the motivational speaker bring a ladder to the presentation?</p>
-                    <p class="punchline">Because he wanted to take his advice to the next level!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>Why don't motivational speakers ever get lost?</p>
-                    <p class="punchline">Because they always find a way!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>How many motivational speakers does it take to change a light bulb?</p>
-                    <p class="punchline">Just one, but the light bulb has to really want to change!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>Why did the chicken cross the road?</p>
-                    <p class="punchline">To prove to the armadillo that it could be done!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>What did the grape say when it got stepped on?</p>
-                    <p class="punchline">Nothing, it just let out a little wine... but then it became vinegar and preserved its usefulness!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>Why was the math book sad?</p>
-                    <p class="punchline">Because it had too many problems... but then it realized every problem was an opportunity to learn!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>What's the most positive bone in the body?</p>
-                    <p class="punchline">The humerus - because it's always trying to be funny!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>Why don't eggs tell jokes?</p>
-                    <p class="punchline">Because they might crack up... but then they become omelets and serve a new purpose!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>What did the ocean say to the beach?</p>
-                    <p class="punchline">Nothing, it just waved... persistently, showing that consistency makes an impact!</p>
-                </div>
-                <div class="joke-item animate">
-                    <p>Why was the belt arrested?</p>
-                    <p class="punchline">For holding up a pair of pants... demonstrating that sometimes you have to take one for the team!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section class="section news" id="news">
-        <div class="container">
-            <h2 class="section-title animate">Latest News</h2>
-            <div class="news-container">
-                <div class="news-item animate">
-                    <div class="date">June 15, 2023</div>
-                    <h3>New Motivational Series Launching Soon</h3>
-                    <p>Stay tuned for our upcoming video series featuring interviews with inspiring individuals from around the world.</p>
-                </div>
-                <div class="news-item animate">
-                    <div class="date">May 28, 2023</div>
-                    <h3>Community Outreach Program</h3>
-                    <p>We're starting a new initiative to bring motivational workshops to schools in rural areas.</p>
-                </div>
-                <div class="news-item animate">
-                    <div class="date">April 10, 2023</div>
-                    <h3>Website Redesign Complete</h3>
-                    <p>Welcome to our newly redesigned website with more content and better user experience!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title animate">What People Say</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        "Prabhat's motivational content has truly transformed my outlook on life. His words have helped me through some of my toughest times."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
-                        </div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Teacher, Kathmandu</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        "The wisdom shared from different scriptures in one place is incredible. I've shared many quotes with my friends and family."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
-                        </div>
-                        <div class="author-info">
-                            <h4>Rajesh Gupta</h4>
-                            <p>Business Owner, Delhi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        "I start every morning with a quote from this website. It sets the right tone for my day and keeps me motivated."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">
-                            <img src="https://via.placeholder.com/100" alt="User testimonial" loading="lazy">
-                        </div>
-                        <div class="author-info">
-                            <h4>Emily Chen</h4>
-                            <p>Student, Singapore</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-nav">
-                <div class="slider-dot active"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <h2 class="section-title animate">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info animate">
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+977-9848605969</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>prabhatpanthi007@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Murgiya, Nepal</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="YouTube">▶️</a>
-                        <a href="#" class="social-link" aria-label="Facebook">f</a>
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
-                    </div>
-                </div>
-                <div class="contact-form animate">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-quote animate">
-                "The only limit to our realization of tomorrow is our doubts of today. <span>Let us move forward with strong and active faith.</span>"
-            </div>
-            <div class="footer-links animate">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#quotes">Quotes</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#videos">Videos</a>
-                <a href="#stories">Stories</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="copyright animate">
-                &copy; 2023 Prabhat Panthi. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        ↑
+  <section id="photos">
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+      <img src="images/photo.jpg" alt="Photo 1" />
+      <img src="images/photop.jpg" alt="Photo 2" />
+      <img src="images/photopp.jpg" alt="Photo 3" />
+      <img src="images/photoppp.jpg" alt="Photo 4" />
+      <img src="images/newb.jpg" alt="Photo 5" />
+      <img src="images/newc.jpg" alt="Photo 6" />
+      <img src="images/neww.jpg" alt="Photo 7" />
+      <img src="images/brp.jpg" alt="Photo 8" />
     </div>
+  </section>
 
-    <!-- JavaScript -->
-    <script>
-        // Preloader
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        });
+  <section id="videos">
+    <h2>Videos</h2>
+    <p>Video section here...</p>
+  </section>
 
-        // Mobile Navigation
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const navItems = document.querySelectorAll('.nav-links li');
+  <section id="stories">
+    <h2>Success Stories</h2>
+    <div class="story searchable">
+      <h3>The Journey of Chester Charles Bennington</h3>
+       <p>
+    Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
+  </p>
+  <p>
+    However, <strong>music became his ultimate escape</strong>. Influenced by bands like Stone Temple Pilots, Chester developed a unique, raw vocal style that could switch from soothing melodies to powerful screams, capturing the emotions of millions.
+  </p>
+  <p>
+    Chester’s life took a pivotal turn when he joined <strong>Linkin Park in 1999</strong>. The band’s debut album <em>“Hybrid Theory” (2000)</em> became a global phenomenon, giving a voice to a generation dealing with frustration, identity, and emotional struggles. Songs like <em>“In the End”</em>, <em>“Crawling”</em>, and <em>“Numb”</em> resonated deeply with fans worldwide.
+  </p>
+  <p>
+    Despite his success, Chester continuously battled with inner demons. He used his platform to speak openly about mental health, encouraging others to seek help and never be ashamed of their struggles. Tragically, Chester passed away on <strong>July 20, 2017</strong>, leaving behind a legacy that still inspires millions.
+  </p>
+  <p>
+    Chester’s journey from a tormented childhood to becoming a global rock icon is a story of <strong>pain, passion, and the power of art to heal</strong>. His voice lives on, reminding us that <em>“it's okay to not be okay”</em> — and that seeking help is a sign of strength, not weakness.
+  </p>
+    </div>
+    <div class="story searchable">
+      <h3>From Streets to Success: APJ Abdul Kalam</h3>
+      <p>
+        Dr. APJ Abdul Kalam, former President of India, grew up in a modest family, selling newspapers to support his education.
+        His dedication to science led him to become a key figure in India's space and missile programs.
+        Known as the "Missile Man," his story teaches us that humble beginnings can lead to extraordinary achievements through perseverance.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Elon Musk: Visionary Innovator</h3>
+      <p>
+        Elon Musk, born in South Africa, faced numerous setbacks before becoming a global icon of innovation.
+        From co-founding PayPal to leading Tesla and SpaceX, Musk's relentless pursuit of ambitious goals, like colonizing Mars, shows the power of thinking big and never giving up, even after failures.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Oprah Winfrey: Rising Above Adversity</h3>
+      <p>
+        Oprah Winfrey overcame a childhood of poverty and abuse to become one of the most influential media personalities in the world.
+        Through her talk show and philanthropy, she empowered millions, proving that resilience and compassion can transform lives and inspire global change.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Malala Yousafzai: Voice for Education</h3>
+      <p>
+        Malala Yousafzai, a Pakistani activist, survived an assassination attempt by the Taliban for advocating girls' education.
+        At age 17, she became the youngest Nobel Peace Prize laureate. Her courage and dedication continue to inspire millions to fight for education and equality.
+      </p>
+    </div>
+  </section>
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+  <section id="jokes">
+    <h2>Jokes</h2>
+    <div class="joke searchable">
+      <p>Why did the computer go to art school? Because it wanted to learn how to draw a better "byte"!</p>
+    </div>
+    <div class="joke searchable">
+      <p>Why don't programmers prefer dark mode? Because the light attracts bugs.</p>
+    </div>
+    <div class="joke searchable">
+      <p>What do you call a dinosaur that takes care of its teeth? A Flossiraptor!</p>
+    </div>
+  </section>
 
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
+  <section id="news">
+    <h2>News</h2>
+    <p class="searchable">News updates here...</p>
+  </section>
 
-        // Sticky Header
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            header.classList.toggle('header-scrolled', window.scrollY > 100);
-        });
+  <section id="motivation">
+    <h2>Motivation</h2>
+    <div class="tabs">
+      <button onclick="showMotivationTab('quran')">Quran</button>
+      <button onclick="showMotivationTab('bible')">Bible</button>
+      <button onclick="showMotivationTab('gita')">Gita</button>
+      <button onclick="showMotivationTab('buddha')">Buddha</button>
+    </div>
+    <div id="quran" class="tab-content active">
+      <div class="quote">
+        <p>"And whoever puts their trust in Allah, then He ˹alone˺ is sufficient for them." – Quran 65:3</p>
+      </div>
+      <div class="quote">
+        <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
+      </div>
+      <div class="quote">
+        <p>"Indeed, Allah will not change the condition of a people until they change what is in themselves." – Quran 13:11</p>
+      </div>
+      <div class="quote">
+        <p>"Call upon Me; I will respond to you." – Quran 40:60</p>
+      </div>
+    </div>
+    <div id="bible" class="tab-content">
+      <div class="quote">
+        <p>"I can do all things through Christ who strengthens me." – Philippians 4:13</p>
+      </div>
+      <div class="quote">
+        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
+      </div>
+      <div class="quote">
+        <p>"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
+      </div>
+      <div class="quote">
+        <p>"Love your neighbor as yourself." – Mark 12:31</p>
+      </div>
+    </div>
+    <div id="gita" class="tab-content">
+      <div class="quote">
+        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</p>
+      </div>
+      <div class="quote">
+        <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
+      </div>
+      <div class="quote">
+        <p>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</p>
+      </div>
+      <div class="quote">
+        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place." – Bhagavad Gita 6:19</p>
+      </div>
+    </div>
+    <div id="buddha" class="tab-content">
+      <div class="quote">
+        <p>"The mind is everything. What you think, you become." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Peace comes from within. Do not seek it without." – Buddha</p>
+      </div>
+    </div>
+  </section>
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Phone: +977-9848605969</p>
+    <p>Email: prabhatpanthi007@gmail.com</p>
+    <div class="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea rows="5" id="message" placeholder="Your Feedback / Comment" required></textarea>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+  </section>
 
-        // Active Navigation Link
-        const sections = document.querySelectorAll('section');
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navItems.forEach(item => {
-                item.querySelector('a').classList.remove('active');
-                if (item.querySelector('a').getAttribute('href') === `#${current}`) {
-                    item.querySelector('a').classList.add('active');
-                }
-            });
-        });
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('change', function() {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('darkMode', this.checked);
-        });
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      if (tabId === 'motivation') showMotivationTab('quran');
+    }
 
-        // Check for saved theme preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            themeToggle.checked = true;
+    function showMotivationTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
+      const target = document.getElementById(tabName);
+      if (target) target.classList.add('active');
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function searchContent() {
+      let filter = document.getElementById('searchInput').value.toUpperCase();
+      let searchableSections = document.querySelectorAll('.searchable');
+
+      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
+
+      let found = false;
+      searchableSections.forEach((el) => {
+        if (el.innerText.toUpperCase().indexOf(filter) > -1) {
+          el.parentElement.classList.add('active');
+          found = true;
         }
+      });
 
-        // Quote Tabs
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
+      if (!found && filter === '') {
+        showTab('home');
+      }
+    }
 
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
-                
-                tabBtns.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                btn.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
 
-        // Lightbox Gallery
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.querySelector('.lightbox');
-        const lightboxImg = document.querySelector('.lightbox-content img');
-        const closeLightbox = document.querySelector('.close-lightbox');
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').getAttribute('src');
-                lightboxImg.setAttribute('src', imgSrc);
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        closeLightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Testimonial Slider
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const sliderDots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            testimonialSlides.forEach(slide => slide.classList.remove('active'));
-            sliderDots.forEach(dot => dot.classList.remove('active'));
-            
-            testimonialSlides[index].classList.add('active');
-            sliderDots[index].classList.add('active');
-            currentSlide = index;
-        }
-
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // Auto slide change
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % testimonialSlides.length;
-            showSlide(currentSlide);
-        }, 5000);
-
-        // Back to Top Button
-        const backToTopBtn = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Animate on Scroll
-        const animateElements = document.querySelectorAll('.animate');
-        
-        function checkAnimation() {
-            animateElements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementPosition < windowHeight - 100) {
-                    element.classList.add('animated');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', checkAnimation);
-        window.addEventListener('load', checkAnimation);
-
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter-number');
-        const speed = 200;
-
-        function animateCounters() {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-count');
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Start counters when they come into view
-        const counterSection = document.querySelector('.counters');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(counterSection);
-
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send the data to a server
-            // For this example, we'll just show an alert
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
-            
-            // Reset form
-            contactForm.reset();
-        });
-    </script>
+      if (name && email && message) {
+        alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
 </body>
+
 </html>
