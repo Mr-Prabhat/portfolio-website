@@ -39,32 +39,17 @@
       gap: 15px;
       margin-bottom: 10px;
       flex-wrap: wrap;
-      perspective: 1000px; /* 3D effect for flag */
     }
 
+    /* Flag Styling */
     .flag {
       height: 60px;
-      max-height: 12vw;
-      display: inline-block;
-      transform-origin: left center;
-      background: url('flag.png') no-repeat center center;
-      background-size: contain;
-      width: 100px;
-      animation: wave 3s ease-in-out infinite;
+      max-height: 12vw; /* responsive on mobile */
     }
 
     .emblem {
       height: 60px;
       max-height: 12vw;
-    }
-
-    @keyframes wave {
-      0% { transform: rotateY(0deg) rotateX(0deg); }
-      20% { transform: rotateY(10deg) rotateX(5deg); }
-      40% { transform: rotateY(-10deg) rotateX(-5deg); }
-      60% { transform: rotateY(7deg) rotateX(3deg); }
-      80% { transform: rotateY(-7deg) rotateX(-3deg); }
-      100% { transform: rotateY(0deg) rotateX(0deg); }
     }
 
     nav {
@@ -105,7 +90,28 @@
 <body>
   <header>
     <div class="header-content">
-      <div class="flag"></div>
+      <!-- Realistic Waving Flag -->
+      <svg class="flag" viewBox="0 0 60 40" width="60" height="40" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <pattern id="flagPattern" patternUnits="userSpaceOnUse" width="60" height="40">
+            <image href="flag.png" x="0" y="0" width="60" height="40" />
+          </pattern>
+        </defs>
+        <path id="flagWave" fill="url(#flagPattern)" d="M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z"></path>
+        <animate
+          xlink:href="#flagWave"
+          attributeName="d"
+          dur="2s"
+          repeatCount="indefinite"
+          values="
+            M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z;
+            M0,0 Q15,5 30,0 T60,0 L60,40 L0,40 Z;
+            M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z
+          "
+        />
+      </svg>
+
+      <!-- National Emblem -->
       <img src="site.svg" alt="National Emblem" class="emblem">
     </div>
     <h1>Prabhat Panthi | Official Website</h1>
