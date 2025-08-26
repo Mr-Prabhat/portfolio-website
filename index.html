@@ -24,98 +24,34 @@
       transition: background 0.5s, color 0.5s;
     }
 
-    header {
-      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+    <header>
+  <div class="header-content">
+    <!-- Realistic Waving Flag -->
+    <svg class="flag" viewBox="0 0 120 80" width="120" height="80" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <pattern id="flagPattern" patternUnits="userSpaceOnUse" width="120" height="80">
+          <image href="nepal.png" x="0" y="0" width="120" height="80" />
+        </pattern>
+      </defs>
+      <path id="flagWave" fill="url(#flagPattern)" d="M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z"></path>
+      <animate
+        xlink:href="#flagWave"
+        attributeName="d"
+        dur="2s"
+        repeatCount="indefinite"
+        values="
+          M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z;
+          M0,0 Q30,10 60,0 T120,0 L120,80 L0,80 Z;
+          M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z
+        "
+      />
+    </svg>
 
-    .header-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Flag Styling */
-    .flag {
-      height: 60px;
-      max-height: 12vw; /* responsive on mobile */
-    }
-
-    .emblem {
-      height: 60px;
-      max-height: 12vw;
-    }
-
-    nav {
-      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    nav a:hover {
-      background: var(--primary-gold);
-      color: var(--text-color);
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 5vw;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="header-content">
-      <!-- Realistic Waving Flag -->
-      <svg class="flag" viewBox="0 0 60 40" width="60" height="40" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <pattern id="flagPattern" patternUnits="userSpaceOnUse" width="60" height="40">
-            <image href="flag.png" x="0" y="0" width="60" height="40" />
-          </pattern>
-        </defs>
-        <path id="flagWave" fill="url(#flagPattern)" d="M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z"></path>
-        <animate
-          xlink:href="#flagWave"
-          attributeName="d"
-          dur="2s"
-          repeatCount="indefinite"
-          values="
-            M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z;
-            M0,0 Q15,5 30,0 T60,0 L60,40 L0,40 Z;
-            M0,0 Q15,10 30,0 T60,0 L60,40 L0,40 Z
-          "
-        />
-      </svg>
-
-      <!-- National Emblem -->
-      <img src="site.svg" alt="National Emblem" class="emblem">
-    </div>
-    <h1>Prabhat Panthi | Official Website</h1>
-  </header>
+    <!-- National Emblem -->
+    <img src="site.svg" alt="National Emblem" class="emblem">
+  </div>
+  <h1>Prabhat Panthi | Official Website</h1>
+</header>
 
   <nav>
     <a href="#" onclick="showTab('home')">Home</a>
