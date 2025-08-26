@@ -17,10 +17,10 @@
     }
 
     body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
       color: var(--text-color);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
       transition: background 0.5s, color 0.5s;
     }
 
@@ -29,7 +29,7 @@
       color: white;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .header-content {
@@ -46,16 +46,16 @@
       transform-origin: left center;
     }
 
+    .emblem {
+      height: 60px;
+    }
+
     @keyframes wave {
       0% { transform: rotate(0deg); }
       25% { transform: rotate(3deg); }
       50% { transform: rotate(0deg); }
       75% { transform: rotate(-3deg); }
       100% { transform: rotate(0deg); }
-    }
-
-    .emblem {
-      height: 60px;
     }
 
     nav {
@@ -68,7 +68,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
     nav a {
