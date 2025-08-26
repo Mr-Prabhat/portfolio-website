@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Fixed viewport to prevent mobile auto-zooming -->
+  <!-- Standard viewport for mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
@@ -42,14 +42,15 @@
 
     /* Flag Styling */
     .flag {
-      height: 60px;
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
     .emblem {
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
     nav {
@@ -81,8 +82,7 @@
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 5vw;
-        max-font-size: 24px;
+        font-size: clamp(20px, 5vw, 28px); /* prevents auto-zooming */
       }
     }
 
