@@ -26,28 +26,8 @@
 
     <header>
   <div class="header-content">
-    <!-- Realistic Waving Flag -->
-    <svg class="flag" viewBox="0 0 120 80" width="120" height="80" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <pattern id="flagPattern" patternUnits="userSpaceOnUse" width="120" height="80">
-          <image href="nepal.png" x="0" y="0" width="120" height="80" />
-        </pattern>
-      </defs>
-      <path id="flagWave" fill="url(#flagPattern)" d="M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z"></path>
-      <animate
-        xlink:href="#flagWave"
-        attributeName="d"
-        dur="3s"
-        repeatCount="indefinite"
-        values="
-          M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z;
-          M0,0 Q30,12 60,0 T120,0 L120,80 L0,80 Z;
-          M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z;
-          M0,0 Q30,18 60,0 T120,0 L120,80 L0,80 Z;
-          M0,0 Q30,15 60,0 T120,0 L120,80 L0,80 Z
-        "
-      />
-    </svg>
+    <!-- Static Flag (safe) -->
+    <img src="nepal.png" class="flag" alt="Nepali Flag" />
 
     <!-- National Emblem -->
     <img src="site.svg" alt="National Emblem" class="emblem">
