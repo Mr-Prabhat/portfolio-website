@@ -29,7 +29,7 @@
       color: white;
       padding: 20px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .header-content {
@@ -42,8 +42,9 @@
 
     .flag {
       height: 60px;
-      animation: wave 1.5s infinite ease-in-out;
+      display: inline-block;
       transform-origin: left center;
+      animation: wave 2s infinite linear;
     }
 
     .emblem {
@@ -51,11 +52,17 @@
     }
 
     @keyframes wave {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(3deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-3deg); }
-      100% { transform: rotate(0deg); }
+      0%   { transform: rotate(0deg) skewY(0deg); }
+      10%  { transform: rotate(2deg) skewY(3deg); }
+      20%  { transform: rotate(-2deg) skewY(-3deg); }
+      30%  { transform: rotate(2deg) skewY(3deg); }
+      40%  { transform: rotate(-2deg) skewY(-3deg); }
+      50%  { transform: rotate(0deg) skewY(0deg); }
+      60%  { transform: rotate(2deg) skewY(2deg); }
+      70%  { transform: rotate(-2deg) skewY(-2deg); }
+      80%  { transform: rotate(1deg) skewY(1deg); }
+      90%  { transform: rotate(-1deg) skewY(-1deg); }
+      100% { transform: rotate(0deg) skewY(0deg); }
     }
 
     nav {
@@ -68,7 +75,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
@@ -95,6 +102,7 @@
     </div>
     <h1>Prabhat Panthi | Official Website</h1>
   </header>
+
 
   <nav>>
     <a href="#" onclick="showTab('home')">Home</a>
