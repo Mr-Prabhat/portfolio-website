@@ -1,96 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prabhat Panthi | Official Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary-gold: #ffd700;
-      --dark-gold: #b8860b;
-      --light-gold: #fffacd;
-      --metallic-gold: #e6b800;
-      --bg-light: #faf8e6;
-      --text-color: #2c2c2c;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
-      color: var(--text-color);
-      transition: background 0.5s, color 0.5s;
-    }
-
-    header {
-      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
-    }
-
-    .flag {
-      height: 60px;
-      display: inline-block;
-      transform-origin: left center;
-      animation: wave 2s infinite linear;
-    }
-
-    .emblem {
-      height: 60px;
-    }
-
-    @keyframes wave {
-      0%   { transform: rotate(0deg) skewY(0deg); }
-      10%  { transform: rotate(2deg) skewY(3deg); }
-      20%  { transform: rotate(-2deg) skewY(-3deg); }
-      30%  { transform: rotate(2deg) skewY(3deg); }
-      40%  { transform: rotate(-2deg) skewY(-3deg); }
-      50%  { transform: rotate(0deg) skewY(0deg); }
-      60%  { transform: rotate(2deg) skewY(2deg); }
-      70%  { transform: rotate(-2deg) skewY(-2deg); }
-      80%  { transform: rotate(1deg) skewY(1deg); }
-      90%  { transform: rotate(-1deg) skewY(-1deg); }
-      100% { transform: rotate(0deg) skewY(0deg); }
-    }
-
-    nav {
-      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    nav a:hover {
-      background: var(--primary-gold);
-      color: var(--text-color);
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -133,31 +41,42 @@
       flex-wrap: wrap;
     }
 
+    /* Upgraded realistic flag wave */
     .flag {
       height: 60px;
-      max-height: 12vw; /* responsive for mobile */
+      max-height: 12vw;
       display: inline-block;
       transform-origin: left center;
-      animation: flutter 2s infinite linear;
+      animation: flutter 3s infinite ease-in-out;
+    }
+
+    @keyframes flutter {
+      0%   { transform: rotate(0deg) skewY(0deg) translateX(0); }
+      5%   { transform: rotate(1deg) skewY(2deg) translateX(1px); }
+      10%  { transform: rotate(-1deg) skewY(-2deg) translateX(-2px); }
+      15%  { transform: rotate(2deg) skewY(3deg) translateX(1px); }
+      20%  { transform: rotate(-2deg) skewY(-3deg) translateX(-1px); }
+      25%  { transform: rotate(3deg) skewY(2deg) translateX(2px); }
+      30%  { transform: rotate(-3deg) skewY(-2deg) translateX(-2px); }
+      35%  { transform: rotate(2deg) skewY(1deg) translateX(1px); }
+      40%  { transform: rotate(-2deg) skewY(-1deg) translateX(-1px); }
+      45%  { transform: rotate(1deg) skewY(1deg) translateX(1px); }
+      50%  { transform: rotate(0deg) skewY(0deg) translateX(0); }
+      55%  { transform: rotate(-1deg) skewY(-1deg) translateX(-1px); }
+      60%  { transform: rotate(2deg) skewY(2deg) translateX(2px); }
+      65%  { transform: rotate(-2deg) skewY(-2deg) translateX(-2px); }
+      70%  { transform: rotate(1deg) skewY(1deg) translateX(1px); }
+      75%  { transform: rotate(-1deg) skewY(-1deg) translateX(-1px); }
+      80%  { transform: rotate(1deg) skewY(2deg) translateX(2px); }
+      85%  { transform: rotate(-1deg) skewY(-2deg) translateX(-2px); }
+      90%  { transform: rotate(0deg) skewY(1deg) translateX(1px); }
+      95%  { transform: rotate(0deg) skewY(-1deg) translateX(-1px); }
+      100% { transform: rotate(0deg) skewY(0deg) translateX(0); }
     }
 
     .emblem {
       height: 60px;
-      max-height: 12vw; /* responsive for mobile */
-    }
-
-    @keyframes flutter {
-      0%   { transform: translateX(0px) rotate(0deg) skewY(0deg); }
-      10%  { transform: translateX(2px) rotate(1deg) skewY(1deg); }
-      20%  { transform: translateX(-2px) rotate(-1deg) skewY(-1deg); }
-      30%  { transform: translateX(2px) rotate(1deg) skewY(1deg); }
-      40%  { transform: translateX(-2px) rotate(-1deg) skewY(-1deg); }
-      50%  { transform: translateX(0px) rotate(0deg) skewY(0deg); }
-      60%  { transform: translateX(1px) rotate(0.5deg) skewY(0.5deg); }
-      70%  { transform: translateX(-1px) rotate(-0.5deg) skewY(-0.5deg); }
-      80%  { transform: translateX(1px) rotate(0.5deg) skewY(0.2deg); }
-      90%  { transform: translateX(-1px) rotate(-0.5deg) skewY(-0.2deg); }
-      100% { transform: translateX(0px) rotate(0deg) skewY(0deg); }
+      max-height: 12vw;
     }
 
     nav {
@@ -187,9 +106,52 @@
       color: var(--text-color);
     }
 
+    section {
+      padding: 20px;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .home-banner img {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .story, .joke, .quote {
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
     @media (max-width: 600px) {
       header h1 {
-        font-size: 5vw; /* heading scales on small screens */
+        font-size: 5vw;
+      }
+
+      .gallery img {
+        width: 100%;
       }
     }
   </style>
@@ -203,6 +165,8 @@
     </div>
     <h1>Prabhat Panthi | Official Website</h1>
   </header>
+
+  <nav>>
 
 
   <nav>>
