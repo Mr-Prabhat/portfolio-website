@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Prevent zooming on mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
@@ -40,14 +39,10 @@
       flex-wrap: wrap;
     }
 
-    .flag {
-      max-width: 100px;
-      height: auto;
-    }
-
-    .emblem {
-      max-width: 80px;
-      height: auto;
+    /* Flag & Emblem same size */
+    .flag, .emblem {
+      height: 80px;
+      width: auto;
     }
 
     nav {
@@ -61,7 +56,7 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      font-size: 16px; /* prevents zoom */
+      font-size: 16px;
     }
 
     nav a {
@@ -86,6 +81,17 @@
 
     .tab-content.active {
       display: block;
+    }
+
+    /* Image resizing */
+    .tab-content img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     @keyframes fadeIn {
