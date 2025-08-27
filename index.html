@@ -112,18 +112,20 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* ✅ Gallery grid */
+    /* ✅ Masonry-style Gallery */
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
+      column-count: 3;
+      column-gap: 15px;
       padding: 10px;
     }
 
     .gallery img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      display: block;
+      break-inside: avoid;
     }
 
     /* ✅ Motivation Tabs */
@@ -221,8 +223,14 @@
       nav {
         font-size: 14px;
       }
-      .gallery img {
-        height: 150px;
+      .gallery {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        column-count: 1;
       }
     }
   </style>
@@ -247,6 +255,7 @@
     <a href="#" onclick="showTab('motivation')">Motivation</a>
     <a href="#" onclick="showTab('contact')">Contact</a>
   </nav>
+
   
   <section id="home" class="active">
     <div class="home-banner">
