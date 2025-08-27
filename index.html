@@ -4,7 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
+
+  <!-- ✅ SEO -->
+  <meta name="description" content="Official website of Prabhat Panthi - Digital Creator from Nepal. Explore photos, videos, stories, jokes, motivation and more." />
+  <meta name="keywords" content="Prabhat Panthi, Nepal, Digital Creator, Motivation, Stories, Jokes, Photos, Videos" />
+  <meta name="author" content="Prabhat Panthi" />
+  <meta property="og:title" content="Prabhat Panthi | Official Website" />
+  <meta property="og:description" content="Explore the official website of Prabhat Panthi - stories, motivation, photos, videos & more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/neww.jpg" />
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --primary-gold: #ffd700;
@@ -13,6 +25,8 @@
       --metallic-gold: #e6b800;
       --bg-light: #faf8e6;
       --text-color: #2c2c2c;
+      --bg-dark: #1a1a1a;
+      --text-dark: #f5f5f5;
     }  
 
     body {
@@ -20,6 +34,7 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
       color: var(--text-color);
+      line-height: 1.6;
     }
 
     header {
@@ -39,9 +54,9 @@
       flex-wrap: wrap;
     }
 
-    /* Flag & Emblem same size */
+    /* ✅ Flag & Emblem same size */
     .flag, .emblem {
-      height: 80px;
+      height: 60px;
       width: auto;
     }
 
@@ -49,21 +64,20 @@
       background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
       display: flex;
       justify-content: center;
-      gap: 15px;
+      gap: 10px;
       padding: 10px;
       flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 5px;
       transition: background 0.3s, color 0.3s;
     }
@@ -73,20 +87,24 @@
       color: var(--text-color);
     }
 
-    .tab-content {
+    section {
       display: none;
       padding: 20px;
       animation: fadeIn 0.4s ease;
     }
 
-    .tab-content.active {
+    section.active {
       display: block;
     }
 
-    /* Image resizing */
-    .tab-content img {
-      max-width: 400px;
-      width: 100%;
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    /* ✅ Image resizing */
+    section img {
+      max-width: 100%;
       height: auto;
       display: block;
       margin: 15px auto;
@@ -94,9 +112,118 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
+    /* ✅ Gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* ✅ Motivation Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tabs button {
+      background: var(--dark-gold);
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .tabs button:hover {
+      background: var(--primary-gold);
+      color: black;
+    }
+
+    /* ✅ Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .contact-form button {
+      background: var(--primary-gold);
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .contact-form button:hover {
+      background: var(--dark-gold);
+      color: white;
+    }
+
+    /* ✅ Dark Mode */
+    .dark-mode {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .dark-mode nav {
+      background: #333;
+    }
+
+    .dark-mode nav a.active, 
+    .dark-mode nav a:hover {
+      background: var(--metallic-gold);
+      color: black;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: var(--dark-gold);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
+    }
+
+    /* ✅ Mobile adjustments */
+    @media (max-width: 768px) {
+      nav {
+        font-size: 14px;
+      }
+      .gallery img {
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -110,15 +237,15 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showTab(event, 'home')" class="active">Home</a>
-    <a href="#" onclick="showTab(event, 'about')">About Me</a>
-    <a href="#" onclick="showTab(event, 'photos')">Photos</a>
-    <a href="#" onclick="showTab(event, 'videos')">Videos</a>
-    <a href="#" onclick="showTab(event, 'stories')">Stories</a>
-    <a href="#" onclick="showTab(event, 'jokes')">Jokes</a>
-    <a href="#" onclick="showTab(event, 'news')">News</a>
-    <a href="#" onclick="showTab(event, 'motivation')">Motivation</a>
-    <a href="#" onclick="showTab(event, 'contact')">Contact</a>
+    <a href="#" onclick="showTab('home')" class="active">Home</a>
+    <a href="#" onclick="showTab('about')">About Me</a>
+    <a href="#" onclick="showTab('photos')">Photos</a>
+    <a href="#" onclick="showTab('videos')">Videos</a>
+    <a href="#" onclick="showTab('stories')">Stories</a>
+    <a href="#" onclick="showTab('jokes')">Jokes</a>
+    <a href="#" onclick="showTab('news')">News</a>
+    <a href="#" onclick="showTab('motivation')">Motivation</a>
+    <a href="#" onclick="showTab('contact')">Contact</a>
   </nav>
   
   <section id="home" class="active">
