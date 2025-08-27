@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Standard viewport for mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Use this viewport (from first code) to prevent mobile zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
@@ -20,7 +20,6 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
       color: var(--text-color);
-      transition: background 0.5s, color 0.5s;
     }
 
     header {
@@ -42,13 +41,13 @@
 
     /* Flag Styling */
     .flag {
-      max-width: 100%;
+      max-width: 100px;
       height: auto;
       display: block;
     }
 
     .emblem {
-      max-width: 100%;
+      max-width: 80px;
       height: auto;
       display: block;
     }
@@ -79,13 +78,6 @@
       background: var(--primary-gold);
       color: var(--text-color);
     }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: clamp(20px, 5vw, 28px); /* prevents auto-zooming */
-      }
-    }
-
   </style>
 </head>
 <body>
