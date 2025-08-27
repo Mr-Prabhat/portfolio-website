@@ -2,6 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Fixed viewport (prevents zoom on mobile inputs/links) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Prabhat Panthi | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-gold: #ffd700;
+      --dark-gold: #b8860b;
+      --light-gold: #fffacd;
+      --metallic-gold: #e6b800;
+      --bg-light: #faf8e6;
+      --text-color: #2c2c2c;
+    }  
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
+      color: var(--text-color);
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .flag {
+      max-width: 100px;
+      height: auto;
+      display: block;
+    }
+
+    .emblem {
+      max-width: 80px;
+      height: auto;
+      display: block;
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      font-size: 16px; /* prevents zoom */
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+      font-size: 16px; /* prevents zoom */
+    }
+
+    nav a:hover {
+      background: var(--primary-gold);
+      color: var(--text-color);
+    }
+
+    /* Section content */
+    .tab-content {
+      display: none; /* hidden by default */
+      padding: 20px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-content.active {
+      display: block; /* only active one is shown */
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="gif.gif" class="flag" alt="Nepali Flag" />
+      <img src="site.svg" alt="National Emblem" class="emblem">
+    </div>
+    <h1>Prabhat Panthi | Official Website</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showTab('home')">Home</a>
+    <a href="#" onclick="showTab('about')">About Me</a>
+    <a href="#" onclick="showTab('photos')">Photos</a>
+    <a href="#" onclick="showTab('videos')">Videos</a>
+    <a href="#" onclick="showTab('stories')">Stories</a>
+    <a href="#" onclick="showTab('jokes')">Jokes</a>
+    <a href="#" onclick="showTab('news')">News</a>
+    <a href="#" onclick="showTab('motivation')">Motivation</a>
+    <a href="#" onclick="showTab('contact')">Contact</a>
+  </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <!-- Correct viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prabhat Panthi | Official Website</title>
