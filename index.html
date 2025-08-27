@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Fixed viewport (prevents zoom on mobile inputs/links) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Prevent zooming on mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
@@ -15,6 +15,7 @@
       --bg-light: #faf8e6;
       --text-color: #2c2c2c;
     }  
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -42,13 +43,11 @@
     .flag {
       max-width: 100px;
       height: auto;
-      display: block;
     }
 
     .emblem {
       max-width: 80px;
       height: auto;
-      display: block;
     }
 
     nav {
@@ -72,23 +71,21 @@
       padding: 8px 15px;
       border-radius: 5px;
       transition: background 0.3s, color 0.3s;
-      font-size: 16px; /* prevents zoom */
     }
 
-    nav a:hover {
+    nav a.active, nav a:hover {
       background: var(--primary-gold);
       color: var(--text-color);
     }
 
-    /* Section content */
     .tab-content {
-      display: none; /* hidden by default */
+      display: none;
       padding: 20px;
-      animation: fadeIn 0.5s ease;
+      animation: fadeIn 0.4s ease;
     }
 
     .tab-content.active {
-      display: block; /* only active one is shown */
+      display: block;
     }
 
     @keyframes fadeIn {
@@ -107,112 +104,77 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showTab('home')">Home</a>
-    <a href="#" onclick="showTab('about')">About Me</a>
-    <a href="#" onclick="showTab('photos')">Photos</a>
-    <a href="#" onclick="showTab('videos')">Videos</a>
-    <a href="#" onclick="showTab('stories')">Stories</a>
-    <a href="#" onclick="showTab('jokes')">Jokes</a>
-    <a href="#" onclick="showTab('news')">News</a>
-    <a href="#" onclick="showTab('motivation')">Motivation</a>
-    <a href="#" onclick="showTab('contact')">Contact</a>
+    <a href="#" onclick="showTab(event, 'home')" class="active">Home</a>
+    <a href="#" onclick="showTab(event, 'about')">About Me</a>
+    <a href="#" onclick="showTab(event, 'photos')">Photos</a>
+    <a href="#" onclick="showTab(event, 'videos')">Videos</a>
+    <a href="#" onclick="showTab(event, 'stories')">Stories</a>
+    <a href="#" onclick="showTab(event, 'jokes')">Jokes</a>
+    <a href="#" onclick="showTab(event, 'news')">News</a>
+    <a href="#" onclick="showTab(event, 'motivation')">Motivation</a>
+    <a href="#" onclick="showTab(event, 'contact')">Contact</a>
   </nav>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <!-- Correct viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prabhat Panthi | Official Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary-gold: #ffd700;
-      --dark-gold: #b8860b;
-      --light-gold: #fffacd;
-      --metallic-gold: #e6b800;
-      --bg-light: #faf8e6;
-      --text-color: #2c2c2c;
-    }  
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
-      color: var(--text-color);
-    }
 
-    header {
-      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+  <!-- Sections -->
+  <div id="home" class="tab-content active">
+    <h2>Welcome to my website!</h2>
+    <p>This is the home page content.</p>
+  </div>
 
-    .header-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
+  <div id="about" class="tab-content">
+    <h2>About Me</h2>
+    <p>Write about yourself here.</p>
+  </div>
 
-    /* Flag Styling */
-    .flag {
-      max-width: 100px;
-      height: auto;
-      display: block;
-    }
+  <div id="photos" class="tab-content">
+    <h2>Photos</h2>
+    <p>Photo gallery goes here.</p>
+  </div>
 
-    .emblem {
-      max-width: 80px;
-      height: auto;
-      display: block;
-    }
+  <div id="videos" class="tab-content">
+    <h2>Videos</h2>
+    <p>Video gallery goes here.</p>
+  </div>
 
-    nav {
-      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      font-size: 16px; /* 👈 prevents zoom */
-    }
+  <div id="stories" class="tab-content">
+    <h2>Stories</h2>
+    <p>Your stories go here.</p>
+  </div>
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-      font-size: 16px; /* 👈 prevents zoom */
-    }
+  <div id="jokes" class="tab-content">
+    <h2>Jokes</h2>
+    <p>Funny jokes here.</p>
+  </div>
 
-    nav a:hover {
-      background: var(--primary-gold);
-      color: var(--text-color);
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-content">
-      <!-- Animated GIF Flag -->
-      <img src="gif.gif" class="flag" alt="Nepali Flag" />
+  <div id="news" class="tab-content">
+    <h2>News</h2>
+    <p>Latest news updates.</p>
+  </div>
 
-      <!-- National Emblem -->
-      <img src="site.svg" alt="National Emblem" class="emblem">
-    </div>
-    <h1>Prabhat Panthi | Official Website</h1>
-  </head>
-  <nav>
+  <div id="motivation" class="tab-content">
+    <h2>Motivation</h2>
+    <p>Motivational content.</p>
+  </div>
+
+  <div id="contact" class="tab-content">
+    <h2>Contact</h2>
+    <p>Contact form and info here.</p>
+  </div>
+
+  <script>
+    function showTab(event, tabId) {
+      // hide all
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+
+      // show clicked one
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
   
     
     <a href="#" onclick="showTab('home')">Home</a>
