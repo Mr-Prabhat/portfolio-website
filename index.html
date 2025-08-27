@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Use this viewport (from first code) to prevent mobile zoom -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Correct viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prabhat Panthi | Official Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
@@ -63,6 +63,7 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      font-size: 16px; /* 👈 prevents zoom */
     }
 
     nav a {
@@ -72,6 +73,7 @@
       padding: 8px 15px;
       border-radius: 5px;
       transition: background 0.3s, color 0.3s;
+      font-size: 16px; /* 👈 prevents zoom */
     }
 
     nav a:hover {
@@ -90,7 +92,7 @@
       <img src="site.svg" alt="National Emblem" class="emblem">
     </div>
     <h1>Prabhat Panthi | Official Website</h1>
-  </header>
+  </head>
   <nav>
   
     
