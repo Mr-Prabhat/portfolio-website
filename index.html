@@ -21,37 +21,37 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
     <style>
         :root {
-            --gold-primary: #FFD700;
-            --gold-secondary: #E6B800;
-            --gold-dark: #B8860B;
-            --dark-bg: #0E0E0E;
-            --dark-card: #1A1A1A;
+            --orange-primary: #FFD700;
+            --orange-secondary: #E6B800;
+            --orange-white: #B8860B;
+            --white-bg: #0E0E0E;
+            --white-card: #1A1A1A;
             --text-light: #F5F5F5;
             --light-bg: #FAF8E6;
             --light-card: #FFFFFF;
-            --text-dark: #333333;
+            --text-white: #333333;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --radius: 12px;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-white: 0 10px 30px rgba(0, 0, 0, 0.3);
             --glass: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="light"] {
             --bg: var(--light-bg);
-            --text: var(--text-dark);
+            --text: var(--text-white);
             --card: var(--light-card);
             --shadow: var(--shadow);
             --glass: rgba(255, 255, 255, 0.7);
             --glass-border: rgba(255, 255, 255, 0.2);
         }
 
-        [data-theme="dark"] {
-            --bg: var(--dark-bg);
+        [data-theme="white"] {
+            --bg: var(--white-bg);
             --text: var(--text-light);
-            --card: var(--dark-card);
-            --shadow: var(--shadow-dark);
+            --card: var(--white-card);
+            --shadow: var(--shadow-white);
             --glass: rgba(0, 0, 0, 0.2);
             --glass-border: rgba(255, 255, 255, 0.05);
         }
@@ -84,7 +84,7 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
         }
 
         h1 {
@@ -106,7 +106,7 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-white));
             border-radius: 3px;
         }
 
@@ -116,13 +116,13 @@
         }
 
         a {
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             text-decoration: none;
             transition: var(--transition);
         }
 
         a:hover {
-            color: var(--gold-secondary);
+            color: var(--orange-secondary);
         }
 
         img {
@@ -157,7 +157,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--dark-bg);
+            background: var(--white-bg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -260,7 +260,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(90deg, var(--orange-primary), var(--orange-white));
             transition: var(--transition);
         }
 
@@ -353,7 +353,7 @@
         .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -361,8 +361,8 @@
         .hero-cta {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--dark-bg);
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
+            color: var(--white-bg);
             border-radius: 50px;
             font-weight: 600;
             text-transform: uppercase;
@@ -390,7 +390,7 @@
 
         .particle {
             position: absolute;
-            background-color: var(--gold-primary);
+            background-color: var(--orange-primary);
             border-radius: 50%;
             opacity: 0.6;
             animation: float 15s infinite linear;
@@ -503,7 +503,7 @@
 
         .search-input:focus {
             outline: none;
-            border-color: var(--gold-primary);
+            border-color: var(--orange-primary);
             box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
         }
 
@@ -618,8 +618,8 @@
         }
 
         .lightbox-button:hover {
-            background: var(--gold-primary);
-            color: var(--dark-bg);
+            background: var(--orange-primary);
+            color: var(--white-bg);
         }
 
         /* Videos Section */
@@ -664,22 +664,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: var(--dark-card);
+            background: var(--white-card);
             cursor: pointer;
             transition: var(--transition);
         }
 
         .video-placeholder:hover {
-            background: var(--gold-primary);
+            background: var(--orange-primary);
         }
 
         .video-placeholder:hover .play-icon {
-            color: var(--dark-bg);
+            color: var(--white-bg);
         }
 
         .play-icon {
             font-size: 4rem;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             transition: var(--transition);
         }
 
@@ -705,7 +705,7 @@
 
         .content-item h3 {
             margin-bottom: 1rem;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
         }
 
         /* Motivation Section */
@@ -727,9 +727,9 @@
         }
 
         .motivation-tab.active {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--dark-bg);
-            border-color: var(--gold-primary);
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
+            color: var(--white-bg);
+            border-color: var(--orange-primary);
         }
 
         .quote-grid {
@@ -760,7 +760,7 @@
             top: -20px;
             left: 10px;
             font-size: 8rem;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             opacity: 0.1;
             font-family: 'Playfair Display', serif;
         }
@@ -779,7 +779,7 @@
 
         .quote-source {
             font-weight: 600;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             text-align: right;
         }
 
@@ -812,11 +812,11 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--dark-bg);
+            color: var(--white-bg);
             font-size: 1.5rem;
         }
 
@@ -851,7 +851,7 @@
 
         .form-input:focus {
             outline: none;
-            border-color: var(--gold-primary);
+            border-color: var(--orange-primary);
             box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
         }
 
@@ -862,8 +862,8 @@
 
         .form-button {
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--dark-bg);
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
+            color: var(--white-bg);
             border: none;
             border-radius: 50px;
             font-weight: 600;
@@ -905,7 +905,7 @@
 
         .message-name {
             font-weight: 600;
-            color: var(--gold-primary);
+            color: var(--orange-primary);
         }
 
         .message-date {
@@ -966,7 +966,7 @@
         }
 
         .toast-icon {
-            color: var(--gold-primary);
+            color: var(--orange-primary);
             font-size: 1.5rem;
         }
 
@@ -999,7 +999,7 @@
             max-width: 600px;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow-dark);
+            box-shadow: var(--shadow-white);
             transform: translateY(-50px);
             transition: var(--transition);
         }
@@ -1051,8 +1051,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-            color: var(--dark-bg);
+            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
+            color: var(--white-bg);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1100,8 +1100,8 @@
         }
 
         .social-link:hover {
-            background: var(--gold-primary);
-            color: var(--dark-bg);
+            background: var(--orange-primary);
+            color: var(--white-bg);
             transform: translateY(-3px);
         }
 
@@ -1165,8 +1165,8 @@
             }
         }
 
-        /* Dark mode specific adjustments */
-        [data-theme="dark"] .hero-overlay {
+        /* white mode specific adjustments */
+        [data-theme="white"] .hero-overlay {
             background: linear-gradient(45deg, rgba(14, 14, 14, 0.9) 0%, rgba(14, 14, 14, 0.6) 100%);
         }
 
@@ -1196,7 +1196,7 @@
         }
     </style>
 </head>
-<body data-theme="dark">
+<body data-theme="white">
     <div class="loader">
         <img src="site.png" alt="Loading..." class="loader-emblem">
     </div>
@@ -1230,7 +1230,7 @@
                 </ul>
             </nav>
 
-            <button class="theme-toggle" aria-label="Toggle dark mode">
+            <button class="theme-toggle" aria-label="Toggle white mode">
                 🌙
             </button>
         </div>
@@ -1688,10 +1688,10 @@
             // Theme toggle functionality
             themeToggle.addEventListener('click', () => {
                 const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                const newTheme = currentTheme === 'white' ? 'light' : 'white';
                 
                 body.setAttribute('data-theme', newTheme);
-                themeToggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+                themeToggle.textContent = newTheme === 'white' ? '🌙' : '☀️';
                 
                 // Save theme preference to localStorage
                 localStorage.setItem('theme', newTheme);
@@ -1701,7 +1701,7 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 body.setAttribute('data-theme', savedTheme);
-                themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+                themeToggle.textContent = savedTheme === 'white' ? '🌙' : '☀️';
             }
 
             // Navigation and routing
