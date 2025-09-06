@@ -47,7 +47,7 @@
             --glass-border: rgba(255, 255, 255, 0.2);
         }
 
-        [data-theme="white"] {
+        [data-theme="blue"] {
             --bg: var(--white-bg);
             --text: var(--text-light);
             --card: var(--white-card);
@@ -588,7 +588,7 @@
             right: 0;
             background: none;
             border: none;
-            color: white;
+            color: blue;
             font-size: 2rem;
             cursor: pointer;
         }
@@ -606,7 +606,7 @@
         .lightbox-button {
             background: var(--glass);
             border: none;
-            color: white;
+            color: blue;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -930,7 +930,7 @@
         .delete-button {
             padding: 0.5rem 1rem;
             background: #ff4757;
-            color: white;
+            color: blue;
             border: none;
             border-radius: var(--radius);
             cursor: pointer;
@@ -1165,8 +1165,8 @@
             }
         }
 
-        /* white mode specific adjustments */
-        [data-theme="white"] .hero-overlay {
+        /* blue mode specific adjustments */
+        [data-theme="blue"] .hero-overlay {
             background: linear-gradient(45deg, rgba(14, 14, 14, 0.9) 0%, rgba(14, 14, 14, 0.6) 100%);
         }
 
@@ -1196,7 +1196,7 @@
         }
     </style>
 </head>
-<body data-theme="white">
+<body data-theme="blue">
     <div class="loader">
         <img src="site.png" alt="Loading..." class="loader-emblem">
     </div>
@@ -1230,7 +1230,7 @@
                 </ul>
             </nav>
 
-            <button class="theme-toggle" aria-label="Toggle white mode">
+            <button class="theme-toggle" aria-label="Toggle blue mode">
                 🌙
             </button>
         </div>
@@ -1688,10 +1688,10 @@
             // Theme toggle functionality
             themeToggle.addEventListener('click', () => {
                 const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'white' ? 'light' : 'white';
+                const newTheme = currentTheme === 'blue' ? 'light' : 'blue';
                 
                 body.setAttribute('data-theme', newTheme);
-                themeToggle.textContent = newTheme === 'white' ? '🌙' : '☀️';
+                themeToggle.textContent = newTheme === 'blue' ? '🌙' : '☀️';
                 
                 // Save theme preference to localStorage
                 localStorage.setItem('theme', newTheme);
@@ -1701,7 +1701,7 @@
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 body.setAttribute('data-theme', savedTheme);
-                themeToggle.textContent = savedTheme === 'white' ? '🌙' : '☀️';
+                themeToggle.textContent = savedTheme === 'blue' ? '🌙' : '☀️';
             }
 
             // Navigation and routing
