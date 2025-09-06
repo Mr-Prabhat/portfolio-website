@@ -1,547 +1,1507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>Prabhat Panthi | Official Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhat Panthi | Official Website</title>
+    <meta name="description" content="Official website of Prabhat Panthi - Stories, Photos, Motivation, and More">
+    <meta name="keywords" content="Prabhat Panthi, stories, motivation, photos, videos">
+    <meta name="author" content="Prabhat Panthi">
+    <meta property="og:title" content="Prabhat Panthi | Official Website">
+    <meta property="og:description" content="Official website of Prabhat Panthi - Stories, Photos, Motivation, and More">
+    <meta property="og:image" content="images/neww.jpg">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#FFD700">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ SEO -->
-  <meta name="description" content="Official website of Prabhat Panthi - Digital Creator from Nepal. Explore photos, videos, stories, jokes, motivation and more." />
-  <meta name="keywords" content="Prabhat Panthi, Nepal, Digital Creator, Motivation, Stories, Jokes, Photos, Videos" />
-  <meta name="author" content="Prabhat Panthi" />
-  <meta property="og:title" content="Prabhat Panthi | Official Website" />
-  <meta property="og:description" content="Explore the official website of Prabhat Panthi - stories, motivation, photos, videos & more." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/neww.jpg" />
+    <style>
+        :root {
+            --gold: #FFD700;
+            --gold-dark: #E6B800;
+            --gold-darker: #B8860B;
+            --dark: #0E0E0E;
+            --text-light: #F5F5F5;
+            --bg-light: #FAF8E6;
+            --glass: rgba(255, 215, 0, 0.1);
+            --glass-dark: rgba(14, 14, 14, 0.9);
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root {
-      --primary-gold: #ffd700;
-      --dark-gold: #b8860b;
-      --light-gold: #fffacd;
-      --metallic-gold: #e6b800;
-      --bg-light: #faf8e6;
-      --text-color: #2c2c2c;
-      --bg-dark: #1a1a1a;
-      --text-dark: #f5f5f5;
-    }  
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+        body.light {
+            background: var(--bg-light);
+            color: var(--dark);
+            --text-light: var(--dark);
+        }
 
-    header {
-      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    .header-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
 
-    /* ✅ Flag & Emblem same size */
-    .flag, .emblem {
-      height: 60px;
-      width: auto;
-    }
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-    nav {
-      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      font-size: 15px;
-    }
+        .loader-emblem {
+            width: 80px;
+            height: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 6px 12px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
 
-    nav a.active, nav a:hover {
-      background: var(--primary-gold);
-      color: var(--text-color);
-    }
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-dark);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass);
+        }
 
-    section {
-      display: none;
-      padding: 20px;
-      animation: fadeIn 0.4s ease;
-    }
+        body.light header {
+            background: rgba(250, 248, 230, 0.95);
+        }
 
-    section.active {
-      display: block;
-    }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 15px;
-    }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    /* ✅ Image resizing */
-    section img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 15px auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+        .flag {
+            width: 40px;
+            height: 30px;
+            border-radius: 4px;
+        }
 
-    /* ✅ Masonry-style Gallery */
-    .gallery {
-      column-count: 3;
-      column-gap: 15px;
-      padding: 10px;
-    }
+        .emblem {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+        }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      display: block;
-      break-inside: avoid;
-    }
+        .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* ✅ Motivation Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .tabs button {
-      background: var(--dark-gold);
-      color: white;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .theme-toggle {
+            background: var(--glass);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    .tabs button:hover {
-      background: var(--primary-gold);
-      color: black;
-    }
+        .theme-toggle:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
 
-    /* ✅ Contact form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 500px;
-      margin: auto;
-    }
+        /* Navigation */
+        nav {
+            background: var(--glass-dark);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            border-bottom: 1px solid var(--glass);
+        }
 
-    .contact-form input, 
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
+        body.light nav {
+            background: rgba(250, 248, 230, 0.95);
+        }
 
-    .contact-form button {
-      background: var(--primary-gold);
-      border: none;
-      padding: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+        .nav-tabs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
 
-    .contact-form button:hover {
-      background: var(--dark-gold);
-      color: white;
-    }
+        .nav-tab {
+            background: transparent;
+            border: 1px solid var(--glass);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* ✅ Dark Mode */
-    .dark-mode {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
+        body.light .nav-tab {
+            color: var(--dark);
+        }
 
-    .dark-mode nav {
-      background: #333;
-    }
+        .nav-tab:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
 
-    .dark-mode nav a.active, 
-    .dark-mode nav a:hover {
-      background: var(--metallic-gold);
-      color: black;
-    }
+        .nav-tab:hover:before,
+        .nav-tab.active:before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
 
-    .dark-mode-toggle {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      background: var(--dark-gold);
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
+        .nav-tab:hover,
+        .nav-tab.active {
+            color: var(--dark);
+            border-color: var(--gold);
+        }
 
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+        /* Main Content */
+        main {
+            margin-top: 160px;
+            min-height: calc(100vh - 160px);
+        }
 
-    /* ✅ Mobile adjustments */
-    @media (max-width: 768px) {
-      nav {
-        font-size: 14px;
-      }
-      .gallery {
-        column-count: 2;
-      }
-    }
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
 
-    @media (max-width: 480px) {
-      .gallery {
-        column-count: 1;
-      }
-    }
-  </style>
+        .content-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: url('images/neww.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(255,215,0,0.2));
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--gold), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        body.light .glass-card {
+            background: rgba(255, 215, 0, 0.05);
+            border-color: var(--gold);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Photos Grid */
+        .photos-grid {
+            columns: 3;
+            column-gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .photos-grid { columns: 2; }
+        }
+
+        @media (max-width: 480px) {
+            .photos-grid { columns: 1; }
+        }
+
+        .photo-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: var(--glass);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: var(--glass);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        /* Search */
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            border: 2px solid var(--glass);
+            border-radius: 25px;
+            background: var(--glass);
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        body.light .search-box {
+            color: var(--dark);
+        }
+
+        /* Motivation Tabs */
+        .motivation-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .motivation-tab {
+            background: transparent;
+            border: 2px solid var(--glass);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        body.light .motivation-tab {
+            color: var(--dark);
+        }
+
+        .motivation-tab.active {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .quotes-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quote-card {
+            background: var(--glass);
+            border: 1px solid var(--glass);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--glass);
+            border-radius: 10px;
+            background: var(--glass);
+            color: var(--text-light);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        body.light .form-group input,
+        body.light .form-group textarea {
+            color: var(--dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--gold), var(--gold-dark));
+            border: none;
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Messages Panel */
+        .messages-panel {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--glass);
+        }
+
+        .message-item {
+            background: var(--glass);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .message-delete {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 10001;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transform: scale(0);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            transform: scale(1);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Quick Switcher */
+        .quick-switcher {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 100px;
+            z-index: 10001;
+        }
+
+        .quick-switcher.active {
+            display: flex;
+        }
+
+        .switcher-modal {
+            background: var(--glass-dark);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 2rem;
+            min-width: 400px;
+            max-width: 90%;
+        }
+
+        .switcher-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--glass);
+            border-radius: 10px;
+            background: var(--glass);
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .switcher-options {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .switcher-option {
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .switcher-option:hover,
+        .switcher-option.selected {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Videos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .video-item {
+            background: var(--glass);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            background: linear-gradient(45deg, var(--dark), var(--glass));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .site-title {
+                font-size: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-tabs {
+                justify-content: flex-start;
+            }
+
+            main {
+                margin-top: 200px;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .switcher-modal {
+                min-width: 300px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-2 { margin-top: 2rem; }
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <img src="gif.gif" class="flag" alt="Nepali Flag" />
-      <img src="site.png" alt="Prabhat Emblem" class="emblem">
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <img src="site.png" alt="Loading" class="loader-emblem">
     </div>
-    <h1>Prabhat Panthi | Official Website</h1>
-  </header>
 
-  <nav>
-    <a href="#" onclick="showTab('home')" class="active">Home</a>
-    <a href="#" onclick="showTab('about')">About Me</a>
-    <a href="#" onclick="showTab('photos')">Photos</a>
-    <a href="#" onclick="showTab('videos')">Videos</a>
-    <a href="#" onclick="showTab('stories')">Stories</a>
-    <a href="#" onclick="showTab('jokes')">Jokes</a>
-    <a href="#" onclick="showTab('news')">News</a>
-    <a href="#" onclick="showTab('motivation')">Motivation</a>
-    <a href="#" onclick="showTab('contact')">Contact</a>
-  </nav>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="gif.gif" alt="Flag" class="flag">
+                    <img src="site.png" alt="Emblem" class="emblem">
+                    <h1 class="site-title">Prabhat Panthi | Official Website</h1>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  
-  <section id="home" class="active">
-    <div class="home-banner">
-      <img src="images/neww.jpg" alt="Prabhat Panthi" />
-    </div>
-    <h2>Welcome to My World</h2>
-    <p>
-      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
-      My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
-      and then to the vibrant town of Murgiya where I grew up.
-    </p>
-    <p>
-      With a Bachelor’s degree completed, I have always been enthusiastic about technology,
-      storytelling, and spreading positivity through creative content.
-      This website is my personal space to share photos, videos, inspiring stories, jokes,
-      and powerful motivational quotes from various holy scriptures.
-    </p>
-    <p>
-      I believe in continuous learning, evolving, and connecting with people worldwide.
-      Here, you'll not only find glimpses of my personal journey but also content
-      that aims to motivate and entertain.
-    </p>
-    <p>
-      Feel free to explore and get in touch with me through the Contact section below.
-      Let's stay connected and grow together!
-    </p>
-  </section>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-tabs" id="navTabs">
+                <button class="nav-tab active" data-route="home">Home</button>
+                <button class="nav-tab" data-route="about">About Me</button>
+                <button class="nav-tab" data-route="photos">Photos</button>
+                <button class="nav-tab" data-route="videos">Videos</button>
+                <button class="nav-tab" data-route="stories">Stories</button>
+                <button class="nav-tab" data-route="jokes">Jokes</button>
+                <button class="nav-tab" data-route="news">News</button>
+                <button class="nav-tab" data-route="motivation">Motivation</button>
+                <button class="nav-tab" data-route="contact">Contact</button>
+            </div>
+        </div>
+    </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="home-banner">
-      <img src="images/newa.jpg" alt="Prabhat Panthi About" />
-    </div>
-    <p>
-      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
-      Later, my family moved to Bhairahawa where I experienced a vibrant city life.
-      Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
-    </p>
-    <p>
-      From a young age, I was curious about technology and storytelling.
-      This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
-    </p>
-    <p>
-      Besides digital content, I have a keen interest in reading motivational books,
-      listening to spiritual discourses, and understanding various cultures and philosophies.
-    </p>
-    <p>
-      One of my core beliefs is that every person has a unique story,
-      and through creativity and positive mindset, we can all inspire each other to grow.
-    </p>
-    <p>
-      Through this platform, I aim to share stories that uplift spirits,
-      jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
-      Every piece of content here reflects my journey of learning and sharing.
-    </p>
-    <p>
-      Outside the digital world, I enjoy traveling, meeting new people,
-      and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
-    </p>
-    <p>
-      Thank you for visiting my website. Let’s continue this journey together,
-      sharing laughter, wisdom, and positivity across borders!
-    </p>
-  </section>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <div class="particles" id="particles"></div>
+                <div class="hero-content">
+                    <h2 class="hero-title">Welcome to My World</h2>
+                    <p class="hero-subtitle">Discover stories, inspiration, and moments that matter</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="glass-card">
+                    <h2>Welcome to Prabhat Panthi's Official Website</h2>
+                    <p>This is the official website of Prabhat Panthi, where you can find inspiring stories, beautiful photos, motivational quotes, and much more. Explore the different sections to discover content that enriches your life and brings positivity to your day.</p>
+                </div>
+            </div>
+        </section>
 
-  <section id="photos">
-    <h2>Photo Gallery</h2>
-    <div class="gallery">
-      <img src="images/photo.jpg" alt="Photo 1" />
-      <img src="images/photop.jpg" alt="Photo 2" />
-      <img src="images/photopp.jpg" alt="Photo 3" />
-      <img src="images/photoppp.jpg" alt="Photo 4" />
-      <img src="images/newb.jpg" alt="Photo 5" />
-      <img src="images/newc.jpg" alt="Photo 6" />
-      <img src="images/neww.jpg" alt="Photo 7" />
-      <img src="images/brp.jpg" alt="Photo 8" />
-    </div>
-  </section>
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <div class="container">
+                <div class="glass-card">
+                    <h2>About Me</h2>
+                    <p>Hello! I'm Prabhat Panthi, and this is my personal space on the internet where I share stories, thoughts, and moments that inspire me. Through this website, I hope to connect with like-minded individuals who appreciate life's beautiful moments and seek inspiration in everyday experiences.</p>
+                    <p>Here you'll find a collection of motivational quotes from various spiritual traditions, personal stories that have shaped my perspective, and visual memories captured through photography. Join me on this journey of sharing and discovering what makes life meaningful.</p>
+                </div>
+            </div>
+        </section>
 
-  <section id="videos">
-    <h2>Videos</h2>
-    <p>Video section here...</p>
-  </section>
+        <!-- Photos Section -->
+        <section id="photos" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Photo Gallery</h2>
+                <div class="photos-grid" id="photosGrid">
+                    <div class="photo-item">
+                        <img src="images/photo.jpg" alt="Photo 1" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/photop.jpg" alt="Photo 2" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/photopp.jpg" alt="Photo 3" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/photoppp.jpg" alt="Photo 4" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/newb.jpg" alt="Photo 5" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/newc.jpg" alt="Photo 6" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/neww.jpg" alt="Photo 7" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/brp.jpg" alt="Photo 8" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="stories">
-    <h2>Success Stories</h2>
-    <div class="story searchable">
-      <h3>The Journey of Chester Charles Bennington</h3>
-       <p>
-    Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
-  </p>
-  <p>
-    However, <strong>music became his ultimate escape</strong>. Influenced by bands like Stone Temple Pilots, Chester developed a unique, raw vocal style that could switch from soothing melodies to powerful screams, capturing the emotions of millions.
-  </p>
-  <p>
-    Chester’s life took a pivotal turn when he joined <strong>Linkin Park in 1999</strong>. The band’s debut album <em>“Hybrid Theory” (2000)</em> became a global phenomenon, giving a voice to a generation dealing with frustration, identity, and emotional struggles. Songs like <em>“In the End”</em>, <em>“Crawling”</em>, and <em>“Numb”</em> resonated deeply with fans worldwide.
-  </p>
-  <p>
-    Despite his success, Chester continuously battled with inner demons. He used his platform to speak openly about mental health, encouraging others to seek help and never be ashamed of their struggles. Tragically, Chester passed away on <strong>July 20, 2017</strong>, leaving behind a legacy that still inspires millions.
-  </p>
-  <p>
-    Chester’s journey from a tormented childhood to becoming a global rock icon is a story of <strong>pain, passion, and the power of art to heal</strong>. His voice lives on, reminding us that <em>“it's okay to not be okay”</em> — and that seeking help is a sign of strength, not weakness.
-  </p>
-    </div>
-    <div class="story searchable">
-      <h3>From Streets to Success: APJ Abdul Kalam</h3>
-      <p>
-        Dr. APJ Abdul Kalam, former President of India, grew up in a modest family, selling newspapers to support his education.
-        His dedication to science led him to become a key figure in India's space and missile programs.
-        Known as the "Missile Man," his story teaches us that humble beginnings can lead to extraordinary achievements through perseverance.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Elon Musk: Visionary Innovator</h3>
-      <p>
-        Elon Musk, born in South Africa, faced numerous setbacks before becoming a global icon of innovation.
-        From co-founding PayPal to leading Tesla and SpaceX, Musk's relentless pursuit of ambitious goals, like colonizing Mars, shows the power of thinking big and never giving up, even after failures.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Oprah Winfrey: Rising Above Adversity</h3>
-      <p>
-        Oprah Winfrey overcame a childhood of poverty and abuse to become one of the most influential media personalities in the world.
-        Through her talk show and philanthropy, she empowered millions, proving that resilience and compassion can transform lives and inspire global change.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Malala Yousafzai: Voice for Education</h3>
-      <p>
-        Malala Yousafzai, a Pakistani activist, survived an assassination attempt by the Taliban for advocating girls' education.
-        At age 17, she became the youngest Nobel Peace Prize laureate. Her courage and dedication continue to inspire millions to fight for education and equality.
-      </p>
-    </div>
-  </section>
+        <!-- Videos Section -->
+        <section id="videos" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Videos</h2>
+                <div class="videos-grid">
+                    <div class="video-item">
+                        <div class="video-placeholder">
+                            <span>📹</span>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h3>Coming Soon</h3>
+                            <p>Video content will be available here</p>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <div class="video-placeholder">
+                            <span>📹</span>
+                        </div>
+                        <div style="padding: 1rem;">
+                            <h3>Coming Soon</h3>
+                            <p>Video content will be available here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="jokes">
-    <h2>Jokes</h2>
-    <div class="joke searchable">
-      <p>Why did the computer go to art school? Because it wanted to learn how to draw a better "byte"!</p>
+        <!-- Stories Section -->
+        <section id="stories" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Inspiring Stories</h2>
+                <input type="text" class="search-box" placeholder="Search stories..." id="storiesSearch">
+                
+                <div class="glass-card searchable">
+                    <h3>Chester Bennington: A Voice That Touched Millions</h3>
+                    <p>Chester Charles Bennington was more than just a rock star; he was a voice for the voiceless, a beacon of hope for those struggling with inner demons. Born on March 20, 1976, Chester's life was marked by both incredible success and profound personal struggles.</p>
+                    <p>As the lead vocalist of Linkin Park, Chester helped define the sound of a generation. Songs like "In the End," "Numb," and "Breaking the Habit" resonated with millions of fans worldwide who found solace in his raw, emotional delivery. His ability to channel pain into powerful music made him an icon of resilience and authenticity.</p>
+                    <p>Chester's legacy reminds us that even those who seem strongest may be fighting battles we cannot see. His music continues to inspire and heal, proving that art can be both a cry for help and a source of strength for others.</p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>APJ Abdul Kalam: The People's President</h3>
+                    <p>Dr. APJ Abdul Kalam, known as the "Missile Man of India" and the "People's President," was a visionary who believed in the power of dreams and hard work. Born in a humble family in Rameswaram, Tamil Nadu, he rose to become one of India's most beloved leaders.</p>
+                    <p>His famous words, "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action," continue to inspire millions of young minds. Dr. Kalam's life exemplified how dedication, curiosity, and compassion can transform not just individual lives but entire nations.</p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>Elon Musk: Pushing the Boundaries of Possibility</h3>
+                    <p>Elon Musk's journey from a curious child in South Africa to becoming one of the world's most influential entrepreneurs is a testament to the power of vision and persistence. His ventures in electric vehicles, space exploration, and renewable energy are reshaping entire industries.</p>
+                    <p>Musk's approach to problem-solving - questioning fundamental assumptions and thinking from first principles - offers valuable lessons for anyone looking to make a meaningful impact in their field.</p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>Oprah Winfrey: From Poverty to Global Influence</h3>
+                    <p>Oprah Winfrey's transformation from a poverty-stricken childhood to becoming one of the most influential media personalities in the world is nothing short of extraordinary. Her story demonstrates that our circumstances don't define our potential.</p>
+                    <p>Through her talk show, book club, and philanthropic efforts, Oprah has consistently used her platform to elevate others and promote personal growth, showing us the true meaning of success - lifting others as we climb.</p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>Malala Yousafzai: A Voice for Education</h3>
+                    <p>Malala Yousafzai's courage in advocating for girls' education, even in the face of death threats, makes her one of the most inspiring young leaders of our time. Her unwavering commitment to education as a fundamental human right has sparked global change.</p>
+                    <p>At just 17, she became the youngest Nobel Prize laureate, proving that age is no barrier to making a profound impact on the world. Her story reminds us that one person's voice, when raised for justice, can echo across the globe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jokes Section -->
+        <section id="jokes" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Light Moments</h2>
+                <input type="text" class="search-box" placeholder="Search jokes..." id="jokesSearch">
+                
+                <div class="glass-card searchable">
+                    <h3>The Optimistic Programmer</h3>
+                    <p>A programmer's wife asks him to go to the store and buy a gallon of milk, and if they have eggs, buy a dozen. He comes back with 12 gallons of milk. When she asks why, he says, "They had eggs!"</p>
+                    <p><em>Sometimes our logical thinking can lead to hilarious misunderstandings!</em></p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>The Wise Teacher</h3>
+                    <p>A student asks his teacher, "What's the difference between ignorance and apathy?" The teacher replies, "I don't know and I don't care."</p>
+                    <p><em>A perfect demonstration of both concepts in one answer!</em></p>
+                </div>
+
+                <div class="glass-card searchable">
+                    <h3>The Coffee Philosophy</h3>
+                    <p>Why did the coffee file a police report? It got mugged! But in all seriousness, coffee doesn't ask silly questions. Coffee understands. Be like coffee.</p>
+                    <p><em>Sometimes the simplest pleasures in life offer the most wisdom!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Latest Updates</h2>
+                <input type="text" class="search-box" placeholder="Search news..." id="newsSearch">
+                <div id="newsContainer"></div>
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section id="motivation" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Words of Wisdom</h2>
+                
+                <div class="motivation-tabs" id="motivationTabs">
+                    <button class="motivation-tab active" data-category="quran">Quran</button>
+                    <button class="motivation-tab" data-category="bible">Bible</button>
+                    <button class="motivation-tab" data-category="gita">Gita</button>
+                    <button class="motivation-tab" data-category="buddha">Buddha</button>
+                    <button class="motivation-tab" data-category="other">Other</button>
+                </div>
+
+                <div class="quotes-container" id="quotesContainer">
+                    <!-- Quotes will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <div class="container">
+                <h2 class="text-center mb-2">Get In Touch</h2>
+                
+                <div class="glass-card">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="mt-2 text-center">
+                        <p><strong>Phone:</strong> +977-9848605969</p>
+                        <p><strong>Email:</strong> prabhatpanthi007@gmail.com</p>
+                    </div>
+
+                    <div class="messages-panel" id="messagesPanel">
+                        <h3>Messages Inbox</h3>
+                        <div id="messagesList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--glass-dark); padding: 2rem 0; text-align: center; margin-top: 4rem; border-top: 1px solid var(--glass);">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Prabhat Panthi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <span class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</span>
+            <span class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</span>
+            <img id="lightboxImg" alt="Lightbox Image">
+        </div>
     </div>
-    <div class="joke searchable">
-      <p>Why don't programmers prefer dark mode? Because the light attracts bugs.</p>
+
+    <!-- Quick Switcher -->
+    <div class="quick-switcher" id="quickSwitcher">
+        <div class="switcher-modal">
+            <input type="text" class="switcher-input" id="switcherInput" placeholder="Type to search sections...">
+            <div class="switcher-options" id="switcherOptions"></div>
+        </div>
     </div>
-    <div class="joke searchable">
-      <p>What do you call a dinosaur that takes care of its teeth? A Flossiraptor!</p>
-    </div>
-  </section>
 
-  <section id="news">
-    <h2>News</h2>
-    <p class="searchable">News updates here...</p>
-  </section>
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
 
-  <section id="motivation">
-    <h2>Motivation</h2>
-    <div class="tabs">
-      <button onclick="showMotivationTab('quran')">Quran</button>
-      <button onclick="showMotivationTab('bible')">Bible</button>
-      <button onclick="showMotivationTab('gita')">Gita</button>
-      <button onclick="showMotivationTab('buddha')">Buddha</button>
-      <button onclick="showMotivationTab('other')">other</button>
-    </div>
-    <div id="quran" class="tab-content active">
-      <div class="quote">
-        <p>"And whoever puts their trust in Allah, then He ˹alone˺ is sufficient for them." – Quran 65:3</p>
-      </div>
-      <div class="quote">
-        <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
-      </div>
-      <div class="quote">
-        <p>"Indeed, Allah will not change the condition of a people until they change what is in themselves." – Quran 13:11</p>
-      </div>
-      <div class="quote">
-        <p>"Call upon Me; I will respond to you." – Quran 40:60</p>
-      </div>
-    </div>
-    <div id="bible" class="tab-content">
-      <div class="quote">
-        <p>"I can do all things through Christ who strengthens me." – Philippians 4:13</p>
-      </div>
-      <div class="quote">
-        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
-      </div>
-      <div class="quote">
-        <p>"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
-      </div>
-      <div class="quote">
-        <p>"Love your neighbor as yourself." – Mark 12:31</p>
-      </div>
-    </div>
-    <div id="gita" class="tab-content">
-      <div class="quote">
-        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</p>
-      </div>
-      <div class="quote">
-        <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
-      </div>
-      <div class="quote">
-        <p>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</p>
-      </div>
-      <div class="quote">
-        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place." – Bhagavad Gita 6:19</p>
-      </div>
-    </div>
-    <div id="buddha" class="tab-content">
-      <div class="quote">
-        <p>"The mind is everything. What you think, you become." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Peace comes from within. Do not seek it without." – Buddha</p>
-      </div>
-    </div>
-  </section>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">↑</button>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Phone: +977-9848605969</p>
-    <p>Email: prabhatpanthi007@gmail.com</p>
-    <div class="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="email" id="email" placeholder="Your Email" required />
-      <textarea rows="5" id="message" placeholder="Your Feedback / Comment" required></textarea>
-      <button type="button" onclick="submitForm()">Submit</button>
-    </div>
-  </section>
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
 
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-      if (tabId === 'motivation') showMotivationTab('quran');
-    }
-
-    function showMotivationTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
-      const target = document.getElementById(tabName);
-      if (target) target.classList.add('active');
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    function searchContent() {
-      let filter = document.getElementById('searchInput').value.toUpperCase();
-      let searchableSections = document.querySelectorAll('.searchable');
-
-      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
-
-      let found = false;
-      searchableSections.forEach((el) => {
-        if (el.innerText.toUpperCase().indexOf(filter) > -1) {
-          el.parentElement.classList.add('active');
-          found = true;
+        function initializeApp() {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Initialize components
+            initLoader();
+            initTheme();
+            initRouter();
+            initParticles();
+            initLightbox();
+            initSearch();
+            initMotivation();
+            initContact();
+            initQuickSwitcher();
+            initBackToTop();
+            initNewsData();
         }
-      });
 
-      if (!found && filter === '') {
-        showTab('home');
-      }
-    }
+        // Loader
+        function initLoader() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        }
 
-    function submitForm() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
+        // Theme Management
+        function initTheme() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            
+            if (currentTheme === 'light') {
+                body.classList.add('light');
+                themeToggle.textContent = '☀️';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light');
+                const isLight = body.classList.contains('light');
+                themeToggle.textContent = isLight ? '☀️' : '🌙';
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+        }
 
-      if (name && email && message) {
-        alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-  </script>
+        // Router
+        function initRouter() {
+            const navTabs = document.querySelectorAll('.nav-tab');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            // Handle navigation
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const route = tab.dataset.route;
+                    navigateToSection(route);
+                });
+            });
+            
+            // Handle hash changes
+            window.addEventListener('hashchange', handleHashChange);
+            
+            // Handle initial load
+            handleHashChange();
+            
+            function navigateToSection(route) {
+                // Update URL
+                window.location.hash = route;
+                
+                // Update active tab
+                navTabs.forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-route="${route}"]`).classList.add('active');
+                
+                // Update content
+                contentSections.forEach(s => s.classList.remove('active'));
+                const targetSection = document.getElementById(route);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Update title
+                const titles = {
+                    home: 'Home',
+                    about: 'About Me',
+                    photos: 'Photos',
+                    videos: 'Videos',
+                    stories: 'Stories',
+                    jokes: 'Jokes',
+                    news: 'News',
+                    motivation: 'Motivation',
+                    contact: 'Contact'
+                };
+                document.title = `Prabhat Panthi | ${titles[route]}`;
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            function handleHashChange() {
+                const hash = window.location.hash.slice(1) || 'home';
+                if (document.getElementById(hash)) {
+                    navigateToSection(hash);
+                }
+            }
+        }
+
+        // Particles
+        function initParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Lightbox
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            const photoItems = document.querySelectorAll('.photo-item img');
+            let currentImageIndex = 0;
+            
+            photoItems.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    showLightbox(img.src);
+                });
+            });
+            
+            lightboxClose.addEventListener('click', hideLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) hideLightbox();
+            });
+            
+            lightboxPrev.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + photoItems.length) % photoItems.length;
+                showLightbox(photoItems[currentImageIndex].src);
+            });
+            
+            lightboxNext.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % photoItems.length;
+                showLightbox(photoItems[currentImageIndex].src);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'Escape') hideLightbox();
+                    if (e.key === 'ArrowLeft') lightboxPrev.click();
+                    if (e.key === 'ArrowRight') lightboxNext.click();
+                }
+            });
+            
+            function showLightbox(src) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function hideLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Search Functionality
+        function initSearch() {
+            const searches = [
+                { input: 'storiesSearch', items: '#stories .searchable' },
+                { input: 'jokesSearch', items: '#jokes .searchable' },
+                { input: 'newsSearch', items: '#newsContainer .searchable' }
+            ];
+            
+            searches.forEach(({ input, items }) => {
+                const searchInput = document.getElementById(input);
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        const query = e.target.value.toLowerCase();
+                        const searchItems = document.querySelectorAll(items);
+                        
+                        searchItems.forEach(item => {
+                            const text = item.textContent.toLowerCase();
+                            item.style.display = text.includes(query) ? 'block' : 'none';
+                        });
+                    });
+                }
+            });
+        }
+
+        // Motivation Section
+        function initMotivation() {
+            const motivationTabs = document.querySelectorAll('.motivation-tab');
+            const quotesContainer = document.getElementById('quotesContainer');
+            
+            const quotes = {
+                quran: [
+                    { text: "And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose.", source: "Quran 65:3" },
+                    { text: "And it is He who created the heavens and earth in truth. And the day He says, 'Be,' and it is, His word is the truth.", source: "Quran 6:73" },
+                    { text: "So remember Me; I will remember you. And be grateful to Me and do not deny Me.", source: "Quran 2:152" }
+                ],
+                bible: [
+                    { text: "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, to give you hope and a future.", source: "Jeremiah 29:11" },
+                    { text: "I can do all things through Christ who strengthens me.", source: "Philippians 4:13" },
+                    { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", source: "Joshua 1:9" }
+                ],
+                gita: [
+                    { text: "You have a right to perform your prescribed duties, but never to the fruits of action. Never consider yourself the cause of the results of your activities, and never be attached to not doing your duty.", source: "Bhagavad Gita 2.47" },
+                    { text: "The mind is restless and difficult to restrain, but it is subdued by practice.", source: "Bhagavad Gita 6.35" },
+                    { text: "A person can rise through the efforts of his own mind; or draw himself down, in the same manner.", source: "Bhagavad Gita 6.5" }
+                ],
+                buddha: [
+                    { text: "The mind is everything. What you think you become.", source: "Buddha" },
+                    { text: "Peace comes from within. Do not seek it without.", source: "Buddha" },
+                    { text: "In the end, just three things matter: How much you loved, how gently you lived, and how gracefully you let go of things not meant for you.", source: "Buddha" }
+                ],
+                other: [
+                    { text: "The only way to do great work is to love what you do.", source: "Steve Jobs" },
+                    { text: "Innovation distinguishes between a leader and a follower.", source: "Steve Jobs" },
+                    { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" }
+                ]
+            };
+            
+            motivationTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    motivationTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    const category = tab.dataset.category;
+                    displayQuotes(category);
+                });
+            });
+            
+            function displayQuotes(category) {
+                const categoryQuotes = quotes[category] || [];
+                quotesContainer.innerHTML = categoryQuotes.map(quote => `
+                    <div class="quote-card">
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem; font-style: italic;">"${quote.text}"</p>
+                        <p style="text-align: right; color: var(--gold); font-weight: 600;">- ${quote.source}</p>
+                    </div>
+                `).join('');
+            }
+            
+            // Display initial quotes
+            displayQuotes('quran');
+        }
+
+        // Contact Form
+        function initContact() {
+            const contactForm = document.getElementById('contactForm');
+            const messagesList = document.getElementById('messagesList');
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const message = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message'),
+                    date: new Date().toLocaleDateString()
+                };
+                
+                // Save to localStorage
+                const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                messages.push(message);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                
+                // Show toast
+                showToast('Message saved locally!');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Update messages display
+                displayMessages();
+            });
+            
+            function displayMessages() {
+                const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                messagesList.innerHTML = messages.map((msg, index) => `
+                    <div class="message-item">
+                        <button class="message-delete" onclick="deleteMessage(${index})">×</button>
+                        <h4>${msg.name}</h4>
+                        <p><strong>Email:</strong> ${msg.email}</p>
+                        <p><strong>Date:</strong> ${msg.date}</p>
+                        <p><strong>Message:</strong> ${msg.message}</p>
+                    </div>
+                `).join('');
+            }
+            
+            // Global function for deleting messages
+            window.deleteMessage = function(index) {
+                const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+                messages.splice(index, 1);
+                localStorage.setItem('messages', JSON.stringify(messages));
+                displayMessages();
+                showToast('Message deleted!');
+            };
+            
+            // Initial display
+            displayMessages();
+        }
+
+        // Quick Switcher
+        function initQuickSwitcher() {
+            const quickSwitcher = document.getElementById('quickSwitcher');
+            const switcherInput = document.getElementById('switcherInput');
+            const switcherOptions = document.getElementById('switcherOptions');
+            
+            const sections = [
+                { name: 'Home', route: 'home' },
+                { name: 'About Me', route: 'about' },
+                { name: 'Photos', route: 'photos' },
+                { name: 'Videos', route: 'videos' },
+                { name: 'Stories', route: 'stories' },
+                { name: 'Jokes', route: 'jokes' },
+                { name: 'News', route: 'news' },
+                { name: 'Motivation', route: 'motivation' },
+                { name: 'Contact', route: 'contact' }
+            ];
+            
+            // Open with Ctrl/Cmd + K
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    openQuickSwitcher();
+                }
+                
+                if (e.key === 'Escape') {
+                    closeQuickSwitcher();
+                }
+            });
+            
+            switcherInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = sections.filter(section => 
+                    section.name.toLowerCase().includes(query)
+                );
+                displaySwitcherOptions(filtered);
+            });
+            
+            quickSwitcher.addEventListener('click', (e) => {
+                if (e.target === quickSwitcher) closeQuickSwitcher();
+            });
+            
+            function openQuickSwitcher() {
+                quickSwitcher.classList.add('active');
+                switcherInput.focus();
+                displaySwitcherOptions(sections);
+            }
+            
+            function closeQuickSwitcher() {
+                quickSwitcher.classList.remove('active');
+                switcherInput.value = '';
+            }
+            
+            function displaySwitcherOptions(options) {
+                switcherOptions.innerHTML = options.map(option => `
+                    <div class="switcher-option" data-route="${option.route}">
+                        ${option.name}
+                    </div>
+                `).join('');
+                
+                // Add click handlers
+                switcherOptions.querySelectorAll('.switcher-option').forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        const route = opt.dataset.route;
+                        const navTab = document.querySelector(`[data-route="${route}"]`);
+                        if (navTab) navTab.click();
+                        closeQuickSwitcher();
+                    });
+                });
+            }
+        }
+
+        // Back to Top
+        function initBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // News Data
+        function initNewsData() {
+            const newsData = [
+                {
+                    title: "Welcome to the New Website",
+                    content: "I'm excited to share this new platform where I'll be posting updates, stories, and inspiration regularly.",
+                    date: "2025-01-15"
+                },
+                {
+                    title: "New Photo Gallery Added",
+                    content: "Check out the new photo gallery section featuring some of my favorite captures from recent events.",
+                    date: "2025-01-10"
+                },
+                {
+                    title: "Motivation Section Enhanced",
+                    content: "Added new quotes and wisdom from various spiritual traditions to inspire your daily journey.",
+                    date: "2025-01-05"
+                }
+            ];
+            
+            const newsContainer = document.getElementById('newsContainer');
+            if (newsContainer) {
+                newsContainer.innerHTML = newsData.map(item => `
+                    <div class="glass-card searchable">
+                        <h3>${item.title}</h3>
+                        <p style="color: var(--gold); margin-bottom: 1rem;">${item.date}</p>
+                        <p>${item.content}</p>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
-
 </html>
