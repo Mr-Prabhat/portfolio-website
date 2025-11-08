@@ -1,2197 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of Prabhat Panthi - Explore my stories, photos, videos, and more.">
-    <meta name="keywords" content="Prabhat Panthi, official website, stories, photos, videos, jokes, motivation">
-    <meta name="author" content="Prabhat Panthi">
-    <meta property="og:title" content="Prabhat Panthi | Official Website">
-    <meta property="og:description" content="Official website of Prabhat Panthi - Explore my stories, photos, videos, and more.">
-    <meta property="og:image" content="images/neww.jpg">
-    <meta property="og:url" content="https://prabhatpanthi.com">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#E6B800">
-    <title>Prabhat Panthi | Official Website</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.45/dist/lenis.min.js"></script>
-    <style>
-        :root {
-            --orange-primary: #FFD700;
-            --orange-secondary: #E6B800;
-            --orange-white: #B8860B;
-            --white-bg: #0E0E0E;
-            --white-card: #1A1A1A;
-            --text-light: #F5F5F5;
-            --light-bg: #FAF8E6;
-            --light-card: #FFFFFF;
-            --text-white: #333333;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --radius: 12px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-white: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        [data-theme="light"] {
-            --bg: var(--light-bg);
-            --text: var(--text-white);
-            --card: var(--light-card);
-            --shadow: var(--shadow);
-            --glass: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.2);
-        }
-
-        [data-theme="blue"] {
-            --bg: var(--white-bg);
-            --text: var(--text-light);
-            --card: var(--white-card);
-            --shadow: var(--shadow-white);
-            --glass: rgba(0, 0, 0, 0.2);
-            --glass-border: rgba(255, 255, 255, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: var(--transition);
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .no-js .js-only {
-            display: none;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--orange-primary);
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--orange-primary), var(--orange-white));
-            border-radius: 3px;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        a {
-            color: var(--orange-primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--orange-secondary);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-emblem {
-            width: 80px;
-            height: 80px;
-            animation: pulse 1.5s infinite, morph 1.5s ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
-
-        @keyframes morph {
-            0% { border-radius: 50%; }
-            50% { border-radius: 20%; }
-            100% { border-radius: 0%; }
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 0;
-            z-index: 100;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 0.5rem 0;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .flag-gif {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .emblem-img {
-            height: 50px;
-            transition: var(--transition);
-        }
-
-        header.scrolled .emblem-img {
-            height: 40px;
-        }
-
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav li {
-            position: relative;
-        }
-
-        nav a {
-            color: var(--text);
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--orange-primary), var(--orange-white));
-            transition: var(--transition);
-        }
-
-        nav a:hover:after, 
-        nav a.active:after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text);
-            margin-left: 1.5rem;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .mobile-toggle span {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background-color: var(--text);
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/neww.jpg');
-            background-size: cover;
-            background-position: center;
-            will-change: transform;
-            z-index: -1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(14, 14, 14, 0.8) 0%, rgba(14, 14, 14, 0.4) 100%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--orange-primary);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
-            color: var(--white-bg);
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Particles */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background-color: var(--orange-primary);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Main Content */
-        main {
-            position: relative;
-            min-height: 100vh;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 4rem 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .about-image {
-            border-radius: var(--radius);
-            overflow: hidden;
-            position: relative;
-            height: 400px;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Photos Section */
-        .search-box {
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass);
-            color: var(--text);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--orange-primary);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
-        }
-
-        .masonry-grid {
-            column-count: 1;
-            column-gap: 1.5rem;
-        }
-
-        @media (min-width: 576px) {
-            .masonry-grid {
-                column-count: 2;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .masonry-grid {
-                column-count: 3;
-            }
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .masonry-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .masonry-item img {
-            width: 100%;
-            height: auto;
-            transition: var(--transition);
-        }
-
-        .masonry-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: var(--radius);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: blue;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 2rem;
-        }
-
-        .lightbox-button {
-            background: var(--glass);
-            border: none;
-            color: blue;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .lightbox-button:hover {
-            background: var(--orange-primary);
-            color: var(--white-bg);
-        }
-
-        /* Videos Section */
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .video-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .video-item {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            background: var(--card);
-        }
-
-        .video-item iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--white-card);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .video-placeholder:hover {
-            background: var(--orange-primary);
-        }
-
-        .video-placeholder:hover .play-icon {
-            color: var(--white-bg);
-        }
-
-        .play-icon {
-            font-size: 4rem;
-            color: var(--orange-primary);
-            transition: var(--transition);
-        }
-
-        /* Stories, Jokes, News Sections */
-        .content-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .content-item {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .content-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-item h3 {
-            margin-bottom: 1rem;
-            color: var(--orange-primary);
-        }
-
-        /* Motivation Section */
-        .motivation-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            justify-content: center;
-        }
-
-        .motivation-tab {
-            padding: 0.75rem 1.5rem;
-            background: var(--card);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .motivation-tab.active {
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
-            color: var(--white-bg);
-            border-color: var(--orange-primary);
-        }
-
-        .quote-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .quote-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .quote-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quote-card:before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 10px;
-            font-size: 8rem;
-            color: var(--orange-primary);
-            opacity: 0.1;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .quote-card:hover {
-            transform: translateY(-5px) rotate(1deg);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .quote-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-source {
-            font-weight: 600;
-            color: var(--orange-primary);
-            text-align: right;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        @media (min-width: 992px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--white-bg);
-            font-size: 1.5rem;
-        }
-
-        .contact-form {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--glass-border);
-            background: var(--glass);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--orange-primary);
-            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
-        }
-
-        textarea.form-input {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-button {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
-            color: var(--white-bg);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .form-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Messages Panel */
-        .messages-panel {
-            margin-top: 4rem;
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .message-item {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .message-item:last-child {
-            border-bottom: none;
-        }
-
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .message-name {
-            font-weight: 600;
-            color: var(--orange-primary);
-        }
-
-        .message-date {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .message-email {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .message-content {
-            margin-bottom: 1rem;
-        }
-
-        .message-actions {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .delete-button {
-            padding: 0.5rem 1rem;
-            background: #ff4757;
-            color: blue;
-            border: none;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .delete-button:hover {
-            background: #ff3744;
-        }
-
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--card);
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1000;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .toast.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast-icon {
-            color: var(--orange-primary);
-            font-size: 1.5rem;
-        }
-
-        /* Quick Switcher */
-        .quick-switcher {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            padding-top: 10%;
-        }
-
-        .quick-switcher.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .switcher-content {
-            background: var(--card);
-            width: 90%;
-            max-width: 600px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-white);
-            transform: translateY(-50px);
-            transition: var(--transition);
-        }
-
-        .quick-switcher.active .switcher-content {
-            transform: translateY(0);
-        }
-
-        .switcher-input {
-            width: 100%;
-            padding: 1.5rem;
-            border: none;
-            background: transparent;
-            color: var(--text);
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .switcher-input:focus {
-            outline: none;
-        }
-
-        .switcher-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .switcher-item {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .switcher-item:last-child {
-            border-bottom: none;
-        }
-
-        .switcher-item:hover, 
-        .switcher-item.selected {
-            background: var(--glass);
-        }
-
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--orange-primary), var(--orange-white));
-            color: var(--white-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--card);
-            padding: 3rem 0;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--glass);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background: var(--orange-primary);
-            color: var(--white-bg);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: flex;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--card);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-            }
-
-            nav ul.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .hero {
-                height: 80vh;
-            }
-
-            .hero-content {
-                padding: 1rem;
-            }
-
-            .card, .content-item, .quote-card {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-
-            .particle {
-                animation: none !important;
-            }
-        }
-
-        /* blue mode specific adjustments */
-        [data-theme="blue"] .hero-overlay {
-            background: linear-gradient(45deg, rgba(14, 14, 14, 0.9) 0%, rgba(14, 14, 14, 0.6) 100%);
-        }
-
-        /* Utility classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-1 { margin-top: 1rem; }
-        .mt-2 { margin-top: 2rem; }
-        .mt-3 { margin-top: 3rem; }
-        .mt-4 { margin-top: 4rem; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mb-3 { margin-bottom: 3rem; }
-        .mb-4 { margin-bottom: 4rem; }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prabhat Panthi | Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-gold: #ffd700;
+      --dark-gold: #b8860b;
+      --light-gold: #fffacd;
+      --metallic-gold: #e6b800;
+      --bg-light: #faf8e6;
+      --text-color: #2c2c2c;
+    }
+
+    body {
+      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav {
+      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--primary-gold);
+      color: var(--text-color);
+    }
+
+    .search-bar {
+      text-align: center;
+      margin: 15px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: min(80%, 500px);
+      border-radius: 5px;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .home-banner {
+      text-align: center;
+    }
+
+    .home-banner img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 4px solid var(--primary-gold);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+      margin-bottom: 15px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--metallic-gold);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .tabs button:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    .tab-content {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      border: 1px solid var(--metallic-gold);
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .quote, .story, .joke {
+      margin: 15px 0;
+      padding: 15px;
+      background: var(--light-gold);
+      border-left: 4px solid var(--primary-gold);
+      border-radius: 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 2px solid var(--dark-gold);
+      background: rgba(255, 255, 255, 0.9);
+      box-sizing: border-box;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    .dark-mode {
+      background: #2b2b2b;
+      color: #f0f0f0;
+    }
+
+    .dark-mode nav {
+      background: linear-gradient(to right, #4a3c00, #6b5400);
+    }
+
+    .dark-mode .tabs button {
+      background: var(--dark-gold);
+      color: white;
+    }
+
+    .dark-mode .tabs button:hover {
+      background: var(--primary-gold);
+    }
+
+    .dark-mode .tab-content {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: var(--primary-gold);
+      color: var(--text-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--dark-gold);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .home-banner img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      .search-bar input {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
-<body data-theme="blue">
-    <div class="loader">
-        <img src="site.png" alt="Loading..." class="loader-emblem">
+
+<body>
+  <header>
+    <h1>Prabhat Panthi | Official Website</h1>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showTab('home')">Home</a>
+    <a href="#" onclick="showTab('about')">About Me</a>
+    <a href="#" onclick="showTab('photos')">Photos</a>
+    <a href="#" onclick="showTab('videos')">Videos</a>
+    <a href="#" onclick="showTab('stories')">Stories</a>
+    <a href="#" onclick="showTab('jokes')">Jokes</a>
+    <a href="#" onclick="showTab('news')">News</a>
+    <a href="#" onclick="showTab('motivation')">Motivation</a>
+    <a href="#" onclick="showTab('contact')">Contact</a>
+  </nav>
+
+  
+  <section id="home" class="active">
+    <div class="home-banner">
+      <img src="images/neww.jpg" alt="Prabhat Panthi" />
     </div>
+    <h2>Welcome to My World</h2>
+    <p>
+      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
+      My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
+      and then to the vibrant town of Murgiya where I grew up.
+    </p>
+    <p>
+      With a Bachelor’s degree completed, I have always been enthusiastic about technology,
+      storytelling, and spreading positivity through creative content.
+      This website is my personal space to share photos, videos, inspiring stories, jokes,
+      and powerful motivational quotes from various holy scriptures.
+    </p>
+    <p>
+      I believe in continuous learning, evolving, and connecting with people worldwide.
+      Here, you'll not only find glimpses of my personal journey but also content
+      that aims to motivate and entertain.
+    </p>
+    <p>
+      Feel free to explore and get in touch with me through the Contact section below.
+      Let's stay connected and grow together!
+    </p>
+  </section>
 
-    <header>
-        <div class="container header-container">
-            <div class="logo-container">
-                <div class="flag-gif">
-                    <img src="gif.gif" alt="Flag">
-                </div>
-                <img src="site.png" alt="Prabhat Panthi" class="emblem-img">
-            </div>
-
-            <button class="mobile-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav>
-                <ul>
-                    <li><a href="#home" class="nav-link active" data-route="home">Home</a></li>
-                    <li><a href="#about" class="nav-link" data-route="about">About Me</a></li>
-                    <li><a href="#photos" class="nav-link" data-route="photos">Photos</a></li>
-                    <li><a href="#videos" class="nav-link" data-route="videos">Videos</a></li>
-                    <li><a href="#stories" class="nav-link" data-route="stories">Stories</a></li>
-                    <li><a href="#jokes" class="nav-link" data-route="jokes">Jokes</a></li>
-                    <li><a href="#news" class="nav-link" data-route="news">News</a></li>
-                    <li><a href="#motivation" class="nav-link" data-route="motivation">Motivation</a></li>
-                    <li><a href="#contact" class="nav-link" data-route="contact">Contact</a></li>
-                </ul>
-            </nav>
-
-            <button class="theme-toggle" aria-label="Toggle blue mode">
-                🌙
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section id="home" class="tab-content active">
-            <div class="hero">
-                <div class="hero-bg" id="hero-parallax"></div>
-                <div class="hero-overlay"></div>
-                <div class="particles" id="particles"></div>
-                
-                <div class="hero-content">
-                    <h1 class="hero-title">Welcome to My World</h1>
-                    <p class="hero-subtitle">Prabhat Panthi | Official Website</p>
-                    <a href="#about" class="hero-cta">Explore More</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">About Me</h2>
-                
-                <div class="about-grid">
-                    <div class="about-image">
-                        <img src="images/newa.jpg" alt="Prabhat Panthi" loading="lazy">
-                    </div>
-                    
-                    <div class="about-content">
-                        <div class="card">
-                            <h3>Hello, I'm Prabhat Panthi</h3>
-                            <p>Welcome to my official website! I'm a passionate individual who loves to share stories, jokes, and motivational content with the world. This platform is a reflection of my journey, thoughts, and experiences.</p>
-                            <p>I believe in the power of positivity and the impact it can have on people's lives. Through this website, I aim to inspire, entertain, and connect with like-minded individuals.</p>
-                            <p>Feel free to explore the different sections of my website. You'll find photos from my life, videos that inspire me, stories that have touched my heart, jokes to make you smile, and motivational quotes to uplift your spirit.</p>
-                            <p>Thank you for visiting, and I hope you find something here that resonates with you!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="photos" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Photos</h2>
-                
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search photos..." id="photo-search">
-                </div>
-                
-                <div class="masonry-grid">
-                    <div class="masonry-item">
-                        <img src="images/photo.jpg" alt="Photo 1" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/photop.jpg" alt="Photo 2" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/photopp.jpg" alt="Photo 3" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/photoppp.jpg" alt="Photo 4" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/newb.jpg" alt="Photo 5" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/newc.jpg" alt="Photo 6" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/neww.jpg" alt="Photo 7" loading="lazy">
-                    </div>
-                    <div class="masonry-item">
-                        <img src="images/brp.jpg" alt="Photo 8" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="videos" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Videos</h2>
-                
-                <div class="video-grid">
-                    <!-- Placeholder for video content -->
-                    <div class="video-item">
-                        <div class="video-placeholder">
-                            <div class="play-icon">▶</div>
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-placeholder">
-                            <div class="play-icon">▶</div>
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <div class="video-placeholder">
-                            <div class="play-icon">▶</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="stories" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Stories</h2>
-                
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search stories..." id="story-search">
-                </div>
-                
-                <div class="content-list">
-                    <article class="content-item searchable">
-                        <h3>Chester Bennington: A Voice That Touched Millions</h3>
-                        <p>Chester Bennington, the lead vocalist of Linkin Park, was more than just a singer. He was a beacon of hope for many struggling with mental health issues. His raw, emotional lyrics resonated with fans worldwide, making Linkin Park one of the most influential bands of the 21st century.</p>
-                        <p>Despite his success, Chester battled demons throughout his life. He was open about his struggles with addiction, depression, and childhood trauma. Through his music, he gave voice to the pain and anguish that many people felt but couldn't express.</p>
-                        <p>Tragically, Chester took his own life on July 20, 2017. His death was a devastating loss to the music community and his countless fans. However, his legacy lives on through his music, which continues to inspire and comfort people around the world.</p>
-                        <p>Chester's story is a reminder that even those who seem to have it all can be fighting silent battles. It emphasizes the importance of mental health awareness and the need for compassion and understanding.</p>
-                    </article>
-                    
-                    <article class="content-item searchable">
-                        <h3>APJ Abdul Kalam: The People's President</h3>
-                        <p>Dr. APJ Abdul Kalam, known as the Missile Man of India, was a scientist who became the 11th President of India. Despite his achievements, he remained humble and accessible, earning him the title of the People's President.</p>
-                        <p>Kalam's journey from a small town in Tamil Nadu to the Rashtrapati Bhavan is incredibly inspiring. He faced numerous challenges but never let them deter him from his goals. His dedication to science and education transformed India's space and defense capabilities.</p>
-                        <p>Even after his presidency, Kalam continued to inspire youth through his speeches and books. He believed that dreams were not what you see in sleep, but things that don't let you sleep. His life was a testament to this philosophy.</p>
-                        <p>Kalam passed away in 2015 while doing what he loved most - teaching. His legacy continues to inspire millions to dream big and work hard to achieve their goals.</p>
-                    </article>
-                    
-                    <article class="content-item searchable">
-                        <h3>Elon Musk: The Real-Life Iron Man</h3>
-                        <p>Elon Musk is perhaps one of the most visionary entrepreneurs of our time. From co-founding PayPal to leading SpaceX and Tesla, Musk has consistently pushed the boundaries of what's possible.</p>
-                        <p>Musk's journey hasn't been smooth. He faced numerous failures and near-bankruptcies. At one point, both Tesla and SpaceX were on the verge of collapse. However, his relentless determination and belief in his vision saw him through these challenges.</p>
-                        <p>Today, SpaceX is revolutionizing space travel, while Tesla is accelerating the world's transition to sustainable energy. Musk's ambitious projects, like the Hyperloop and Neuralink, continue to capture the world's imagination.</p>
-                        <p>Musk's story teaches us that failure is not the end but a stepping stone to success. It shows that with enough passion and perseverance, even the most audacious dreams can become reality.</p>
-                    </article>
-                    
-                    <article class="content-item searchable">
-                        <h3>Oprah Winfrey: From Poverty to Powerhouse</h3>
-                        <p>Oprah Winfrey's story is the epitome of the American dream. Born into poverty in rural Mississippi, she overcame numerous obstacles to become one of the most influential media personalities in the world.</p>
-                        <p>Oprah faced a difficult childhood marked by poverty and abuse. However, she found solace in education and public speaking. Her big break came when she was hired to host a local talk show, which eventually became The Oprah Winfrey Show.</p>
-                        <p>The show became a cultural phenomenon, making Oprah a household name. She used her platform to address important issues and inspire millions of viewers. Beyond television, she built a media empire and became a philanthropist.</p>
-                        <p>Oprah's journey demonstrates that your past doesn't define your future. It shows that with determination, resilience, and hard work, you can overcome any obstacle and achieve incredible success.</p>
-                    </article>
-                    
-                    <article class="content-item searchable">
-                        <h3>Malala Yousafzai: The Girl Who Stood Up for Education</h3>
-                        <p>Malala Yousafzai's courage and determination have made her a global symbol of the fight for girls' education. At just 15 years old, she was shot by the Taliban for advocating for girls' right to education in Pakistan.</p>
-                        <p>Instead of silencing her, the assassination attempt only amplified her voice. After recovering, Malala continued her activism on a global scale. In 2014, she became the youngest-ever Nobel Prize laureate.</p>
-                        <p>Malala's story is a powerful reminder of the transformative power of education. It shows that even in the face of extreme danger, one person's voice can inspire change around the world.</p>
-                        <p>Through the Malala Fund, she continues to work towards a world where every girl can learn and lead without fear. Her journey teaches us that age is no barrier to making a difference.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="jokes" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Jokes</h2>
-                
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search jokes..." id="joke-search">
-                </div>
-                
-                <div class="content-list">
-                    <div class="content-item searchable">
-                        <h3>Tech Support</h3>
-                        <p>Tech Support: "I need you to right-click on the Desktop."</p>
-                        <p>Customer: "Ok."</p>
-                        <p>Tech Support: "Did you get a pop-up menu?"</p>
-                        <p>Customer: "No."</p>
-                        <p>Tech Support: "Ok. Right click again. Do you see a pop-up menu?"</p>
-                        <p>Customer: "No."</p>
-                        <p>Tech Support: "Ok, sir. Can you tell me what you have done up until now?"</p>
-                        <p>Customer: "Sure, you told me to write 'click' and I wrote 'click'."</p>
-                    </div>
-                    
-                    <div class="content-item searchable">
-                        <h3>The Optimist</h3>
-                        <p>An optimist and a pessimist were standing in front of a closed door.</p>
-                        <p>The pessimist said, "This door is closed forever. We'll never get through."</p>
-                        <p>The optimist replied, "Nonsense! I'm sure it's locked for a reason. Maybe there's something wonderful on the other side."</p>
-                        <p>Just then, the door opened from the other side and a man walked out.</p>
-                        <p>The pessimist said, "See? He's coming out. We missed our chance."</p>
-                        <p>The optimist said, "But now we can go in! The door is open!"</p>
-                        <p>The man who came out said, "It's a broom closet. There's nothing in there but cleaning supplies."</p>
-                        <p>The optimist said, "Perfect! Now we can clean up and start fresh!"</p>
-                    </div>
-                    
-                    <div class="content-item searchable">
-                        <h3>The Bank Loan</h3>
-                        <p>A man asked his banker for a loan for two weeks.</p>
-                        <p>The banker asked, "What collateral can you offer?"</p>
-                        <p>The man pointed to a parked Rolls Royce outside. "That's my car. I'll leave it with you as collateral."</p>
-                        <p>The banker agreed and gave him $50,000. Two weeks later, the man returned, paid back the loan plus interest, and retrieved his car.</p>
-                        <p>The banker asked, "Sir, if I may ask, why would someone who drives a Rolls Royce need a $50,000 loan for two weeks?"</p>
-                        <p>The man smiled and said, "Where else could I park my Rolls Royce for two weeks in downtown New York for just $200?"</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="news" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">News</h2>
-                
-                <div class="search-box">
-                    <input type="text" class="search-input" placeholder="Search news..." id="news-search">
-                </div>
-                
-                <div class="content-list" id="news-container">
-                    <!-- News content will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <section id="motivation" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Motivation</h2>
-                
-                <div class="motivation-tabs">
-                    <div class="motivation-tab active" data-quote-type="quran">Quran</div>
-                    <div class="motivation-tab" data-quote-type="bible">Bible</div>
-                    <div class="motivation-tab" data-quote-type="gita">Gita</div>
-                    <div class="motivation-tab" data-quote-type="buddha">Buddha</div>
-                    <div class="motivation-tab" data-quote-type="other">Other</div>
-                </div>
-                
-                <div class="quote-grid" id="quotes-container">
-                    <!-- Quotes will be populated by JavaScript based on selection -->
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="tab-content">
-            <div class="container">
-                <h2 class="section-title">Contact</h2>
-                
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Get In Touch</h3>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+977-9848605969</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>prabhatpanthi007@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4>About Communication</h4>
-                            <p>I value every message I receive and try to respond to all inquiries within 24-48 hours. Whether you have a question, suggestion, or just want to say hello, don't hesitate to reach out!</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form">
-                        <h3>Send Message</h3>
-                        
-                        <form id="message-form">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Your Name</label>
-                                <input type="text" id="name" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="form-label">Your Email</label>
-                                <input type="email" id="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message" class="form-label">Your Message</label>
-                                <textarea id="message" class="form-input" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="form-button">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="messages-panel" id="messages-panel">
-                    <h3>Saved Messages</h3>
-                    <div id="messages-list">
-                        <!-- Messages will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <img src="" alt="" id="lightbox-image">
-            <button class="lightbox-close" aria-label="Close lightbox">×</button>
-        </div>
-        <div class="lightbox-nav">
-            <button class="lightbox-button" id="lightbox-prev" aria-label="Previous image">❮</button>
-            <button class="lightbox-button" id="lightbox-next" aria-label="Next image">❯</button>
-        </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="home-banner">
+      <img src="images/newa.jpg" alt="Prabhat Panthi About" />
     </div>
+    <p>
+      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
+      Later, my family moved to Bhairahawa where I experienced a vibrant city life.
+      Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
+    </p>
+    <p>
+      From a young age, I was curious about technology and storytelling.
+      This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
+    </p>
+    <p>
+      Besides digital content, I have a keen interest in reading motivational books,
+      listening to spiritual discourses, and understanding various cultures and philosophies.
+    </p>
+    <p>
+      One of my core beliefs is that every person has a unique story,
+      and through creativity and positive mindset, we can all inspire each other to grow.
+    </p>
+    <p>
+      Through this platform, I aim to share stories that uplift spirits,
+      jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
+      Every piece of content here reflects my journey of learning and sharing.
+    </p>
+    <p>
+      Outside the digital world, I enjoy traveling, meeting new people,
+      and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
+    </p>
+    <p>
+      Thank you for visiting my website. Let’s continue this journey together,
+      sharing laughter, wisdom, and positivity across borders!
+    </p>
+  </section>
 
-    <div class="toast" id="toast">
-        <div class="toast-icon">✓</div>
-        <div class="toast-message">Message saved locally</div>
+  <section id="photos">
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+      <img src="images/photo.jpg" alt="Photo 1" />
+      <img src="images/photop.jpg" alt="Photo 2" />
+      <img src="images/photopp.jpg" alt="Photo 3" />
+      <img src="images/photoppp.jpg" alt="Photo 4" />
+      <img src="images/newb.jpg" alt="Photo 5" />
+      <img src="images/newc.jpg" alt="Photo 6" />
+      <img src="images/neww.jpg" alt="Photo 7" />
+      <img src="images/brp.jpg" alt="Photo 8" />
     </div>
+  </section>
 
-    <div class="quick-switcher" id="quick-switcher">
-        <div class="switcher-content">
-            <input type="text" class="switcher-input" placeholder="Type to search sections..." id="switcher-input">
-            <div class="switcher-list" id="switcher-list">
-                <div class="switcher-item" data-route="home">Home</div>
-                <div class="switcher-item" data-route="about">About Me</div>
-                <div class="switcher-item" data-route="photos">Photos</div>
-                <div class="switcher-item" data-route="videos">Videos</div>
-                <div class="switcher-item" data-route="stories">Stories</div>
-                <div class="switcher-item" data-route="jokes">Jokes</div>
-                <div class="switcher-item" data-route="news">News</div>
-                <div class="switcher-item" data-route="motivation">Motivation</div>
-                <div class="switcher-item" data-route="contact">Contact</div>
-            </div>
-        </div>
+  <section id="videos">
+    <h2>Videos</h2>
+    <p>Video section here...</p>
+  </section>
+
+  <section id="stories">
+    <h2>Success Stories</h2>
+    <div class="story searchable">
+      <h3>The Journey of Chester Charles Bennington</h3>
+       <p>
+    Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
+  </p>
+  <p>
+    However, <strong>music became his ultimate escape</strong>. Influenced by bands like Stone Temple Pilots, Chester developed a unique, raw vocal style that could switch from soothing melodies to powerful screams, capturing the emotions of millions.
+  </p>
+  <p>
+    Chester’s life took a pivotal turn when he joined <strong>Linkin Park in 1999</strong>. The band’s debut album <em>“Hybrid Theory” (2000)</em> became a global phenomenon, giving a voice to a generation dealing with frustration, identity, and emotional struggles. Songs like <em>“In the End”</em>, <em>“Crawling”</em>, and <em>“Numb”</em> resonated deeply with fans worldwide.
+  </p>
+  <p>
+    Despite his success, Chester continuously battled with inner demons. He used his platform to speak openly about mental health, encouraging others to seek help and never be ashamed of their struggles. Tragically, Chester passed away on <strong>July 20, 2017</strong>, leaving behind a legacy that still inspires millions.
+  </p>
+  <p>
+    Chester’s journey from a tormented childhood to becoming a global rock icon is a story of <strong>pain, passion, and the power of art to heal</strong>. His voice lives on, reminding us that <em>“it's okay to not be okay”</em> — and that seeking help is a sign of strength, not weakness.
+  </p>
     </div>
-
-    <div class="back-to-top" id="back-to-top" aria-label="Back to top">
-        ↑
+    <div class="story searchable">
+      <h3>From Streets to Success: APJ Abdul Kalam</h3>
+      <p>
+        Dr. APJ Abdul Kalam, former President of India, grew up in a modest family, selling newspapers to support his education.
+        His dedication to science led him to become a key figure in India's space and missile programs.
+        Known as the "Missile Man," his story teaches us that humble beginnings can lead to extraordinary achievements through perseverance.
+      </p>
     </div>
+    <div class="story searchable">
+      <h3>Elon Musk: Visionary Innovator</h3>
+      <p>
+        Elon Musk, born in South Africa, faced numerous setbacks before becoming a global icon of innovation.
+        From co-founding PayPal to leading Tesla and SpaceX, Musk's relentless pursuit of ambitious goals, like colonizing Mars, shows the power of thinking big and never giving up, even after failures.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Oprah Winfrey: Rising Above Adversity</h3>
+      <p>
+        Oprah Winfrey overcame a childhood of poverty and abuse to become one of the most influential media personalities in the world.
+        Through her talk show and philanthropy, she empowered millions, proving that resilience and compassion can transform lives and inspire global change.
+      </p>
+    </div>
+    <div class="story searchable">
+      <h3>Malala Yousafzai: Voice for Education</h3>
+      <p>
+        Malala Yousafzai, a Pakistani activist, survived an assassination attempt by the Taliban for advocating girls' education.
+        At age 17, she became the youngest Nobel Peace Prize laureate. Her courage and dedication continue to inspire millions to fight for education and equality.
+      </p>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Facebook">f</a>
-                    <a href="#" class="social-link" aria-label="Twitter">t</a>
-                    <a href="#" class="social-link" aria-label="Instagram">i</a>
-                    <a href="#" class="social-link" aria-label="YouTube">y</a>
-                </div>
-                <p class="copyright">© <span id="current-year"></span> Prabhat Panthi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <section id="jokes">
+    <h2>Jokes</h2>
+    <div class="joke searchable">
+      <p>Why did the computer go to art school? Because it wanted to learn how to draw a better "byte"!</p>
+    </div>
+    <div class="joke searchable">
+      <p>Why don't programmers prefer dark mode? Because the light attracts bugs.</p>
+    </div>
+    <div class="joke searchable">
+      <p>What do you call a dinosaur that takes care of its teeth? A Flossiraptor!</p>
+    </div>
+  </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize variables
-            const body = document.body;
-            const loader = document.querySelector('.loader');
-            const header = document.querySelector('header');
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const nav = document.querySelector('nav ul');
-            const themeToggle = document.querySelector('.theme-toggle');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const backToTop = document.getElementById('back-to-top');
-            const quickSwitcher = document.getElementById('quick-switcher');
-            const switcherInput = document.getElementById('switcher-input');
-            const switcherItems = document.querySelectorAll('.switcher-item');
-            const heroTitle = document.querySelector('.hero-title');
-            const heroSubtitle = document.querySelector('.hero-subtitle');
-            const heroCta = document.querySelector('.hero-cta');
-            const heroBg = document.querySelector('.hero-bg');
-            const particlesContainer = document.getElementById('particles');
-            const masonryItems = document.querySelectorAll('.masonry-item');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const lightboxClose = document.querySelector('.lightbox-close');
-            const lightboxPrev = document.getElementById('lightbox-prev');
-            const lightboxNext = document.getElementById('lightbox-next');
-            const messageForm = document.getElementById('message-form');
-            const messagesList = document.getElementById('messages-list');
-            const toast = document.getElementById('toast');
-            const photoSearch = document.getElementById('photo-search');
-            const storySearch = document.getElementById('story-search');
-            const jokeSearch = document.getElementById('joke-search');
-            const newsSearch = document.getElementById('news-search');
-            const motivationTabs = document.querySelectorAll('.motivation-tab');
-            const quotesContainer = document.getElementById('quotes-container');
-            const newsContainer = document.getElementById('news-container');
-            const currentYear = document.getElementById('current-year');
+  <section id="news">
+    <h2>News</h2>
+    <p class="searchable">News updates here...</p>
+  </section>
 
-            // Set current year
-            currentYear.textContent = new Date().getFullYear();
+  <section id="motivation">
+    <h2>Motivation</h2>
+    <div class="tabs">
+      <button onclick="showMotivationTab('quran')">Quran</button>
+      <button onclick="showMotivationTab('bible')">Bible</button>
+      <button onclick="showMotivationTab('gita')">Gita</button>
+      <button onclick="showMotivationTab('buddha')">Buddha</button>
+    </div>
+    <div id="quran" class="tab-content active">
+      <div class="quote">
+        <p>"And whoever puts their trust in Allah, then He ˹alone˺ is sufficient for them." – Quran 65:3</p>
+      </div>
+      <div class="quote">
+        <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
+      </div>
+      <div class="quote">
+        <p>"Indeed, Allah will not change the condition of a people until they change what is in themselves." – Quran 13:11</p>
+      </div>
+      <div class="quote">
+        <p>"Call upon Me; I will respond to you." – Quran 40:60</p>
+      </div>
+    </div>
+    <div id="bible" class="tab-content">
+      <div class="quote">
+        <p>"I can do all things through Christ who strengthens me." – Philippians 4:13</p>
+      </div>
+      <div class="quote">
+        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
+      </div>
+      <div class="quote">
+        <p>"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
+      </div>
+      <div class="quote">
+        <p>"Love your neighbor as yourself." – Mark 12:31</p>
+      </div>
+    </div>
+    <div id="gita" class="tab-content">
+      <div class="quote">
+        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</p>
+      </div>
+      <div class="quote">
+        <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
+      </div>
+      <div class="quote">
+        <p>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</p>
+      </div>
+      <div class="quote">
+        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place." – Bhagavad Gita 6:19</p>
+      </div>
+    </div>
+    <div id="buddha" class="tab-content">
+      <div class="quote">
+        <p>"The mind is everything. What you think, you become." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." – Buddha</p>
+      </div>
+      <div class="quote">
+        <p>"Peace comes from within. Do not seek it without." – Buddha</p>
+      </div>
+    </div>
+  </section>
 
-            // Initialize Lenis smooth scroll
-            const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                orientation: 'vertical',
-                gestureOrientation: 'vertical',
-                smoothWheel: true,
-                wheelMultiplier: 1,
-                touchMultiplier: 2,
-            });
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Phone: +977-9848605969</p>
+    <p>Email: prabhatpanthi007@gmail.com</p>
+    <div class="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea rows="5" id="message" placeholder="Your Feedback / Comment" required></textarea>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+  </section>
 
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-            requestAnimationFrame(raf);
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      if (tabId === 'motivation') showMotivationTab('quran');
+    }
 
-            // Hide loader after 1.5s
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                
-                // Animate hero elements
-                gsap.to(heroTitle, { duration: 1, opacity: 1, y: 0, ease: 'power3.out' });
-                gsap.to(heroSubtitle, { duration: 1, opacity: 1, y: 0, delay: 0.3, ease: 'power3.out' });
-                gsap.to(heroCta, { duration: 1, opacity: 1, y: 0, delay: 0.6, ease: 'power3.out' });
-                
-                // Create particles
-                createParticles();
-            }, 1500);
+    function showMotivationTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
+      const target = document.getElementById(tabName);
+      if (target) target.classList.add('active');
+    }
 
-            // Create particles function
-            function createParticles() {
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Random size between 2px and 5px
-                    const size = Math.random() * 3 + 2;
-                    particle.style.width = `${size}px`;
-                    particle.style.height = `${size}px`;
-                    
-                    // Random position
-                    const posX = Math.random() * 100;
-                    const posY = Math.random() * 100;
-                    particle.style.left = `${posX}%`;
-                    particle.style.top = `${posY}%`;
-                    
-                    // Random animation delay
-                    const delay = Math.random() * 15;
-                    particle.style.animationDelay = `${delay}s`;
-                    
-                    particlesContainer.appendChild(particle);
-                }
-            }
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
 
-            // Mobile navigation toggle
-            mobileToggle.addEventListener('click', () => {
-                nav.classList.toggle('active');
-                mobileToggle.classList.toggle('active');
-            });
+    function searchContent() {
+      let filter = document.getElementById('searchInput').value.toUpperCase();
+      let searchableSections = document.querySelectorAll('.searchable');
 
-            // Theme toggle functionality
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'blue' ? 'light' : 'blue';
-                
-                body.setAttribute('data-theme', newTheme);
-                themeToggle.textContent = newTheme === 'blue' ? '🌙' : '☀️';
-                
-                // Save theme preference to localStorage
-                localStorage.setItem('theme', newTheme);
-            });
+      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
 
-            // Check for saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                body.setAttribute('data-theme', savedTheme);
-                themeToggle.textContent = savedTheme === 'blue' ? '🌙' : '☀️';
-            }
+      let found = false;
+      searchableSections.forEach((el) => {
+        if (el.innerText.toUpperCase().indexOf(filter) > -1) {
+          el.parentElement.classList.add('active');
+          found = true;
+        }
+      });
 
-            // Navigation and routing
-            function navigateTo(route) {
-                // Update active nav link
-                navLinks.forEach(link => {
-                    if (link.getAttribute('data-route') === route) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-                
-                // Show corresponding tab content
-                tabContents.forEach(tab => {
-                    if (tab.id === route) {
-                        tab.classList.add('active');
-                        gsap.fromTo(tab, 
-                            { opacity: 0, y: 20 },
-                            { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }
-                        );
-                    } else {
-                        tab.classList.remove('active');
-                    }
-                });
-                
-                // Update URL hash
-                window.location.hash = route;
-                
-                // Update page title
-                document.title = `Prabhat Panthi | ${route.charAt(0).toUpperCase() + route.slice(1)}`;
-                
-                // Close mobile nav if open
-                nav.classList.remove('active');
-                mobileToggle.classList.remove('active');
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-            }
+      if (!found && filter === '') {
+        showTab('home');
+      }
+    }
 
-            // Add click event to nav links
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const route = link.getAttribute('data-route');
-                    navigateTo(route);
-                });
-            });
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
 
-            // Check URL hash on load
-            if (window.location.hash) {
-                const route = window.location.hash.substring(1);
-                if (document.getElementById(route)) {
-                    navigateTo(route);
-                }
-            }
-
-            // Back to top button
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) {
-                    backToTop.classList.add('visible');
-                    
-                    // Add scrolled class to header
-                    header.classList.add('scrolled');
-                } else {
-                    backToTop.classList.remove('visible');
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            backToTop.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // Quick switcher functionality
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                    e.preventDefault();
-                    quickSwitcher.classList.add('active');
-                    switcherInput.focus();
-                }
-                
-                if (e.key === 'Escape') {
-                    quickSwitcher.classList.remove('active');
-                }
-            });
-
-            quickSwitcher.addEventListener('click', (e) => {
-                if (e.target === quickSwitcher) {
-                    quickSwitcher.classList.remove('active');
-                }
-            });
-
-            switcherInput.addEventListener('input', () => {
-                const searchText = switcherInput.value.toLowerCase();
-                
-                switcherItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(searchText)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-
-            switcherItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const route = item.getAttribute('data-route');
-                    navigateTo(route);
-                    quickSwitcher.classList.remove('active');
-                    switcherInput.value = '';
-                    
-                    // Show all items again after selection
-                    switcherItems.forEach(i => i.style.display = 'block');
-                });
-            });
-
-            // Lightbox functionality
-            masonryItems.forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    const imgSrc = item.querySelector('img').src;
-                    lightboxImage.src = imgSrc;
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Store current image index
-                    lightboxImage.setAttribute('data-index', index);
-                });
-            });
-
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            lightboxPrev.addEventListener('click', () => {
-                let currentIndex = parseInt(lightboxImage.getAttribute('data-index'));
-                let prevIndex = currentIndex - 1;
-                
-                if (prevIndex < 0) {
-                    prevIndex = masonryItems.length - 1;
-                }
-                
-                const prevImg = masonryItems[prevIndex].querySelector('img').src;
-                lightboxImage.src = prevImg;
-                lightboxImage.setAttribute('data-index', prevIndex);
-            });
-
-            lightboxNext.addEventListener('click', () => {
-                let currentIndex = parseInt(lightboxImage.getAttribute('data-index'));
-                let nextIndex = currentIndex + 1;
-                
-                if (nextIndex >= masonryItems.length) {
-                    nextIndex = 0;
-                }
-                
-                const nextImg = masonryItems[nextIndex].querySelector('img').src;
-                lightboxImage.src = nextImg;
-                lightboxImage.setAttribute('data-index', nextIndex);
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (lightbox.classList.contains('active')) {
-                    if (e.key === 'Escape') {
-                        closeLightbox();
-                    }
-                    
-                    if (e.key === 'ArrowLeft') {
-                        lightboxPrev.click();
-                    }
-                    
-                    if (e.key === 'ArrowRight') {
-                        lightboxNext.click();
-                    }
-                }
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-
-            // Contact form functionality
-            messageForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                const formData = {
-                    name,
-                    email,
-                    message,
-                    date: new Date().toISOString()
-                };
-                
-                // Save to localStorage
-                saveMessage(formData);
-                
-                // Show toast notification
-                showToast('Message saved locally');
-                
-                // Reset form
-                messageForm.reset();
-                
-                // Refresh messages list
-                displayMessages();
-            });
-
-            function saveMessage(message) {
-                let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-                messages.push(message);
-                localStorage.setItem('messages', JSON.stringify(messages));
-            }
-
-            function displayMessages() {
-                const messages = JSON.parse(localStorage.getItem('messages') || '[]');
-                messagesList.innerHTML = '';
-                
-                if (messages.length === 0) {
-                    messagesList.innerHTML = '<p class="text-center">No messages yet.</p>';
-                    return;
-                }
-                
-                messages.forEach((message, index) => {
-                    const messageElement = document.createElement('div');
-                    messageElement.classList.add('message-item');
-                    
-                    const date = new Date(message.date).toLocaleDateString();
-                    
-                    messageElement.innerHTML = `
-                        <div class="message-header">
-                            <div class="message-name">${message.name}</div>
-                            <div class="message-date">${date}</div>
-                        </div>
-                        <div class="message-email">${message.email}</div>
-                        <div class="message-content">${message.message}</div>
-                        <div class="message-actions">
-                            <button class="delete-button" data-index="${index}">Delete</button>
-                        </div>
-                    `;
-                    
-                    messagesList.appendChild(messageElement);
-                });
-                
-                // Add event listeners to delete buttons
-                const deleteButtons = document.querySelectorAll('.delete-button');
-                deleteButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const index = button.getAttribute('data-index');
-                        deleteMessage(index);
-                    });
-                });
-            }
-
-            function deleteMessage(index) {
-                let messages = JSON.parse(localStorage.getItem('messages') || '[]');
-                messages.splice(index, 1);
-                localStorage.setItem('messages', JSON.stringify(messages));
-                displayMessages();
-            }
-
-            function showToast(message) {
-                const toastMessage = toast.querySelector('.toast-message');
-                toastMessage.textContent = message;
-                
-                toast.classList.add('visible');
-                
-                setTimeout(() => {
-                    toast.classList.remove('visible');
-                }, 3000);
-            }
-
-            // Initialize messages display
-            displayMessages();
-
-            // Search functionality
-            function setupSearch(inputElement, itemsSelector) {
-                inputElement.addEventListener('input', () => {
-                    const searchText = inputElement.value.toLowerCase();
-                    const items = document.querySelectorAll(itemsSelector);
-                    
-                    items.forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        if (text.includes(searchText)) {
-                            item.style.display = 'block';
-                            gsap.fromTo(item, 
-                                { opacity: 0, y: 20 },
-                                { opacity: 1, y: 0, duration: 0.5 }
-                            );
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            }
-
-            setupSearch(photoSearch, '.masonry-item');
-            setupSearch(storySearch, '.stories .searchable');
-            setupSearch(jokeSearch, '.jokes .searchable');
-            setupSearch(newsSearch, '.news-item');
-
-            // Motivation quotes
-            const quotes = {
-                quran: [
-                    { text: "And We have certainly created man to be in hardship.", source: "Quran 90:4" },
-                    { text: "Indeed, with hardship [will be] ease.", source: "Quran 94:5" },
-                    { text: "And whoever relies upon Allah - then He is sufficient for him.", source: "Quran 65:3" },
-                    { text: "Allah does not burden a soul beyond that it can bear.", source: "Quran 2:286" }
-                ],
-                bible: [
-                    { text: "I can do all things through Christ who strengthens me.", source: "Philippians 4:13" },
-                    { text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.", source: "John 3:16" },
-                    { text: "Trust in the LORD with all your heart and lean not on your own understanding.", source: "Proverbs 3:5" },
-                    { text: "The LORD is my shepherd, I lack nothing.", source: "Psalm 23:1" }
-                ],
-                gita: [
-                    { text: "You have the right to work, but never to the fruit of work.", source: "Bhagavad Gita 2:47" },
-                    { text: "The soul is neither born, and nor does it die.", source: "Bhagavad Gita 2:20" },
-                    { text: "There is neither this world, nor the world beyond. Nor happiness for the one who doubts.", source: "Bhagavad Gita 4:40" },
-                    { text: "When a man has mastered himself, he is perfectly at ease in cold, in heat, in pleasure or pain, in honor or disgrace.", source: "Bhagavad Gita 6:7" }
-                ],
-                buddha: [
-                    { text: "The mind is everything. What you think you become.", source: "Buddha" },
-                    { text: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", source: "Buddha" },
-                    { text: "Peace comes from within. Do not seek it without.", source: "Buddha" },
-                    { text: "Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.", source: "Buddha" }
-                ],
-                other: [
-                    { text: "The only way to do great work is to love what you do.", source: "Steve Jobs" },
-                    { text: "Life is what happens to you while you're busy making other plans.", source: "John Lennon" },
-                    { text: "The future belongs to those who believe in the beauty of their dreams.", source: "Eleanor Roosevelt" },
-                    { text: "Be the change that you wish to see in the world.", source: "Mahatma Gandhi" }
-                ]
-            };
-
-            function displayQuotes(type) {
-                quotesContainer.innerHTML = '';
-                
-                quotes[type].forEach(quote => {
-                    const quoteElement = document.createElement('div');
-                    quoteElement.classList.add('quote-card', 'fade-in');
-                    
-                    quoteElement.innerHTML = `
-                        <p class="quote-text">${quote.text}</p>
-                        <p class="quote-source">- ${quote.source}</p>
-                    `;
-                    
-                    quotesContainer.appendChild(quoteElement);
-                });
-                
-                // Animate quotes
-                const quoteCards = document.querySelectorAll('.quote-card');
-                gsap.fromTo(quoteCards, 
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, stagger: 0.1, duration: 0.7, ease: 'power2.out' }
-                );
-            }
-
-            // Set initial quotes
-            displayQuotes('quran');
-
-            // Add event listeners to motivation tabs
-            motivationTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    motivationTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    const quoteType = tab.getAttribute('data-quote-type');
-                    displayQuotes(quoteType);
-                });
-            });
-
-            // News data
-            const newsData = [
-                { title: "New Website Launch", date: "2023-10-15", content: "I'm excited to announce the launch of my new official website. This platform will serve as a hub for all my content, including stories, photos, and motivational quotes." },
-                { title: "Upcoming Project Announcement", date: "2023-11-01", content: "Stay tuned for an exciting new project announcement next month. I've been working on something special that I can't wait to share with you all." },
-                { title: "Community Event Participation", date: "2023-09-20", content: "I recently participated in a local community event focused on mental health awareness. It was inspiring to connect with so many passionate individuals." },
-                { title: "New Photo Series", date: "2023-08-05", content: "I've just published a new series of photographs capturing the beauty of everyday life. Check out the Photos section to view them." }
-            ];
-
-            function displayNews() {
-                newsContainer.innerHTML = '';
-                
-                newsData.forEach(news => {
-                    const newsElement = document.createElement('article');
-                    newsElement.classList.add('content-item', 'news-item');
-                    
-                    const date = new Date(news.date).toLocaleDateString();
-                    
-                    newsElement.innerHTML = `
-                        <h3>${news.title}</h3>
-                        <p class="news-date">${date}</p>
-                        <p>${news.content}</p>
-                    `;
-                    
-                    newsContainer.appendChild(newsElement);
-                });
-            }
-
-            // Initialize news display
-            displayNews();
-
-            // Parallax effect for hero background
-            window.addEventListener('scroll', () => {
-                const scrollPosition = window.scrollY;
-                if (heroBg) {
-                    heroBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
-                }
-            });
-
-            // 3D tilt effect for hero
-            if (document.querySelector('.hero')) {
-                document.querySelector('.hero').addEventListener('mousemove', (e) => {
-                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-                    
-                    const x = (window.innerWidth / 2 - e.pageX) / 25;
-                    const y = (window.innerHeight / 2 - e.pageY) / 25;
-                    
-                    gsap.to('.hero-content', { 
-                        duration: 1, 
-                        x: x, 
-                        y: y, 
-                        ease: 'power1.out' 
-                    });
-                    
-                    gsap.to('.hero-bg', { 
-                        duration: 1, 
-                        x: x * 0.5, 
-                        y: y * 0.5, 
-                        ease: 'power1.out' 
-                    });
-                });
-                
-                document.querySelector('.hero').addEventListener('mouseleave', () => {
-                    gsap.to(['.hero-content', '.hero-bg'], { 
-                        duration: 1, 
-                        x: 0, 
-                        y: 0, 
-                        ease: 'power1.out' 
-                    });
-                });
-            }
-
-            // Initialize animations with GSAP and ScrollTrigger
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Animate elements on scroll
-            gsap.utils.toArray('.fade-in').forEach(element => {
-                gsap.fromTo(element, 
-                    { opacity: 0, y: 50 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: element,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-            
-            // Animate cards on scroll
-            gsap.utils.toArray('.card').forEach(card => {
-                gsap.fromTo(card, 
-                    { opacity: 0, y: 30 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: card,
-                            start: 'top 90%',
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            });
-        });
-    </script>
+      if (name && email && message) {
+        alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
 </body>
+
 </html>
