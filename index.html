@@ -3,226 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prabhat Panthi | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Prabhat Panthi | Professional Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* RESET */
-* {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:'Poppins',sans-serif;line-height:1.6;background:#f5f6fa;color:#1e1e2f;}
-a{text-decoration:none;color:inherit;}
-ul{list-style:none;}
-
-/* NAVBAR */
-nav{position:sticky;top:0;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;z-index:999;}
-nav .logo{font-weight:600;font-size:1.5rem;color:#4a00e0;}
-nav ul{display:flex;gap:1.5rem;}
-nav ul li a{padding:0.5rem 1rem;border-radius:5px;transition:0.3s;}
-nav ul li a:hover{background:rgba(255,255,255,0.3);}
-
-/* HERO */
-section.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4a00e0,#8e2de2);color:white;text-align:center;position:relative;}
-section.hero img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:5px solid rgba(255,255,255,0.3);}
-section.hero h1{font-size:3rem;margin:1rem 0;}
-section.hero p{font-size:1.2rem;margin-bottom:1.5rem;}
-.hero .hire-me{padding:0.75rem 2rem;background:#ffd700;color:#1e1e2f;font-weight:600;border:none;border-radius:50px;cursor:pointer;transition:0.3s;}
+* {margin:0; padding:0; box-sizing:border-box;}
+html {scroll-behavior:smooth;}
+body {font-family:'Poppins',sans-serif; background:#f5f6fa; color:#1e1e2f; overflow-x:hidden;}
+nav{position:sticky;top:0; z-index:999; display:flex; justify-content:space-between; align-items:center; padding:1rem 3rem; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.2);}
+nav .logo{font-weight:700; font-size:1.8rem; color:#4a00e0;}
+nav ul{display:flex; gap:2rem;}
+nav ul li a{padding:0.5rem 1rem; border-radius:8px; transition:0.3s; color:#1e1e2f; font-weight:500;}
+nav ul li a:hover{background:rgba(255,255,255,0.3); color:#4a00e0;}
+section.hero{min-height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; background:linear-gradient(135deg,#4a00e0,#8e2de2); color:white; position:relative;}
+.hero img{width:220px; height:220px; border-radius:50%; object-fit:cover; border:5px solid rgba(255,255,255,0.3); animation:fadeIn 2s ease forwards;}
+.hero h1{font-size:3.5rem; margin:1rem 0; animation:fadeInUp 2s ease forwards;}
+.hero .typed-text{font-size:1.4rem; margin-bottom:1.5rem; color:#ffd700; min-height:30px; animation:fadeInUp 2s ease forwards;}
+.hero .hire-me{padding:0.8rem 2.5rem; background:#ffd700; color:#1e1e2f; font-weight:600; border:none; border-radius:50px; cursor:pointer; transition:0.3s;}
 .hero .hire-me:hover{background:#f0c000;}
-
-/* SECTION STYLING */
-section{padding:5rem 2rem;}
-section h2{font-size:2rem;color:#4a00e0;margin-bottom:2rem;text-align:center;}
-
-/* ABOUT */
-section.about{display:flex;flex-wrap:wrap;align-items:center;gap:2rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:15px;padding:3rem;}
-.about img{flex:1;max-width:400px;border-radius:15px;object-fit:cover;}
+section{padding:5rem 3rem; position:relative;}
+section h2{font-size:2.5rem; color:#4a00e0; margin-bottom:2rem; text-align:center; position:relative;}
+section h2::after{content:""; width:60px; height:3px; background:#ffd700; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); border-radius:2px;}
+section.about{display:flex; flex-wrap:wrap; align-items:center; gap:2rem; background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border-radius:15px; padding:3rem;}
+.about img{flex:1; max-width:450px; border-radius:20px; object-fit:cover;}
 .about .content{flex:2;}
-.about .content p{margin-bottom:1rem;font-size:1rem;line-height:1.5;}
-
-/* EXPERIENCE */
-section.experience .job, section.experience .event{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1.5rem;margin-bottom:1.5rem;border-radius:15px;transition:0.3s;}
-section.experience .job:hover, section.experience .event:hover{background:rgba(255,255,255,0.2);}
-section.experience .job h3, section.experience .event h3{color:#8e2de2;margin-bottom:0.5rem;}
-section.experience .job ul, section.experience .event ul{padding-left:1.2rem;margin-top:0.5rem;}
-
-/* SKILLS */
-section.skills{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
-.skill-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:10px;transition:0.3s;cursor:default;}
-.skill-card:hover{background:rgba(255,255,255,0.2);color:#ffd700;font-weight:600;}
-
-/* EDUCATION */
-section.education .edu-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1.5rem;margin-bottom:1rem;border-radius:15px;transition:0.3s;}
-section.education .edu-card:hover{background:rgba(255,255,255,0.2);}
-section.education .edu-card h3{color:#8e2de2;margin-bottom:0.5rem;}
-
-/* CERTIFICATIONS */
-section.certifications{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;}
-.cert-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:15px;transition:0.3s;width:250px;text-align:center;}
-.cert-card:hover{background:rgba(255,255,255,0.2);}
-.cert-card img{width:100%;height:150px;object-fit:contain;border-radius:10px;margin-bottom:0.5rem;}
-
-/* GALLERY */
-section.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
-section.gallery img{width:100%;border-radius:15px;object-fit:cover;transition:0.3s;}
-section.gallery img:hover{transform:scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,0.3);}
-
-/* CONTACT */
-section.contact form{display:flex;flex-direction:column;gap:1rem;max-width:500px;margin:0 auto;}
-section.contact input, section.contact textarea{padding:0.75rem 1rem;border-radius:10px;border:none;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);color:#1e1e2f;}
-section.contact button{padding:0.75rem 2rem;background:#4a00e0;color:white;border:none;border-radius:50px;font-weight:600;cursor:pointer;transition:0.3s;}
+.about .content p{margin-bottom:1.5rem; font-size:1.05rem; line-height:1.6;}
+section.experience .job, section.experience .event{background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); padding:2rem; margin-bottom:2rem; border-radius:15px; transition:0.3s;}
+section.experience .job:hover, section.experience .event:hover{background:rgba(255,255,255,0.15);}
+section.experience .job h3, section.experience .event h3{color:#8e2de2; margin-bottom:0.5rem; font-size:1.6rem;}
+section.experience ul{padding-left:1.5rem; margin-top:0.5rem;}
+section.skills{display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;}
+.skill-card{background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); padding:1.2rem 2rem; border-radius:15px; transition:0.3s; font-weight:500; min-width:200px; text-align:center;}
+.skill-card:hover{background:rgba(255,255,255,0.2); color:#ffd700; transform:scale(1.05);}
+.skill-progress{margin-top:0.5rem; height:10px; background:rgba(255,255,255,0.2); border-radius:5px; overflow:hidden;}
+.skill-progress div{height:100%; background:#4a00e0; width:0%; border-radius:5px; transition:1s ease-in-out;}
+section.education .edu-card{background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); padding:2rem; margin-bottom:1.5rem; border-radius:15px; transition:0.3s;}
+section.education .edu-card:hover{background:rgba(255,255,255,0.15);}
+section.education .edu-card h3{color:#8e2de2; margin-bottom:0.5rem;}
+section.certifications{display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;}
+.cert-card{background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); padding:1.5rem; border-radius:20px; text-align:center; width:280px; transition:0.3s;}
+.cert-card:hover{background:rgba(255,255,255,0.2); transform:translateY(-5px);}
+.cert-card img{width:100%; height:150px; object-fit:contain; border-radius:10px; margin-bottom:0.5rem;}
+section.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;}
+section.gallery img{width:100%; border-radius:20px; object-fit:cover; transition:0.3s; cursor:pointer;}
+section.gallery img:hover{transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.35);}
+section.contact form{display:flex; flex-direction:column; gap:1rem; max-width:500px; margin:0 auto;}
+section.contact input, section.contact textarea{padding:0.85rem 1.2rem; border-radius:15px; border:none; background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); color:#1e1e2f; font-size:1rem;}
+section.contact button{padding:0.85rem 2.5rem; background:#4a00e0; color:white; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:0.3s;}
 section.contact button:hover{background:#6a2de2;}
-
-/* RESPONSIVE */
-@media(max-width:900px){section.about{flex-direction:column;}}
+footer{text-align:center; padding:2rem; background:rgba(255,255,255,0.1); margin-top:2rem;}
+footer a{color:#4a00e0; margin:0 1rem; font-weight:600; transition:0.3s;}
+footer a:hover{color:#ffd700;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInUp{from{opacity:0; transform:translateY(20px);}to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <div class="logo">Prabhat Panthi</div>
-  <ul>
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<div class="logo">Prabhat Panthi</div>
+<ul>
+<li><a href="#hero">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
-  <div>
-    <img src="images/neww.jpg" alt="Prabhat Panthi">
-    <h1>Prabhat Panthi</h1>
-    <p>Remote Finance | Operations | Virtual Assistant | Social Media Handling</p>
-    <button class="hire-me" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
-  </div>
+<img src="images/neww.jpg" alt="Prabhat Panthi">
+<h1>Prabhat Panthi</h1>
+<div class="typed-text" id="typed-text"></div>
+<button class="hire-me" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
-  <img src="images/newa.jpg" alt="About Prabhat Panthi">
-  <div class="content">
-    <h2>About Me</h2>
-    <p>With over 4+ years of experience in microfinance and operations, I have honed skills in loan processing, CRM management, reporting, documentation, and client account handling. I am detail-oriented, organized, and capable of managing multiple tasks simultaneously while ensuring accuracy and compliance.</p>
-    <p>My journey from Gulmi to Bhairahawa and Murgiya has shaped my dedication to technology, communication, and helping people. I am passionate about storytelling, content creation, and managing social media to support organizational growth. I thrive in remote work settings and bring a proactive approach to operations, finance, and administration roles.</p>
-  </div>
+<img src="images/newa.jpg" alt="About Prabhat Panthi">
+<div class="content">
+<h2>About Me</h2>
+<p>I am a dedicated professional with over 4+ years of hands-on experience in microfinance and operations. Skilled in loan processing, documentation, CRM management, reporting, and client account handling, I ensure precision and compliance in all tasks.</p>
+<p>From my journey from Gulmi to Bhairahawa and Murgiya, I have developed a passion for technology, storytelling, content creation, and social media handling. I combine analytical thinking with creativity to deliver results in finance, operations, and administrative roles.</p>
+<p>Achievements include improving CRM workflows, enhancing client satisfaction, and organizing multi-location events that reached hundreds of participants, integrating both operational and promotional tasks efficiently.</p>
+</div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="experience" id="experience">
-  <h2>Experience</h2>
-
-  <div class="job">
-    <h3>Junior Assistant — NIC Asia Laghubitta (Jan 2021 – Nov 2024)</h3>
-    <ul>
-      <li>Managed end-to-end microfinance operations with accuracy and timeliness.</li>
-      <li>Processed hundreds of loan applications, ensuring full compliance with regulations.</li>
-      <li>Maintained detailed records and prepared accurate financial reports.</li>
-      <li>Assisted in financial analysis, reporting, and client account management.</li>
-      <li>Trained new staff and optimized CRM system usage for efficiency.</li>
-    </ul>
-  </div>
-
-  <div class="event">
-    <h3>Event Experience</h3>
-    <ul>
-      <li>Organized financial literacy awareness events in multiple locations: Ramapur, Butwal, Bhairahawa, and surrounding communities.</li>
-      <li>Handled event planning, coordination, marketing, logistics, and budgeting.</li>
-      <li>Engaged participants through presentations, Q&A sessions, and follow-ups.</li>
-      <li>Managed social media promotion and content creation for events.</li>
-      <li>Tackled last-minute challenges efficiently and ensured successful execution.</li>
-    </ul>
-  </div>
+<h2>Experience</h2>
+<div class="job">
+<h3>Junior Assistant — NIC Asia Laghubitta (Jan 2021 – Nov 2024)</h3>
+<ul>
+<li>Managed end-to-end microfinance operations with accuracy and timeliness.</li>
+<li>Processed hundreds of loan applications, ensuring regulatory compliance.</li>
+<li>Prepared comprehensive financial reports and supported analysis for management decisions.</li>
+<li>Coordinated between teams and clients to streamline operations.</li>
+<li>Trained new staff members and enhanced CRM usage across the branch.</li>
+</ul>
+</div>
+<div class="event">
+<h3>Event Experience</h3>
+<ul>
+<li>Organized financial literacy awareness events in multiple locations: Ramapur, Butwal, Bhairahawa, and surrounding communities.</li>
+<li>Handled full event lifecycle: planning, budgeting, scheduling, logistics, client engagement, and post-event reporting.</li>
+<li>Managed social media promotion, content creation, and live updates to boost audience engagement.</li>
+<li>Tackled unexpected challenges and delivered successful events exceeding participant expectations.</li>
+</ul>
+</div>
 </section>
 
-<!-- SKILLS -->
 <section class="skills" id="skills">
-  <h2>Skills</h2>
-  <div class="skill-card">CRM & Client Handling</div>
-  <div class="skill-card">Data Entry & Reporting</div>
-  <div class="skill-card">Microsoft Office (Excel, Word, PowerPoint)</div>
-  <div class="skill-card">Communication & Interpersonal Skills</div>
-  <div class="skill-card">Time Management & Productivity</div>
-  <div class="skill-card">Canva & Content Design</div>
-  <div class="skill-card">Video Editing (CapCut)</div>
-  <div class="skill-card">Operations Coordination</div>
-  <div class="skill-card">Documentation & Compliance</div>
-  <div class="skill-card">Social Media Handling (content planning & analytics)</div>
+<h2>Skills</h2>
+<div class="skill-card">CRM & Client Handling<div class="skill-progress"><div style="width:95%"></div></div></div>
+<div class="skill-card">Data Entry & Reporting<div class="skill-progress"><div style="width:90%"></div></div></div>
+<div class="skill-card">Microsoft Office (Excel, Word, PowerPoint)<div class="skill-progress"><div style="width:92%"></div></div></div>
+<div class="skill-card">Communication & Interpersonal Skills<div class="skill-progress"><div style="width:90%"></div></div></div>
+<div class="skill-card">Time Management & Productivity<div class="skill-progress"><div style="width:88%"></div></div></div>
+<div class="skill-card">Canva & Content Design<div class="skill-progress"><div style="width:85%"></div></div></div>
+<div class="skill-card">Video Editing (CapCut)<div class="skill-progress"><div style="width:80%"></div></div></div>
+<div class="skill-card">Operations Coordination<div class="skill-progress"><div style="width:90%"></div></div></div>
+<div class="skill-card">Documentation & Compliance<div class="skill-progress"><div style="width:88%"></div></div></div>
+<div class="skill-card">Social Media Handling<div class="skill-progress"><div style="width:85%"></div></div></div>
 </section>
 
-<!-- EDUCATION -->
 <section class="education" id="education">
-  <h2>Education</h2>
-  <div class="edu-card">
-    <h3>Bachelor in Business Studies — Oxford College, Butwal</h3>
-    <p>Focused on finance, operations, and business management coursework. Completed multiple projects on client handling and reporting.</p>
-  </div>
-  <div class="edu-card">
-    <h3>Diploma — Sai Global Academy</h3>
-    <p>Acquired practical skills in business operations, documentation, and CRM systems, preparing for remote administrative work.</p>
-  </div>
+<h2>Education</h2>
+<div class="edu-card">
+<h3>Bachelor in Business Studies — Oxford College, Butwal</h3>
+<p>Focused on finance, operations, and business management. Completed projects on client portfolio handling, reporting, and administrative efficiency.</p>
+</div>
+<div class="edu-card">
+<h3>Diploma — Sai Global Academy</h3>
+<p>Acquired practical skills in business operations, documentation, CRM systems, and remote administration best practices.</p>
+</div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section class="certifications" id="certifications">
-  <h2>Certifications</h2>
-  <div class="cert-card">
-    <img src="images/c1.jpg" alt="Business Email Communication">
-    <p>HP LIFE – Business Email Communication</p>
-    <small>HP ID: ba2af885-316d-4c1b-8fd9-fffb26159009</small>
-  </div>
-  <div class="cert-card">
-    <img src="images/c2.jpg" alt="CRM">
-    <p>HP LIFE – Customer Relationship Management</p>
-    <small>HP CRM ID: ee3F2dc-994c-4002-adec-489985d31916</small>
-  </div>
-  <div class="cert-card">
-    <img src="images/c3.jpg" alt="Professional Networking">
-    <p>HP LIFE – Professional Networking</p>
-    <small>HP ID: 22a83620-a1d1-488b-b99b-75cf5c71f070</small>
-  </div>
-  <div class="cert-card">
-    <img src="images/c4.jpg" alt="AI Performance Ad">
-    <p>AI-Powered Performance Ad</p>
-    <small>ID: 177498231</small>
-  </div>
+<h2>Certifications</h2>
+<div class="cert-card">
+<img src="images/c1.jpg" alt="Business Email Communication">
+<p>HP LIFE – Business Email Communication</p>
+<small>HP ID: ba2af885-316d-4c1b-8fd9-fffb26159009</small>
+</div>
+<div class="cert-card">
+<img src="images/c2.jpg" alt="CRM">
+<p>HP LIFE – Customer Relationship Management</p>
+<small>HP CRM ID: ee3F2dc-994c-4002-adec-489985d31916</small>
+</div>
+<div class="cert-card">
+<img src="images/c3.jpg" alt="Professional Networking">
+<p>HP LIFE – Professional Networking</p>
+<small>HP ID: 22a83620-a1d1-488b-b99b-75cf5c71f070</small>
+</div>
+<div class="cert-card">
+<img src="images/c4.jpg" alt="AI Performance Ad">
+<p>AI-Powered Performance Ad</p>
+<small>ID: 177498231</small>
+</div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery" id="gallery">
-  <h2>Gallery</h2>
-  <img src="images/photo.jpg" alt="">
-  <img src="images/photop.jpg" alt="">
-  <img src="images/photopp.jpg" alt="">
-  <img src="images/photoppp.jpg" alt="">
-  <img src="images/newb.jpg" alt="">
-  <img src="images/newc.jpg" alt="">
-  <img src="images/neww.jpg" alt="">
-  <img src="images/brp.jpg" alt="">
+<h2>Gallery</h2>
+<img src="images/photo.jpg" alt="">
+<img src="images/photop.jpg" alt="">
+<img src="images/photopp.jpg" alt="">
+<img src="images/photoppp.jpg" alt="">
+<img src="images/newb.jpg" alt="">
+<img src="images/newc.jpg" alt="">
+<img src="images/neww.jpg" alt="">
+<img src="images/brp.jpg" alt="">
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2>Contact Me</h2>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+<h2>Contact Me</h2>
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea placeholder="Your Message" rows="5" required></textarea>
+<button type="submit">Send Message</button>
+</form>
 </section>
+
+<footer>
+<p>&copy; 2026 Prabhat Panthi | Designed for Remote Work</p>
+<a href="https://www.linkedin.com/in/prabhatpanthi" target="_blank">LinkedIn</a>
+<a href="mailto:memeclub46@gmail.com">Email</a>
+</footer>
 
 <script>
-// Smooth scroll for navbar links
-document.querySelectorAll('nav ul li a').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-  });
-});
+const texts=["Remote Finance Specialist","Operations Coordinator","Virtual Assistant","Social Media Handling"];
+let count=0,index=0,currentText="",letter="";
+(function type(){
+  if(count===texts.length)count=0;
+  currentText=texts[count];
+  letter=currentText.slice(0,++index);
+  document.getElementById('typed-text').textContent=letter;
+  if(letter.length===currentText.length){count++; index=0; setTimeout(type,1000);}
+  else{setTimeout(type,150);}
+})();
 </script>
 
 </body>
