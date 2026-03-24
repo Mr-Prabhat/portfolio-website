@@ -16,6 +16,687 @@
 
     body {
       font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism Cards with light theme */
+    .glass-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 28px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      margin: 4rem 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .dark-toggle {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .dark-toggle:hover {
+      background: #e2e8f0;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2563eb;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      color: #2563eb;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    /* Skill Badges */
+    .skill-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+      padding: 0.6rem 1.3rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      border-left: 3px solid #f59e0b;
+      margin: 0.5rem;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+    }
+
+    .skill-badge:hover {
+      background: #eef2ff;
+      transform: translateY(-3px);
+      border-color: #2563eb;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+      background: #f1f5f9;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Certificate Cards */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .cert-card {
+      background: #f8fafc;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border-color: #2563eb;
+    }
+
+    .cert-badge {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      width: 60px;
+      height: 60px;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .cert-badge i {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      color: #1e293b;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .text-secondary {
+      color: #475569;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #1e293b;
+    }
+
+    .rotating-text {
+      color: #2563eb;
+      font-size: 1.3rem;
+      font-weight: 600;
+      min-height: 3rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #e2e8f0;
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    @media (max-width: 768px) {
+      .container, .nav-container {
+        padding: 0 1.2rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .glass-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">Prabhat<span style="color:#f59e0b;">.</span>Panthi</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="dark-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> Dark/Light</button>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="container">
+      <div class="glass-card" style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: center;">
+        <div style="flex: 1.5;">
+          <div style="background: linear-gradient(135deg, #eef2ff, #fef3c7); display: inline-block; padding: 0.3rem 1rem; border-radius: 2rem; font-size: 0.85rem; margin-bottom: 1rem; color: #2563eb; font-weight: 500;">
+            🌍 Remote Ready · Global Talent
+          </div>
+          <h1 style="font-size: 3.2rem; margin-bottom: 0.5rem; color: #0f172a;">Prabhat Panthi</h1>
+          <div class="rotating-text" id="rotatingText">Operations Expert</div>
+          <p style="margin: 1.2rem 0; line-height: 1.6; color: #475569;">
+            <i class="fas fa-map-marker-alt"></i> Nepal (Gulmi → Bhairahawa → Murgiya)<br>
+            <i class="fas fa-phone"></i> +977-9848605969<br>
+            <i class="fas fa-envelope"></i> memeclub46@gmail.com
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#contact" class="btn-primary"><i class="fas fa-briefcase"></i> Hire Me → Remote Roles</a>
+            <a href="https://www.linkedin.com/in/prabhatpanthi" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+          </div>
+        </div>
+        <div style="flex: 1; text-align: center;">
+          <div style="width: 280px; height: 280px; margin: 0 auto; border-radius: 2rem; overflow: hidden; border: 3px solid #f59e0b; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);">
+            <img src="images/neww.jpg" alt="Prabhat Panthi" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2><i class="fas fa-user-circle"></i> About Me</h2>
+      <div class="glass-card" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <div style="flex: 2;">
+          <p style="margin-bottom: 1rem; line-height: 1.7; color: #334155;"><strong style="color: #0f172a;">Over 4+ years of hands-on experience in microfinance and operations</strong>, handling loan processing, CRM systems, compliance checks, reporting, documentation, and client account management with exceptional precision.</p>
+          <p style="margin-bottom: 1rem; line-height: 1.7; color: #334155;">Demonstrates exceptional <strong style="color: #0f172a;">attention to detail, organizational skills, multitasking ability</strong>, and proactive problem-solving. Highly adaptable to remote work environments, with strong communication and collaboration skills across distributed teams.</p>
+          <p style="margin-bottom: 1rem; line-height: 1.7; color: #334155;">Experienced in <strong style="color: #0f172a;">financial data analysis, reporting, and team coordination</strong>. My journey from Gulmi to Bhairahawa and Murgiya has shaped my resilience, professional growth, and passion for helping communities through financial literacy events.</p>
+          <p style="margin-bottom: 1rem; line-height: 1.7; color: #334155;">Passionate about <strong style="color: #0f172a;">technology, content creation, social media management, and storytelling</strong>. Actively engaged in organizing financial literacy programs that empower local communities and bridge knowledge gaps.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <span class="skill-badge">🏆 500+ Loans Processed</span>
+            <span class="skill-badge">📊 Expert in CRM</span>
+            <span class="skill-badge">🤝 Community Leader</span>
+          </div>
+        </div>
+        <div style="flex: 1; text-align: center;">
+          <img src="images/newa.jpg" alt="About Prabhat" style="width: 100%; max-width: 260px; border-radius: 1.5rem; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+      <div class="glass-card">
+        <div style="margin-bottom: 2rem;">
+          <h3 style="color: #f59e0b;">🏦 Junior Assistant — NIC Asia Laghubitta <span style="font-size: 0.9rem; color: #64748b;">(Jan 2021 – Nov 2024)</span></h3>
+          <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 1.8; color: #334155;">
+            <li>Managed end-to-end daily microfinance operations, processing over <strong>500+ loan applications</strong> with 100% compliance accuracy.</li>
+            <li>Maintained detailed records and prepared <strong>accurate, timely financial reports</strong> for management review.</li>
+            <li>Assisted in financial analysis and client account management, ensuring seamless customer experiences.</li>
+            <li>Coordinated with multiple teams, optimized workflow, and improved operational efficiency by 35%.</li>
+            <li>Trained 8+ new staff members on CRM systems and compliance protocols.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color: #f59e0b;">🎤 Event Management & Financial Literacy</h3>
+          <ul style="margin-left: 1.5rem; margin-top: 1rem; line-height: 1.8; color: #334155;">
+            <li>Organized multiple <strong>financial literacy awareness events</strong> at Ramapur (Daddy's Kitchen), Butwal, Bhairahawa, and surrounding communities.</li>
+            <li>Handled end-to-end event management including planning, logistics, budgeting, scheduling, and execution for 50+ attendees each.</li>
+            <li>Engaged with participants, delivered presentations, managed Q&A sessions, and ensured positive audience experience.</li>
+            <li>Managed <strong>social media promotion, marketing content creation</strong> using Canva, and real-time event updates.</li>
+            <li>Tackled last-minute challenges such as equipment failures and scheduling changes with calm professionalism.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2><i class="fas fa-cogs"></i> Core Skills & Expertise</h2>
+      <div class="glass-card">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+          <span class="skill-badge">📋 CRM & Client Handling</span>
+          <span class="skill-badge">📊 Data Entry & Reporting</span>
+          <span class="skill-badge">📑 Microsoft Office Suite</span>
+          <span class="skill-badge">💬 Communication & Interpersonal</span>
+          <span class="skill-badge">⏱️ Time Management & Productivity</span>
+          <span class="skill-badge">🎨 Canva & Content Design</span>
+          <span class="skill-badge">✂️ Video Editing (CapCut)</span>
+          <span class="skill-badge">⚙️ Operations Coordination</span>
+          <span class="skill-badge">📂 Documentation & Compliance</span>
+          <span class="skill-badge">📱 Social Media Management</span>
+          <span class="skill-badge">📈 Financial Analysis & KPI Tracking</span>
+          <span class="skill-badge">🤝 Remote Collaboration Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <div class="container">
+      <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+      <div class="glass-card">
+        <div style="margin-bottom: 1.5rem;">
+          <h3>🎓 Bachelor in Business Studies</h3>
+          <p style="color: #475569;">Oxford College, Butwal</p>
+          <p class="text-secondary">Academic achievements in finance, major projects on microfinance impact, and business analytics.</p>
+        </div>
+        <div>
+          <h3>📘 Diploma in Business Administration</h3>
+          <p style="color: #475569;">Sai Global Academy</p>
+          <p class="text-secondary">Specialized in operations management, business communication, and remote work essentials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <h2><i class="fas fa-certificate"></i> Professional Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-badge"><i class="fas fa-envelope"></i></div>
+          <h3>Business Email Communication</h3>
+          <p><strong style="color: #475569;">HP LIFE ID:</strong> ba2af885-316d-4c1b-8fd9-fffb26159009</p>
+          <p class="text-secondary">Mastered professional email etiquette, clarity, and stakeholder communication strategies.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge"><i class="fas fa-users"></i></div>
+          <h3>Customer Relationship Management</h3>
+          <p><strong style="color: #475569;">HP CRM ID:</strong> ee3F2dc-994c-4002-adec-489985d31916</p>
+          <p class="text-secondary">CRM best practices, client retention strategies, and data-driven relationship management.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge"><i class="fas fa-network-wired"></i></div>
+          <h3>Professional Networking</h3>
+          <p><strong style="color: #475569;">HP ID:</strong> 22a83620-a1d1-488b-b99b-75cf5c71f070</p>
+          <p class="text-secondary">Strategic networking for career growth and professional relationship building.</p>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge"><i class="fas fa-chart-line"></i></div>
+          <h3>AI-Powered Performance Ad</h3>
+          <p><strong style="color: #475569;">ID:</strong> 177498231</p>
+          <p class="text-secondary">AI ad optimization, audience analytics, and campaign ROI strategies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <div class="container">
+      <h2><i class="fas fa-images"></i> Moments & Highlights</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/photo.jpg" alt="Event moments"></div>
+        <div class="gallery-item"><img src="images/photop.jpg" alt="Workshop"></div>
+        <div class="gallery-item"><img src="images/photopp.jpg" alt="Team collaboration"></div>
+        <div class="gallery-item"><img src="images/photoppp.jpg" alt="Certificate ceremony"></div>
+        <div class="gallery-item"><img src="images/newb.jpg" alt="Community event"></div>
+        <div class="gallery-item"><img src="images/newc.jpg" alt="Financial literacy"></div>
+        <div class="gallery-item"><img src="images/neww.jpg" alt="Professional profile"></div>
+        <div class="gallery-item"><img src="images/brp.jpg" alt="Networking event"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+      <div class="glass-card" style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <div style="flex: 1;">
+          <h3>📧 Send a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" placeholder="Your Full Name" required id="name">
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email Address" required id="email">
+            </div>
+            <div class="form-group">
+              <textarea rows="4" placeholder="Tell me about your remote opportunity (VA, Finance, Operations, etc.)" required id="message"></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+          <p style="margin-top: 1rem; font-size: 0.85rem; text-align: center;" class="text-secondary">✨ Remote employers: I'm ready for Finance/Admin, Operations, VA & SMM roles</p>
+        </div>
+        <div style="flex: 1;">
+          <h3>📞 Contact Info</h3>
+          <p style="margin: 1rem 0; color: #334155;"><i class="fas fa-phone"></i> <strong>Phone:</strong> +977-9848605969</p>
+          <p style="margin: 1rem 0; color: #334155;"><i class="fas fa-envelope"></i> <strong>Email:</strong> memeclub46@gmail.com</p>
+          <p style="margin: 1rem 0; color: #334155;"><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/prabhatpanthi" target="_blank" style="color: #2563eb;">linkedin.com/in/prabhatpanthi</a></p>
+          <p style="margin: 1rem 0; color: #334155;"><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Nepal (Remote Ready)</p>
+          <div style="margin-top: 2rem; background: #fef3c7; padding: 1rem; border-radius: 1rem; border-left: 4px solid #f59e0b;">
+            <i class="fas fa-video" style="font-size: 1.5rem; color: #f59e0b;"></i>
+            <p style="margin-top: 0.5rem; color: #334155;"><strong>Video Introduction Available</strong><br>Request my Loom video walkthrough for a personal introduction to my skills and experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="text-align: center; padding: 2rem; background: #f8fafc; border-top: 1px solid #e2e8f0; margin-top: 2rem;">
+  <p style="color: #475569;">© 2025 Prabhat Panthi — Remote Operations & Finance Specialist. Available for immediate hire.</p>
+</footer>
+
+<script>
+  // Rotating Text Animation
+  const roles = ["Operations Expert", "Finance Specialist", "Virtual Assistant Pro", "Social Media Manager", "Remote Coordinator", "Admin Rockstar"];
+  let roleIndex = 0;
+  const rotatingElement = document.getElementById('rotatingText');
+  
+  setInterval(() => {
+    roleIndex = (roleIndex + 1) % roles.length;
+    rotatingElement.style.opacity = '0';
+    setTimeout(() => {
+      rotatingElement.textContent = roles[roleIndex];
+      rotatingElement.style.opacity = '1';
+    }, 200);
+  }, 2500);
+
+  // Dark/Light Mode Toggle (switches to dark mode if needed)
+  const toggleBtn = document.getElementById('darkModeToggle');
+  let isDark = false;
+  toggleBtn.addEventListener('click', () => {
+    if (!isDark) {
+      // Switch to dark mode
+      document.body.style.background = '#0f172a';
+      document.body.style.color = '#e2e8f0';
+      document.querySelectorAll('.glass-card').forEach(card => {
+        card.style.background = '#1e293b';
+        card.style.borderColor = '#334155';
+      });
+      document.querySelectorAll('.skill-badge').forEach(badge => {
+        badge.style.background = '#334155';
+        badge.style.color = '#e2e8f0';
+        badge.style.borderColor = '#475569';
+      });
+      document.querySelectorAll('.cert-card').forEach(cert => {
+        cert.style.background = '#1e293b';
+        cert.style.borderColor = '#334155';
+      });
+      document.querySelectorAll('input, textarea').forEach(input => {
+        input.style.background = '#1e293b';
+        input.style.borderColor = '#334155';
+        input.style.color = '#e2e8f0';
+      });
+      document.querySelector('.navbar').style.background = 'rgba(15, 23, 42, 0.98)';
+      document.querySelector('.navbar').style.borderBottomColor = '#334155';
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.style.color = '#cbd5e1';
+      });
+      document.querySelector('footer').style.background = '#0f172a';
+      document.querySelector('footer').style.borderTopColor = '#334155';
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+      isDark = true;
+    } else {
+      // Switch back to light mode
+      document.body.style.background = '#ffffff';
+      document.body.style.color = '#1a1a2e';
+      document.querySelectorAll('.glass-card').forEach(card => {
+        card.style.background = '#ffffff';
+        card.style.borderColor = '#e2e8f0';
+      });
+      document.querySelectorAll('.skill-badge').forEach(badge => {
+        badge.style.background = 'linear-gradient(135deg, #f8fafc, #f1f5f9)';
+        badge.style.color = '#1e293b';
+        badge.style.borderColor = '#e2e8f0';
+      });
+      document.querySelectorAll('.cert-card').forEach(cert => {
+        cert.style.background = '#f8fafc';
+        cert.style.borderColor = '#e2e8f0';
+      });
+      document.querySelectorAll('input, textarea').forEach(input => {
+        input.style.background = '#f8fafc';
+        input.style.borderColor = '#e2e8f0';
+        input.style.color = '#1e293b';
+      });
+      document.querySelector('.navbar').style.background = 'rgba(255, 255, 255, 0.98)';
+      document.querySelector('.navbar').style.borderBottomColor = '#e2e8f0';
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.style.color = '#334155';
+      });
+      document.querySelector('footer').style.background = '#f8fafc';
+      document.querySelector('footer').style.borderTopColor = '#e2e8f0';
+      toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Dark/Light';
+      isDark = false;
+    }
+  });
+
+  // Contact Form Submission
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('✅ Thank you for reaching out! Prabhat Panthi will respond within 24 hours. Looking forward to discussing remote opportunities!');
+    contactForm.reset();
+  });
+
+  // Gallery Lightbox
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+      overlay.style.zIndex = '10000';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.cursor = 'pointer';
+      const fullImg = document.createElement('img');
+      fullImg.src = img.src;
+      fullImg.style.maxWidth = '90%';
+      fullImg.style.maxHeight = '90%';
+      fullImg.style.borderRadius = '1rem';
+      fullImg.style.border = '3px solid #f59e0b';
+      overlay.appendChild(fullImg);
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => overlay.remove());
+    });
+  });
+
+  // Smooth scrolling for navigation
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prabhat Panthi | Remote Operations & Finance Expert</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #0a0c10 0%, #0f172a 50%, #111827 100%);
       color: #eef2ff;
       scroll-behavior: smooth;
