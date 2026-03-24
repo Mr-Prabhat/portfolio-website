@@ -1,551 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prabhat Panthi | Official Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary-gold: #ffd700;
-      --dark-gold: #b8860b;
-      --light-gold: #fffacd;
-      --metallic-gold: #e6b800;
-      --bg-light: #faf8e6;
-      --text-color: #2c2c2c;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabhat Panthi | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* RESET */
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Poppins',sans-serif;line-height:1.6;background:#f5f6fa;color:#1e1e2f;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
 
-    body {
-      background: linear-gradient(to bottom, var(--light-gold), var(--bg-light));
-      color: var(--text-color);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      transition: background 0.5s, color 0.5s;
-    }
+/* NAVBAR */
+nav{position:sticky;top:0;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;z-index:999;}
+nav .logo{font-weight:600;font-size:1.5rem;color:#4a00e0;}
+nav ul{display:flex;gap:1.5rem;}
+nav ul li a{padding:0.5rem 1rem;border-radius:5px;transition:0.3s;}
+nav ul li a:hover{background:rgba(255,255,255,0.3);}
 
-    header {
-      background: linear-gradient(to right, var(--primary-gold), var(--metallic-gold));
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+/* HERO */
+section.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4a00e0,#8e2de2);color:white;text-align:center;position:relative;}
+section.hero img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:5px solid rgba(255,255,255,0.3);}
+section.hero h1{font-size:3rem;margin:1rem 0;}
+section.hero p{font-size:1.2rem;margin-bottom:1.5rem;}
+.hero .hire-me{padding:0.75rem 2rem;background:#ffd700;color:#1e1e2f;font-weight:600;border:none;border-radius:50px;cursor:pointer;transition:0.3s;}
+.hero .hire-me:hover{background:#f0c000;}
 
-    nav {
-      background: linear-gradient(to right, var(--dark-gold), var(--metallic-gold));
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 10px;
-      flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
+/* SECTION STYLING */
+section{padding:5rem 2rem;}
+section h2{font-size:2rem;color:#4a00e0;margin-bottom:2rem;text-align:center;}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-    }
+/* ABOUT */
+section.about{display:flex;flex-wrap:wrap;align-items:center;gap:2rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:15px;padding:3rem;}
+.about img{flex:1;max-width:400px;border-radius:15px;object-fit:cover;}
+.about .content{flex:2;}
+.about .content p{margin-bottom:1rem;font-size:1rem;line-height:1.5;}
 
-    nav a:hover {
-      background: var(--primary-gold);
-      color: var(--text-color);
-    }
+/* EXPERIENCE */
+section.experience .job, section.experience .event{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1.5rem;margin-bottom:1.5rem;border-radius:15px;transition:0.3s;}
+section.experience .job:hover, section.experience .event:hover{background:rgba(255,255,255,0.2);}
+section.experience .job h3, section.experience .event h3{color:#8e2de2;margin-bottom:0.5rem;}
+section.experience .job ul, section.experience .event ul{padding-left:1.2rem;margin-top:0.5rem;}
 
-    .search-bar {
-      text-align: center;
-      margin: 15px;
-    }
+/* SKILLS */
+section.skills{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
+.skill-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:10px;transition:0.3s;cursor:default;}
+.skill-card:hover{background:rgba(255,255,255,0.2);color:#ffd700;font-weight:600;}
 
-    .search-bar input {
-      padding: 10px;
-      width: min(80%, 500px);
-      border-radius: 5px;
-      border: 2px solid var(--dark-gold);
-      background: rgba(255, 255, 255, 0.9);
-    }
+/* EDUCATION */
+section.education .edu-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1.5rem;margin-bottom:1rem;border-radius:15px;transition:0.3s;}
+section.education .edu-card:hover{background:rgba(255,255,255,0.2);}
+section.education .edu-card h3{color:#8e2de2;margin-bottom:0.5rem;}
 
-    section {
-      padding: 20px;
-      display: none;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+/* CERTIFICATIONS */
+section.certifications{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;}
+.cert-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:1rem 1.5rem;border-radius:15px;transition:0.3s;width:250px;text-align:center;}
+.cert-card:hover{background:rgba(255,255,255,0.2);}
+.cert-card img{width:100%;height:150px;object-fit:contain;border-radius:10px;margin-bottom:0.5rem;}
 
-    section.active {
-      display: block;
-    }
+/* GALLERY */
+section.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+section.gallery img{width:100%;border-radius:15px;object-fit:cover;transition:0.3s;}
+section.gallery img:hover{transform:scale(1.05);box-shadow:0 10px 20px rgba(0,0,0,0.3);}
 
-    .home-banner {
-      text-align: center;
-    }
+/* CONTACT */
+section.contact form{display:flex;flex-direction:column;gap:1rem;max-width:500px;margin:0 auto;}
+section.contact input, section.contact textarea{padding:0.75rem 1rem;border-radius:10px;border:none;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);color:#1e1e2f;}
+section.contact button{padding:0.75rem 2rem;background:#4a00e0;color:white;border:none;border-radius:50px;font-weight:600;cursor:pointer;transition:0.3s;}
+section.contact button:hover{background:#6a2de2;}
 
-    .home-banner img {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 4px solid var(--primary-gold);
-      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
-      margin-bottom: 15px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      border: 2px solid var(--metallic-gold);
-      transition: transform 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      justify-content: center;
-    }
-
-    .tabs button {
-      padding: 10px 20px;
-      background: var(--primary-gold);
-      color: var(--text-color);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .tabs button:hover {
-      background: var(--dark-gold);
-      transform: translateY(-2px);
-    }
-
-    .tab-content {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      border: 1px solid var(--metallic-gold);
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .quote, .story, .joke {
-      margin: 15px 0;
-      padding: 15px;
-      background: var(--light-gold);
-      border-left: 4px solid var(--primary-gold);
-      border-radius: 5px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 2px solid var(--dark-gold);
-      background: rgba(255, 255, 255, 0.9);
-      box-sizing: border-box;
-    }
-
-    .contact-form button {
-      padding: 10px 20px;
-      background: var(--primary-gold);
-      color: var(--text-color);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .contact-form button:hover {
-      background: var(--dark-gold);
-      transform: translateY(-2px);
-    }
-
-    .dark-mode {
-      background: #2b2b2b;
-      color: #f0f0f0;
-    }
-
-    .dark-mode nav {
-      background: linear-gradient(to right, #4a3c00, #6b5400);
-    }
-
-    .dark-mode .tabs button {
-      background: var(--dark-gold);
-      color: white;
-    }
-
-    .dark-mode .tabs button:hover {
-      background: var(--primary-gold);
-    }
-
-    .dark-mode .tab-content {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .dark-mode-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background: var(--primary-gold);
-      color: var(--text-color);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .dark-mode-toggle:hover {
-      background: var(--dark-gold);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 600px) {
-      .home-banner img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-      }
-
-      nav {
-        gap: 10px;
-      }
-
-      .search-bar input {
-        width: 90%;
-      }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:900px){section.about{flex-direction:column;}}
+</style>
 </head>
-
 <body>
-  <header>
-    <h1>Prabhat Panthi | Official Website</h1>
-  </header>
 
-  <nav>
-    <a href="#" onclick="showTab('home')">Home</a>
-    <a href="#" onclick="showTab('about')">About Me</a>
-    <a href="#" onclick="showTab('photos')">Photos</a>
-    <a href="#" onclick="showTab('videos')">Videos</a>
-    <a href="#" onclick="showTab('stories')">Stories</a>
-    <a href="#" onclick="showTab('jokes')">Jokes</a>
-    <a href="#" onclick="showTab('news')">News</a>
-    <a href="#" onclick="showTab('motivation')">Motivation</a>
-    <a href="#" onclick="showTab('contact')">Contact</a>
-  </nav>
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">Prabhat Panthi</div>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  
-  <section id="home" class="active">
-    <div class="home-banner">
-      <img src="images/neww.jpg" alt="Prabhat Panthi" />
-    </div>
-    <h2>Welcome to My World</h2>
-    <p>
-      Hello! I'm Prabhat Panthi, a passionate digital creator born in the serene hills of Gulmi, Nepal.
-      My journey took me from the peaceful landscapes of Gulmi to the bustling city of Bhairahawa,
-      and then to the vibrant town of Murgiya where I grew up.
-    </p>
-    <p>
-      With a Bachelor’s degree completed, I have always been enthusiastic about technology,
-      storytelling, and spreading positivity through creative content.
-      This website is my personal space to share photos, videos, inspiring stories, jokes,
-      and powerful motivational quotes from various holy scriptures.
-    </p>
-    <p>
-      I believe in continuous learning, evolving, and connecting with people worldwide.
-      Here, you'll not only find glimpses of my personal journey but also content
-      that aims to motivate and entertain.
-    </p>
-    <p>
-      Feel free to explore and get in touch with me through the Contact section below.
-      Let's stay connected and grow together!
-    </p>
-  </section>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div>
+    <img src="images/neww.jpg" alt="Prabhat Panthi">
+    <h1>Prabhat Panthi</h1>
+    <p>Remote Finance | Operations | Virtual Assistant | Social Media Handling</p>
+    <button class="hire-me" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+  </div>
+</section>
 
-  <section id="about">
+<!-- ABOUT -->
+<section class="about" id="about">
+  <img src="images/newa.jpg" alt="About Prabhat Panthi">
+  <div class="content">
     <h2>About Me</h2>
-    <div class="home-banner">
-      <img src="images/newa.jpg" alt="Prabhat Panthi About" />
-    </div>
-    <p>
-      I was born in Gulmi, a beautiful hilly district of Nepal known for its rich culture and heritage.
-      Later, my family moved to Bhairahawa where I experienced a vibrant city life.
-      Eventually, we settled in Murgiya, a place that played a big role in shaping who I am today.
-    </p>
-    <p>
-      From a young age, I was curious about technology and storytelling.
-      This curiosity led me to pursue a Bachelor's degree, where I honed my skills in digital media and communication.
-    </p>
-    <p>
-      Besides digital content, I have a keen interest in reading motivational books,
-      listening to spiritual discourses, and understanding various cultures and philosophies.
-    </p>
-    <p>
-      One of my core beliefs is that every person has a unique story,
-      and through creativity and positive mindset, we can all inspire each other to grow.
-    </p>
-    <p>
-      Through this platform, I aim to share stories that uplift spirits,
-      jokes that bring smiles, and wisdom from ancient scriptures that enlighten minds.
-      Every piece of content here reflects my journey of learning and sharing.
-    </p>
-    <p>
-      Outside the digital world, I enjoy traveling, meeting new people,
-      and immersing myself in nature. I believe that staying connected to our roots keeps us humble and grounded.
-    </p>
-    <p>
-      Thank you for visiting my website. Let’s continue this journey together,
-      sharing laughter, wisdom, and positivity across borders!
-    </p>
-  </section>
+    <p>With over 4+ years of experience in microfinance and operations, I have honed skills in loan processing, CRM management, reporting, documentation, and client account handling. I am detail-oriented, organized, and capable of managing multiple tasks simultaneously while ensuring accuracy and compliance.</p>
+    <p>My journey from Gulmi to Bhairahawa and Murgiya has shaped my dedication to technology, communication, and helping people. I am passionate about storytelling, content creation, and managing social media to support organizational growth. I thrive in remote work settings and bring a proactive approach to operations, finance, and administration roles.</p>
+  </div>
+</section>
 
-  <section id="photos">
-    <h2>Photo Gallery</h2>
-    <div class="gallery">
-      <img src="images/photo.jpg" alt="Photo 1" />
-      <img src="images/photop.jpg" alt="Photo 2" />
-      <img src="images/photopp.jpg" alt="Photo 3" />
-      <img src="images/photoppp.jpg" alt="Photo 4" />
-      <img src="images/newb.jpg" alt="Photo 5" />
-      <img src="images/newc.jpg" alt="Photo 6" />
-      <img src="images/neww.jpg" alt="Photo 7" />
-      <img src="images/brp.jpg" alt="Photo 8" />
-    </div>
-  </section>
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <h2>Experience</h2>
 
-  <section id="videos">
-    <h2>Videos</h2>
-    <p>Video section here...</p>
-  </section>
+  <div class="job">
+    <h3>Junior Assistant — NIC Asia Laghubitta (Jan 2021 – Nov 2024)</h3>
+    <ul>
+      <li>Managed end-to-end microfinance operations with accuracy and timeliness.</li>
+      <li>Processed hundreds of loan applications, ensuring full compliance with regulations.</li>
+      <li>Maintained detailed records and prepared accurate financial reports.</li>
+      <li>Assisted in financial analysis, reporting, and client account management.</li>
+      <li>Trained new staff and optimized CRM system usage for efficiency.</li>
+    </ul>
+  </div>
 
-  <section id="stories">
-    <h2>Success Stories</h2>
-    <div class="story searchable">
-      <h3>The Journey of Chester Charles Bennington</h3>
-       <p>
-    Chester Charles Bennington was born on <strong>March 20, 1976, in Phoenix, Arizona, USA</strong>. His childhood was filled with challenges — his parents divorced when he was 11, and he faced bullying, emotional neglect, and even abuse. These struggles led Chester into a dark path of depression and substance abuse from a young age.
-  </p>
-  <p>
-    However, <strong>music became his ultimate escape</strong>. Influenced by bands like Stone Temple Pilots, Chester developed a unique, raw vocal style that could switch from soothing melodies to powerful screams, capturing the emotions of millions.
-  </p>
-  <p>
-    Chester’s life took a pivotal turn when he joined <strong>Linkin Park in 1999</strong>. The band’s debut album <em>“Hybrid Theory” (2000)</em> became a global phenomenon, giving a voice to a generation dealing with frustration, identity, and emotional struggles. Songs like <em>“In the End”</em>, <em>“Crawling”</em>, and <em>“Numb”</em> resonated deeply with fans worldwide.
-  </p>
-  <p>
-    Despite his success, Chester continuously battled with inner demons. He used his platform to speak openly about mental health, encouraging others to seek help and never be ashamed of their struggles. Tragically, Chester passed away on <strong>July 20, 2017</strong>, leaving behind a legacy that still inspires millions.
-  </p>
-  <p>
-    Chester’s journey from a tormented childhood to becoming a global rock icon is a story of <strong>pain, passion, and the power of art to heal</strong>. His voice lives on, reminding us that <em>“it's okay to not be okay”</em> — and that seeking help is a sign of strength, not weakness.
-  </p>
-    </div>
-    <div class="story searchable">
-      <h3>From Streets to Success: APJ Abdul Kalam</h3>
-      <p>
-        Dr. APJ Abdul Kalam, former President of India, grew up in a modest family, selling newspapers to support his education.
-        His dedication to science led him to become a key figure in India's space and missile programs.
-        Known as the "Missile Man," his story teaches us that humble beginnings can lead to extraordinary achievements through perseverance.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Elon Musk: Visionary Innovator</h3>
-      <p>
-        Elon Musk, born in South Africa, faced numerous setbacks before becoming a global icon of innovation.
-        From co-founding PayPal to leading Tesla and SpaceX, Musk's relentless pursuit of ambitious goals, like colonizing Mars, shows the power of thinking big and never giving up, even after failures.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Oprah Winfrey: Rising Above Adversity</h3>
-      <p>
-        Oprah Winfrey overcame a childhood of poverty and abuse to become one of the most influential media personalities in the world.
-        Through her talk show and philanthropy, she empowered millions, proving that resilience and compassion can transform lives and inspire global change.
-      </p>
-    </div>
-    <div class="story searchable">
-      <h3>Malala Yousafzai: Voice for Education</h3>
-      <p>
-        Malala Yousafzai, a Pakistani activist, survived an assassination attempt by the Taliban for advocating girls' education.
-        At age 17, she became the youngest Nobel Peace Prize laureate. Her courage and dedication continue to inspire millions to fight for education and equality.
-      </p>
-    </div>
-  </section>
+  <div class="event">
+    <h3>Event Experience</h3>
+    <ul>
+      <li>Organized financial literacy awareness events in multiple locations: Ramapur, Butwal, Bhairahawa, and surrounding communities.</li>
+      <li>Handled event planning, coordination, marketing, logistics, and budgeting.</li>
+      <li>Engaged participants through presentations, Q&A sessions, and follow-ups.</li>
+      <li>Managed social media promotion and content creation for events.</li>
+      <li>Tackled last-minute challenges efficiently and ensured successful execution.</li>
+    </ul>
+  </div>
+</section>
 
-  <section id="jokes">
-    <h2>Jokes</h2>
-    <div class="joke searchable">
-      <p>Why did the computer go to art school? Because it wanted to learn how to draw a better "byte"!</p>
-    </div>
-    <div class="joke searchable">
-      <p>Why don't programmers prefer dark mode? Because the light attracts bugs.</p>
-    </div>
-    <div class="joke searchable">
-      <p>What do you call a dinosaur that takes care of its teeth? A Flossiraptor!</p>
-    </div>
-  </section>
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <h2>Skills</h2>
+  <div class="skill-card">CRM & Client Handling</div>
+  <div class="skill-card">Data Entry & Reporting</div>
+  <div class="skill-card">Microsoft Office (Excel, Word, PowerPoint)</div>
+  <div class="skill-card">Communication & Interpersonal Skills</div>
+  <div class="skill-card">Time Management & Productivity</div>
+  <div class="skill-card">Canva & Content Design</div>
+  <div class="skill-card">Video Editing (CapCut)</div>
+  <div class="skill-card">Operations Coordination</div>
+  <div class="skill-card">Documentation & Compliance</div>
+  <div class="skill-card">Social Media Handling (content planning & analytics)</div>
+</section>
 
-  <section id="news">
-    <h2>News</h2>
-    <p class="searchable">News updates here...</p>
-  </section>
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <h2>Education</h2>
+  <div class="edu-card">
+    <h3>Bachelor in Business Studies — Oxford College, Butwal</h3>
+    <p>Focused on finance, operations, and business management coursework. Completed multiple projects on client handling and reporting.</p>
+  </div>
+  <div class="edu-card">
+    <h3>Diploma — Sai Global Academy</h3>
+    <p>Acquired practical skills in business operations, documentation, and CRM systems, preparing for remote administrative work.</p>
+  </div>
+</section>
 
-  <section id="motivation">
-    <h2>Motivation</h2>
-    <div class="tabs">
-      <button onclick="showMotivationTab('quran')">Quran</button>
-      <button onclick="showMotivationTab('bible')">Bible</button>
-      <button onclick="showMotivationTab('gita')">Gita</button>
-      <button onclick="showMotivationTab('buddha')">Buddha</button>
-    </div>
-    <div id="quran" class="tab-content active">
-      <div class="quote">
-        <p>"And whoever puts their trust in Allah, then He ˹alone˺ is sufficient for them." – Quran 65:3</p>
-      </div>
-      <div class="quote">
-        <p>"So verily, with the hardship, there is relief." – Quran 94:6</p>
-      </div>
-      <div class="quote">
-        <p>"Indeed, Allah will not change the condition of a people until they change what is in themselves." – Quran 13:11</p>
-      </div>
-      <div class="quote">
-        <p>"Call upon Me; I will respond to you." – Quran 40:60</p>
-      </div>
-    </div>
-    <div id="bible" class="tab-content">
-      <div class="quote">
-        <p>"I can do all things through Christ who strengthens me." – Philippians 4:13</p>
-      </div>
-      <div class="quote">
-        <p>"Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you." – Joshua 1:9</p>
-      </div>
-      <div class="quote">
-        <p>"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11</p>
-      </div>
-      <div class="quote">
-        <p>"Love your neighbor as yourself." – Mark 12:31</p>
-      </div>
-    </div>
-    <div id="gita" class="tab-content">
-      <div class="quote">
-        <p>"You have the right to perform your prescribed duties, but you are not entitled to the fruits of your actions." – Bhagavad Gita 2:47</p>
-      </div>
-      <div class="quote">
-        <p>"The soul is neither born, and nor does it die." – Bhagavad Gita 2:20</p>
-      </div>
-      <div class="quote">
-        <p>"Perform your duty equipoised, abandoning all attachment to success or failure." – Bhagavad Gita 2:48</p>
-      </div>
-      <div class="quote">
-        <p>"When meditation is mastered, the mind is unwavering like the flame of a lamp in a windless place." – Bhagavad Gita 6:19</p>
-      </div>
-    </div>
-    <div id="buddha" class="tab-content">
-      <div class="quote">
-        <p>"The mind is everything. What you think, you become." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Happiness does not depend on what you have or who you are. It solely relies on what you think." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment." – Buddha</p>
-      </div>
-      <div class="quote">
-        <p>"Peace comes from within. Do not seek it without." – Buddha</p>
-      </div>
-    </div>
-  </section>
+<!-- CERTIFICATIONS -->
+<section class="certifications" id="certifications">
+  <h2>Certifications</h2>
+  <div class="cert-card">
+    <img src="images/c1.jpg" alt="Business Email Communication">
+    <p>HP LIFE – Business Email Communication</p>
+    <small>HP ID: ba2af885-316d-4c1b-8fd9-fffb26159009</small>
+  </div>
+  <div class="cert-card">
+    <img src="images/c2.jpg" alt="CRM">
+    <p>HP LIFE – Customer Relationship Management</p>
+    <small>HP CRM ID: ee3F2dc-994c-4002-adec-489985d31916</small>
+  </div>
+  <div class="cert-card">
+    <img src="images/c3.jpg" alt="Professional Networking">
+    <p>HP LIFE – Professional Networking</p>
+    <small>HP ID: 22a83620-a1d1-488b-b99b-75cf5c71f070</small>
+  </div>
+  <div class="cert-card">
+    <img src="images/c4.jpg" alt="AI Performance Ad">
+    <p>AI-Powered Performance Ad</p>
+    <small>ID: 177498231</small>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Phone: +977-9848605969</p>
-    <p>Email: prabhatpanthi007@gmail.com</p>
-    <div class="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="email" id="email" placeholder="Your Email" required />
-      <textarea rows="5" id="message" placeholder="Your Feedback / Comment" required></textarea>
-      <button type="button" onclick="submitForm()">Submit</button>
-    </div>
-  </section>
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <h2>Gallery</h2>
+  <img src="images/photo.jpg" alt="">
+  <img src="images/photop.jpg" alt="">
+  <img src="images/photopp.jpg" alt="">
+  <img src="images/photoppp.jpg" alt="">
+  <img src="images/newb.jpg" alt="">
+  <img src="images/newc.jpg" alt="">
+  <img src="images/neww.jpg" alt="">
+  <img src="images/brp.jpg" alt="">
+</section>
 
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>Contact Me</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-      if (tabId === 'motivation') showMotivationTab('quran');
-    }
+<script>
+// Smooth scroll for navbar links
+document.querySelectorAll('nav ul li a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
 
-    function showMotivationTab(tabName) {
-      document.querySelectorAll('.tab-content').forEach((tab) => tab.classList.remove('active'));
-      const target = document.getElementById(tabName);
-      if (target) target.classList.add('active');
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    function searchContent() {
-      let filter = document.getElementById('searchInput').value.toUpperCase();
-      let searchableSections = document.querySelectorAll('.searchable');
-
-      document.querySelectorAll('section').forEach((section) => section.classList.remove('active'));
-
-      let found = false;
-      searchableSections.forEach((el) => {
-        if (el.innerText.toUpperCase().indexOf(filter) > -1) {
-          el.parentElement.classList.add('active');
-          found = true;
-        }
-      });
-
-      if (!found && filter === '') {
-        showTab('home');
-      }
-    }
-
-    function submitForm() {
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-
-      if (name && email && message) {
-        alert('Form submitted successfully!\nName: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('message').value = '';
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-  </script>
 </body>
-
 </html>
